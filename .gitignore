@@ -55,3 +55,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+codigo_antigo.py
+
+.idea
