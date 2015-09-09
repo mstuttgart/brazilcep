@@ -2,10 +2,8 @@ language: python
 python:
   - "2.7"
 
-install:
-   pip install suds flake8
+install: pip install suds flake8
 
-before_script:
-   flake8 .
-script:
-   script: python correios_cep_test.py
+before_script: flake8 .
+
+script: python correios_cep_test.py
