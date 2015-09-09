@@ -19,28 +19,49 @@
 
 import unittest
 from correios_cep import CorreiosCEP
+from correios_cep import EnderecoCEP
 
 
 class TestCorreiosCEP(unittest.TestCase):
 
     def setUp(self):
 
-        self.cep_test_1 = {
-            'cep': '37503130',
+        end_1 = {
+            'cep': '37.503-130',
             'bairro': 'Santo Antônio',
             'cidade': 'Itajubá',
             'complemento': '',
             'complemento2': '- até 214/215',
             'rua': 'Rua Geraldino Campista',
-            'id': long(0),
             'UF': 'MG',
         }
 
-    def test_get_cep(self):
-        cep = CorreiosCEP.get_cep(self.cep_test_1['cep'])
+        end_2 = {
+            'cep': '12327-130',
+            'bairro': 'Centro',
+            'cidade': 'Jacareí',
+            'complemento': '',
+            'complemento2': '',
+            'rua': 'Rua Batista Scavone',
+            'UF': 'SP',
+        }
 
-        self.assertIsInstance(cep, dict)
-        self.assertDictContainsSubset(cep, self.cep_test_1)
+        self.enderecos = [end_1, end_2]
+
+    def test_get_cep(self):
+
+        for end in self.enderecos:
+            endereco = CorreiosCEP.get_cep(end['cep'])
+            self.assertIsInstance(endereco, EnderecoCEP)
+
+            cep = (end['cep'].replace('-', '')).replace('.', '')
+            self.assertEqual(endereco.cep, cep)
+            self.assertEqual(endereco.rua, end['rua'])
+            self.assertEqual(endereco.bairro, end['bairro'])
+            self.assertEqual(endereco.cidade, end['cidade'])
+            self.assertEqual(endereco.UF, end['UF'])
+            self.assertEqual(endereco.complemento, end['complemento'])
+            self.assertEqual(endereco.complemento2, end['complemento2'])
 
 
 if __name__ == "__main__":
