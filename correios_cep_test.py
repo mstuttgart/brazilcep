@@ -38,8 +38,8 @@ class TestCorreiosCEP(unittest.TestCase):
 
     def test_get_cep(self):
         cep = CorreiosCEP.get_cep(self.cep_test_1['cep'])
-        self.assertIsInstance(cep, dict)
 
+        self.assertIsInstance(cep, dict)
         self.assertDictContainsSubset(cep, self.cep_test_1)
 
 
