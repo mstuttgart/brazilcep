@@ -65,15 +65,14 @@ class CorreiosCEP(object):
         end_obj = EnderecoCEP()
         end_obj.cep = str(res_cep.cep)
         end_obj.rua = str(res_cep.end.encode('utf8')) if res_cep.end else ''
-        end_obj.bairro = str(
-            res_cep.bairro.encode('utf8')) if res_cep.bairro else ''
-        end_obj.cidade = str(
-            res_cep.cidade.encode('utf8')) if res_cep.cidade else ''
+        end_obj.bairro = str(res_cep.bairro.encode('utf8')) if \
+            res_cep.bairro else ''
+        end_obj.cidade = str(res_cep.cidade.encode('utf8')) if \
+            res_cep.cidade else ''
         end_obj.UF = str(res_cep.uf)
-        end_obj.complemento = str(
-            res_cep.complemento.encode('utf8')) if res_cep.complemento else ''
-        end_obj.complemento2 = str(
-            res_cep.complemento2.encode(
-                'utf8')) if res_cep.complemento2 else ''
+        end_obj.complemento = str(res_cep.complemento.encode('utf8')) if \
+            res_cep.complemento else ''
+        end_obj.complemento2 = str(res_cep.complemento2.encode('utf8')) if \
+            res_cep.complemento2 else ''
 
         return end_obj
