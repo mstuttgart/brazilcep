@@ -2,8 +2,11 @@ language: python
 python:
   - "2.7"
 
-# command to install dependencies
-install: "pip install suds"
+install:
+   pip install suds
+   pip install flake8
 
-# command to run tests
-script: python correios_cep_test.py
+before_script:
+   flake8 .
+script:
+   script: python correios_cep_test.py
