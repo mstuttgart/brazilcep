@@ -29,7 +29,8 @@ from correios_cep_exceptions import CorreiosCEPExceptions
 
 
 class EnderecoCEP(object):
-    def __init__(self, cep='00000000', rua='', bairro='', complemento='',
+
+    def __init__(self, cep='', rua='', bairro='', complemento='',
                  complemento2='', cidade='', UF=''):
         self.cep = cep
         self.rua = rua
@@ -38,11 +39,27 @@ class EnderecoCEP(object):
         self.complemento2 = complemento2
         self.cidade = cidade
         self.UF = UF
+        self.erro_msg = None
 
 
 class CorreiosCEP(object):
-    @staticmethod
-    def get_cep(cep):
+
+    def _preenche_endereco(self, cep, rua='', bairro='', complemento='',
+                           complemento2='', cidade='', UF='', msg=None):
+
+        obj_end = EnderecoCEP()
+        obj_end.cep = cep
+        obj_end.rua = rua
+        obj_end.bairro = bairro
+        obj_end.complemento = complemento
+        obj_end.complemento2 = complemento2
+        obj_end.cidade = cidade
+        obj_end.UF = UF
+        obj_end.erro_msg = msg
+
+        return obj_end
+
+    def get_cep(self, cep):
 
         if not isinstance(cep, str):
             raise CorreiosCEPExceptions(u'CEP não é uma string')
@@ -60,19 +77,19 @@ class CorreiosCEP(object):
         try:
             res_cep = service.consultaCEP(cep)
         except WebFault as e:
-            raise CorreiosCEPExceptions(e.message)
+            return self._preenche_endereco(cep, msg=e.message)
 
-        end_obj = EnderecoCEP()
-        end_obj.cep = str(res_cep.cep)
-        end_obj.rua = str(res_cep.end.encode('utf8')) if res_cep.end else ''
-        end_obj.bairro = str(res_cep.bairro.encode('utf8')) if \
-            res_cep.bairro else ''
-        end_obj.cidade = str(res_cep.cidade.encode('utf8')) if \
-            res_cep.cidade else ''
-        end_obj.UF = str(res_cep.uf)
-        end_obj.complemento = str(res_cep.complemento.encode('utf8')) if \
+        cep = str(res_cep.cep)
+        rua = str(res_cep.end.encode('utf8')) if res_cep.end else ''
+        bairro = str(res_cep.bairro.encode('utf8')) if res_cep.bairro else ''
+        cidade = str(res_cep.cidade.encode('utf8')) if res_cep.cidade else ''
+        UF = str(res_cep.uf)
+        complemento = str(res_cep.complemento.encode('utf8')) if \
             res_cep.complemento else ''
-        end_obj.complemento2 = str(res_cep.complemento2.encode('utf8')) if \
+        complemento2 = str(res_cep.complemento2.encode('utf8')) if \
             res_cep.complemento2 else ''
 
-        return end_obj
+        return self._preenche_endereco(cep, rua=rua, bairro=bairro,
+                                       complemento=complemento,
+                                       complemento2=complemento2,
+                                       cidade=cidade, UF=UF)

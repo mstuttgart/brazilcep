@@ -34,6 +34,7 @@ class TestCorreiosCEP(unittest.TestCase):
             'complemento2': '- até 214/215',
             'rua': 'Rua Geraldino Campista',
             'UF': 'MG',
+            'erro_msg': None,
         }
 
         end_2 = {
@@ -44,14 +45,39 @@ class TestCorreiosCEP(unittest.TestCase):
             'complemento2': '',
             'rua': 'Rua Batista Scavone',
             'UF': 'SP',
+            'erro_msg': None,
         }
 
-        self.enderecos = [end_1, end_2]
+        end_3 = {
+            'cep': '12327-10',
+            'bairro': '',
+            'cidade': '',
+            'complemento': '',
+            'complemento2': '',
+            'rua': '',
+            'UF': '',
+            'erro_msg': u"Server raised fault: 'BUSCA DEFINIDA COMO EXATA, 0 CEP DEVE TER 8 DIGITOS'",
+        }
+
+        end_4 = {
+            'cep': '37503135',
+            'bairro': '',
+            'cidade': '',
+            'complemento': '',
+            'complemento2': '',
+            'rua': '',
+            'UF': '',
+            'erro_msg': u"Server raised fault: 'CEP NAO ENCONTRADO'",
+        }
+
+        self.enderecos = [end_1, end_2, end_3, end_4]
 
     def test_get_cep(self):
 
+        corr_obj = CorreiosCEP()
+
         for end in self.enderecos:
-            endereco = CorreiosCEP.get_cep(end['cep'])
+            endereco = corr_obj.get_cep(end['cep'])
             self.assertIsInstance(endereco, EnderecoCEP)
 
             cep = (end['cep'].replace('-', '')).replace('.', '')
@@ -62,6 +88,7 @@ class TestCorreiosCEP(unittest.TestCase):
             self.assertEqual(endereco.UF, end['UF'])
             self.assertEqual(endereco.complemento, end['complemento'])
             self.assertEqual(endereco.complemento2, end['complemento2'])
+            self.assertEqual(endereco.erro_msg, end['erro_msg'])
 
 
 if __name__ == "__main__":
