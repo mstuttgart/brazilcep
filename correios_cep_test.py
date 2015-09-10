@@ -23,9 +23,7 @@ from correios_cep import EnderecoCEP
 
 
 class TestCorreiosCEP(unittest.TestCase):
-
     def setUp(self):
-
         end_1 = {
             'cep': '37.503-130',
             'bairro': 'Santo Antônio',
@@ -56,7 +54,8 @@ class TestCorreiosCEP(unittest.TestCase):
             'complemento2': '',
             'rua': '',
             'UF': '',
-            'erro_msg': u"Server raised fault: 'BUSCA DEFINIDA COMO EXATA, 0 CEP DEVE TER 8 DIGITOS'",
+            'erro_msg': u"Server raised fault: 'BUSCA DEFINIDA COMO EXATA, "
+                        u"0 CEP DEVE TER 8 DIGITOS'",
         }
 
         end_4 = {
@@ -73,7 +72,6 @@ class TestCorreiosCEP(unittest.TestCase):
         self.enderecos = [end_1, end_2, end_3, end_4]
 
     def test_get_cep(self):
-
         corr_obj = CorreiosCEP()
 
         for end in self.enderecos:
