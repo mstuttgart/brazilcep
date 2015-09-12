@@ -6,4 +6,4 @@ install: pip install suds flake8
 
 before_script: flake8 .
 
-script: python correios_cep_test.py
+script: python test/pycep_correios_test.py

@@ -17,11 +17,18 @@
 #
 # #############################################################################
 
+# __all__ = (pycep_correios.__all__ + cod.__all__)
 
-class CorreiosCEPExceptions(Exception):
+__author__ = 'Michell Stuttgart'
 
-    def __init__(self, msg, *args):
-        self.message = msg.format(args)
+VERSION = (0, 1, 1)
 
-    def __str__(self):
-        return repr(self.message)
+
+def get_version():
+    version = '%s.%s' % (VERSION[0], VERSION[1])
+    if VERSION[2]:
+        version = '%s.%s' % (version, VERSION[2])
+    return version
+
+
+__version__ = get_version()
