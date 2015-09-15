@@ -10,7 +10,7 @@ install:
 before_script: flake8 .
 
 script:
-  - coverage run --source=pycep_correios test/pycep_correios_test
+  - python test/pycep_correios_test.py
 
 after_success:
   - coveralls
