@@ -36,12 +36,12 @@ class TestPyCEPCorreios(unittest.TestCase):
 
     def test_get_cep(self):
         end_1 = {
-            'Bairro': 'Santo Antônio',
-            'Cidade': 'Itajubá',
-            'Complemento': '',
-            'Outro': '- até 214/215',
-            'Rua': 'Rua Geraldino Campista',
-            'UF': 'MG',
+            'bairro': 'Santo Antônio',
+            'cidade': 'Itajubá',
+            'complemento': '',
+            'outro': '- até 214/215',
+            'rua': 'Rua Geraldino Campista',
+            'uf': 'MG',
         }
 
         self.assertItemsEqual(end_1, self.corr_obj.get_cep('37.503-130'))

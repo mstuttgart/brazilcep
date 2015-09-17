@@ -33,17 +33,17 @@ class PyCEPCorreios(object):
     def _preencher_endereco(self, resposta_servidor):
 
         endereco = {
-            'Rua': str(resposta_servidor.end.encode('utf8')) if
+            'rua': str(resposta_servidor.end.encode('utf8')) if
             resposta_servidor.end else '',
-            'Bairro': str(resposta_servidor.bairro.encode('utf8')) if
+            'bairro': str(resposta_servidor.bairro.encode('utf8')) if
             resposta_servidor.bairro else '',
-            'Cidade': str(resposta_servidor.cidade.encode('utf8')) if
+            'cidade': str(resposta_servidor.cidade.encode('utf8')) if
             resposta_servidor.cidade else '',
-            'UF': str(resposta_servidor.uf),
-            'Complemento': str(
+            'uf': str(resposta_servidor.uf),
+            'complemento': str(
                 resposta_servidor.complemento.encode('utf8')) if
             resposta_servidor.complemento else '',
-            'Outro': str(resposta_servidor.complemento2.encode('utf8'))
+            'outro': str(resposta_servidor.complemento2.encode('utf8'))
             if resposta_servidor.complemento2 else '',
         }
 
