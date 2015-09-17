@@ -35,7 +35,10 @@ Futuramente pretendo realizar a comunicação com *webservice* utilizando a bibl
 de modo a tornar o PyCEP Correios livre de dependências externas.
 
 ## Instalação
-git clone https://github.com/mstuttgart/pycep-correios.git
-cd pycep-correios/
-sudo python setup.py install
+
+`git clone https://github.com/mstuttgart/pycep-correios.git`
+
+`cd pycep-correios/`
+
+`sudo python setup.py install`
 
