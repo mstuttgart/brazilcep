@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from distutils.core import setup
 
 setup(
@@ -11,7 +12,8 @@ setup(
     license='GPL v3',
     author='Michell Stuttgart',
     author_email='michellstut@gmail.com',
-    description='Método para busca de dados de CEP no webservice dos Correios',
+    description=u'Método para busca de dados de CEP no webservice dos '
+                u'Correios',
     install_requires=[
         'suds',
     ],
