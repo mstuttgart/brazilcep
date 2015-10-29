@@ -17,31 +17,18 @@
 #
 # #############################################################################
 
-import unittest
-from correios_cep import CorreiosCEP
+# __all__ = (pycep_correios.__all__ + cod.__all__)
+
+__author__ = 'Michell Stuttgart'
+
+VERSION = (0, 1, 1)
 
 
-class TestCorreiosCEP(unittest.TestCase):
-
-    def setUp(self):
-
-        self.cep_test_1 = {
-            'cep': '37503130',
-            'bairro': 'Santo Antônio',
-            'cidade': 'Itajubá',
-            'complemento': '',
-            'complemento2': '- até 214/215',
-            'rua': 'Rua Geraldino Campista',
-            'id': long(0),
-            'UF': 'MG',
-        }
-
-    def test_get_cep(self):
-        cep = CorreiosCEP.get_cep(self.cep_test_1['cep'])
-        self.assertIsInstance(cep, dict)
-
-        self.assertDictContainsSubset(cep, self.cep_test_1)
+def get_version():
+    version = '%s.%s' % (VERSION[0], VERSION[1])
+    if VERSION[2]:
+        version = '%s.%s' % (version, VERSION[2])
+    return version
 
 
-if __name__ == "__main__":
-    unittest.main()
+__version__ = get_version()
