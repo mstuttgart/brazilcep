@@ -7,11 +7,12 @@ install:
   - pip install flake8
   - pip install pytest
   - pip install coveralls
+  - pip install coverage
 
 before_script: flake8 .
 
 script:
   - py.test test/pycep_correios_test.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
-
+  - coverage run --source pycep-correios setup.py test
 after_success:
   - coveralls
