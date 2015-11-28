@@ -5,12 +5,13 @@ python:
 install: 
   - pip install suds
   - pip install flake8
+  - pip install pytest
   - pip install coveralls
 
 before_script: flake8 .
 
 script:
-  - python test/pycep_correios_test.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
+  - py.test test/pycep_correios_test.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
 
 after_success:
   - coveralls
