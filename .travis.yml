@@ -5,7 +5,7 @@ python:
 install: 
   - pip install suds
   - pip install flake8
-  - pip install coveralls
+  - pip install python-coveralls
 
 before_script: flake8 .
 
