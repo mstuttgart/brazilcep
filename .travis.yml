@@ -10,7 +10,7 @@ install:
 before_script: flake8 .
 
 script:
-  - python test/pycep_correios_test.py
+  - py.test coveralls/test/pycep_correios_test.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
 
 after_success:
   - coveralls
