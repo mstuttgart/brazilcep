@@ -17,6 +17,7 @@ setup(
     requires=[
         'suds',
     ],
+    test_suite="test",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
