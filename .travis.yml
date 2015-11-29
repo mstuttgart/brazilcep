@@ -5,14 +5,14 @@ python:
 install: 
   - pip install suds
   - pip install flake8
-  - pip install pytest
-  - pip install coveralls
+  - pip install python-coveralls
   - pip install coverage
+  - pip install nose
 
 before_script: flake8 .
 
 script:
-  - py.test test/pycep_correios_test.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
-  - coverage run --source pycep-correios setup.py test
+  - python setup.py install
+  - nosetests --with-coverage # Add me to run nose with coverage support.
 after_success:
   - coveralls
