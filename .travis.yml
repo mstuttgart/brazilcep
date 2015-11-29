@@ -12,8 +12,7 @@ install:
 before_script: flake8 .
 
 script:
-  #- python setup.py install
-  #- nosetests --with-coverage # Add me to run nose with coverage support.
-  - coverage run --source=pycep_correios setup.py test
+  - python setup.py install
+  - nosetests --with-coverage # Add me to run nose with coverage support.
 after_success:
   - coveralls
