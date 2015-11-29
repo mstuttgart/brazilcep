@@ -54,7 +54,3 @@ class TestPyCEPCorreios(unittest.TestCase):
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
                           self.corr_obj.get_cep, 37503130)
-
-
-#if __name__ == "__main__":
-#    unittest.main()
