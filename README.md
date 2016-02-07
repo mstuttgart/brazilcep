@@ -4,6 +4,7 @@
 (https://coveralls.io/github/mstuttgart/pycep-correios?branch=develop)
 [![Code Health](https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg?style=flat)]
 (https://landscape.io/github/mstuttgart/pycep-correios/develop)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/kefir500/ghstats/master/LICENSE)
 
 O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um dado CEP fornecido pelo usuário. O retorno dessa consulta é o endereço pertencente ao CEP.
 
