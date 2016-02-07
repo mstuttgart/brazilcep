@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name='pycep-correios',
     version='1.0.0',
     keywords='correios setuptools development cep',
-    packages=[
-        'pycep_correios', 'test'
-    ],
+    packages=['pycep_correios', 'test'],
     url='https://github.com/mstuttgart/pycep-correios',
     license='GPL v3',
     author='Michell Stuttgart',
