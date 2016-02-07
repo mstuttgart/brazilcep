@@ -6,7 +6,7 @@ setup(
     version='1.0.0',
     keywords='correios setuptools development cep',
     packages=[
-        'pycep_correios',
+        'pycep_correios', 'test'
     ],
     url='https://github.com/mstuttgart/pycep-correios',
     license='GPL v3',
@@ -17,7 +17,7 @@ setup(
     requires=[
         'suds',
     ],
-    test_suite="test",
+    test_suite='test',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
