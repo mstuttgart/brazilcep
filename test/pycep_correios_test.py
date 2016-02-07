@@ -17,13 +17,6 @@
 #
 # #############################################################################
 
-import sys
-import os
-test_root = os.path.dirname(os.path.abspath(__file__))
-os.chdir(test_root)
-sys.path.insert(0, os.path.dirname(test_root))
-sys.path.insert(0, test_root)
-
 import unittest
 from pycep_correios.pycep_correios import PyCEPCorreios
 from pycep_correios.pycep_correios_exceptions import \
@@ -31,6 +24,7 @@ from pycep_correios.pycep_correios_exceptions import \
 
 
 class TestPyCEPCorreios(unittest.TestCase):
+
     def setUp(self):
         self.corr_obj = PyCEPCorreios()
 
@@ -54,7 +48,3 @@ class TestPyCEPCorreios(unittest.TestCase):
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
                           self.corr_obj.get_cep, 37503130)
-
-
-if __name__ == "__main__":
-    unittest.main()

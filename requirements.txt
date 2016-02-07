@@ -1,0 +1,3 @@
+pip install suds
+pip install flake8
+pip install coveralls

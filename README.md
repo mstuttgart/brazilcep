@@ -1,5 +1,9 @@
 # PyCEP Correios
-[![Build Status](https://travis-ci.org/mstuttgart/pycep-correios.svg?branch=master)](https://travis-ci.org/mstuttgart/pycep-correios)
+[![Build Status](https://travis-ci.org/mstuttgart/pycep-correios.svg?branch=develop)](https://travis-ci.org/mstuttgart/pycep-correios)
+[![Coverage Status](https://coveralls.io/repos/github/mstuttgart/pycep-correios/badge.svg?branch=develop)]
+(https://coveralls.io/github/mstuttgart/pycep-correios?branch=develop)
+[![Code Health](https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg?style=flat)]
+(https://landscape.io/github/mstuttgart/pycep-correios/develop)
 
 O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um dado CEP fornecido pelo usuário. O retorno dessa consulta é o endereço pertencente ao CEP.
 
