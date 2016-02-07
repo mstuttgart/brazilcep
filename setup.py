@@ -27,7 +27,7 @@ from setuptools import setup
 
 setup(
     name='pycep-correios',
-    version='1.0.0',
+    version='1.0.1',
     keywords='correios setuptools development cep',
     packages=['pycep_correios', 'test'],
     url='https://github.com/mstuttgart/pycep-correios',
