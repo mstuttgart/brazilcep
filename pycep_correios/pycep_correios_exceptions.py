@@ -26,11 +26,11 @@
 
 class CorreiosCEPException(Exception):
 
-    def __init__(self, msg, *args):
-        self.message = msg.format(args)
+    def __init__(self, msg):
+        self.message = msg
 
     def __str__(self):
-        return repr(self.message)
+        return self.message
 
 
 class CorreiosCEPServerConnectionException(CorreiosCEPException):
@@ -39,7 +39,7 @@ class CorreiosCEPServerConnectionException(CorreiosCEPException):
         self.message = msg.format(args)
 
     def __str__(self):
-        return repr(self.message)
+        return self.message
 
 
 class CorreiosCEPInvalidCEPException(CorreiosCEPException):
@@ -48,4 +48,4 @@ class CorreiosCEPInvalidCEPException(CorreiosCEPException):
         self.message = msg.format(args)
 
     def __str__(self):
-        return repr(self.message)
+        return self.message
