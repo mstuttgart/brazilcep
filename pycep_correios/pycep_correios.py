@@ -23,13 +23,8 @@
 # SOFTWARE.
 # #############################################################################
 
-try:
-    from suds import client
-    from suds import WebFault
-except ImportError:
-    raise (ImportError, 'Python module suds not installed. '
-                        'Please install with: pip install suds')
-    exit()
+from suds import client
+from suds import WebFault
 
 from pycep_correios_exceptions import CorreiosCEPServerConnectionException
 from pycep_correios_exceptions import CorreiosCEPInvalidCEPException
