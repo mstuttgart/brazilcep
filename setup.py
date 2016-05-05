@@ -31,7 +31,7 @@ setup(
     keywords='correios setuptools development cep',
     packages=find_packages(),
     url='https://github.com/mstuttgart/pycep-correios',
-    license='GPL v3',
+    license='MIT',
     author='Michell Stuttgart',
     author_email='michellstut@gmail.com',
     description=u'Método para busca de dados de CEP no webservice dos '
