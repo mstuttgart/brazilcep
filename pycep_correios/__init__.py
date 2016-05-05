@@ -22,3 +22,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 # #############################################################################
+
+__title__ = 'PyCEP Correios'
+__version__ = '0.0.1'
+__author__ = 'Michell Stuttgart Faria'
+__license__ = 'MIT'
+__copyright__ = 'Copyright 2015-2016 Michell Stuttgart Faria'
+
+# Version synonym
+VERSION = __version__
