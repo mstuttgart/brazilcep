@@ -7,7 +7,6 @@
 [![PyPI](https://img.shields.io/pypi/v/pycep-correios.svg)](https://pypi.python.org/pypi/pycep-correios)
 [![PyPI](https://img.shields.io/pypi/dm/pycep-correios.svg)](https://pypi.python.org/pypi/pycep-correios)
 [![PyPI](https://img.shields.io/pypi/pyversions/pycep-correios.svg)](https://pypi.python.org/pypi/pycep-correios)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 [![PyPI](https://img.shields.io/pypi/l/pycep-correios.svg)](https://github.com/mstuttgart/pycep-correios/blob/master/LICENSE)
 
 O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um dado CEP fornecido pelo usuário. O retorno dessa consulta é o endereço pertencente ao CEP.
