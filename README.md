@@ -12,8 +12,10 @@
 O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um dado CEP fornecido pelo usuário. O retorno dessa consulta é o endereço pertencente ao CEP.
 
 ## Instalação
-
-`sudo pip install pycep-correios`
+O PyCEP Correios pode ser facilmente instalado com o comando a seguir:
+```
+sudo pip install pycep-correios
+```
 
 ## Como usar
 
