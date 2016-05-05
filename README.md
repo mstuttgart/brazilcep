@@ -11,6 +11,10 @@
 
 O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um dado CEP fornecido pelo usuário. O retorno dessa consulta é o endereço pertencente ao CEP.
 
+## Instalação
+
+`sudo pip install pycep-correios`
+
 ## Como usar
 
 <pre lang="python"><code>
@@ -29,6 +33,7 @@ print endereco['outro']
 </code></pre>
 
 ## Dependências
+
 O PyCEP Correios as seguintes dependências para envio e recebimento de 
 dados do webservice. 
 
@@ -41,12 +46,3 @@ Instale o *suds* com:
 
 Futuramente pretendo realizar a comunicação com *webservice* utilizando a biblioteca *urllib*,
 de modo a tornar o PyCEP Correios livre de dependências externas.
-
-## Instalação
-
-`git clone https://github.com/mstuttgart/pycep-correios.git`
-
-`cd pycep-correios/`
-
-`sudo python setup.py install`
-
