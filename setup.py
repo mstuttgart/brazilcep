@@ -23,13 +23,13 @@
 # SOFTWARE.
 # #############################################################################
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='pycep-correios',
-    version='1.0.1',
+    version='0.0.1',
     keywords='correios setuptools development cep',
-    packages=['pycep_correios', 'test'],
+    packages=find_packages(),
     url='https://github.com/mstuttgart/pycep-correios',
     license='GPL v3',
     author='Michell Stuttgart',
