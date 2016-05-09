@@ -36,7 +36,7 @@ setup(
     author_email='michellstut@gmail.com',
     description=u'Método para busca de dados de CEP no webservice dos '
                 u'Correios',
-    requires=[
+    install_requires=[
         'suds',
     ],
     test_suite='test',
