@@ -5,7 +5,6 @@
 [![Code Health](https://landscape.io/github/mstuttgart/pycep-correios/master/landscape.svg?style=flat)]
 (https://landscape.io/github/mstuttgart/pycep-correios/master)
 [![PyPI](https://img.shields.io/pypi/v/pycep-correios.svg)](https://pypi.python.org/pypi/pycep-correios)
-[![PyPI](https://img.shields.io/pypi/dm/pycep-correios.svg)](https://pypi.python.org/pypi/pycep-correios)
 [![PyPI](https://img.shields.io/pypi/pyversions/pycep-correios.svg)](https://pypi.python.org/pypi/pycep-correios)
 [![PyPI](https://img.shields.io/pypi/l/pycep-correios.svg)](https://github.com/mstuttgart/pycep-correios/blob/master/LICENSE)
 
