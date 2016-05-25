@@ -1,3 +1,2 @@
 suds==0.4
-flake8==2.5.4
 coveralls==1.1
