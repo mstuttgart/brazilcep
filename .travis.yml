@@ -4,8 +4,6 @@ python:
 
 install: pip install -r requirements.txt
 
-before_script: flake8 .
-
 script:
   - coverage run --source=pycep_correios setup.py test
 
