@@ -33,18 +33,3 @@ print endereco['uf']
 print endereco['outro']
 
 </code></pre>
-
-## Dependências
-
-O PyCEP Correios as seguintes dependências para envio e recebimento de 
-dados do webservice. 
-
-* python 2.7
-* suds
-
-Instale o *suds* com:
-
-`pip install suds`
-
-Futuramente pretendo realizar a comunicação com *webservice* utilizando a biblioteca *urllib*,
-de modo a tornar o PyCEP Correios livre de dependências externas.
