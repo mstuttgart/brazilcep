@@ -19,10 +19,12 @@ sudo pip install pycep-correios
 
 ## Como usar
 
-<pre lang="python"><code>
+```python
 from pycep_correios.pycep_correios import PyCEPCorreios
 
 obj = PyCEPCorreios()
+
+# Tambem pode ser usado .get_cep('37503130')
 endereco = obj.get_cep('37.503-130')
 
 print endereco['rua']
@@ -32,4 +34,4 @@ print endereco['complemento']
 print endereco['uf']
 print endereco['outro']
 
-</code></pre>
+```
