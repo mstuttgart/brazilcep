@@ -24,15 +24,16 @@
 # #############################################################################
 
 import unittest
-from pycep_correios.pycep_correios import PyCEPCorreios
-from pycep_correios.pycep_correios_exceptions import \
+
+from pycep_correios.correios import Correios
+from pycep_correios.correios_exceptions import \
     CorreiosCEPInvalidCEPException
 
 
-class TestPyCEPCorreios(unittest.TestCase):
+class TestCorreios(unittest.TestCase):
 
     def setUp(self):
-        self.corr_obj = PyCEPCorreios()
+        self.corr_obj = Correios()
 
     def test_get_cep(self):
         end_1 = {

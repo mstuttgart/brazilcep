@@ -26,11 +26,11 @@
 from suds import client
 from suds import WebFault
 
-from pycep_correios_exceptions import CorreiosCEPServerConnectionException
-from pycep_correios_exceptions import CorreiosCEPInvalidCEPException
+from correios_exceptions import CorreiosCEPServerConnectionException
+from correios_exceptions import CorreiosCEPInvalidCEPException
 
 
-class PyCEPCorreios(object):
+class Correios(object):
 
     def _preencher_endereco(self, resposta_servidor):
 
