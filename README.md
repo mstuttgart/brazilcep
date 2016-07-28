@@ -15,29 +15,60 @@ O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um d
 
 ### Instalação
 O PyCEP Correios pode ser facilmente instalado com o comando a seguir:
+
 ```
-sudo pip install pycep-correios
+pip install pycep-correios
 ```
 
 ### Como usar
 
-```python
-from pycep_correios.pycep_correios import PyCEPCorreios
+Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Não importa se o CEP fornecido possui hífen ou ponto. O PyCEPCorreios trata a entrada garantindo uma entrada válida para o *webservice* dos Correioss.
+Veja os exemplos a seguir:
 
-obj = PyCEPCorreios()
+```python
+from pycep_correios.pycep_correios import Correios
+
+obj = Correios()
 
 # Tambem pode ser usado .get_cep('37503130')
+endereco = obj.get_cep('37503130')
+
+print(endereco['rua'])
+print(endereco['bairro'])
+print(endereco['cidade'])
+print(endereco['complemento'])
+print(endereco['uf'])
+print(endereco['outro'])
+
+# Segundo exemplo, contendo '-'
+endereco = obj.get_cep('37500-050')
+
+print(endereco['rua'])
+print(endereco['bairro'])
+print(endereco['cidade'])
+print(endereco['complemento'])
+print(endereco['uf'])
+print(endereco['outro'])
+
+# Terceiro exemplo, usando o mesmo cep usado anteriormente, porém com hífen e ponto.
 endereco = obj.get_cep('37.503-130')
 
-print endereco['rua']
-print endereco['bairro']
-print endereco['cidade']
-print endereco['complemento']
-print endereco['uf']
-print endereco['outro']
+print(endereco['rua'])
+print(endereco['bairro'])
+print(endereco['cidade'])
+print(endereco['complemento'])
+print(endereco['uf'])
+print(endereco['outro'])
+
+# Quarto exemplo, enviamos um cep incorreto, com o numero de digitos inferior a 8.
+
+try:
+    endereco = obj.get_cep('37.50-130')
+except CorreiosCEPInvalidCEPException as exc:
+    print(exc.message)
 
 ```
 
-### Creditos
+### Créditos
 
 Copyright (C) 2015-2016 por Michell Stuttgart Faria
