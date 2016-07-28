@@ -23,53 +23,86 @@
 # SOFTWARE.
 # #############################################################################
 
-from suds import client
-from suds import WebFault
+import xml.etree.cElementTree as Et
+import requests
 
-from correios_exceptions import CorreiosCEPServerConnectionException
-from correios_exceptions import CorreiosCEPInvalidCEPException
+from pycep_correios.correios_exceptions import CorreiosCEPConnectionErrorException
+from pycep_correios.correios_exceptions import CorreiosCEPInvalidCEPException
+from pycep_correios.correios_exceptions import CorreiosTimeOutException
+from pycep_correios.correios_exceptions import CorreiosCEPTooManyRedirectsException
+from pycep_correios.correios_exceptions import CorreiosCEPHTTPErrorException
 
 
 class Correios(object):
 
-    def _preencher_endereco(self, resposta_servidor):
-
-        endereco = {
-            'rua': str(resposta_servidor.end.encode('utf8')) if
-            resposta_servidor.end else '',
-            'bairro': str(resposta_servidor.bairro.encode('utf8')) if
-            resposta_servidor.bairro else '',
-            'cidade': str(resposta_servidor.cidade.encode('utf8')) if
-            resposta_servidor.cidade else '',
-            'uf': str(resposta_servidor.uf),
-            'complemento': str(
-                resposta_servidor.complemento.encode('utf8')) if
-            resposta_servidor.complemento else '',
-            'outro': str(resposta_servidor.complemento2.encode('utf8'))
-            if resposta_servidor.complemento2 else '',
-        }
-
-        return endereco
+    URL = 'https://apps.correios.com.br/SigepMasterJPA' \
+              '/AtendeClienteService/AtendeCliente?wsdl'
 
     def get_cep(self, cep):
 
-        if not isinstance(cep, str):
-            raise CorreiosCEPInvalidCEPException(u'O valor de CEP fornecido'
-                                                 u'não é uma string')
-
-        cep = (cep.replace('-', '')).replace('.', '')
-
-        url = 'https://apps.correios.com.br/SigepMasterJPA' \
-              '/AtendeClienteService/AtendeCliente?wsdl'
+        cep = cep.replace('-', '')
+        cep = cep.replace('.', '')
+        xml = Correios._mount_request(cep)
 
         try:
-            service = client.Client(url).service
-        except client.TransportError as e:
-            raise CorreiosCEPServerConnectionException(e.message)
+            response = requests.post(Correios.URL,
+                                     data=xml,
+                                     headers={'Content-type': 'text/xml'},
+                                     verify=False)
 
-        try:
-            res_cep = service.consultaCEP(cep)
-        except WebFault as e:
-            raise CorreiosCEPInvalidCEPException(e.message)
+        except requests.exceptions.Timeout as e:
+            raise CorreiosTimeOutException(e.message)
 
-        return self._preencher_endereco(res_cep)
+        except requests.exceptions.TooManyRedirects as e:
+            raise CorreiosCEPTooManyRedirectsException(e.message)
+
+        except requests.exceptions.HTTPError as e:
+            raise CorreiosCEPHTTPErrorException(e.message)
+
+        except requests.ConnectionError as e:
+            raise CorreiosCEPConnectionErrorException(e.message)
+        else:
+
+            if not response.ok:
+                msg = Correios._parse_error(response.text)
+                raise CorreiosCEPInvalidCEPException(msg)
+
+            address_data = Correios._parse_response(response.text)
+            return address_data
+
+    @staticmethod
+    def _mount_request(cep):
+
+        header = '<soap:Envelope ' \
+                 'xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" ' \
+                 'xmlns:cli=\"http://cliente.bean.master.sigep.bsb.correios.com' \
+                 '.br/\"><soap:Header/><soap:Body>'
+
+        footer = '</soap:Body></soap:Envelope>'
+
+        xml = header
+        xml += '<cli:consultaCEP>'
+        xml += '<cep>%s</cep>' % cep
+        xml += '</cli:consultaCEP>'
+        xml += footer
+        return xml
+
+    @staticmethod
+    def _parse_response(xml):
+
+        end = Et.fromstring(xml).find('.//return')
+
+        response = {
+            'rua': end.findtext('end'),
+            'bairro': end.findtext('bairro'),
+            'cidade': end.findtext('cidade'),
+            'uf': end.findtext('uf'),
+            'complemento': end.findtext('complemento'),
+            'outro': end.findtext('complemento2')
+        }
+
+        return response
+
+    @staticmethod
+    def _parse_error(xml):
+        return Et.fromstring(xml).findtext('.//faultstring')
