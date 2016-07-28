@@ -37,7 +37,7 @@ setup(
     description=u'Método para busca de dados de CEP no webservice dos '
                 u'Correios',
     install_requires=[
-        'suds',
+        'requests',
     ],
     test_suite='test',
     classifiers=[

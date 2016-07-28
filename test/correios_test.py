@@ -36,7 +36,8 @@ class TestCorreios(unittest.TestCase):
         self.corr_obj = Correios()
 
     def test_get_cep(self):
-        end_1 = {
+
+        address = {
             'bairro': 'Santo Antônio',
             'cidade': 'Itajubá',
             'complemento': '',
@@ -45,13 +46,10 @@ class TestCorreios(unittest.TestCase):
             'uf': 'MG',
         }
 
-        self.assertItemsEqual(end_1, self.corr_obj.get_cep('37.503-130'))
+        self.assertDictEqual(address, self.corr_obj.get_cep('37.503-130'))
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
                           self.corr_obj.get_cep, '1232710')
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
                           self.corr_obj.get_cep, '00000-000')
-
-        self.assertRaises(CorreiosCEPInvalidCEPException,
-                          self.corr_obj.get_cep, 37503130)
