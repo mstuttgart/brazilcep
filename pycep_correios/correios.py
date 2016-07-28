@@ -51,16 +51,16 @@ class Correios(object):
                                      verify=False)
 
         except requests.exceptions.Timeout as e:
-            raise CorreiosTimeOutException(e.message)
+            raise CorreiosTimeOutException(str(e))
 
         except requests.exceptions.TooManyRedirects as e:
-            raise CorreiosCEPTooManyRedirectsException(e.message)
+            raise CorreiosCEPTooManyRedirectsException(str(e))
 
         except requests.exceptions.HTTPError as e:
-            raise CorreiosCEPHTTPErrorException(e.message)
+            raise CorreiosCEPHTTPErrorException(str(e))
 
         except requests.ConnectionError as e:
-            raise CorreiosCEPConnectionErrorException(e.message)
+            raise CorreiosCEPConnectionErrorException(str(e))
         else:
 
             if not response.ok:
