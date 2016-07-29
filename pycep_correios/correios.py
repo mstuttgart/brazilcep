@@ -38,7 +38,7 @@ class Correios(object):
     URL = 'https://apps.correios.com.br/SigepMasterJPA' \
               '/AtendeClienteService/AtendeCliente?wsdl'
 
-    def get_cep(self, cep):
+    def get_cep(self, cep: str):
 
         cep = cep.replace('-', '')
         cep = cep.replace('.', '')
