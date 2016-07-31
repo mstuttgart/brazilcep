@@ -51,7 +51,7 @@ print(endereco['outro'])
 # Quarto exemplo, enviamos um cep incorreto, com o numero de digitos inferior a 8.
 
 try:
-    endereco = obj.get_cep('37.50-130')
+    endereco = Correios.get_cep('37.50-130')
 except CorreiosCEPInvalidCEPException as exc:
     print(exc.message)
 
