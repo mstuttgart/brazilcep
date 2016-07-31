@@ -1,5 +1,1 @@
-[report]
-omit =  
-    */python?.?/*
-    */site-packages/nose/*
-    *__init__*
+!coverage.py: This is a private format, don't read it directly!{"lines": {"/home/michell/Projects/pycep-correios/pycep_correios/correios.py": [26, 27, 28, 30, 31, 32, 33, 36, 38, 41, 46, 48, 50, 51, 53, 54, 55, 56, 57, 58, 60, 62, 63, 64, 65, 66, 83, 84, 85, 86, 88, 89, 90, 92, 95, 97, 98, 99, 100, 101, 102, 104, 107, 109, 111, 112, 113, 114, 115, 116, 117, 120, 122, 124, 125], "/home/michell/Projects/pycep-correios/pycep_correios/__init__.py": [33, 26, 27, 28, 29, 30], "/home/michell/Projects/pycep-correios/pycep_correios/correios_exceptions.py": [32, 65, 66, 59, 36, 38, 41, 45, 47, 50, 54, 56, 68, 27, 29, 63]}}
