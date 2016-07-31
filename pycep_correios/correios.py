@@ -45,7 +45,21 @@ class Correios(object):
     FOOTER = '</soap:Body></soap:Envelope>'
 
     @staticmethod
-    def get_cep(cep: str):
+    def get_cep(cep: str) -> dict:
+
+        """
+        Retorna dos dados do endereço de um dado cep, a saber:
+        rua: logradouro do cep
+        bairro: bairro do cep
+        cidade: cidade do cep
+        uf: Abreviacao do estado do cep
+        complementento: informações adicionais sobre o cep
+        outro: informações variadas sobre o cep como por exemplo o intervalo
+        de numero de residência que o mesmo compreende.
+
+        :param cep: string contendo o cep a ser consultado
+        :return: dict contendo os dados do endereço do cep consultado.
+        """
 
         try:
             cep = cep.replace('-', '')
