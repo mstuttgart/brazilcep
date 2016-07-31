@@ -45,7 +45,8 @@ class Correios(object):
 
     FOOTER = '</soap:Body></soap:Envelope>'
 
-    def get_cep(self, cep: str):
+    @staticmethod
+    def get_cep(cep: str):
 
         try:
             cep = cep.replace('-', '')
@@ -110,5 +111,4 @@ class Correios(object):
 
     @staticmethod
     def _parse_error(xml):
-        print(xml)
         return Et.fromstring(xml).findtext('.//faultstring')

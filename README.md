@@ -28,20 +28,8 @@ Veja os exemplos a seguir:
 ```python
 from pycep_correios.pycep_correios import Correios
 
-obj = Correios()
-
 # Tambem pode ser usado .get_cep('37503130')
-endereco = obj.get_cep('37503130')
-
-print(endereco['rua'])
-print(endereco['bairro'])
-print(endereco['cidade'])
-print(endereco['complemento'])
-print(endereco['uf'])
-print(endereco['outro'])
-
-# Segundo exemplo, contendo '-'
-endereco = obj.get_cep('37500-050')
+endereco = Correios.get_cep('37503130')
 
 print(endereco['rua'])
 print(endereco['bairro'])
@@ -51,7 +39,7 @@ print(endereco['uf'])
 print(endereco['outro'])
 
 # Terceiro exemplo, usando o mesmo cep usado anteriormente, porém com hífen e ponto.
-endereco = obj.get_cep('37.503-130')
+endereco = Correios.get_cep('37.503-130')
 
 print(endereco['rua'])
 print(endereco['bairro'])
