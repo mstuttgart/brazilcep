@@ -51,15 +51,6 @@ class CorreiosCEPTooManyRedirectsException(CorreiosCEPException):
         return self.message
 
 
-class CorreiosCEPHTTPErrorException(CorreiosCEPException):
-
-    def __init__(self, msg):
-        self.message = msg
-
-    def __str__(self):
-        return self.message
-
-
 class CorreiosTimeOutException(CorreiosCEPException):
 
     def __init__(self, msg):

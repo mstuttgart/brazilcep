@@ -30,7 +30,6 @@ from pycep_correios.correios_exceptions import CorreiosCEPConnectionErrorExcepti
 from pycep_correios.correios_exceptions import CorreiosCEPInvalidCEPException
 from pycep_correios.correios_exceptions import CorreiosTimeOutException
 from pycep_correios.correios_exceptions import CorreiosCEPTooManyRedirectsException
-from pycep_correios.correios_exceptions import CorreiosCEPHTTPErrorException
 
 
 class Correios(object):
@@ -63,17 +62,16 @@ class Correios(object):
                                      headers={'Content-type': 'text/xml'},
                                      verify=False)
 
-        except requests.exceptions.Timeout as e:
-            raise CorreiosTimeOutException(str(e))
+        except requests.exceptions.Timeout:
+            raise CorreiosTimeOutException('Connection Timeout, please retry later')
 
-        except requests.exceptions.TooManyRedirects as e:
-            raise CorreiosCEPTooManyRedirectsException(str(e))
+        except requests.exceptions.TooManyRedirects:
+            raise CorreiosCEPTooManyRedirectsException('Bad URL, check the formatting '
+                                                       'of your request and try again')
 
-        except requests.exceptions.HTTPError as e:
-            raise CorreiosCEPHTTPErrorException(str(e))
-
-        except requests.ConnectionError as e:
-            raise CorreiosCEPConnectionErrorException(str(e))
+        except requests.ConnectionError:
+            raise CorreiosCEPConnectionErrorException('Could not connect to the API. '
+                                                      'Please check your connection')
         else:
 
             if not response.ok:

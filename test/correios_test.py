@@ -32,9 +32,6 @@ from pycep_correios.correios_exceptions import \
 
 class TestCorreios(unittest.TestCase):
 
-    def setUp(self):
-        self.corr_obj = Correios()
-
     def test_get_cep(self):
 
         address = {
@@ -46,16 +43,16 @@ class TestCorreios(unittest.TestCase):
             'uf': 'MG',
         }
 
-        self.assertDictEqual(address, self.corr_obj.get_cep('37.503-130'))
+        self.assertDictEqual(address, Correios.get_cep('37.503-130'))
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
-                          self.corr_obj.get_cep, '1232710')
+                          Correios.get_cep, '1232710')
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
-                          self.corr_obj.get_cep, '00000-000')
+                          Correios.get_cep, '00000-000')
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
-                          self.corr_obj.get_cep, 37503003)
+                          Correios.get_cep, 37503003)
 
     def test__mount_request(self):
 
