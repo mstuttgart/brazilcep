@@ -33,7 +33,25 @@ class CorreiosCEPException(Exception):
         return self.message
 
 
-class CorreiosCEPServerConnectionException(CorreiosCEPException):
+class CorreiosCEPConnectionErrorException(CorreiosCEPException):
+
+    def __init__(self, msg):
+        self.message = msg
+
+    def __str__(self):
+        return self.message
+
+
+class CorreiosCEPTooManyRedirectsException(CorreiosCEPException):
+
+    def __init__(self, msg):
+        self.message = msg
+
+    def __str__(self):
+        return self.message
+
+
+class CorreiosTimeOutException(CorreiosCEPException):
 
     def __init__(self, msg):
         self.message = msg
