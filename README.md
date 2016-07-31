@@ -26,7 +26,7 @@ Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Não impor
 Veja os exemplos a seguir:
 
 ```python
-from pycep_correios.pycep_correios import Correios
+from pycep_correios.correios import Correios
 
 # Tambem pode ser usado .get_cep('37503130')
 endereco = Correios.get_cep('37503130')
