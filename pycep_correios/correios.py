@@ -38,10 +38,22 @@ class Correios(object):
     URL = 'https://apps.correios.com.br/SigepMasterJPA' \
               '/AtendeClienteService/AtendeCliente?wsdl'
 
+    HEADER = '<soap:Envelope ' \
+             'xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" ' \
+             'xmlns:cli=\"http://cliente.bean.master.sigep.bsb.correios.com' \
+             '.br/\"><soap:Header/><soap:Body>'
+
+    FOOTER = '</soap:Body></soap:Envelope>'
+
     def get_cep(self, cep: str):
 
-        cep = cep.replace('-', '')
-        cep = cep.replace('.', '')
+        try:
+            cep = cep.replace('-', '')
+            cep = cep.replace('.', '')
+        except AttributeError:
+            raise CorreiosCEPInvalidCEPException('[ERRO] CEP deve ser do tipo string, '
+                                                 'mas o tipo encontrado foi %s!' % type(cep))
+
         xml = Correios._mount_request(cep)
 
         try:
@@ -73,18 +85,11 @@ class Correios(object):
     @staticmethod
     def _mount_request(cep):
 
-        header = '<soap:Envelope ' \
-                 'xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" ' \
-                 'xmlns:cli=\"http://cliente.bean.master.sigep.bsb.correios.com' \
-                 '.br/\"><soap:Header/><soap:Body>'
-
-        footer = '</soap:Body></soap:Envelope>'
-
-        xml = header
+        xml = Correios.HEADER
         xml += '<cli:consultaCEP>'
         xml += '<cep>%s</cep>' % cep
         xml += '</cli:consultaCEP>'
-        xml += footer
+        xml += Correios.FOOTER
         return xml
 
     @staticmethod
@@ -105,4 +110,5 @@ class Correios(object):
 
     @staticmethod
     def _parse_error(xml):
+        print(xml)
         return Et.fromstring(xml).findtext('.//faultstring')
