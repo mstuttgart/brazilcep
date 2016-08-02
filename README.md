@@ -17,7 +17,7 @@ O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um d
 O PyCEP Correios pode ser facilmente instalado com o comando a seguir:
 
 ```
-pip install pycep-correios
+pip3 install pycep-correios
 ```
 
 ### Como usar
