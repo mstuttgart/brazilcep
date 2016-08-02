@@ -24,6 +24,11 @@
 # #############################################################################
 
 import unittest
+from unittest import mock
+# import responses
+# from mock import patch
+
+# from mocker import Mocker, MockerTestCase
 
 from pycep_correios.correios import Correios
 from pycep_correios.correios_exceptions import \
@@ -32,24 +37,53 @@ from pycep_correios.correios_exceptions import \
 
 class TestCorreios(unittest.TestCase):
 
-    def test_get_cep(self):
+    @unittest.mock.patch('pycep_correios.correios.requests.post')
+    def test_get_cep(self, mock_api_call):
 
-        address = {
-            'bairro': 'Santo Antônio',
-            'cidade': 'Itajubá',
+        xml = '''<S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">
+                                    <S:Body>
+                                    <ns2:consultaCEPResponse
+                                    xmlns:ns2=\"http://cliente.bean.master.sigep.bsb.correios.com.br/\">
+                                        <return>
+                                            <bairro>Asa Norte</bairro>
+                                            <cep>70002900</cep>
+                                            <cidade>Brasília</cidade>
+                                            <complemento/>
+                                            <complemento2/>
+                                            <end>SBN Quadra 1 Bloco A</end>
+                                            <id>0</id>
+                                            <uf>DF</uf>
+                                        </return>
+                                    </ns2:consultaCEPResponse>
+                                    </S:Body>
+                                    </S:Envelope>'''.replace('\n', '')
+
+        mock_api_call.return_value = mock.MagicMock(status_code=200, text=xml)
+
+        expected_address = {
+            'bairro': 'Asa Norte',
+            'cidade': 'Brasília',
             'complemento': '',
-            'outro': '- até 214/215',
-            'rua': 'Rua Geraldino Campista',
-            'uf': 'MG',
+            'outro': '',
+            'rua': 'SBN Quadra 1 Bloco A',
+            'uf': 'DF',
         }
 
-        self.assertDictEqual(address, Correios.get_cep('37.503-130'))
+        address = Correios.get_cep('70002900')
 
-        self.assertRaises(CorreiosCEPInvalidCEPException,
-                          Correios.get_cep, '1232710')
+        self.assertDictEqual(address, expected_address)
 
-        self.assertRaises(CorreiosCEPInvalidCEPException,
-                          Correios.get_cep, '00000-000')
+        # If we want, we can check the contents of the response
+        # self.assertDictEqual(address, expected_address)
+
+        # self.assertDictEqual(expected_address,
+        #                      Correios.get_cep('37.503-130'))
+
+        # self.assertRaises(CorreiosCEPInvalidCEPException,
+        #                   Correios.get_cep, '1232710')
+        #
+        # self.assertRaises(CorreiosCEPInvalidCEPException,
+        #                   Correios.get_cep, '00000-000')
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
                           Correios.get_cep, 37503003)

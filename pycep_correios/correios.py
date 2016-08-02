@@ -88,6 +88,8 @@ class Correios:
                                                       'Please check your connection')
         else:
 
+            # print(response.json())
+
             if not response.ok:
                 msg = Correios._parse_error(response.text)
                 raise CorreiosCEPInvalidCEPException(msg)
