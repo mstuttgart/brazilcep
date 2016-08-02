@@ -26,13 +26,13 @@
 import xml.etree.cElementTree as Et
 import requests
 
-from pycep_correios.correios_exceptions import CorreiosCEPConnectionErrorException
-from pycep_correios.correios_exceptions import CorreiosCEPInvalidCEPException
-from pycep_correios.correios_exceptions import CorreiosTimeOutException
-from pycep_correios.correios_exceptions import CorreiosCEPTooManyRedirectsException
+from .correios_exceptions import CorreiosCEPConnectionErrorException
+from .correios_exceptions import CorreiosCEPInvalidCEPException
+from .correios_exceptions import CorreiosTimeOutException
+from .correios_exceptions import CorreiosCEPTooManyRedirectsException
 
 
-class Correios(object):
+class Correios:
 
     URL = 'https://apps.correios.com.br/SigepMasterJPA' \
               '/AtendeClienteService/AtendeCliente?wsdl'
