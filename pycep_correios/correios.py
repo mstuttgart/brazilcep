@@ -26,13 +26,13 @@
 import xml.etree.cElementTree as Et
 import requests
 
-from pycep_correios.correios_exceptions import CorreiosCEPConnectionErrorException
-from pycep_correios.correios_exceptions import CorreiosCEPInvalidCEPException
-from pycep_correios.correios_exceptions import CorreiosTimeOutException
-from pycep_correios.correios_exceptions import CorreiosCEPTooManyRedirectsException
+from .correios_exceptions import CorreiosCEPConnectionErrorException
+from .correios_exceptions import CorreiosCEPInvalidCEPException
+from .correios_exceptions import CorreiosTimeOutException
+from .correios_exceptions import CorreiosCEPTooManyRedirectsException
 
 
-class Correios(object):
+class Correios:
 
     URL = 'https://apps.correios.com.br/SigepMasterJPA' \
               '/AtendeClienteService/AtendeCliente?wsdl'
@@ -65,7 +65,7 @@ class Correios(object):
             cep = cep.replace('-', '')
             cep = cep.replace('.', '')
         except AttributeError:
-            raise CorreiosCEPInvalidCEPException('[ERRO] CEP deve ser do tipo string, '
+            raise CorreiosCEPInvalidCEPException('CEP deve ser do tipo string, '
                                                  'mas o tipo encontrado foi %s!' % type(cep))
 
         xml = Correios._mount_request(cep)
@@ -89,11 +89,11 @@ class Correios(object):
         else:
 
             if not response.ok:
+
                 msg = Correios._parse_error(response.text)
                 raise CorreiosCEPInvalidCEPException(msg)
 
-            address_data = Correios._parse_response(response.text)
-            return address_data
+            return Correios._parse_response(response.text)
 
     @staticmethod
     def _mount_request(cep):
@@ -110,7 +110,7 @@ class Correios(object):
 
         end = Et.fromstring(xml).find('.//return')
 
-        response = {
+        address = {
             'rua': end.findtext('end'),
             'bairro': end.findtext('bairro'),
             'cidade': end.findtext('cidade'),
@@ -119,7 +119,7 @@ class Correios(object):
             'outro': end.findtext('complemento2')
         }
 
-        return response
+        return address
 
     @staticmethod
     def _parse_error(xml):
