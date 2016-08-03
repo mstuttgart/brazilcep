@@ -65,7 +65,7 @@ class Correios:
             cep = cep.replace('-', '')
             cep = cep.replace('.', '')
         except AttributeError:
-            raise CorreiosCEPInvalidCEPException('[ERRO] CEP deve ser do tipo string, '
+            raise CorreiosCEPInvalidCEPException('CEP deve ser do tipo string, '
                                                  'mas o tipo encontrado foi %s!' % type(cep))
 
         xml = Correios._mount_request(cep)
