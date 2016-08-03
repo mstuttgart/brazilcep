@@ -23,24 +23,25 @@
 # SOFTWARE.
 # #############################################################################
 
-import unittest
+import requests
 from unittest import mock
-# import responses
-# from mock import patch
-
-# from mocker import Mocker, MockerTestCase
+from unittest import TestCase
 
 from pycep_correios.correios import Correios
 from pycep_correios.correios_exceptions import \
     CorreiosCEPInvalidCEPException
+from pycep_correios.correios_exceptions import \
+    CorreiosTimeOutException
+from pycep_correios.correios_exceptions import \
+    CorreiosCEPTooManyRedirectsException
+from pycep_correios.correios_exceptions import \
+    CorreiosCEPConnectionErrorException
 
 
-class TestCorreios(unittest.TestCase):
+class TestCorreios(TestCase):
 
-    @unittest.mock.patch('pycep_correios.correios.requests.post')
-    def test_get_cep(self, mock_api_call):
-
-        xml = '''<S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">
+    def setUp(self):
+        self.response_xml = '''<S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">
                                     <S:Body>
                                     <ns2:consultaCEPResponse
                                     xmlns:ns2=\"http://cliente.bean.master.sigep.bsb.correios.com.br/\">
@@ -58,9 +59,16 @@ class TestCorreios(unittest.TestCase):
                                     </S:Body>
                                     </S:Envelope>'''.replace('\n', '')
 
-        mock_api_call.return_value = mock.MagicMock(status_code=200, text=xml)
+        self.response_xml_error = '''<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+                <soap:Body><soap:Fault>
+                <faultcode>soap:Server</faultcode>
+                <faultstring>BUSCA DEFINIDA COMO EXATA, 0 CEP DEVE TER 8 DIGITOS</faultstring>
+                <detail><ns2:SigepClienteException xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">
+                BUSCA DEFINIDA COMO EXATA, 0 CEP DEVE TER 8 DIGITOS
+                </ns2:SigepClienteException></detail></soap:Fault>
+                </soap:Body></soap:Envelope>'''.replace('\n', '')
 
-        expected_address = {
+        self.expected_address = {
             'bairro': 'Asa Norte',
             'cidade': 'Brasília',
             'complemento': '',
@@ -69,24 +77,40 @@ class TestCorreios(unittest.TestCase):
             'uf': 'DF',
         }
 
-        address = Correios.get_cep('70002900')
+    @mock.patch('pycep_correios.correios.requests.post')
+    def test_get_cep(self, mock_api_call):
 
-        self.assertDictEqual(address, expected_address)
+        mock_api_call.return_value = mock.MagicMock(status_code=200,
+                                                    ok=True,
+                                                    text=self.response_xml)
 
-        # If we want, we can check the contents of the response
-        # self.assertDictEqual(address, expected_address)
+        self.assertDictEqual(Correios.get_cep('70002900'),
+                             self.expected_address)
 
-        # self.assertDictEqual(expected_address,
-        #                      Correios.get_cep('37.503-130'))
+        mock_api_call.return_value = mock.MagicMock(ok=False,
+                                                    text=self.response_xml_error)
 
-        # self.assertRaises(CorreiosCEPInvalidCEPException,
-        #                   Correios.get_cep, '1232710')
-        #
-        # self.assertRaises(CorreiosCEPInvalidCEPException,
-        #                   Correios.get_cep, '00000-000')
+        self.assertRaises(CorreiosCEPInvalidCEPException,
+                          Correios.get_cep, '1232710')
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
                           Correios.get_cep, 37503003)
+
+        mock_api_call.side_effect = requests.exceptions.Timeout()
+        self.assertRaises(CorreiosTimeOutException,
+                          Correios.get_cep, '12345-500')
+
+        mock_api_call.side_effect = requests.exceptions.Timeout()
+        self.assertRaises(CorreiosTimeOutException,
+                          Correios.get_cep, '12345-500')
+
+        mock_api_call.side_effect = requests.exceptions.TooManyRedirects()
+        self.assertRaises(CorreiosCEPTooManyRedirectsException,
+                          Correios.get_cep, '12345-500')
+
+        mock_api_call.side_effect = requests.exceptions.ConnectionError()
+        self.assertRaises(CorreiosCEPConnectionErrorException,
+                          Correios.get_cep, '12345-500')
 
     def test__mount_request(self):
 
@@ -100,44 +124,11 @@ class TestCorreios(unittest.TestCase):
 
     def test__parse_response(self):
 
-        xml = '''<S:Envelope
-                xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">
-                <S:Body>
-                <ns2:consultaCEPResponse
-                xmlns:ns2=\"http://cliente.bean.master.sigep.bsb.correios.com.br/\">
-                    <return>
-                        <bairro>Asa Norte</bairro>
-                        <cep>70002900</cep>
-                        <cidade>Brasília</cidade>
-                        <complemento/>
-                        <complemento2/>
-                        <end>SBN Quadra 1 Bloco A</end>
-                        <id>0</id>
-                        <uf>DF</uf>
-                    </return>
-                </ns2:consultaCEPResponse>
-                </S:Body>
-                </S:Envelope>'''.replace('\n', '')
-
-        response = Correios._parse_response(xml)
-
-        self.assertEqual(response['rua'], 'SBN Quadra 1 Bloco A')
-        self.assertEqual(response['bairro'], 'Asa Norte')
-        self.assertEqual(response['cidade'], 'Brasília')
-        self.assertEqual(response['uf'], 'DF')
-        self.assertEqual(response['complemento'], '')
-        self.assertEqual(response['outro'], '')
+        response = Correios._parse_response(self.response_xml)
+        self.assertDictEqual(response, self.expected_address)
 
     def test__parse_error(self):
 
-        xml = '''<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-        <soap:Body><soap:Fault>
-        <faultcode>soap:Server</faultcode>
-        <faultstring>BUSCA DEFINIDA COMO EXATA, 0 CEP DEVE TER 8 DIGITOS</faultstring>
-        <detail><ns2:SigepClienteException xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">
-        BUSCA DEFINIDA COMO EXATA, 0 CEP DEVE TER 8 DIGITOS
-        </ns2:SigepClienteException></detail></soap:Fault>
-        </soap:Body></soap:Envelope>'''.replace('\n', '')
-
-        fault = Correios._parse_error(xml)
-        self.assertEqual(fault, 'BUSCA DEFINIDA COMO EXATA, 0 CEP DEVE TER 8 DIGITOS')
+        fault = Correios._parse_error(self.response_xml_error)
+        self.assertEqual(fault, 'BUSCA DEFINIDA COMO EXATA, '
+                                '0 CEP DEVE TER 8 DIGITOS')

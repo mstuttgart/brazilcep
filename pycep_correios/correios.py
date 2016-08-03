@@ -88,14 +88,12 @@ class Correios:
                                                       'Please check your connection')
         else:
 
-            # print(response.json())
-
             if not response.ok:
+
                 msg = Correios._parse_error(response.text)
                 raise CorreiosCEPInvalidCEPException(msg)
 
-            address_data = Correios._parse_response(response.text)
-            return address_data
+            return Correios._parse_response(response.text)
 
     @staticmethod
     def _mount_request(cep):
@@ -112,7 +110,7 @@ class Correios:
 
         end = Et.fromstring(xml).find('.//return')
 
-        response = {
+        address = {
             'rua': end.findtext('end'),
             'bairro': end.findtext('bairro'),
             'cidade': end.findtext('cidade'),
@@ -121,7 +119,7 @@ class Correios:
             'outro': end.findtext('complemento2')
         }
 
-        return response
+        return address
 
     @staticmethod
     def _parse_error(xml):
