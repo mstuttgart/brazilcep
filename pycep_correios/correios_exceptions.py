@@ -25,45 +25,26 @@
 
 
 class CorreiosCEPException(Exception):
-
-    def __init__(self, msg):
-        self.message = msg
-
-    def __str__(self):
-        return self.message
+    """ Base class for other exceptions """
+    pass
 
 
 class CorreiosCEPConnectionErrorException(CorreiosCEPException):
-
-    def __init__(self, msg):
-        self.message = msg
-
-    def __str__(self):
-        return self.message
+    """ Connection error exception """
+    pass
 
 
 class CorreiosCEPTooManyRedirectsException(CorreiosCEPException):
-
-    def __init__(self, msg):
-        self.message = msg
-
-    def __str__(self):
-        return self.message
+    """ Many redirects exception """
+    pass
 
 
 class CorreiosTimeOutException(CorreiosCEPException):
-
-    def __init__(self, msg):
-        self.message = msg
-
-    def __str__(self):
-        return self.message
+    """ TimeOut exception """
+    pass
 
 
 class CorreiosCEPInvalidCEPException(CorreiosCEPException):
-
-    def __init__(self, msg):
-        self.message = msg
-
-    def __str__(self):
-        return self.message
+    """ Invalid CEP Exception. Raised when cep have incorrect
+    length or not exist """
+    pass
