@@ -2,8 +2,7 @@ PyCEP Correios
 =============
 
 [![Build Status](https://travis-ci.org/mstuttgart/pycep-correios.svg?branch=master)](https://travis-ci.org/mstuttgart/pycep-correios)
-[![Coverage Status](https://coveralls.io/repos/github/mstuttgart/pycep-correios/badge.svg?branch=master)]
-(https://coveralls.io/github/mstuttgart/pycep-correios?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/mstuttgart/pycep-correios/badge.svg?branch=master)](https://coveralls.io/github/mstuttgart/pycep-correios?branch=master)
 [![Code Health](https://landscape.io/github/mstuttgart/pycep-correios/master/landscape.svg?style=flat)]
 (https://landscape.io/github/mstuttgart/pycep-correios/master)
 [![Requirements Status](https://requires.io/github/mstuttgart/pycep-correios/requirements.svg?branch=master)](https://requires.io/github/mstuttgart/pycep-correios/requirements/?branch=master)
