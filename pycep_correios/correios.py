@@ -61,14 +61,7 @@ class Correios:
         :return: dict contendo os dados do endereço do cep consultado.
         """
 
-        try:
-            cep = cep.replace('-', '')
-            cep = cep.replace('.', '')
-        except AttributeError:
-            raise CorreiosCEPInvalidCEPException('CEP deve ser do tipo string, '
-                                                 'mas o tipo encontrado foi %s!' % type(cep))
-
-        xml = Correios._mount_request(cep)
+        xml = Correios._mount_request(Correios._format_cep(cep))
 
         try:
             response = requests.post(Correios.URL,
@@ -94,6 +87,18 @@ class Correios:
                 raise CorreiosCEPInvalidCEPException(msg)
 
             return Correios._parse_response(response.text)
+
+    @staticmethod
+    def _format_cep(cep):
+
+        try:
+            cep = cep.replace('-', '')
+            cep = cep.replace('.', '')
+        except AttributeError:
+            raise CorreiosCEPInvalidCEPException('CEP deve ser do tipo string, '
+                                                 'mas o tipo encontrado foi %s!' % type(cep))
+
+        return cep
 
     @staticmethod
     def _mount_request(cep):

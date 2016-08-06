@@ -93,9 +93,6 @@ class TestCorreios(TestCase):
         self.assertRaises(CorreiosCEPInvalidCEPException,
                           Correios.get_cep, '1232710')
 
-        self.assertRaises(CorreiosCEPInvalidCEPException,
-                          Correios.get_cep, 37503003)
-
         mock_api_call.side_effect = requests.exceptions.Timeout()
         self.assertRaises(CorreiosTimeOutException,
                           Correios.get_cep, '12345-500')
@@ -111,6 +108,10 @@ class TestCorreios(TestCase):
         mock_api_call.side_effect = requests.exceptions.ConnectionError()
         self.assertRaises(CorreiosCEPConnectionErrorException,
                           Correios.get_cep, '12345-500')
+
+    def test__format_cep(self):
+        self.assertRaises(CorreiosCEPInvalidCEPException,
+                          Correios._format_cep, 37503003)
 
     def test__mount_request(self):
 
