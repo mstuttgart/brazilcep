@@ -1,11 +1,14 @@
 language: python
 python:
    - "3.4"
+   - "3.5"
 
-install: pip install -r requirements.txt
+install: 
+  - pip install -r requirements.txt
 
 script:
   - coverage run --source=pycep_correios setup.py test
+  - coverage xml
 
 after_success:
-  - coveralls
+  - python-codacy-coverage -c $TRAVIS_COMMIT -r coverage.xml
