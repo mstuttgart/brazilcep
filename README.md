@@ -64,6 +64,10 @@ except CorreiosCEPInvalidCEPException as exc:
 
 ```
 
+### Contribuidores
+
+[https://github.com/Aldo774](Aldo Soares)
+
 ### Créditos
 
 Copyright (C) 2016 por Michell Stuttgart Faria
