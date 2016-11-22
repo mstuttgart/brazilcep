@@ -57,7 +57,7 @@ except CorreiosCEPInvalidCEPException as exc:
 
 ### Contribuidores
 
-[https://github.com/Aldo774](Aldo Soares)
+[Aldo Soares](https://github.com/Aldo774)
 
 ### Créditos
 
