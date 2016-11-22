@@ -7,8 +7,9 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - coverage run --source=pycep_correios setup.py test
+  - coverage run setup.py test
   - coverage xml
+  - python setup.py install
 
 after_success:
   - python-codacy-coverage -c $TRAVIS_COMMIT -r coverage.xml
