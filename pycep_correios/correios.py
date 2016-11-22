@@ -105,7 +105,7 @@ class Correios:
     def _mount_request(cep):
 
         env = Environment(loader=FileSystemLoader('pycep_correios/templates'))
-        template = env.get_template('consultacep_xml.xml')
+        template = env.get_template('consultacep.xml')
         xml = template.render(cep=cep)
         return xml.replace("\n","")
 
