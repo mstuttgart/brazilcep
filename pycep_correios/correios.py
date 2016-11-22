@@ -38,13 +38,6 @@ class Correios:
     URL = 'https://apps.correios.com.br/SigepMasterJPA' \
               '/AtendeClienteService/AtendeCliente?wsdl'
 
-    HEADER = '<soap:Envelope ' \
-             'xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" ' \
-             'xmlns:cli=\"http://cliente.bean.master.sigep.bsb.correios.com' \
-             '.br/\"><soap:Header/><soap:Body>'
-
-    FOOTER = '</soap:Body></soap:Envelope>'
-
     @staticmethod
     def get_cep(cep: str) -> dict:
 
