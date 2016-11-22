@@ -115,13 +115,22 @@ class TestCorreios(TestCase):
 
     def test__mount_request(self):
 
-        xml = Correios.HEADER
-        xml += '<cli:consultaCEP>'
-        xml += '<cep>%s</cep>' % '37503005'
-        xml += '</cli:consultaCEP>'
-        xml += Correios.FOOTER
+        HEADER = '<soap:Envelope ' \
+             'xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" ' \
+             'xmlns:cli=\"http://cliente.bean.master.sigep.bsb.correios.com' \
+             '.br/\"><soap:Header/><soap:Body>'
 
-        self.assertEqual(xml, Correios._mount_request('37503005'))
+        FOOTER = '</soap:Body></soap:Envelope>'
+
+        cep='37503005'
+
+        xml = HEADER
+        xml += '<cli:consultaCEP>'
+        xml += '<cep>%s</cep>' % cep
+        xml += '</cli:consultaCEP>'
+        xml += FOOTER
+
+        self.assertEqual(xml, Correios._mount_request(cep=cep))
 
     def test__parse_response(self):
 
