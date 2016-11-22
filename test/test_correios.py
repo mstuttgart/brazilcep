@@ -117,7 +117,7 @@ class TestCorreios(TestCase):
     def test__mount_request(self):
 
         env = Environment(loader=FileSystemLoader('pycep_correios/templates'))
-        template = env.get_template('consultacep_xml.xml')
+        template = env.get_template('consultacep.xml')
         xml = template.render(cep='37503005').replace("\n","")
 
         self.assertEqual(xml, Correios._mount_request('37503005'))
