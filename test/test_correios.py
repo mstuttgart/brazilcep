@@ -24,7 +24,6 @@
 # #############################################################################
 
 import requests
-from jinja2 import Environment, FileSystemLoader
 from unittest import mock
 from unittest import TestCase
 
@@ -116,11 +115,22 @@ class TestCorreios(TestCase):
 
     def test__mount_request(self):
 
-        env = Environment(loader=FileSystemLoader('pycep_correios/templates'))
-        template = env.get_template('consultacep.xml')
-        xml = template.render(cep='37503005').replace("\n","")
+        HEADER = '<soap:Envelope ' \
+             'xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" ' \
+             'xmlns:cli=\"http://cliente.bean.master.sigep.bsb.correios.com' \
+             '.br/\"><soap:Header/><soap:Body>'
 
-        self.assertEqual(xml, Correios._mount_request('37503005'))
+        FOOTER = '</soap:Body></soap:Envelope>'
+
+        cep='37503005'
+
+        xml = HEADER
+        xml += '<cli:consultaCEP>'
+        xml += '<cep>%s</cep>' % cep
+        xml += '</cli:consultaCEP>'
+        xml += FOOTER
+
+        self.assertEqual(xml, Correios._mount_request(cep=cep))
 
     def test__parse_response(self):
 
