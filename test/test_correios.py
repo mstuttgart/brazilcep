@@ -24,6 +24,7 @@
 # #############################################################################
 
 import requests
+from jinja2 import Environment, FileSystemLoader
 from unittest import mock
 from unittest import TestCase
 
@@ -115,11 +116,9 @@ class TestCorreios(TestCase):
 
     def test__mount_request(self):
 
-        xml = Correios.HEADER
-        xml += '<cli:consultaCEP>'
-        xml += '<cep>%s</cep>' % '37503005'
-        xml += '</cli:consultaCEP>'
-        xml += Correios.FOOTER
+        env = Environment(loader=FileSystemLoader('pycep_correios/templates'))
+        template = env.get_template('consultacep_xml.xml')
+        xml = template.render(cep='37503005').replace("\n","")
 
         self.assertEqual(xml, Correios._mount_request('37503005'))
 
