@@ -107,7 +107,7 @@ class Correios:
         env = Environment(loader=FileSystemLoader('pycep_correios/templates'))
         template = env.get_template('consultacep.xml')
         xml = template.render(cep=cep)
-        return xml.replace("\n","")
+        return (xml.replace("\n","")).replace("\t","")
 
     @staticmethod
     def _parse_response(xml):
