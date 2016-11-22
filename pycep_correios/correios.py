@@ -25,6 +25,7 @@
 
 import xml.etree.cElementTree as Et
 import requests
+from jinja2 import Environment, FileSystemLoader
 
 from .correios_exceptions import CorreiosCEPConnectionErrorException
 from .correios_exceptions import CorreiosCEPInvalidCEPException
@@ -103,12 +104,10 @@ class Correios:
     @staticmethod
     def _mount_request(cep):
 
-        xml = Correios.HEADER
-        xml += '<cli:consultaCEP>'
-        xml += '<cep>%s</cep>' % cep
-        xml += '</cli:consultaCEP>'
-        xml += Correios.FOOTER
-        return xml
+        env = Environment(loader=FileSystemLoader('pycep_correios/templates'))
+        template = env.get_template('consultacep_xml.xml')
+        xml = template.render(cep=cep)
+        return xml.replace("\n","")
 
     @staticmethod
     def _parse_response(xml):
