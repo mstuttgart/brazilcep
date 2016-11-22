@@ -30,6 +30,7 @@ setup(
     version='2.0.0',
     keywords='correios setuptools development cep',
     packages=find_packages(),
+    zip_safe=False,
     url='https://github.com/mstuttgart/pycep-correios',
     license='MIT',
     author='Michell Stuttgart',
@@ -37,7 +38,7 @@ setup(
     description='Método para busca de dados de CEP no webservice dos '
                 'Correios',
     package_data={
-            'pycep-correios.templates': ['*.xml']
+            'pycep-correios': ['templates/*xml']
     },
     install_requires=[
         'requests',
