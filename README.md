@@ -1,9 +1,10 @@
 PyCEP Correios
 =============
 
-[![Build Status](https://travis-ci.org/mstuttgart/pycep-correios.svg?branch=master)](https://travis-ci.org/mstuttgart/pycep-correios)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/cce2722b3d5648d283d913b26fe12618)](https://www.codacy.com/app/michellstut/pycep-correios?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mstuttgart/pycep-correios&amp;utm_campaign=Badge_Coverage)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cce2722b3d5648d283d913b26fe12618)](https://www.codacy.com/app/michellstut/pycep-correios?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mstuttgart/pycep-correios&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/mstuttgart/pycep-correios.svg?branch=develop)](https://travis-ci.org/mstuttgart/pycep-correios)
+[![Coverage Status](https://coveralls.io/repos/github/mstuttgart/pycep-correios/badge.svg?branch=develop)](https://coveralls.io/github/mstuttgart/pycep-correios?branch=develop)
+[![Code Health](https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg)]
+(https://landscape.io/github/mstuttgart/pycep-correios/develop)
 [![PyPI](https://img.shields.io/pypi/v/pycep-correios.svg)](https://pypi.python.org/pypi/pycep-correios)
 [![PyPI](https://img.shields.io/pypi/pyversions/pycep-correios.svg)](https://pypi.python.org/pypi/pycep-correios)
 [![PyPI](https://img.shields.io/pypi/l/pycep-correios.svg)](https://github.com/mstuttgart/pycep-correios/blob/master/LICENSE)
