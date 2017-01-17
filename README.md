@@ -57,4 +57,4 @@ except CorreiosCEPInvalidCEPException as exc:
 
 ### Créditos
 
-Copyright (C) 2015-2016 por Michell Stuttgart Faria
+Copyright (C) 2015-2017 por Michell Stuttgart Faria
