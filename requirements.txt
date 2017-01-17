@@ -1,4 +1,3 @@
-coverage==4.2
 requests==2.10.0
 coverage==4.2
 coveralls==1.1
