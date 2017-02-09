@@ -27,7 +27,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pycep-correios',
-    version='1.1.1',
+    version='1.1.2',
     keywords='correios development cep',
     packages=find_packages(exclude=['*test*']),
     zip_safe=False,
