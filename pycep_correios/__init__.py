@@ -24,10 +24,10 @@
 # #############################################################################
 
 __title__ = 'PyCEP Correios'
-__version__ = '1.0.1'
+__version__ = '1.1.0'
 __author__ = 'Michell Stuttgart Faria'
 __license__ = 'MIT'
-__copyright__ = 'Copyright 2015-2016 Michell Stuttgart Faria'
+__copyright__ = 'Copyright 2015-2017 Michell Stuttgart Faria'
 
 # Version synonym
 VERSION = __version__
