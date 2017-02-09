@@ -18,3 +18,5 @@ deploy:
     tags: true
     distributions: sdist bdist_wheel
     repo: mstuttgart/pycep-correios
+    skip_upload_docs: true
+  
