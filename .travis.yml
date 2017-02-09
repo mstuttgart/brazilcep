@@ -1,14 +1,19 @@
 language: python
+
 python:
-- '3.4'
-- '3.5'
+- 3.4
+- 3.5
+
 install:
 - pip install -r requirements.txt
+
 script:
 - coverage run --source=pycep_correios setup.py test
 - python setup.py install
+
 after_success:
 - coveralls
+
 deploy:
   provider: pypi
   user: mstuttgart
@@ -18,5 +23,6 @@ deploy:
     tags: true
     distributions: sdist bdist_wheel
     repo: mstuttgart/pycep-correios
-    skip_upload_docs: true
+    python: 3.5
+  skip_upload_docs: true
   

@@ -27,7 +27,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pycep-correios',
-    version='1.1.3',
+    version='1.1.4',
     keywords='correios development cep',
     packages=find_packages(exclude=['*test*']),
     zip_safe=False,
@@ -56,7 +56,7 @@ setup(
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         
     ],
 )

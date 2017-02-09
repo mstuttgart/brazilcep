@@ -24,7 +24,7 @@
 # #############################################################################
 
 __title__ = 'PyCEP Correios'
-__version__ = '1.1.3'
+__version__ = '1.1.4'
 __author__ = 'Michell Stuttgart Faria'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2015-2017 Michell Stuttgart Faria'
