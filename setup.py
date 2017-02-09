@@ -27,24 +27,33 @@ from setuptools import setup, find_packages
 
 setup(
     name='pycep-correios',
-    version='1.0.1',
-    keywords='correios setuptools development cep',
-    packages=find_packages(),
+    version='1.1.0',
+    keywords='correios development cep',
+    packages=find_packages(exclude=['*test*']),
+    zip_safe=False,
     url='https://github.com/mstuttgart/pycep-correios',
     license='MIT',
     author='Michell Stuttgart',
     author_email='michellstut@gmail.com',
-    description='Método para busca de dados de CEP no webservice dos '
+    description=u'Método para busca de dados de CEP no webservice dos '
                 'Correios',
+    package_data={
+            'pycep-correios': ['templates/*xml']
+    },
     install_requires=[
-        'requests',
+        'requests >= 2.10.0',
+        'Jinja2 >= 2.8',
     ],
     test_suite='test',
+    tests_require=[
+        'coverage',
+        'coveralls',
+    ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.4, 3.5',
     ],
 )

@@ -1,10 +1,9 @@
 PyCEP Correios
 =============
 
-[![Build Status](https://travis-ci.org/mstuttgart/pycep-correios.svg?branch=master)](https://travis-ci.org/mstuttgart/pycep-correios)
-[![Coverage Status](https://coveralls.io/repos/github/mstuttgart/pycep-correios/badge.svg?branch=master)](https://coveralls.io/github/mstuttgart/pycep-correios?branch=master)
-[![Code Health](https://landscape.io/github/mstuttgart/pycep-correios/master/landscape.svg?style=flat)]
-(https://landscape.io/github/mstuttgart/pycep-correios/master)
+[![Build Status](https://travis-ci.org/mstuttgart/pycep-correios.svg?branch=develop)](https://travis-ci.org/mstuttgart/pycep-correios)
+[![Coverage Status](https://coveralls.io/repos/github/mstuttgart/pycep-correios/badge.svg?branch=develop)](https://coveralls.io/github/mstuttgart/pycep-correios?branch=develop)
+[![Code Health](https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg)](https://landscape.io/github/mstuttgart/pycep-correios/develop)
 [![PyPI](https://img.shields.io/pypi/v/pycep-correios.svg)](https://pypi.python.org/pypi/pycep-correios)
 [![PyPI](https://img.shields.io/pypi/pyversions/pycep-correios.svg)](https://pypi.python.org/pypi/pycep-correios)
 [![PyPI](https://img.shields.io/pypi/l/pycep-correios.svg)](https://github.com/mstuttgart/pycep-correios/blob/master/LICENSE)
@@ -54,6 +53,10 @@ except CorreiosCEPInvalidCEPException as exc:
     print(exc.message)
 
 ```
+
+### Contribuidores
+
+[Aldo Soares](https://github.com/Aldo774)
 
 ### Créditos
 

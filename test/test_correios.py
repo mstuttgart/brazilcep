@@ -93,9 +93,6 @@ class TestCorreios(TestCase):
         self.assertRaises(CorreiosCEPInvalidCEPException,
                           Correios.get_cep, '1232710')
 
-        self.assertRaises(CorreiosCEPInvalidCEPException,
-                          Correios.get_cep, 37503003)
-
         mock_api_call.side_effect = requests.exceptions.Timeout()
         self.assertRaises(CorreiosTimeOutException,
                           Correios.get_cep, '12345-500')
@@ -112,15 +109,28 @@ class TestCorreios(TestCase):
         self.assertRaises(CorreiosCEPConnectionErrorException,
                           Correios.get_cep, '12345-500')
 
+    def test__format_cep(self):
+        self.assertRaises(CorreiosCEPInvalidCEPException,
+                          Correios._format_cep, 37503003)
+
     def test__mount_request(self):
 
-        xml = Correios.HEADER
-        xml += '<cli:consultaCEP>'
-        xml += '<cep>%s</cep>' % '37503005'
-        xml += '</cli:consultaCEP>'
-        xml += Correios.FOOTER
+        HEADER = '<soap:Envelope ' \
+             'xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" ' \
+             'xmlns:cli=\"http://cliente.bean.master.sigep.bsb.correios.com' \
+             '.br/\"><soap:Header/><soap:Body>'
 
-        self.assertEqual(xml, Correios._mount_request('37503005'))
+        FOOTER = '</soap:Body></soap:Envelope>'
+
+        cep='37503005'
+
+        xml = HEADER
+        xml += '<cli:consultaCEP>'
+        xml += '<cep>%s</cep>' % cep
+        xml += '</cli:consultaCEP>'
+        xml += FOOTER
+
+        self.assertEqual(xml, Correios._mount_request(cep=cep))
 
     def test__parse_response(self):
 

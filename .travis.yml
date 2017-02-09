@@ -1,11 +1,20 @@
 language: python
-python:
-   - "3.4"
 
-install: pip install -r requirements.txt
+python:
+- '3.4'
+- '3.5'
+
+install:
+- pip install -r requirements.txt
 
 script:
-  - coverage run --source=pycep_correios setup.py test
+- coverage run --source=pycep_correios setup.py test
+- python setup.py install
 
 after_success:
-  - coveralls
+- coveralls
+
+deploy:
+  password:
+    secure: wkppiV6l02Ud+5JH66Iwjl2k+EsNZhl5SVBd5tDq56biJPQxnFPuEmd1ToF5MP4sdA5hleHONMgzESTIXptpy2LG4PPsSKH0DwxVa3LtS3QX2ihHY9ZZ7VV4GCSXP7K5yOvCeR0oTiHefDo1Gp+J6kvCIJHFHs6HxYb3v8bBIU1l4qy389fAi0qD6S5LERDdIbrdsy4B9SVqXjB14fpnt3H2EdJiZW+m15fHaaVqAdaIUCDRwsrm3HdeTx6BwpiIej9CtzZOHb3NnnehP4JDSJe4BdjpaddNoGH0da/EpfyIE39oOSBEOUaG5wme5Z6yDsnpmO08fYpwO1SNBHdgkCCdqjP/edOOXawRzyMAC3Y9eNZCmrw4Pxqno8kzW4WDvSnVC6BMPW1bnAhs6cteBG8kCbEpjQa3x6yLUxPdaA/NBLV3JX80F2FO0U/W1qOZnqhjMPwjDDGFRSTLJf51lZb0UWgz5MtB+/RJtm/ozksF/SsQrxRswo3yFSc28mid1waYiYPRpAYHCMfOQ8m1nCNjozey6Eqj+Ns9RURbYa/YGAEDvcDL2AwjKTQbnOtJHn4ue6GOyDg1uqUNuTzf3tyPlU28ux9fPFFEAckFiNgBnRQAynXCnH+6wB0P1ULOi/1cGdzRR+9IzYs2nTKlDzKpFLg3qBL6ZX/pxjKl07s=
+

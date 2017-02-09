@@ -25,6 +25,7 @@
 
 import xml.etree.cElementTree as Et
 import requests
+from jinja2 import Environment, FileSystemLoader
 
 from .correios_exceptions import CorreiosCEPConnectionErrorException
 from .correios_exceptions import CorreiosCEPInvalidCEPException
@@ -36,13 +37,6 @@ class Correios:
 
     URL = 'https://apps.correios.com.br/SigepMasterJPA' \
               '/AtendeClienteService/AtendeCliente?wsdl'
-
-    HEADER = '<soap:Envelope ' \
-             'xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" ' \
-             'xmlns:cli=\"http://cliente.bean.master.sigep.bsb.correios.com' \
-             '.br/\"><soap:Header/><soap:Body>'
-
-    FOOTER = '</soap:Body></soap:Envelope>'
 
     @staticmethod
     def get_cep(cep: str) -> dict:
@@ -61,14 +55,7 @@ class Correios:
         :return: dict contendo os dados do endereço do cep consultado.
         """
 
-        try:
-            cep = cep.replace('-', '')
-            cep = cep.replace('.', '')
-        except AttributeError:
-            raise CorreiosCEPInvalidCEPException('CEP deve ser do tipo string, '
-                                                 'mas o tipo encontrado foi %s!' % type(cep))
-
-        xml = Correios._mount_request(cep)
+        xml = Correios._mount_request(Correios._format_cep(cep))
 
         try:
             response = requests.post(Correios.URL,
@@ -96,14 +83,24 @@ class Correios:
             return Correios._parse_response(response.text)
 
     @staticmethod
+    def _format_cep(cep):
+
+        try:
+            cep = cep.replace('-', '')
+            cep = cep.replace('.', '')
+        except AttributeError:
+            raise CorreiosCEPInvalidCEPException('CEP deve ser do tipo string, '
+                                                 'mas o tipo encontrado foi %s!' % type(cep))
+
+        return cep
+
+    @staticmethod
     def _mount_request(cep):
 
-        xml = Correios.HEADER
-        xml += '<cli:consultaCEP>'
-        xml += '<cep>%s</cep>' % cep
-        xml += '</cli:consultaCEP>'
-        xml += Correios.FOOTER
-        return xml
+        env = Environment(loader=FileSystemLoader('pycep_correios/templates'))
+        template = env.get_template('consultacep.xml')
+        xml = template.render(cep=cep)
+        return (xml.replace("\n","")).replace("\t","")
 
     @staticmethod
     def _parse_response(xml):
