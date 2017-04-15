@@ -1,4 +1,3 @@
-requests==2.10.0
-coverage==4.2
+requests==2.13.0
 coveralls==1.1
-Jinja2==2.8
+Jinja2==2.9.6
