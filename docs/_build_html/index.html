@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt_BR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PyCEP Correios &#8212; documentação PyCEP Correios 1.1.4</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pycep-correios">
+<h1>PyCEP Correios<a class="headerlink" href="#pycep-correios" title="Link permanente para este título">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<a class="reference external image-reference" href="https://travis-ci.org/mstuttgart/pycep-correios"><img alt="https://img.shields.io/travis/mstuttgart/pycep-correios/master.svg?style=flat-square" src="https://img.shields.io/travis/mstuttgart/pycep-correios/master.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://coveralls.io/github/mstuttgart/pycep-correios?branch=master"><img alt="coveralls.io" src="https://img.shields.io/coveralls/mstuttgart/pycep-correios/master.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://landscape.io/github/mstuttgart/pycep-correios/master"><img alt="https://landscape.io/github/mstuttgart/pycep-correios/master/landscape.svg?style=flat-square" src="https://landscape.io/github/mstuttgart/pycep-correios/master/landscape.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/pycep-correios"><img alt="https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/pycep-correios"><img alt="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/pycep-correios"><img alt="https://img.shields.io/pypi/wheel/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/wheel/pycep-correios.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/pycep-correios"><img alt="https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square" /></a>
+<p>O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um dado CEP fornecido pelo usuário. O retorno dessa consulta é o endereço pertencente ao CEP.</p>
+<div class="section" id="instalacao">
+<h2>Instalação<a class="headerlink" href="#instalacao" title="Link permanente para este título">¶</a></h2>
+<p>O PyCEP Correios pode ser facilmente instalado com o comando a seguir:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">pycep</span><span class="o">-</span><span class="n">correios</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="como-usar">
+<h2>Como usar<a class="headerlink" href="#como-usar" title="Link permanente para este título">¶</a></h2>
+<p>Consultar o endereço de um CEP é muito simples com o <em>PyCEPCorreios</em>. Não importa se o CEP fornecido possui hífen ou ponto. O PyCEPCorreios trata a entrada garantindo uma entrada válida para o <em>webservice</em> dos Correioss.
+Veja os exemplos a seguir:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios.correios</span> <span class="k">import</span> <span class="n">Correios</span>
+
+<span class="c1"># Tambem pode ser usado .get_cep(&#39;37503130&#39;)</span>
+<span class="n">endereco</span> <span class="o">=</span> <span class="n">Correios</span><span class="o">.</span><span class="n">get_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;rua&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;bairro&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cidade&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;uf&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;outro&#39;</span><span class="p">])</span>
+
+<span class="c1"># Terceiro exemplo, usando o mesmo cep usado anteriormente, porém com hífen e ponto.</span>
+<span class="n">endereco</span> <span class="o">=</span> <span class="n">Correios</span><span class="o">.</span><span class="n">get_cep</span><span class="p">(</span><span class="s1">&#39;37.503-130&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;rua&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;bairro&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cidade&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;uf&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;outro&#39;</span><span class="p">])</span>
+
+<span class="c1"># Quarto exemplo, enviamos um cep incorreto, com o numero de digitos inferior a 8.</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">endereco</span> <span class="o">=</span> <span class="n">Correios</span><span class="o">.</span><span class="n">get_cep</span><span class="p">(</span><span class="s1">&#39;37.50-130&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">CorreiosCEPInvalidCEPException</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="contribuidores">
+<h2>Contribuidores<a class="headerlink" href="#contribuidores" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/Aldo774">Aldo Soares</a></li>
+</ul>
+</div>
+<div class="section" id="contribuir">
+<h2>Contribuir<a class="headerlink" href="#contribuir" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>Issue Tracker: <a class="reference external" href="github.com/mstuttgart/pycep-correios/issues">github.com/mstuttgart/pycep-correios/issues</a></li>
+<li>Source Code: <a class="reference external" href="github.com/mstuttgart/pycep-correios">github.com/mstuttgart/pycep-correios</a></li>
+</ul>
+</div>
+<div class="section" id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link permanente para este título">¶</a></h2>
+<p>If you are having issues, please let us know.
+We have a mailing list located at: <a class="reference external" href="mailto:michell&#37;&#52;&#48;google-groups&#46;com">michell<span>&#64;</span>google-groups<span>&#46;</span>com</a></p>
+</div>
+<div class="section" id="creditos">
+<h2>Créditos<a class="headerlink" href="#creditos" title="Link permanente para este título">¶</a></h2>
+<p>Copyright (C) 2015-2017 por Michell Stuttgart Faria</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">PyCEP Correios</a><ul>
+<li><a class="reference internal" href="#instalacao">Instalação</a></li>
+<li><a class="reference internal" href="#como-usar">Como usar</a></li>
+<li><a class="reference internal" href="#contribuidores">Contribuidores</a></li>
+<li><a class="reference internal" href="#contribuir">Contribuir</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
+<li><a class="reference internal" href="#creditos">Créditos</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Essa Página</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Exibir Fonte</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Busca rápida</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Ir" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Michell Stuttgart.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
