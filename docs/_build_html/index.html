@@ -52,22 +52,24 @@
 <a class="reference external image-reference" href="https://pypi.python.org/pypi/pycep-correios"><img alt="https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square" /></a>
 <a class="reference external image-reference" href="https://pypi.python.org/pypi/pycep-correios"><img alt="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" /></a>
 <a class="reference external image-reference" href="https://pypi.python.org/pypi/pycep-correios"><img alt="https://img.shields.io/pypi/wheel/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/wheel/pycep-correios.svg?style=flat-square" /></a>
-<a class="reference external image-reference" href="https://pypi.python.org/pypi/pycep-correios"><img alt="https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://github.com/mstuttgart/pycep-correios/blob/master/LICENSE"><img alt="https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square" /></a>
 <p>O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um dado CEP fornecido pelo usuário. O retorno dessa consulta é o endereço pertencente ao CEP.</p>
 <div class="section" id="instalacao">
 <h2>Instalação<a class="headerlink" href="#instalacao" title="Link permanente para este título">¶</a></h2>
-<p>O PyCEP Correios pode ser facilmente instalado com o comando a seguir:</p>
+<p>O PyCEP Correios atualmente está disponível apenas para Python 3. Ele pode ser facilmente instalado com o comando a seguir:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">pycep</span><span class="o">-</span><span class="n">correios</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="como-usar">
 <h2>Como usar<a class="headerlink" href="#como-usar" title="Link permanente para este título">¶</a></h2>
-<p>Consultar o endereço de um CEP é muito simples com o <em>PyCEPCorreios</em>. Não importa se o CEP fornecido possui hífen ou ponto. O PyCEPCorreios trata a entrada garantindo uma entrada válida para o <em>webservice</em> dos Correioss.
-Veja os exemplos a seguir:</p>
+<p>Consultar o endereço de um CEP é muito simples com o <em>PyCEPCorreios</em>.</p>
+<p>Não importa se o CEP fornecido possui hífen ou ponto. O PyCEPCorreios trata a entrada garantindo uma entrada válida para o <em>webservice</em> dos Correios.</p>
+<p>Veja os exemplos a seguir:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios.correios</span> <span class="k">import</span> <span class="n">Correios</span>
+<span class="kn">from</span> <span class="nn">pycep_correios.correios_exceptions</span> <span class="k">import</span> <span class="n">CorreiosCEPInvalidCEPException</span>
 
-<span class="c1"># Tambem pode ser usado .get_cep(&#39;37503130&#39;)</span>
+<span class="c1"># Consultando CEP 37503130</span>
 <span class="n">endereco</span> <span class="o">=</span> <span class="n">Correios</span><span class="o">.</span><span class="n">get_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;rua&#39;</span><span class="p">])</span>
@@ -96,23 +98,16 @@ Veja os exemplos a seguir:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="contribuicoes">
+<h2>Contribuições<a class="headerlink" href="#contribuicoes" title="Link permanente para este título">¶</a></h2>
+<p>Aviso de erros e sugestões: <a class="reference external" href="github.com/mstuttgart/pycep-correios/issues">github.com/mstuttgart/pycep-correios/issues</a></p>
+</div>
 <div class="section" id="contribuidores">
 <h2>Contribuidores<a class="headerlink" href="#contribuidores" title="Link permanente para este título">¶</a></h2>
+<p>Meus agradecimentos aos seguintes contribuidores, por tornar o PyCEP Correios melhor:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/Aldo774">Aldo Soares</a></li>
 </ul>
-</div>
-<div class="section" id="contribuir">
-<h2>Contribuir<a class="headerlink" href="#contribuir" title="Link permanente para este título">¶</a></h2>
-<ul class="simple">
-<li>Issue Tracker: <a class="reference external" href="github.com/mstuttgart/pycep-correios/issues">github.com/mstuttgart/pycep-correios/issues</a></li>
-<li>Source Code: <a class="reference external" href="github.com/mstuttgart/pycep-correios">github.com/mstuttgart/pycep-correios</a></li>
-</ul>
-</div>
-<div class="section" id="support">
-<h2>Support<a class="headerlink" href="#support" title="Link permanente para este título">¶</a></h2>
-<p>If you are having issues, please let us know.
-We have a mailing list located at: <a class="reference external" href="mailto:michell&#37;&#52;&#48;google-groups&#46;com">michell<span>&#64;</span>google-groups<span>&#46;</span>com</a></p>
 </div>
 <div class="section" id="creditos">
 <h2>Créditos<a class="headerlink" href="#creditos" title="Link permanente para este título">¶</a></h2>
@@ -131,9 +126,8 @@ We have a mailing list located at: <a class="reference external" href="mailto:mi
 <li><a class="reference internal" href="#">PyCEP Correios</a><ul>
 <li><a class="reference internal" href="#instalacao">Instalação</a></li>
 <li><a class="reference internal" href="#como-usar">Como usar</a></li>
+<li><a class="reference internal" href="#contribuicoes">Contribuições</a></li>
 <li><a class="reference internal" href="#contribuidores">Contribuidores</a></li>
-<li><a class="reference internal" href="#contribuir">Contribuir</a></li>
-<li><a class="reference internal" href="#support">Support</a></li>
 <li><a class="reference internal" href="#creditos">Créditos</a></li>
 </ul>
 </li>
@@ -170,14 +164,14 @@ We have a mailing list located at: <a class="reference external" href="mailto:mi
       &copy;2017, Michell Stuttgart.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
       <a href="_sources/index.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
+    
+    <a href="https://github.com/mstuttgart/pycep-correios" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
     
 
     

@@ -30,25 +30,29 @@ PyCEP Correios
     :target: https://pypi.python.org/pypi/pycep-correios
 
 .. image:: https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square
-    :target: https://pypi.python.org/pypi/pycep-correios
+    :target: https://github.com/mstuttgart/pycep-correios/blob/master/LICENSE
 
 O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um dado CEP fornecido pelo usuário. O retorno dessa consulta é o endereço pertencente ao CEP.
 
 Instalação
 ----------
-O PyCEP Correios pode ser facilmente instalado com o comando a seguir::
+O PyCEP Correios atualmente está disponível apenas para Python 3. Ele pode ser facilmente instalado com o comando a seguir::
 
     pip3 install pycep-correios
 
 Como usar
 ---------
 
-Consultar o endereço de um CEP é muito simples com o *PyCEPCorreios*. Não importa se o CEP fornecido possui hífen ou ponto. O PyCEPCorreios trata a entrada garantindo uma entrada válida para o *webservice* dos Correioss.
+Consultar o endereço de um CEP é muito simples com o *PyCEPCorreios*.
+
+Não importa se o CEP fornecido possui hífen ou ponto. O PyCEPCorreios trata a entrada garantindo uma entrada válida para o *webservice* dos Correios.
+
 Veja os exemplos a seguir::
 
     from pycep_correios.correios import Correios
+    from pycep_correios.correios_exceptions import CorreiosCEPInvalidCEPException
 
-    # Tambem pode ser usado .get_cep('37503130')
+    # Consultando CEP 37503130
     endereco = Correios.get_cep('37503130')
 
     print(endereco['rua'])
@@ -75,22 +79,16 @@ Veja os exemplos a seguir::
     except CorreiosCEPInvalidCEPException as exc:
         print(exc.message)
 
+Contribuições
+-------------
+
+Aviso de erros e sugestões: `github.com/mstuttgart/pycep-correios/issues <github.com/mstuttgart/pycep-correios/issues>`_
+
 Contribuidores
 --------------
+Meus agradecimentos aos seguintes contribuidores, por tornar o PyCEP Correios melhor:
 
 * `Aldo Soares <https://github.com/Aldo774>`_
-
-Contribuir
-----------
-
-- Issue Tracker: `github.com/mstuttgart/pycep-correios/issues <github.com/mstuttgart/pycep-correios/issues>`_
-- Source Code: `github.com/mstuttgart/pycep-correios <github.com/mstuttgart/pycep-correios>`_
-
-Support
--------
-
-If you are having issues, please let us know.
-We have a mailing list located at: michell@google-groups.com
 
 Créditos
 --------
