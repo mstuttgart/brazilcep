@@ -7,6 +7,10 @@ python:
 install:
 - pip install -r requirements.txt
 
+before_script:
+- flake8 pycep_correios
+- flake8 test
+
 script:
 - coverage run --source=pycep_correios setup.py test
 - python setup.py install
