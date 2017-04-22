@@ -50,15 +50,27 @@ class TestCorreios(TestCase):
 
     @mock.patch('pycep_correios.correios.requests.post')
     def test_get_cep(self, mock_api_call):
-        mock_api_call.return_value = mock.MagicMock(status_code=200,
-                                                    ok=True,
-                                                    text=self.response_xml)
+
+        # Aqui realizamos consulta com o CEP correto
+        param = {
+            'text': self.response_xml,
+            'ok': True,
+            'status_code': 200,
+        }
+
+        mock_api_call.return_value = mock.MagicMock(**param)
 
         self.assertDictEqual(Correios.get_cep('70002900'),
                              self.expected_address)
 
-        mock_api_call.return_value = mock.MagicMock(ok=False,
-                                                    text=self.response_xml_error)
+        # Aqui realizamos consultas que de alguma forma retornam mensagens de
+        # erro
+        param = {
+            'text': self.response_xml_error,
+            'ok': False,
+        }
+
+        mock_api_call.return_value = mock.MagicMock(**param)
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
                           Correios.get_cep, '1232710')
