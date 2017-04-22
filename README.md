@@ -24,6 +24,7 @@ Veja os exemplos a seguir:
 
 ```python
 from pycep_correios.correios import Correios
+from pycep_correios.correios_exceptions import CorreiosCEPInvalidCEPException
 
 # Tambem pode ser usado .get_cep('37503130')
 endereco = Correios.get_cep('37503130')
