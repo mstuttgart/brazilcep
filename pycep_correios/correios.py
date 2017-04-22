@@ -40,7 +40,6 @@ class Correios:
 
     @staticmethod
     def get_cep(cep: str) -> dict:
-
         """
         Retorna dos dados do endereço de um dado cep, a saber:
         rua: logradouro do cep
@@ -60,19 +59,22 @@ class Correios:
         try:
             response = requests.post(Correios.URL,
                                      data=xml,
-                                     headers={'Content-type': 'text/xml'},
+                                     headers={
+                                         'Content-type': 'text/xml',
+                                     },
                                      verify=False)
 
         except requests.exceptions.Timeout:
-            raise CorreiosTimeOutException('Connection Timeout, please retry later')
+            msg = 'Connection Timeout, please retry later'
+            raise CorreiosTimeOutException(msg)
 
         except requests.exceptions.TooManyRedirects:
-            raise CorreiosCEPTooManyRedirectsException('Bad URL, check the formatting '
-                                                       'of your request and try again')
+            msg = 'Bad URL, check the formatting of your request and try again'
+            raise CorreiosCEPTooManyRedirectsException(msg)
 
         except requests.ConnectionError:
-            raise CorreiosCEPConnectionErrorException('Could not connect to the API. '
-                                                      'Please check your connection')
+            msg = 'Could not connect to the API. Please check your connection'
+            raise CorreiosCEPConnectionErrorException(msg)
         else:
 
             if not response.ok:
@@ -88,19 +90,18 @@ class Correios:
         try:
             cep = cep.replace('-', '')
             cep = cep.replace('.', '')
+            return cep
         except AttributeError:
-            raise CorreiosCEPInvalidCEPException('CEP deve ser do tipo string, '
-                                                 'mas o tipo encontrado foi %s!' % type(cep))
-
-        return cep
+            msg = 'CEP deve ser do tipo string, ' \
+                  'mas o tipo encontrado foi %s!' % type(cep)
+            raise CorreiosCEPInvalidCEPException(msg)
 
     @staticmethod
     def _mount_request(cep):
-
         env = Environment(loader=FileSystemLoader('pycep_correios/templates'))
         template = env.get_template('consultacep.xml')
         xml = template.render(cep=cep)
-        return (xml.replace("\n","")).replace("\t","")
+        return (xml.replace('\n', '')).replace('\t', '')
 
     @staticmethod
     def _parse_response(xml):
