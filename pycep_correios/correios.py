@@ -23,7 +23,7 @@ class Correios:
         bairro: bairro do cep
         cidade: cidade do cep
         uf: Abreviacao do estado do cep
-        complementento: informações adicionais sobre o cep
+        complemento: informações adicionais sobre o cep
         outro: informações variadas sobre o cep como por exemplo o intervalo
         de numero de residência que o mesmo compreende.
 
@@ -42,15 +42,16 @@ class Correios:
                                      verify=False)
 
         except requests.exceptions.Timeout:
-            msg = 'Connection Timeout, please retry later'
+            msg = 'Tempo de conexão excedido. Por favor, tente mais tarde.'
             raise CorreiosTimeOutException(msg)
 
         except requests.exceptions.TooManyRedirects:
-            msg = 'Bad URL, check the formatting of your request and try again'
+            msg = 'Formato de requisição inválido. Por favor, verifique sua ' \
+                  'requisição etente novamente'
             raise CorreiosCEPTooManyRedirectsException(msg)
 
         except requests.ConnectionError:
-            msg = 'Could not connect to the API. Please check your connection'
+            msg = 'Erro ao conectar a API. Por favor, verifique sua conexão.'
             raise CorreiosCEPConnectionErrorException(msg)
         else:
 
