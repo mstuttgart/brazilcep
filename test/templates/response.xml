@@ -1,0 +1,16 @@
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">
+            <return>
+                <bairro>{{ bairro }}</bairro>
+                <cep>{{ cep }}</cep>
+                <cidade>{{ cidade }}</cidade>
+                <complemento/>
+                <complemento2/>
+                <end>{{ end }}</end>
+                <id>{{ id }}</id>
+                <uf>{{ uf }}</uf>
+            </return>
+        </ns2:consultaCEPResponse>
+    </S:Body>
+</S:Envelope>

@@ -1,27 +1,4 @@
 # -*- coding: utf-8 -*-
-# #############################################################################
-# The MIT License (MIT)
-#
-# Copyright (c) 2016 Michell Stuttgart
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-# #############################################################################
 
 import xml.etree.cElementTree as Et
 import requests
@@ -40,14 +17,13 @@ class Correios:
 
     @staticmethod
     def get_cep(cep: str) -> dict:
-
         """
         Retorna dos dados do endereço de um dado cep, a saber:
         rua: logradouro do cep
         bairro: bairro do cep
         cidade: cidade do cep
         uf: Abreviacao do estado do cep
-        complementento: informações adicionais sobre o cep
+        complemento: informações adicionais sobre o cep
         outro: informações variadas sobre o cep como por exemplo o intervalo
         de numero de residência que o mesmo compreende.
 
@@ -60,19 +36,23 @@ class Correios:
         try:
             response = requests.post(Correios.URL,
                                      data=xml,
-                                     headers={'Content-type': 'text/xml'},
+                                     headers={
+                                         'Content-type': 'text/xml',
+                                     },
                                      verify=False)
 
         except requests.exceptions.Timeout:
-            raise CorreiosTimeOutException('Connection Timeout, please retry later')
+            msg = 'Tempo de conexão excedido. Por favor, tente mais tarde.'
+            raise CorreiosTimeOutException(msg)
 
         except requests.exceptions.TooManyRedirects:
-            raise CorreiosCEPTooManyRedirectsException('Bad URL, check the formatting '
-                                                       'of your request and try again')
+            msg = 'Formato de requisição inválido. Por favor, verifique sua ' \
+                  'requisição etente novamente'
+            raise CorreiosCEPTooManyRedirectsException(msg)
 
         except requests.ConnectionError:
-            raise CorreiosCEPConnectionErrorException('Could not connect to the API. '
-                                                      'Please check your connection')
+            msg = 'Erro ao conectar a API. Por favor, verifique sua conexão.'
+            raise CorreiosCEPConnectionErrorException(msg)
         else:
 
             if not response.ok:
@@ -88,19 +68,23 @@ class Correios:
         try:
             cep = cep.replace('-', '')
             cep = cep.replace('.', '')
-        except AttributeError:
-            raise CorreiosCEPInvalidCEPException('CEP deve ser do tipo string, '
-                                                 'mas o tipo encontrado foi %s!' % type(cep))
 
-        return cep
+            if not cep.isdigit():
+                msg = 'CEP deve ser formado por números!'
+                raise CorreiosCEPInvalidCEPException(msg)
+
+            return cep
+        except AttributeError:
+            msg = 'CEP deve ser do tipo string, ' \
+                  'mas o tipo encontrado foi %s!' % type(cep)
+            raise CorreiosCEPInvalidCEPException(msg)
 
     @staticmethod
     def _mount_request(cep):
-
         env = Environment(loader=FileSystemLoader('pycep_correios/templates'))
         template = env.get_template('consultacep.xml')
         xml = template.render(cep=cep)
-        return (xml.replace("\n","")).replace("\t","")
+        return (xml.replace('\n', '')).replace('\t', '')
 
     @staticmethod
     def _parse_response(xml):
