@@ -68,6 +68,11 @@ class Correios:
         try:
             cep = cep.replace('-', '')
             cep = cep.replace('.', '')
+
+            if not cep.isdigit():
+                msg = 'CEP deve ser formado por números!'
+                raise CorreiosCEPInvalidCEPException(msg)
+
             return cep
         except AttributeError:
             msg = 'CEP deve ser do tipo string, ' \
