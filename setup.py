@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pycep-correios',
-    version='1.1.4',
+    version='1.1.5',
     keywords='correios development cep',
     packages=find_packages(exclude=['*test*']),
     zip_safe=False,
