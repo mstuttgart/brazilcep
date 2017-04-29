@@ -28,5 +28,5 @@ deploy:
     distributions: sdist bdist_wheel
     repo: mstuttgart/pycep-correios
     python: 3.5
-  skip_upload_docs: true
+  skip_upload_docs: false
   
