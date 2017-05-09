@@ -69,7 +69,7 @@ Veja os exemplos a seguir:
     try:
         endereco = Correios.get_cep('37.50-130')
     except CorreiosCEPInvalidCEPException as exc:
-        print(exc.message)
+        print(exc)
 
 Aviso de *bugs*, dúvidas e sugestões
 ====================================
