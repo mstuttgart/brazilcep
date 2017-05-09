@@ -3,7 +3,7 @@
 import requests
 from unittest import mock
 from unittest import TestCase
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, PackageLoader
 
 from pycep_correios.correios import Correios
 from pycep_correios.correios_exceptions import \
@@ -38,7 +38,7 @@ class TestCorreios(TestCase):
             'uf': address['uf'],
         }
 
-        self.env = Environment(loader=FileSystemLoader('test/templates'))
+        self.env = Environment(loader=PackageLoader('test', 'templates'))
 
         template = self.env.get_template('response.xml')
         xml = template.render(**address)

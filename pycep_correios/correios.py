@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import xml.etree.cElementTree as Et
 import requests
-from jinja2 import Environment, FileSystemLoader
+import xml.etree.cElementTree as Et
+from jinja2 import Environment, PackageLoader
 
 from .correios_exceptions import CorreiosCEPConnectionErrorException
 from .correios_exceptions import CorreiosCEPInvalidCEPException
@@ -81,7 +81,7 @@ class Correios:
 
     @staticmethod
     def _mount_request(cep):
-        env = Environment(loader=FileSystemLoader('pycep_correios/templates'))
+        env = Environment(loader=PackageLoader('pycep_correios', 'templates'))
         template = env.get_template('consultacep.xml')
         xml = template.render(cep=cep)
         return (xml.replace('\n', '')).replace('\t', '')
