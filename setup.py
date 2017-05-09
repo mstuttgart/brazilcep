@@ -16,7 +16,7 @@ setup(
     maintainer='Michell Stuttgart',
     maintainer_email='michellstut@gmail.com',
     description='Método para busca de dados de CEP no webservice dos Correios',
-    long_description=open('README.md', 'r').read(),
+    long_description=open('README.rst', 'r').read(),
     package_data={
         'pycep-correios': ['templates/*xml']
     },
