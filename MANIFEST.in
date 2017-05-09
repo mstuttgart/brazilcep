@@ -1,0 +1,8 @@
+# MANIFEST.in template
+#
+
+include MANIFEST.in
+include LICENSE
+include README.rst
+include setup.py
+include pycep_correios/templates/consultacep.xml
