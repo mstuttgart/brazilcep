@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 __title__ = 'PyCEP Correios'
-__version__ = '1.1.6'
+__version__ = '1.1.7'
 __author__ = 'Michell Stuttgart Faria'
 __maintainer__ = 'Michell Stuttgart Faria'
 __license__ = 'MIT'
