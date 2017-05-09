@@ -8,6 +8,7 @@ setup(
     version=__version__,
     keywords='correios development cep',
     packages=find_packages(exclude=['*test*']),
+    zip_safe=False,
     url='https://github.com/mstuttgart/pycep-correios',
     download_url='https://pypi.python.org/pypi/pycep-correios',
     license='MIT License',
@@ -17,10 +18,6 @@ setup(
     maintainer_email='michellstut@gmail.com',
     description='Método para busca de dados de CEP no webservice dos Correios',
     long_description=open('README.rst', 'r').read(),
-    package_data={
-        'pycep-correios': ['templates/*xml']
-    },
-    include_package_data=True,
     install_requires=[
         'requests >= 2.10.0',
         'Jinja2 >= 2.8',
