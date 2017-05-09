@@ -27,6 +27,16 @@ deploy:
     tags: true
     distributions: sdist bdist_wheel
     repo: mstuttgart/pycep-correios
-    python: 3.5
+    python:
+      - 3.4
+      - 3.5
   skip_upload_docs: false
-  
+
+  provider: releases
+  api_key:
+     secure: HobE5ROuEvL6yUzb5NLvu01CAfo8oKgLZHJlP57pV8U1n1IATAd8zsX5CAb4x7GyGUwD4T1ZyK7HfgO0CDcgyWiP0V/sDRaX8Kjwo3pudhTMBDPlkhrr+/YqThD4ZMv4zc+2mLC8/eIX/MmvPcA+V4jCATwOwMzsOkVXq8tLHrBe1MjSc5F8IXtk2HfS0OCRnEpzJYjccE1lTItVP+i8QU42ggIH97sJxg4gmq3LArjozLuAdZ48EyB2ZKssZ00M1Kz01H4XeKvNonxd3aZlrcN33pcAHAy/be6zgA+3GiGGS4WtiecGKJGu4QXYPL5f9aKu/eI+1FmdB54+tYJmRjYn3HEJJYmrfcmKioavzITjrDenTJvzZpcRDeptj9EtlZ7d0Yhrh2QCPledVHeKetq+mrvfn0Kal/cWSah3CdcwOKs20hei/4eJ6SRb5+6DWOfg34WtLCaMkpdpD5C/ckdIvSiwR+tu+z9Me76LALWCylNdqTmqdoDpD0Z/bkZJSxZzNhsVnbXbHm1aQhA9lqDqGDTQ+5MYjc6UMtPbU6QewaXeBMpafKW+NFFf4MjH6et/s84QylcQoRM5gbGRSa+PnbtPO1RP7YF8TsJVWxEEmKeDv2j1zRg+yMNvrK0pvclQYZhV+u0ZtQhC0tNYNREZPwDJWH69sltbXQQwpOk=
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: mstuttgart/pycep-correios
+    branch: master
