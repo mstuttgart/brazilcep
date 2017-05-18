@@ -5,7 +5,7 @@ from unittest import mock
 from unittest import TestCase
 from jinja2 import Environment, PackageLoader
 
-from pycep_correios.correios import Correios
+import pycep_correios
 from pycep_correios.correios_exceptions import \
     CorreiosCEPInvalidCEPException
 from pycep_correios.correios_exceptions import \
@@ -48,7 +48,7 @@ class TestCorreios(TestCase):
         xml = template.render()
         self.response_xml_error = (xml.replace('\n', '')).replace('\t', '')
 
-    @mock.patch('pycep_correios.correios.requests.post')
+    @mock.patch('pycep_correios.requests.post')
     def test_get_cep(self, mock_api_call):
 
         # Aqui realizamos consulta com o CEP correto
@@ -60,7 +60,7 @@ class TestCorreios(TestCase):
 
         mock_api_call.return_value = mock.MagicMock(**param)
 
-        self.assertDictEqual(Correios.get_cep('70002900'),
+        self.assertDictEqual(pycep_correios.get_cep('70002900'),
                              self.expected_address)
 
         # Aqui realizamos consultas que de alguma forma retornam mensagens de
@@ -73,27 +73,27 @@ class TestCorreios(TestCase):
         mock_api_call.return_value = mock.MagicMock(**param)
 
         self.assertRaises(CorreiosCEPInvalidCEPException,
-                          Correios.get_cep, '1232710')
+                          pycep_correios.get_cep, '1232710')
 
         mock_api_call.side_effect = requests.exceptions.Timeout()
         self.assertRaises(CorreiosTimeOutException,
-                          Correios.get_cep, '12345-500')
+                          pycep_correios.get_cep, '12345-500')
 
         mock_api_call.side_effect = requests.exceptions.Timeout()
         self.assertRaises(CorreiosTimeOutException,
-                          Correios.get_cep, '12345-500')
+                          pycep_correios.get_cep, '12345-500')
 
         mock_api_call.side_effect = requests.exceptions.TooManyRedirects()
         self.assertRaises(CorreiosCEPTooManyRedirectsException,
-                          Correios.get_cep, '12345-500')
+                          pycep_correios.get_cep, '12345-500')
 
         mock_api_call.side_effect = requests.exceptions.ConnectionError()
         self.assertRaises(CorreiosCEPConnectionErrorException,
-                          Correios.get_cep, '12345-500')
+                          pycep_correios.get_cep, '12345-500')
 
     def test__format_cep(self):
         self.assertRaises(CorreiosCEPInvalidCEPException,
-                          Correios._format_cep, 37503003)
+                          pycep_correios._format_cep, 37503003)
 
     def test__mount_request(self):
         cep = '37503005'
@@ -101,13 +101,13 @@ class TestCorreios(TestCase):
         xml = template.render(cep=cep)
         xml = (xml.replace('\n', '')).replace('\t', '')
 
-        self.assertEqual(xml, Correios._mount_request(cep=cep))
+        self.assertEqual(xml, pycep_correios._mount_request(cep=cep))
 
     def test__parse_response(self):
-        response = Correios._parse_response(self.response_xml)
+        response = pycep_correios._parse_response(self.response_xml)
         self.assertDictEqual(response, self.expected_address)
 
     def test__parse_error(self):
-        fault = Correios._parse_error(self.response_xml_error)
+        fault = pycep_correios._parse_error(self.response_xml_error)
         self.assertEqual(fault.strip(), 'BUSCA DEFINIDA COMO EXATA, '
                                         '0 CEP DEVE TER 8 DIGITOS')
