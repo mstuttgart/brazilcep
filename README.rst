@@ -1,5 +1,7 @@
-PyCEP Correios
-==============
+=============
+PyCEPCorreios
+=============
+
 
 .. image:: https://img.shields.io/travis/mstuttgart/pycep-correios/master.svg?style=flat-square
     :target: https://travis-ci.org/mstuttgart/pycep-correios
@@ -21,11 +23,27 @@ PyCEP Correios
 
 .. image:: https://readthedocs.org/projects/pycep-correios/badge/?style=flat-square
     :target: http://pycep-correios.readthedocs.io/pt/latest/?badge=latest
+    :alt: Documentation Status
 
-O PyCEP Correios faz uso do webservice dos correios para efetuar a busca de um dado CEP fornecido pelo usuário. O retorno dessa consulta é o endereço pertencente ao CEP.
+.. image:: https://pyup.io/repos/github/mstuttgart/pycep_correios/shield.svg?style=flat-square
+     :target: https://pyup.io/repos/github/mstuttgart/pycep_correios/
+     :alt: Updates
+
+
+Método para busca de dados de CEP no webservice dos Correios
+
+
+* Free software: MIT license
+* Documentation: https://pycep-correios.readthedocs.io.
+
+
+Features
+--------
+* Busca de dados do endereço de um CEP
+* Formatacao da string de CEP
 
 Instalação
-==========
+----------
 O PyCEP Correios pode ser facilmente instalado com o comando a seguir:
 
 .. code:: bash
@@ -72,19 +90,17 @@ Veja os exemplos a seguir:
         print(exc)
 
 Aviso de *bugs*, dúvidas e sugestões
-====================================
+------------------------------------
 Para dúvidas, sugestões e relatórios de *bugs*, por gentileza, crie uma *issue*:
 
 - Issue Tracker: https://github.com/mstuttgart/pycep-correios/issues
 
-Contribuidores
-==============
-Meus agradecimentos aos seguintes contribuidores:
-
-* `Aldo Soares <https://github.com/aldo774>`_
-* `Felipe Morato <https://github.com/fmorato>`_
-
-Créditos
-========
+Credits
+---------
 
 Copyright (C) 2015-2017 por Michell Stuttgart Faria
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
