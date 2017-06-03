@@ -1,8 +1,15 @@
-# MANIFEST.in template
-#
-
-include MANIFEST.in
+include AUTHORS.rst
+include CONTRIBUTING.rst
+include HISTORY.rst
 include LICENSE
 include README.rst
+include MANIFEST.in
+
 include setup.py
-include pycep_correios/templates/consultacep.xml
+
+recursive-incluse pycep_correios/templates/*.xml
+recursive-include tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
