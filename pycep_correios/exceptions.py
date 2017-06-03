@@ -6,22 +6,22 @@ class CorreiosCEPException(Exception):
     pass
 
 
-class CorreiosCEPConnectionErrorException(CorreiosCEPException):
+class ConnectionError(CorreiosCEPException):
     """ Connection error exception """
     pass
 
 
-class CorreiosCEPTooManyRedirectsException(CorreiosCEPException):
+class TooManyRedirects(CorreiosCEPException):
     """ Many redirects exception """
     pass
 
 
-class CorreiosTimeOutException(CorreiosCEPException):
+class TimeOut(CorreiosCEPException):
     """ TimeOut exception """
     pass
 
 
-class CorreiosCEPInvalidCEPException(CorreiosCEPException):
+class InvalidCEP(CorreiosCEPException):
     """ Invalid CEP Exception. Raised when cep have incorrect
     length or not exist """
     pass
