@@ -1,4 +1,0 @@
-requests==2.13.0
-coveralls==1.1
-Jinja2==2.9.6
-flake8==3.3.0
