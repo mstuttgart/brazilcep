@@ -1,4 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+"""
+test_pycep_correios
+----------------------------------
+
+Tests for `pycep_correios` module.
+"""
 
 import requests
 from unittest import mock
@@ -6,14 +14,10 @@ from unittest import TestCase
 from jinja2 import Environment, PackageLoader
 
 import pycep_correios
-from pycep_correios.correios_exceptions import \
-    CorreiosCEPInvalidCEPException
-from pycep_correios.correios_exceptions import \
-    CorreiosTimeOutException
-from pycep_correios.correios_exceptions import \
-    CorreiosCEPTooManyRedirectsException
-from pycep_correios.correios_exceptions import \
-    CorreiosCEPConnectionErrorException
+from pycep_correios.exceptions import InvalidCEP
+from pycep_correios.exceptions import TimeOut
+from pycep_correios.exceptions import TooManyRedirects
+from pycep_correios.exceptions import ConnectionError
 
 
 class TestCorreios(TestCase):
