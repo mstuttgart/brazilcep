@@ -3,10 +3,7 @@
 import requests
 from jinja2 import Environment, PackageLoader
 
-from .exceptions import (
-    ConnectionError, InvalidCEP, CorreiosTimeOut, TooManyRedirects
-)
-
+from .exceptions import ConnectionError, InvalidCEP, TimeOut, TooManyRedirects
 from .parser import parse_error_response, parse_response
 
 URL = 'https://apps.correios.com.br/SigepMasterJPA' \
@@ -59,7 +56,7 @@ def get_address(cep):
 
         if not response.ok:
             msg = parse_error_response(response.text)
-            raise InvalidCEPException(msg)
+            raise InvalidCEP(msg)
 
         return parse_response(response.text)
 

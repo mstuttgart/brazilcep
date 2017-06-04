@@ -22,7 +22,6 @@ before_script:
 # command to run tests, e.g. python setup.py test
 script:
   - tox -e ${TOXENV}
-  - coverage run --source=pycep_correios setup.py test
 
 after_success:
   - coveralls
