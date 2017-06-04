@@ -36,6 +36,8 @@ O PyCEP Correios pode ser facilmente instalado com o comando a seguir:
 Como usar
 ---------
 
+*Desatualizado* (Fiz modificações no uso da api para torná-la mais pythonica e fácil de utilizar). Essas modificações serão lançadas na versão 2
+
 Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Não importa se o CEP fornecido possui hífen ou ponto. O PyCEPCorreios trata a entrada garantindo uma entrada válida para o *webservice* dos Correios.
 Veja os exemplos a seguir:
 
