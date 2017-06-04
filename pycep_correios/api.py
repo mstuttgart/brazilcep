@@ -64,20 +64,16 @@ def get_address(cep):
 def format_cep(cep):
     """
     """
+    cep = cep.replace('-', '')
+    cep = cep.replace('.', '')
+    return cep
 
-    try:
-        cep = cep.replace('-', '')
-        cep = cep.replace('.', '')
 
-        if not cep.isdigit():
-            msg = 'CEP deve ser formado por números!'
-            raise InvalidCEP(msg)
-
-        return cep
-    except AttributeError:
-        msg = 'CEP deve ser do tipo string, ' \
-              'mas o tipo encontrado foi %s!' % type(cep)
-        raise InvalidCEP(msg)
+def validate_cep(cep):
+    """
+    """
+    cep = format_cep(cep)
+    return cep.isdigit() and len(cep) == 8
 
 
 def _mount_request(cep):

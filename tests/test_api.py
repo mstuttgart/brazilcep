@@ -12,7 +12,7 @@ import requests
 from unittest import mock, TestCase
 from jinja2 import Environment, PackageLoader
 
-from pycep_correios import get_address, format_cep
+from pycep_correios import get_address, format_cep, validate_cep
 from pycep_correios.exceptions import InvalidCEP
 from pycep_correios.exceptions import TimeOut
 from pycep_correios.exceptions import TooManyRedirects
@@ -89,7 +89,13 @@ class TestCorreios(TestCase):
         self.assertRaises(ConnectionError, get_address, '12345-500')
 
     def test_format_cep(self):
-        self.assertRaises(InvalidCEP, format_cep, 37503003)
+        self.assertRaises(AttributeError, format_cep, 37503003)
+        self.assertEqual(format_cep('37.503-003'), '37503003')
+
+    def test_validate_cep(self):
+        self.assertRaises(AttributeError, validate_cep, 37503003)
+        self.assertIs(validate_cep('37.503-003'), True)
+        self.assertIs(validate_cep('37.503-00'), False)
 
     # def test__mount_request(self):
     #     cep = '37503005'
