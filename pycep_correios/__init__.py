@@ -8,6 +8,17 @@ __license__ = 'MIT'
 __copyright__ = 'Copyright 2015-2017 Michell Stuttgart Faria'
 __status__ = 'Production'
 
+__all__ = [
+    'get_address',
+    'format_cep',
+    'validate_cep',
+    'CorreiosCEPException',
+    'ConnectionError',
+    'TooManyRedirects',
+    'TimeOut',
+    'InvalidCEP',
+]
+
 from .api import get_address, format_cep, validate_cep
 
 from .exceptions import (

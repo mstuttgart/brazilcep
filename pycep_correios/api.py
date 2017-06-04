@@ -11,23 +11,17 @@ URL = 'https://apps.correios.com.br/SigepMasterJPA' \
 
 
 def get_address(cep):
-    """Retorna dos dados do endereço de um dado cep
+    """Return address (logradouro, bairro, cidade, estado) from CEP code
 
     :param cep: CEP a ser consultado.
     :type cep: str
     :returns: Dados do endereço do cep consultado.
     :rtype: dict
-    :raises CorreiosTimeOutException: connection timout exception
-    :raises CorreiosCEPTooManyRedirectsException: many redirections exception
-    :raises CorreiosCEPConnectionErrorException: connection exception
-    :raises CorreiosCEPInvalidCEPException: invalid cep exception
-
-    Usage::
-
-    >>> import pycep_correios
-    >>> cep = '70503130'
-    >>> address = pycep_correios.get_cep(cep)
-
+    :raises: :exc:`ExceptionType`
+    :raises :exc:`TimeOut`: connection timout exception
+    :raises :exc:`TooManyRedirects`: many redirections exception
+    :raises :exc:`ConnectionError`: connection exception
+    :raises :exc:`InvalidCEP`: invalid cep exception
     """
 
     xml = _mount_request(format_cep(cep))
