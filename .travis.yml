@@ -2,26 +2,25 @@
 # This file will be regenerated if you run travis_pypi_setup.py
 
 language: python
-python:
-  - 3.4
-  - 3.5
 
-env:
-  - TOXENV=py35
-  - TOXENV=py34
-  - TOXENV=pypy
+matrix:
+    include:
+      - python: 3.4
+        env: TOX_ENV=py34
+      - python: 3.5
+        env: TOX_ENV=py35
+      - python: 3.6
+        env: TOX_ENV=py36
+      - python: 3.5
+        env: TOX_ENV=flake8
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
-  - pip install -r requirements.txt
-
-before_script:
-  - flake8 pycep_correios
-  - flake8 test
+  - pip install tox
+  - pip install -r requirements_dev.txt
 
 # command to run tests, e.g. python setup.py test
-script:
-  - tox -e ${TOXENV}
+script: tox -e ${TOX_ENV}
 
 after_success:
   - coveralls
