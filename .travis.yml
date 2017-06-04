@@ -17,7 +17,7 @@ matrix:
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
   - pip install tox
-  - pip install -r requirements_dev.txt
+  - pip install -r requirements.txt
 
 # command to run tests, e.g. python setup.py test
 script: tox -e ${TOX_ENV}

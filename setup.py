@@ -17,6 +17,7 @@ requirements = [
 test_requirements = [
     'coverage',
     'coveralls',
+    'flake8',
 ]
 
 setup(
