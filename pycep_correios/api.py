@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import requests
-from jinja2 import Environment, PackageLoader
 
 from .exceptions import ConnectionError, InvalidCEP, TimeOut, TooManyRedirects
-from .parser import parse_error_response, parse_response
+from .parser import parse_error_response, parse_response, mount_request
 
 URL = 'https://apps.correios.com.br/SigepMasterJPA' \
           '/AtendeClienteService/AtendeCliente?wsdl'
@@ -24,7 +23,7 @@ def get_address(cep):
     :raises :exc:`InvalidCEP`: invalid cep exception
     """
 
-    xml = _mount_request(format_cep(cep))
+    xml = mount_request(format_cep(cep))
 
     header = {'Content-type': 'text/xml; charset=;%s' % 'utf8'}
 
@@ -56,7 +55,11 @@ def get_address(cep):
 
 
 def format_cep(cep):
-    """
+    """Return cep code with digits
+    :param cep: CEP a ser formatado
+    :type cep: str
+    :returns: Dados do endereço do cep consultado
+    :rtype: str
     """
     cep = cep.replace('-', '')
     cep = cep.replace('.', '')
@@ -68,10 +71,3 @@ def validate_cep(cep):
     """
     cep = format_cep(cep)
     return cep.isdigit() and len(cep) == 8
-
-
-def _mount_request(cep):
-    env = Environment(loader=PackageLoader('pycep_correios', 'templates'))
-    template = env.get_template('consultacep.xml')
-    xml = template.render(cep=cep)
-    return (xml.replace('\n', '')).replace('\t', '')

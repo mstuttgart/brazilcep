@@ -13,6 +13,7 @@ from unittest import mock, TestCase
 from jinja2 import Environment, PackageLoader
 
 from pycep_correios import get_address, format_cep, validate_cep
+from pycep_correios import parser
 from pycep_correios.exceptions import InvalidCEP
 from pycep_correios.exceptions import TimeOut
 from pycep_correios.exceptions import TooManyRedirects
@@ -97,19 +98,19 @@ class TestCorreios(TestCase):
         self.assertIs(validate_cep('37.503-003'), True)
         self.assertIs(validate_cep('37.503-00'), False)
 
-    # def test__mount_request(self):
-    #     cep = '37503005'
-    #     template = self.env.get_template('consultacep.xml')
-    #     xml = template.render(cep=cep)
-    #     xml = (xml.replace('\n', '')).replace('\t', '')
-    #
-    #     self.assertEqual(xml, _mount_request(cep=cep))
+    def test_mount_request(self):
+        cep = '37503005'
+        template = self.env.get_template('consultacep.xml')
+        xml = template.render(cep=cep)
+        xml = (xml.replace('\n', '')).replace('\t', '')
 
-    # def test__parse_response(self):
-    #     response = pycep_correios._parse_response(self.response_xml)
-    #     self.assertDictEqual(response, self.expected_address)
-    #
-    # def test__parse_error(self):
-    #     fault = pycep_correios._parse_error(self.response_xml_error)
-    #     self.assertEqual(fault.strip(), 'BUSCA DEFINIDA COMO EXATA, '
-    #                                     '0 CEP DEVE TER 8 DIGITOS')
+        self.assertEqual(xml, parser.mount_request(cep=cep))
+
+    def test_parse_response(self):
+        response = parser.parse_response(self.response_xml)
+        self.assertDictEqual(response, self.expected_address)
+
+    def test_parse_error_response(self):
+        fault = parser.parse_error_response(self.response_xml_error)
+        self.assertEqual(fault.strip(), 'BUSCA DEFINIDA COMO EXATA, '
+                                        '0 CEP DEVE TER 8 DIGITOS')
