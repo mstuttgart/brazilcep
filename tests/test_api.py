@@ -15,9 +15,6 @@ from jinja2 import Environment, PackageLoader
 from pycep_correios import get_address, format_cep, validate_cep
 from pycep_correios import parser
 from pycep_correios.exceptions import InvalidCEP
-from pycep_correios.exceptions import TimeOut
-from pycep_correios.exceptions import TooManyRedirects
-from pycep_correios.exceptions import ConnectionError
 
 
 class TestCorreios(TestCase):
@@ -77,18 +74,6 @@ class TestCorreios(TestCase):
 
         self.assertRaises(InvalidCEP, get_address, '1232710')
 
-        mock_api_call.side_effect = requests.exceptions.Timeout()
-        self.assertRaises(TimeOut, get_address, '12345-500')
-
-        mock_api_call.side_effect = requests.exceptions.Timeout()
-        self.assertRaises(TimeOut, get_address, '12345-500')
-
-        mock_api_call.side_effect = requests.exceptions.TooManyRedirects()
-        self.assertRaises(TooManyRedirects, get_address, '12345-500')
-
-        mock_api_call.side_effect = requests.exceptions.ConnectionError()
-        self.assertRaises(ConnectionError, get_address, '12345-500')
-
     def test_format_cep(self):
         self.assertRaises(AttributeError, format_cep, 37503003)
         self.assertEqual(format_cep('37.503-003'), '37503003')
@@ -99,12 +84,11 @@ class TestCorreios(TestCase):
         self.assertIs(validate_cep('37.503-00'), False)
 
     def test_mount_request(self):
-        cep = '37503005'
         template = self.env.get_template('consultacep.xml')
-        xml = template.render(cep=cep)
+        xml = template.render(cep='37503005')
         xml = (xml.replace('\n', '')).replace('\t', '')
 
-        self.assertEqual(xml, parser.mount_request(cep=cep))
+        self.assertEqual(xml, parser.mount_request(cep='37503005'))
 
     def test_parse_response(self):
         response = parser.parse_response(self.response_xml)

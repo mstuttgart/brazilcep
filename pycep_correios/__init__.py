@@ -12,16 +12,8 @@ __all__ = [
     'get_address',
     'format_cep',
     'validate_cep',
-    'CorreiosCEPException',
-    'ConnectionError',
-    'TooManyRedirects',
-    'TimeOut',
     'InvalidCEP',
 ]
 
 from .api import get_address, format_cep, validate_cep
-
-from .exceptions import (
-    CorreiosCEPException, ConnectionError, TooManyRedirects, TimeOut,
-    InvalidCEP
-)
+from .exceptions import InvalidCEP
