@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-class InvalidCEP(Exception):
-    """ Invalid CEP Exception. Raised when cep have incorrect
-    length or not exist """
+class CEPInvalido(Exception):
+    """ Excecao disparada quando o CEP possui tamanho ioncorreto
+    (diferente de 8) e/ou não existe"""
     pass

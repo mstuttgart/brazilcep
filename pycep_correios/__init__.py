@@ -9,11 +9,11 @@ __copyright__ = 'Copyright 2015-2017 Michell Stuttgart Faria'
 __status__ = 'Production'
 
 __all__ = [
-    'get_address',
-    'format_cep',
-    'validate_cep',
-    'InvalidCEP',
+    'consultar_cep',
+    'formatar_cep',
+    'validar_cep',
+    'CEPInvalido',
 ]
 
-from .api import get_address, format_cep, validate_cep
-from .exceptions import InvalidCEP
+from .api import consultar_cep, formatar_cep, validar_cep
+from .exceptions import CEPInvalido

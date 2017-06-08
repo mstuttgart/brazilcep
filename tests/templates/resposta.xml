@@ -5,8 +5,8 @@
                 <bairro>{{ bairro }}</bairro>
                 <cep>{{ cep }}</cep>
                 <cidade>{{ cidade }}</cidade>
-                <complemento/>
-                <complemento2/>
+                <complemento>{{ complemento }}</complemento>
+                <complemento2>{{ complemento2 }}</complemento2>
                 <end>{{ end }}</end>
                 <id>{{ id }}</id>
                 <uf>{{ uf }}</uf>
