@@ -1,46 +1,39 @@
 .. highlight:: shell
 
-============
-Installation
-============
+==========
+Instalação
+==========
 
 
-Stable release
+Versão estável
 --------------
 
-To install PyCEPCorreios, run this command in your terminal:
+Para instalar PyCEPCorreios, execute este comando no seu terminal:
 
 .. code-block:: console
 
-    $ pip install pycep_correios
+    $ pip3 install pycep_correios
 
-This is the preferred method to install PyCEPCorreios, as it will always install the most recent stable release. 
+Este é o método recomendado para instalar PyCEPCorreios, desse modo sempre será instalado a versão mais recente.
 
-If you don't have `pip`_ installed, this `Python installation guide`_ can guide
-you through the process.
+A partir do código fonte
+------------------------
 
-.. _pip: https://pip.pypa.io
-.. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
+O código fonte do PyCEPCorreios pode ser baixado em `Github repo`_.
 
-
-From sources
-------------
-
-The sources for PyCEPCorreios can be downloaded from the `Github repo`_.
-
-You can either clone the public repository:
+Você pode realizar o *clone* do repositório público:
 
 .. code-block:: console
 
     $ git clone git://github.com/mstuttgart/pycep_correios
 
-Or download the `tarball`_:
+Ou baixar o `tarball`_:
 
 .. code-block:: console
 
     $ curl  -OL https://github.com/mstuttgart/pycep_correios/tarball/master
 
-Once you have a copy of the source, you can install it with:
+Uma vez que você tenha uma cópia do código fonte, você pode instalá-lo com:
 
 .. code-block:: console
 
