@@ -1,38 +1,98 @@
-=====
-Usage
-=====
+==========
+Utilização
+==========
 
-Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Não importa se o CEP fornecido possui hífen ou ponto. O PyCEPCorreios trata a entrada garantindo uma entrada válida para o *webservice* dos Correios.
-    Veja os exemplos a seguir:
+Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Ela for projetada de modo a
+tornar a  sua utilização o mais simples possível.
 
-    .. code:: python
+Consultando CEPs
+----------------
 
-        from pycep_correios.correios import Correios
-        from pycep_correios.correios_exceptions import CorreiosCEPInvalidCEPException
+A consulta de CEP é realizada através da função
 
-        # Tambem pode ser usado .get_cep('37503130')
-        endereco = Correios.get_cep('37503130')
+.. code:: python
 
-        print(endereco['rua'])
-        print(endereco['bairro'])
-        print(endereco['cidade'])
-        print(endereco['complemento'])
-        print(endereco['uf'])
-        print(endereco['outro'])
+    from pycep_correios
 
-        # Terceiro exemplo, usando o mesmo cep usado anteriormente, porém com hífen e ponto.
-        endereco = Correios.get_cep('37.503-130')
+    endereco = pycep_correios.consultar_cep('37503130')
 
-        print(endereco['rua'])
-        print(endereco['bairro'])
-        print(endereco['cidade'])
-        print(endereco['complemento'])
-        print(endereco['uf'])
-        print(endereco['outro'])
+O conteúdo de `endereco` é um `dict` contendo as seguintes valores:
 
-        # Quarto exemplo, enviamos um cep incorreto, com o numero de digitos inferior a 8.
+* **end**: corresponde ao logradouro do endereço do CEP
+* **bairro**: bairro referente ao CEP pesquisado
+* **cidade**: cidade referente ao CEP
+* **complemento**: complemento referente a localizacao do CEP
+* **complemento2**: semelhante ao `complemento`, pode indicar, por exemplo, o intervalo de números de residências ao qual o CEP pertence.
+* **uf**: a sigla do estado ao qual o CEP representa
+* **cep**: o CEP que foi consultado
 
-        try:
-            endereco = Correios.get_cep('37.50-130')
-        except CorreiosCEPInvalidCEPException as exc:
-            print(exc)
+.. code:: python
+
+    from pycep_correios
+
+    endereco = pycep_correios.consultar_cep('37503130')
+
+    print(endereco['end'])
+    print(endereco['bairro'])
+    print(endereco['cidade'])
+    print(endereco['complemento'])
+    print(endereco['complemento2'])
+    print(endereco['uf'])
+    print(endereco['cep'])
+
+O comando tambem aceita CEPs contendo pontos e/ou hiphens. Como por exemplo:
+
+.. code:: python
+
+    from pycep_correios
+
+    endereco = pycep_correios.consultar_cep('37.503-130')
+
+Isso visa facilitar a utilização da PyCEPCorreios com CEPs fornecidos por outros sistemas como, por exemplo, um
+formulário de endereço a ser preenchido pelo usuário. Desse modo, o CEP informado pelo usuário sempre será automaticamente formatado
+para o formato aceito pelos *webservice* dos correios.
+
+Quando consultamos um CEP com quantidade incorreto de digitos (diferente de 8)
+ou que não existe, a PyCEPCorreios dispara uma exceção `CEPInvalido`:
+
+.. code:: python
+
+    from pycep_correios
+    from pycep_correios.exceptions import CEPInvalido
+
+    try:
+        endereco = pycep_correios.consultar_cep('00000000')
+    except CEPInvalido as exc:
+        print(exc)
+
+Validando CEPs
+--------------
+
+A validação de CEPs pode ser feita através do comando `validar_cep`. A função retorna
+`True` se a estrutura do CEP for válida e `False`, caso contrário.
+
+.. code:: python
+
+    import pycep_correios
+
+    meu_cep = '37503003'
+
+    if pycep_correios.validar_cep(cep):
+        print('O CEP %s é valido!!' % cep)
+    else:
+        print('Ops!! O CEP %s não é valido!!' % cep)
+
+Formatando CEPs
+---------------
+
+A funcao `formatar_cep` recebe uma string contendo o CEP, com pontos e hiphens e
+simplesmente os remove. É utilizada internamente pelo comando `consultar_cep`.
+
+.. code:: python
+
+    import pycep_correios
+
+    meu_cep = '37503003'
+
+    cep_formatado = pycep_correios.formatar_cep('37.503-003'):
+    print('O CEP %s é valido!!' % cep)
