@@ -30,17 +30,18 @@ PyCEPCorreios
      :alt: Updates
 
 
-Método para busca de dados de CEP no webservice dos Correios
+API para consulta de CEP diretamente do *webservice* dos Correios.
 
 
 * Free software: MIT license
-* Documentation: https://pycep-correios.readthedocs.io.
+* Documentação: https://pycep-correios.readthedocs.io.
 
 
 Features
 --------
-* Busca de dados do endereço de um CEP
-* Formatacao da string de CEP
+* Consulta de dados do endereço de um CEP
+* Formatacao de CEP
+* Validação de estrutura do CEP
 
 Instalação
 ----------
@@ -56,37 +57,21 @@ Como usar
 Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Não importa se o CEP fornecido possui hífen ou ponto. O PyCEPCorreios trata a entrada garantindo uma entrada válida para o *webservice* dos Correios.
 Veja os exemplos a seguir:
 
-.. code:: python
+.. code-block:: python
 
-    from pycep_correios.correios import Correios
-    from pycep_correios.correios_exceptions import CorreiosCEPInvalidCEPException
+    >>> import pycep_correios
 
-    # Tambem pode ser usado .get_cep('37503130')
-    endereco = Correios.get_cep('37503130')
+    >>> pycep_correios.validar_cep('37503130')
+    True
 
-    print(endereco['rua'])
-    print(endereco['bairro'])
-    print(endereco['cidade'])
-    print(endereco['complemento'])
-    print(endereco['uf'])
-    print(endereco['outro'])
-
-    # Terceiro exemplo, usando o mesmo cep usado anteriormente, porém com hífen e ponto.
-    endereco = Correios.get_cep('37.503-130')
-
-    print(endereco['rua'])
-    print(endereco['bairro'])
-    print(endereco['cidade'])
-    print(endereco['complemento'])
-    print(endereco['uf'])
-    print(endereco['outro'])
-
-    # Quarto exemplo, enviamos um cep incorreto, com o numero de digitos inferior a 8.
-
-    try:
-        endereco = Correios.get_cep('37.50-130')
-    except CorreiosCEPInvalidCEPException as exc:
-        print(exc)
+    >>> endereco = pycep_correios.consultar_cep('37503130')
+    >>> print(endereco['end'])
+    >>> print(endereco['bairro'])
+    >>> print(endereco['cidade'])
+    >>> print(endereco['complemento'])
+    >>> print(endereco['complemento2'])
+    >>> print(endereco['uf'])
+    >>> print(endereco['cep'])
 
 Aviso de *bugs*, dúvidas e sugestões
 ------------------------------------
@@ -94,12 +79,9 @@ Para dúvidas, sugestões e relatórios de *bugs*, por gentileza, crie uma *issu
 
 - Issue Tracker: https://github.com/mstuttgart/pycep-correios/issues
 
-Credits
----------
+Créditos
+--------
+
+.. include:: ../AUTHORS.rst
 
 Copyright (C) 2015-2017 por Michell Stuttgart Faria
-
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
