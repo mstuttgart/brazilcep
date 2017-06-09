@@ -1,13 +1,13 @@
-=======
-Credits
-=======
+========
+Créditos
+========
 
-Development Lead
+Desenvolvido por
 ----------------
 
 * Michell Stuttgart <michellstut@gmail.com>
 
-Contributors
-------------
+Contribuidores
+--------------
 
 * `Aldo Soares <https://github.com/aldo774>`_
