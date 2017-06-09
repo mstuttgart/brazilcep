@@ -11,6 +11,9 @@ PyCEPCorreios
 
 .. image:: https://landscape.io/github/mstuttgart/pycep-correios/master/landscape.svg?style=flat-square
     :target: https://landscape.io/github/mstuttgart/pycep-correios/master
+    
+.. image:: https://img.shields.io/requires/github/mstuttgart/pycep-correios.svg?style=flat-square   
+    :target: https://github.com/mstuttgart/pycep-correios
 
 .. image:: https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square
     :target: https://pypi.python.org/pypi/pycep-correios
@@ -24,11 +27,6 @@ PyCEPCorreios
 .. image:: https://readthedocs.org/projects/pycep-correios/badge/?style=flat-square
     :target: http://pycep-correios.readthedocs.io/pt/latest/?badge=latest
     :alt: Documentation Status
-
-.. image:: https://pyup.io/repos/github/mstuttgart/pycep_correios/shield.svg?style=flat-square
-     :target: https://pyup.io/repos/github/mstuttgart/pycep_correios/
-     :alt: Updates
-
 
 API para consulta de CEP diretamente do *webservice* dos Correios.
 
