@@ -5,7 +5,8 @@ import requests
 from .exceptions import CEPInvalido
 from .parser import parse_resposta_com_erro, parse_resposta, monta_requisicao
 
-URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl'
+URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/' \
+      'AtendeCliente?wsdl'
 
 
 def consultar_cep(cep):

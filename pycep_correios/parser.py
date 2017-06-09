@@ -1,7 +1,6 @@
 # -*- encoding: utf8 -*-
 
 import xml.etree.cElementTree as Et
-from xml import etree
 from jinja2 import Environment, PackageLoader
 
 
