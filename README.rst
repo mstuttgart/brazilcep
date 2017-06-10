@@ -3,14 +3,14 @@ PyCEPCorreios
 =============
 
 
-.. image:: https://img.shields.io/travis/mstuttgart/pycep-correios/master.svg?style=flat-square
+.. image:: https://img.shields.io/travis/mstuttgart/pycep-correios/develop.svg?style=flat-square
     :target: https://travis-ci.org/mstuttgart/pycep-correios
 
-.. image:: https://img.shields.io/coveralls/mstuttgart/pycep-correios/master.svg?style=flat-square
-    :target: https://coveralls.io/github/mstuttgart/pycep-correios?branch=master
+.. image:: https://img.shields.io/coveralls/mstuttgart/pycep-correios/develop.svg?style=flat-square
+    :target: https://coveralls.io/github/mstuttgart/pycep-correios?branch=develop
 
-.. image:: https://landscape.io/github/mstuttgart/pycep-correios/master/landscape.svg?style=flat-square
-    :target: https://landscape.io/github/mstuttgart/pycep-correios/master
+.. image:: https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg?style=flat-square
+    :target: https://landscape.io/github/mstuttgart/pycep-correios/develop
     
 .. image:: https://img.shields.io/requires/github/mstuttgart/pycep-correios.svg?style=flat-square   
     :target: https://github.com/mstuttgart/pycep-correios
