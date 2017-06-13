@@ -5,4 +5,3 @@ coveralls
 Sphinx==1.4.8
 requests==2.13.0
 Jinja2==2.9.6
-cryptography==1.7
