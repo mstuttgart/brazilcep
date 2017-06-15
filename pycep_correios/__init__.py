@@ -15,5 +15,5 @@ __all__ = [
     'CEPInvalido',
 ]
 
-from .api import consultar_cep, formatar_cep, validar_cep
+from .cliente import consultar_cep, formatar_cep, validar_cep
 from .excecoes import CEPInvalido
