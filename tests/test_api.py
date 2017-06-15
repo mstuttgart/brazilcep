@@ -14,7 +14,7 @@ from jinja2 import Environment, PackageLoader
 
 from pycep_correios import consultar_cep, formatar_cep, validar_cep
 from pycep_correios import parser
-from pycep_correios.exceptions import CEPInvalido
+from pycep_correios.excecoes import CEPInvalido
 
 
 class TestCorreios(TestCase):

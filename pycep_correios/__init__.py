@@ -16,4 +16,4 @@ __all__ = [
 ]
 
 from .api import consultar_cep, formatar_cep, validar_cep
-from .exceptions import CEPInvalido
+from .excecoes import CEPInvalido
