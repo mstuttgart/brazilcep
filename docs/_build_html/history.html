@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>History &#8212; PyCEP Correios 1.1.7 documentação</title>
+    <title>Histórico &#8212; PyCEP Correios 1.1.7 documentação</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -48,12 +48,69 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="history">
-<h1>History<a class="headerlink" href="#history" title="Link permanente para este título">¶</a></h1>
+  <div class="section" id="historico">
+<h1>Histórico<a class="headerlink" href="#historico" title="Link permanente para este título">¶</a></h1>
 <div class="section" id="id1">
-<h2>1.1.7 (2017-06-03)<a class="headerlink" href="#id1" title="Link permanente para este título">¶</a></h2>
+<h2>2.0.0 (2017-06-05)<a class="headerlink" href="#id1" title="Link permanente para este título">¶</a></h2>
 <ul class="simple">
-<li>First release on PyPI.</li>
+<li>Atualização do código da PyCEPCorreios, deixando-a mais facil de ser utilizada</li>
+<li>Remoção das exceções antigas, deixando apenas a Exceção padrão da lib</li>
+<li>Alteração dos <em>imports</em> da lib para facilitar seu uso e diminuir tamanho dos <em>imports</em></li>
+<li>Adicionado documentação com Sphinx</li>
+<li>Adicionado testes com TOX</li>
+<li>Adicionado método de validação de CEP e formatação de CEP</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>1.1.7 (2017-05-09)<a class="headerlink" href="#id2" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>[FIX] Corrigido erro <cite>jinja2.exceptions.TemplateNotFound: consultacep.xml</cite></li>
+<li>[FIX] Erro durante instalação da PyCEPCorreios via pip</li>
+<li>[FIX] Atualizado código de exemplo no README.rst</li>
+<li>[FIX] Atualizado exemplos na documentação</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>1.1.6 (2017-05-08)<a class="headerlink" href="#id3" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>[FIX] Correção de bug durante instalação. #15</li>
+<li>[FIX] Correção de template xml ausente no pacote do modulo</li>
+<li>[FIX] Melhorias gerais no código e correções de bugs</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>1.1.1 (2017-02-08)<a class="headerlink" href="#id4" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>Melhorias gerais no código</li>
+<li>XML schema utilizando Jinja2</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>1.0.1 (2016-08-03)<a class="headerlink" href="#id5" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>Simplificação da classes Exceptions</li>
+<li>Organização do código de teste</li>
+<li>Utilização do mock para test</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>1.0.0 (2016-07-31)<a class="headerlink" href="#id6" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>API migrada para Python 3. Python 2.7 não será mais suportado</li>
+<li>Substituição da lib <em>suds</em> pela lib <em>requests</em> para realizar as requisições</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>0.0.2 (2016-05-09)<a class="headerlink" href="#id7" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li><cite>setup.py</cite> com número de versão atualizado e dependência corrigidas.</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h2>0.0.1 (2016-05-05)<a class="headerlink" href="#id8" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>Versão inicial.</li>
+<li>Permite busca no webservice dos correios dos dados de um CEP fornecido.</li>
 </ul>
 </div>
 </div>
@@ -66,8 +123,15 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Tabela de Conteúdo</a></h3>
   <ul>
-<li><a class="reference internal" href="#">History</a><ul>
-<li><a class="reference internal" href="#id1">1.1.7 (2017-06-03)</a></li>
+<li><a class="reference internal" href="#">Histórico</a><ul>
+<li><a class="reference internal" href="#id1">2.0.0 (2017-06-05)</a></li>
+<li><a class="reference internal" href="#id2">1.1.7 (2017-05-09)</a></li>
+<li><a class="reference internal" href="#id3">1.1.6 (2017-05-08)</a></li>
+<li><a class="reference internal" href="#id4">1.1.1 (2017-02-08)</a></li>
+<li><a class="reference internal" href="#id5">1.0.1 (2016-08-03)</a></li>
+<li><a class="reference internal" href="#id6">1.0.0 (2016-07-31)</a></li>
+<li><a class="reference internal" href="#id7">0.0.2 (2016-05-09)</a></li>
+<li><a class="reference internal" href="#id8">0.0.1 (2016-05-05)</a></li>
 </ul>
 </li>
 </ul>
