@@ -3,7 +3,7 @@ Utilização
 ==========
 
 Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Ela for projetada de modo a
-tornar a  sua utilização o mais simples possível.
+tornar a sua utilização o mais simples possível.
 
 Consultando CEPs
 ----------------
@@ -54,6 +54,19 @@ para o formato aceito pelos *webservice* dos correios.
 
 Quando consultamos um CEP com quantidade incorreto de digitos (diferente de 8)
 ou que não existe, a PyCEPCorreios dispara uma exceção `CEPInvalido`:
+
+.. code:: python
+
+    from pycep_correios
+    from pycep_correios.exceptions import CEPInvalido
+
+    try:
+        endereco = pycep_correios.consultar_cep('00000000')
+    except CEPInvalido as exc:
+        print(exc)
+
+Para outros tipos de exceção, como *timeout*, erro de conexão e etc, deve-se
+utilizar as exceções fornecidas pela biblioteca *requests*
 
 .. code:: python
 

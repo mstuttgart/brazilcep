@@ -11,8 +11,8 @@ PyCEPCorreios
 
 .. image:: https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg?style=flat-square
     :target: https://landscape.io/github/mstuttgart/pycep-correios/develop
-    
-.. image:: https://img.shields.io/requires/github/mstuttgart/pycep-correios.svg?style=flat-square   
+
+.. image:: https://img.shields.io/requires/github/mstuttgart/pycep-correios.svg?style=flat-square
     :target: https://github.com/mstuttgart/pycep-correios
 
 .. image:: https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square
@@ -52,7 +52,7 @@ O PyCEP Correios pode ser facilmente instalado com o comando a seguir:
 Como usar
 ---------
 
-Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Não importa se o CEP fornecido possui hífen ou ponto. O PyCEPCorreios trata a entrada garantindo uma entrada válida para o *webservice* dos Correios.
+Consultar o endereço de um CEP é muito simples com o PyCEPCorreios.
 Veja os exemplos a seguir:
 
 .. code-block:: python
@@ -79,7 +79,5 @@ Para dúvidas, sugestões e relatórios de *bugs*, por gentileza, crie uma *issu
 
 Créditos
 --------
-
-.. include:: ../AUTHORS.rst
 
 Copyright (C) 2015-2017 por Michell Stuttgart Faria

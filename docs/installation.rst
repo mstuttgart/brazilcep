@@ -37,7 +37,7 @@ Uma vez que você tenha uma cópia do código fonte, você pode instalá-lo com:
 
 .. code-block:: console
 
-    $ python setup.py install
+    $ python3 setup.py install
 
 
 .. _Github repo: https://github.com/mstuttgart/pycep_correios

@@ -45,6 +45,7 @@ setup(
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
+        'Natural Language :: Portuguese',
         'License :: OSI Approved :: MIT License',
         'Operating System :: MacOS :: MacOS X',
         'Operating System :: Microsoft :: Windows',
