@@ -23,13 +23,16 @@ def consultar_cep(cep):
 
     header = {'Content-type': 'text/xml; charset=;%s' % 'utf8'}
 
-    resposta = requests.post(URL, data=xml, headers=header, verify=False)
-
-    if resposta.ok:
-        return parse_resposta(resposta.text)
+    try:
+        resposta = requests.post(URL, data=xml, headers=header, verify=False)
+    except requests.exceptions.RequestException as e:
+        raise e
     else:
-        msg = parse_resposta_com_erro(resposta.text)
-        raise CEPInvalido(msg)
+        if resposta.ok:
+            return parse_resposta(resposta.text)
+        else:
+            msg = parse_resposta_com_erro(resposta.text)
+            raise CEPInvalido(msg)
 
 
 def formatar_cep(cep):
