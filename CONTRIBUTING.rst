@@ -1,113 +1,99 @@
 .. highlight:: shell
 
 ============
-Contributing
+Contribuindo
 ============
 
-Contributions are welcome, and they are greatly appreciated! Every
-little bit helps, and credit will always be given.
+Contribuições são bem-vindas e muito apreciadas! Cada
+ajuda mesmo que um pouco, e o crédito sempre será atribuído.
 
-You can contribute in many ways:
+Você pode contribuir de várias maneiras:
 
-Types of Contributions
+Tipos de Contribuições
 ----------------------
 
-Report Bugs
-~~~~~~~~~~~
+Reportando erros
+~~~~~~~~~~~~~~~~
 
-Report bugs at https://github.com/mstuttgart/pycep_correios/issues.
+Informe erros em https://github.com/mstuttgart/pycep-correios/issues.
 
-If you are reporting a bug, please include:
+Se você está reportando um *bug*, por favor inclua:
 
-* Your operating system name and version.
-* Any details about your local setup that might be helpful in troubleshooting.
-* Detailed steps to reproduce the bug.
+* O nome e a versão do seu sistema operacional.
+* Qualquer detalhe sobre sua configuração local que possa ser útil na solução de problemas.
+* Etapas detalhadas para reproduzir o bug.
 
-Fix Bugs
-~~~~~~~~
+Corrigindo erros
+~~~~~~~~~~~~~~~~
 
-Look through the GitHub issues for bugs. Anything tagged with "bug"
-and "help wanted" is open to whoever wants to implement it.
+Busque na lista de *issues* por aquelas com a *label* *Bug*.
+Qualquer *issue* marcada com "Bug" está aberto para quem quiser corrigi-la.
 
-Implement Features
+Adicionando novos recursos
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Busque na lista de *issues* por aquelas com a *label* *Improvement* ou *New feature*.
+Qualquer *issue* marcada com esses *labels* esta aberta para quem quiser implementá-la.
+
+Melhorando a documentação
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A documentação da PyCEPCorreios sempre pode ser melhorada, seja como parte do
+da documentação oficial do PyCEPCorreios, em docstrings, ou mesmo na web em postagens de blog,
+artigos e etc. Então caso você tenha escrito alguma postagem sobre a PyCEPCorreios, por favor,
+me avise para que a mesma seja incluída como referência.
+
+Enviar Comentários
 ~~~~~~~~~~~~~~~~~~
 
-Look through the GitHub issues for features. Anything tagged with "enhancement"
-and "help wanted" is open to whoever wants to implement it.
+A melhor maneira de enviar comentários é apresentar um problema em https://github.com/mstuttgart/pycep-correios/issues.
 
-Write Documentation
-~~~~~~~~~~~~~~~~~~~
+Se você está propondo um recurso:
 
-PyCEPCorreios could always use more documentation, whether as part of the
-official PyCEPCorreios docs, in docstrings, or even on the web in blog posts,
-articles, and such.
+* Explique em detalhes como isso funcionaria.
+* Mantenha o escopo o mais simples possível, para facilitar a implementação.
+* Lembre-se que este é um projeto voluntário, e que contribuições são bem-vindos :)
 
-Submit Feedback
-~~~~~~~~~~~~~~~
+Iniciar!
+--------
 
-The best way to send feedback is to file an issue at https://github.com/mstuttgart/pycep_correios/issues.
+Pronto para contribuir? Veja como configurar `pycep_correios` para desenvolvimento local.
 
-If you are proposing a feature:
+1. Fork o repositório `pycep_correios` no GitHub.
+2. Clone sua *branch* localmente::
 
-* Explain in detail how it would work.
-* Keep the scope as narrow as possible, to make it easier to implement.
-* Remember that this is a volunteer-driven project, and that contributions
-  are welcome :)
+    $ git clone git@github.com:your_name_here/pycep-correios.git
 
-Get Started!
-------------
+3. Instale sua cópia local em um *virtualenv*. Supondo que você tenha instalado o *virtualenv*, é assim que você configura a seu *fork* para o desenvolvimento local::
 
-Ready to contribute? Here's how to set up `pycep_correios` for local development.
+    $ cd pycep-correios
+    $ virtualenv -p python3 env
+    $ pip3 install -r requirements.txt
 
-1. Fork the `pycep_correios` repo on GitHub.
-2. Clone your fork locally::
+4. Crie uma *branch* para desenvolvimento::
 
-    $ git clone git@github.com:your_name_here/pycep_correios.git
+    $ git checkout -b nome-da-sua-branch
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+   Agora você pode fazer suas mudanças localmente.
 
-    $ mkvirtualenv pycep_correios
-    $ cd pycep_correios/
-    $ python setup.py develop
-
-4. Create a branch for local development::
-
-    $ git checkout -b name-of-your-bugfix-or-feature
-
-   Now you can make your changes locally.
-
-5. When you're done making changes, check that your changes pass flake8 and the tests, including testing other Python versions with tox::
+5. Quando terminar de fazer alterações, verifique se suas alterações passam *flake8* e nos testes, incluindo testar outras versões do Python com tox::
 
     $ flake8 pycep_correios tests
-    $ python setup.py test or py.test
-    $ tox
+    $ python setup.py test
 
-   To get flake8 and tox, just pip install them into your virtualenv.
-
-6. Commit your changes and push your branch to GitHub::
+6. Confirme as suas alterações e envie suas alterações para o GitHub::
 
     $ git add .
-    $ git commit -m "Your detailed description of your changes."
-    $ git push origin name-of-your-bugfix-or-feature
+    $ git commit -m "Descricao detalhada das sua alteracoes."
+    $ git push origin nome-da-sua-branch
 
-7. Submit a pull request through the GitHub website.
+7. Envie um *Pull Request* através do site GitHub.
 
-Pull Request Guidelines
------------------------
+Instruções de Solicitação de Pull Request
+-----------------------------------------
 
-Before you submit a pull request, check that it meets these guidelines:
+Antes de enviar um pedido de *Pull Request*, verifique se ele atende a essas diretrizes:
 
-1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
-3. The pull request should work for Python 2.6, 2.7, 3.3, 3.4 and 3.5, and for PyPy. Check
-   https://travis-ci.org/mstuttgart/pycep_correios/pull_requests
-   and make sure that the tests pass for all supported Python versions.
-
-Tips
-----
-
-To run a subset of tests::
-
-$ py.test tests.test_pycep_correios
+1. O pedido de *Pull Request* deve incluir testes, quando for uma nova *feature*.
+2. Se o *Pull Request* adicionar funcionalidades, a documentação deve ser atualizada adicionado detalhes de uso da nova funcionalidade.
+3. O pedido de *Pull Request* deve funcionar para o Python 3.4 e 3.5, e para PyPy. Verificar https://travis-ci.org/mstuttgart/pycep-correios/pull_requests e certifique-se de que os testes passem para todas as versões do Python suportadas.

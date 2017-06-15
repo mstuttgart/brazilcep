@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt_BR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PyCEPCorreios &#8212; PyCEP Correios 1.1.7 documentação</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.7',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="top" title="PyCEP Correios 1.1.7 documentação" href="index.html" />
+    <link rel="next" title="Instalação" href="installation.html" />
+    <link rel="prev" title="Bem vindo a documentação da PyCEPCorreios!" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Índice Geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Instalação"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Bem vindo a documentação da PyCEPCorreios!"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyCEP Correios 1.1.7 documentação</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pycepcorreios">
+<h1>PyCEPCorreios<a class="headerlink" href="#pycepcorreios" title="Link permanente para este título">¶</a></h1>
+<a class="reference external image-reference" href="https://travis-ci.org/mstuttgart/pycep-correios"><img alt="https://img.shields.io/travis/mstuttgart/pycep-correios/develop.svg?style=flat-square" src="https://img.shields.io/travis/mstuttgart/pycep-correios/develop.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://coveralls.io/github/mstuttgart/pycep-correios?branch=develop"><img alt="https://img.shields.io/coveralls/mstuttgart/pycep-correios/develop.svg?style=flat-square" src="https://img.shields.io/coveralls/mstuttgart/pycep-correios/develop.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://landscape.io/github/mstuttgart/pycep-correios/develop"><img alt="https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg?style=flat-square" src="https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://github.com/mstuttgart/pycep-correios"><img alt="https://img.shields.io/requires/github/mstuttgart/pycep-correios.svg?style=flat-square" src="https://img.shields.io/requires/github/mstuttgart/pycep-correios.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/pycep-correios"><img alt="https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/pycep-correios"><img alt="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="https://github.com/mstuttgart/pycep-correios/blob/develop/LICENSE"><img alt="https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square" src="https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square" /></a>
+<a class="reference external image-reference" href="http://pycep-correios.readthedocs.io/pt/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/pycep-correios/badge/?style=flat-square" /></a>
+<p>API para consulta de CEP diretamente do <em>webservice</em> dos Correios.</p>
+<ul class="simple">
+<li>Free software: MIT license</li>
+<li>Documentação: <a class="reference external" href="https://pycep-correios.readthedocs.io">https://pycep-correios.readthedocs.io</a>.</li>
+</ul>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>Consulta de dados do endereço de um CEP</li>
+<li>Formatacao de CEP</li>
+<li>Validação de estrutura do CEP</li>
+</ul>
+</div>
+<div class="section" id="instalacao">
+<h2>Instalação<a class="headerlink" href="#instalacao" title="Link permanente para este título">¶</a></h2>
+<p>O PyCEP Correios pode ser facilmente instalado com o comando a seguir:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">pycep</span><span class="o">-</span><span class="n">correios</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="como-usar">
+<h2>Como usar<a class="headerlink" href="#como-usar" title="Link permanente para este título">¶</a></h2>
+<p>Consultar o endereço de um CEP é muito simples com o PyCEPCorreios.
+Veja os exemplos a seguir:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycep_correios</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pycep_correios</span><span class="o">.</span><span class="n">validar_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;bairro&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cidade&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento2&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;uf&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cep&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="aviso-de-bugs-duvidas-e-sugestoes">
+<h2>Aviso de <em>bugs</em>, dúvidas e sugestões<a class="headerlink" href="#aviso-de-bugs-duvidas-e-sugestoes" title="Link permanente para este título">¶</a></h2>
+<p>Para dúvidas, sugestões e relatórios de <em>bugs</em>, por gentileza, crie uma <em>issue</em>:</p>
+<ul class="simple">
+<li>Issue Tracker: <a class="reference external" href="https://github.com/mstuttgart/pycep-correios/issues">https://github.com/mstuttgart/pycep-correios/issues</a></li>
+</ul>
+</div>
+<div class="section" id="creditos">
+<h2>Créditos<a class="headerlink" href="#creditos" title="Link permanente para este título">¶</a></h2>
+<p>Copyright (C) 2015-2017 por Michell Stuttgart Faria</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">PyCEPCorreios</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#instalacao">Instalação</a></li>
+<li><a class="reference internal" href="#como-usar">Como usar</a></li>
+<li><a class="reference internal" href="#aviso-de-bugs-duvidas-e-sugestoes">Aviso de <em>bugs</em>, dúvidas e sugestões</a></li>
+<li><a class="reference internal" href="#creditos">Créditos</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">Bem vindo a documentação da PyCEPCorreios!</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="installation.html"
+                        title="próximo capítulo">Instalação</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Essa Página</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/readme.txt"
+            rel="nofollow">Exibir Fonte</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Busca rápida</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Ir" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Índice Geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Instalação"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Bem vindo a documentação da PyCEPCorreios!"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyCEP Correios 1.1.7 documentação</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Michell Stuttgart.
+      Criado usando <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

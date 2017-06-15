@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt_BR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Utilização &#8212; PyCEP Correios 1.1.7 documentação</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.7',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="top" title="PyCEP Correios 1.1.7 documentação" href="index.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Instalação" href="installation.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Índice Geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Instalação"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyCEP Correios 1.1.7 documentação</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="utilizacao">
+<h1>Utilização<a class="headerlink" href="#utilizacao" title="Link permanente para este título">¶</a></h1>
+<p>Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Ela for projetada de modo a
+tornar a sua utilização o mais simples possível.</p>
+<div class="section" id="consultando-ceps">
+<h2>Consultando CEPs<a class="headerlink" href="#consultando-ceps" title="Link permanente para este título">¶</a></h2>
+<p>A consulta de CEP é realizada através da função</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
+
+<span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>O conteúdo de <cite>endereco</cite> é um <cite>dict</cite> contendo as seguintes valores:</p>
+<ul class="simple">
+<li><strong>end</strong>: corresponde ao logradouro do endereço do CEP</li>
+<li><strong>bairro</strong>: bairro referente ao CEP pesquisado</li>
+<li><strong>cidade</strong>: cidade referente ao CEP</li>
+<li><strong>complemento</strong>: complemento referente a localizacao do CEP</li>
+<li><strong>complemento2</strong>: semelhante ao <cite>complemento</cite>, pode indicar, por exemplo, o intervalo de números de residências ao qual o CEP pertence.</li>
+<li><strong>uf</strong>: a sigla do estado ao qual o CEP representa</li>
+<li><strong>cep</strong>: o CEP que foi consultado</li>
+</ul>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
+
+<span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;bairro&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cidade&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento2&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;uf&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cep&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>O comando tambem aceita CEPs contendo pontos e/ou hiphens. Como por exemplo:</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
+
+<span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;37.503-130&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Isso visa facilitar a utilização da PyCEPCorreios com CEPs fornecidos por outros sistemas como, por exemplo, um
+formulário de endereço a ser preenchido pelo usuário. Desse modo, o CEP informado pelo usuário sempre será automaticamente formatado
+para o formato aceito pelos <em>webservice</em> dos correios.</p>
+<p>Quando consultamos um CEP com quantidade incorreto de digitos (diferente de 8)
+ou que não existe, a PyCEPCorreios dispara uma exceção <cite>CEPInvalido</cite>:</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
+<span class="kn">from</span> <span class="nn">pycep_correios.exceptions</span> <span class="k">import</span> <span class="n">CEPInvalido</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;00000000&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">CEPInvalido</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Para outros tipos de exceção, como <em>timeout</em>, erro de conexão e etc, deve-se
+utilizar as exceções fornecidas pela biblioteca <em>requests</em></p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
+<span class="kn">from</span> <span class="nn">pycep_correios.exceptions</span> <span class="k">import</span> <span class="n">CEPInvalido</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;00000000&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">CEPInvalido</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validando-ceps">
+<h2>Validando CEPs<a class="headerlink" href="#validando-ceps" title="Link permanente para este título">¶</a></h2>
+<p>A validação de CEPs pode ser feita através do comando <cite>validar_cep</cite>. A função retorna
+<cite>True</cite> se a estrutura do CEP for válida e <cite>False</cite>, caso contrário.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycep_correios</span>
+
+<span class="n">meu_cep</span> <span class="o">=</span> <span class="s1">&#39;37503003&#39;</span>
+
+<span class="k">if</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">validar_cep</span><span class="p">(</span><span class="n">cep</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O CEP </span><span class="si">%s</span><span class="s1"> é valido!!&#39;</span> <span class="o">%</span> <span class="n">cep</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ops!! O CEP </span><span class="si">%s</span><span class="s1"> não é valido!!&#39;</span> <span class="o">%</span> <span class="n">cep</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="formatando-ceps">
+<h2>Formatando CEPs<a class="headerlink" href="#formatando-ceps" title="Link permanente para este título">¶</a></h2>
+<p>A funcao <cite>formatar_cep</cite> recebe uma string contendo o CEP, com pontos e hiphens e
+simplesmente os remove. É utilizada internamente pelo comando <cite>consultar_cep</cite>.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycep_correios</span>
+
+<span class="n">meu_cep</span> <span class="o">=</span> <span class="s1">&#39;37503003&#39;</span>
+
+<span class="n">cep_formatado</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">formatar_cep</span><span class="p">(</span><span class="s1">&#39;37.503-003&#39;</span><span class="p">):</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O CEP </span><span class="si">%s</span><span class="s1"> é valido!!&#39;</span> <span class="o">%</span> <span class="n">cep</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Utilização</a><ul>
+<li><a class="reference internal" href="#consultando-ceps">Consultando CEPs</a></li>
+<li><a class="reference internal" href="#validando-ceps">Validando CEPs</a></li>
+<li><a class="reference internal" href="#formatando-ceps">Formatando CEPs</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="installation.html"
+                        title="capítulo anterior">Instalação</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="contributing.html"
+                        title="próximo capítulo">Contributing</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Essa Página</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/usage.txt"
+            rel="nofollow">Exibir Fonte</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Busca rápida</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Ir" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Índice Geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Instalação"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyCEP Correios 1.1.7 documentação</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Michell Stuttgart.
+      Criado usando <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>
