@@ -51,7 +51,7 @@ def validar_cep(cep):
 
     :param cep: CEP a ser validado
     :type cep: str
-    :returns: se o CEOP informado é valido
+    :returns: se o CEP informado é valido
     :rtype: boolean
     """
     cep = formatar_cep(cep)
