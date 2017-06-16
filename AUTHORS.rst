@@ -9,6 +9,6 @@ PyCEPCorreios foi desenvolvido originalmente por:
 Contribuidores
 --------------
 Agradecimentos aos seguintes contribuidores pelo esforço de fazer a PyCEPCorreios
-melhor
+melhor:
 
 * `Aldo Soares <https://github.com/aldo774>`_
