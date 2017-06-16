@@ -2,11 +2,22 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup
+import os
 
-with open('README.rst') as readme_file:
+from codecs import open
+
+version_path = os.path.join(os.path.abspath(os.path.dirname(__file__)),
+                            'pycep_correios',
+                            '__version__.py')
+
+about = {}
+with open(version_path, 'r', 'utf-8') as f:
+    exec(f.read(), about)
+
+with open('README.rst', 'r', 'utf-8') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.rst') as history_file:
+with open('HISTORY.rst', 'r', 'utf-8') as history_file:
     history = history_file.read()
 
 requirements = [
@@ -21,16 +32,16 @@ test_requirements = [
 ]
 
 setup(
-    name='pycep_correios',
-    version='1.1.7',
-    description='Método para busca de dados de CEP no webservice dos Correios',
+    name=about['__title__'],
+    version=about['__version__'],
+    description=about['__description__'],
     long_description=readme + '\n\n' + history,
-    author='Michell Stuttgart',
-    author_email='michellstut@gmail.com',
-    maintainer='Michell Stuttgart',
-    maintainer_email='michellstut@gmail.com',
-    url='https://github.com/mstuttgart/pycep_correios',
-    download_url='https://pypi.python.org/pypi/pycep-correios',
+    author=about['__author__'],
+    author_email=about['__author_email__'],
+    maintainer=about['__maintainer__'],
+    maintainer_email=about['__maintainer_email__'],
+    url=about['__url__'],
+    download_url=about['__download_url__'],
     packages=[
         'pycep_correios',
     ],
@@ -38,22 +49,17 @@ setup(
                  'pycep_correios'},
     include_package_data=True,
     install_requires=requirements,
-    license="MIT license",
+    license=about['__license__'],
     zip_safe=False,
-    keywords='correios development cep',
+    keywords='correios desenvolvimento busca endereco cep',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
-        'Topic :: Software Development :: Build Tools',
         'Natural Language :: Portuguese',
         'License :: OSI Approved :: MIT License',
-        'Operating System :: MacOS :: MacOS X',
-        'Operating System :: Microsoft :: Windows',
-        'Operating System :: POSIX',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-        'Topic :: Software Development :: Libraries :: Application Frameworks',
     ],
     test_suite='tests',
     tests_require=test_requirements,
