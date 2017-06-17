@@ -82,4 +82,4 @@ Para dúvidas, sugestões e relatórios de *bugs*, por gentileza, crie uma *issu
 Créditos
 --------
 
-Copyright (C) 2015-2017 por Michell Stuttgart Faria
+Copyright (C) 2016-2017 por Michell Stuttgart Faria
