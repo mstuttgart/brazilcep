@@ -15,11 +15,12 @@ matrix:
         env: TOX_ENV=py36
       - python: 3.5
         env: TOX_ENV=flake8
+      - python: 3.5
+        env: TOX_ENV=pypi
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
   - pip install tox
-  - pip install -r requirements.txt
 
 # command to run tests, e.g. python setup.py test
 script: tox -e ${TOX_ENV}
