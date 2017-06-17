@@ -9,14 +9,12 @@ URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/' \
       'AtendeCliente?wsdl'
 
 
-def consultar_cep(cep):
+def consultar_cep(cep: str) -> dict:
     """Retorna o endereço correspondente ao número de CEP informado.
 
-    :param cep: CEP a ser consultado.
-    :type cep: str
-    :returns: Dados do endereço do cep consultado.
-    :rtype: dict
-    :raises :exc:`CEPInvalido`: Exceção para CEP inválido
+        :param cep: CEP a ser consultado.
+        :returns: Dict com os dados do endereço do CEP consultado.
+
     """
 
     xml = monta_requisicao(formatar_cep(cep))
@@ -35,27 +33,23 @@ def consultar_cep(cep):
             raise CEPInvalido(msg)
 
 
-def formatar_cep(cep):
-    """Formata CEP, removendo pontos e hiphens
+def formatar_cep(cep: str) -> str:
+    """Formata CEP, removendo pontuação
 
-    :param cep: CEP to be format
-    :type cep: str
-    :returns: Address data from CEP
-    :rtype: str
+    :param cep: CEP a ser formatado
+    :returns: string contendo o CEP formatado
     """
     cep = cep.replace('-', '')
     cep = cep.replace('.', '')
     return cep
 
 
-def validar_cep(cep):
+def validar_cep(cep: str) -> bool:
     """Verifica se o CEP informado possui 8 digitos e é constituído apenas de
     números
 
     :param cep: CEP a ser validado
-    :type cep: str
-    :returns: se o CEP informado é valido
-    :rtype: boolean
+    :returns: True se o CEP informado é valido. Caso contrário, retorna False
     """
     cep = formatar_cep(cep)
     return cep.isdigit() and len(cep) == 8
