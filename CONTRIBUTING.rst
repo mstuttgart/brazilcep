@@ -54,8 +54,8 @@ Se você está propondo um recurso:
 * Mantenha o escopo o mais simples possível, para facilitar a implementação.
 * Lembre-se que este é um projeto voluntário, e que contribuições são bem-vindos :)
 
-Iniciar!
---------
+Começando a contribuir!
+-----------------------
 
 Pronto para contribuir? Veja como configurar `pycep_correios` para desenvolvimento local.
 
