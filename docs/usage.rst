@@ -88,12 +88,14 @@ A validação de CEPs pode ser feita através do comando `validar_cep`. A funç�
 
     import pycep_correios
 
-    meu_cep = '37503003'
+    meu_cep = '37.503-003'
 
-    if pycep_correios.validar_cep(cep):
-        print('O CEP %s é valido!!' % cep)
+    if pycep_correios.validar_cep(meu_cep):
+        print('O CEP %s é valido!!' % meu_cep)
     else:
-        print('Ops!! O CEP %s não é valido!!' % cep)
+        print('Ops!! O CEP %s não é valido!!' % meu_cep)
+
+A função também aceita CEPs contendo pontuação como, por exemplo, "37.503-003".
 
 Formatando CEPs
 ---------------
@@ -105,7 +107,7 @@ simplesmente os remove. É utilizada internamente pelo comando `consultar_cep`.
 
     import pycep_correios
 
-    meu_cep = '37503003'
+    meu_cep = '37.503-003'
 
-    cep_formatado = pycep_correios.formatar_cep('37.503-003'):
-    print('O CEP %s é valido!!' % cep)
+    cep_formatado = pycep_correios.formatar_cep(meu_cep):
+    print('O CEP %s esta formatado: %s' % (meu_cep, cep_formatado))
