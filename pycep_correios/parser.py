@@ -4,13 +4,11 @@ import xml.etree.cElementTree as Et
 from jinja2 import Environment, PackageLoader
 
 
-def parse_resposta(xml):
+def parse_resposta(xml: str) -> dict:
     """Extrai os endereço do xml retornado pelo webservice
 
     :param xml: xml retornado pelo webservice
-    :type xml: str
-    :returns endereco: dados do endereço do CEP consultado
-    :rtype: dict
+    :returns endereco: dict com os dados do endereço do CEP consultado
     """
 
     end = Et.fromstring(xml).find('.//return')
@@ -29,25 +27,21 @@ def parse_resposta(xml):
     return endereco
 
 
-def parse_resposta_com_erro(xml):
+def parse_resposta_com_erro(xml: str) -> str:
     """Realiza a leitura do XML retornado pelo servidor e extrai a mensagem de
     erro
 
     :param xml: XML retornado pelo webservice
-    :type xml: str
-    :returns: mensagem de erro
-    :rtype: str
+    :returns: string contendo mensagem de erro
     """
     return Et.fromstring(xml).findtext('.//faultstring')
 
 
-def monta_requisicao(cep):
-    """Gera o XML utilizado para realizar a requesição ao webservice
+def monta_requisicao(cep: str) -> str:
+    """Gera o XML utilizado para realizar a requisição ao webservice
 
     :param cep: CEP a ser consultado
-    :type xml: str
-    :returns: XML de consulta contendo o CEP fornecido
-    :rtype: str
+    :returns: string contendo o XML de consulta com CEP fornecido
     """
     env = Environment(loader=PackageLoader('pycep_correios', 'templates'))
     template = env.get_template('consultacep.xml')
