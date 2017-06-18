@@ -8,7 +8,7 @@ tornar a sua utilização o mais simples possível.
 Consultando CEPs
 ----------------
 
-A consulta de CEP é realizada através da função
+A consulta de CEP é realizada através da função `consultar_cep`.
 
 .. code:: python
 
@@ -24,7 +24,7 @@ A consulta de CEP é realizada através da função
     print(endereco['uf'])
     print(endereco['cep'])
 
-O conteúdo de `endereco` é um `dict` contendo as seguintes valores:
+A variavel `endereco` recebe um `dict` contendo as seguintes valores:
 
 * **end**: corresponde ao logradouro do endereço do CEP
 * **bairro**: bairro referente ao CEP pesquisado
@@ -34,7 +34,7 @@ O conteúdo de `endereco` é um `dict` contendo as seguintes valores:
 * **uf**: a sigla do estado ao qual o CEP representa
 * **cep**: o CEP que foi consultado
 
-O comando tambem aceita CEPs contendo pontos e/ou hiphens. Como por exemplo:
+O comando tambem aceita CEP contendo pontos e/ou hífen. Como por exemplo:
 
 .. code:: python
 

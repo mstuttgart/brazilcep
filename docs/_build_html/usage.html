@@ -51,7 +51,7 @@
 tornar a sua utilização o mais simples possível.</p>
 <div class="section" id="consultando-ceps">
 <h2>Consultando CEPs<a class="headerlink" href="#consultando-ceps" title="Link permanente para este título">¶</a></h2>
-<p>A consulta de CEP é realizada através da função</p>
+<p>A consulta de CEP é realizada através da função <cite>consultar_cep</cite>.</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
 
 <span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
@@ -65,7 +65,7 @@ tornar a sua utilização o mais simples possível.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cep&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>O conteúdo de <cite>endereco</cite> é um <cite>dict</cite> contendo as seguintes valores:</p>
+<p>A variavel <cite>endereco</cite> recebe um <cite>dict</cite> contendo as seguintes valores:</p>
 <ul class="simple">
 <li><strong>end</strong>: corresponde ao logradouro do endereço do CEP</li>
 <li><strong>bairro</strong>: bairro referente ao CEP pesquisado</li>
@@ -75,7 +75,7 @@ tornar a sua utilização o mais simples possível.</p>
 <li><strong>uf</strong>: a sigla do estado ao qual o CEP representa</li>
 <li><strong>cep</strong>: o CEP que foi consultado</li>
 </ul>
-<p>O comando tambem aceita CEPs contendo pontos e/ou hiphens. Como por exemplo:</p>
+<p>O comando tambem aceita CEP contendo pontos e/ou hífen. Como por exemplo:</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
 
 <span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;37.503-130&#39;</span><span class="p">)</span>
@@ -183,38 +183,11 @@ simplesmente os remove. É utilizada internamente pelo comando <cite>consultar_c
 
 <h3>Navegação</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalação</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#versao-estavel">Versão estável</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#a-partir-do-codigo-fonte">A partir do código fonte</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilização</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#consultando-ceps">Consultando CEPs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#validando-ceps">Validando CEPs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#formatando-ceps">Formatando CEPs</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribuindo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html#tipos-de-contribuicoes">Tipos de Contribuições</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html#comecando-a-contribuir">Começando a contribuir!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html#instrucoes-de-solicitacao-de-pull-request">Instruções de Solicitação de Pull Request</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="authors.html">Créditos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="authors.html#contribuidores">Contribuidores</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="history.html">Histórico</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="history.html#id1">2.0.0 (2017-06-05)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="history.html#id2">1.1.7 (2017-05-09)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="history.html#id3">1.1.6 (2017-05-08)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="history.html#id4">1.1.1 (2017-02-08)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="history.html#id5">1.0.1 (2016-08-03)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="history.html#id6">1.0.0 (2016-07-31)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="history.html#id7">0.0.2 (2016-05-09)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="history.html#id8">0.0.1 (2016-05-05)</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalação</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribuindo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Créditos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Histórico</a></li>
 </ul>
 
 <div class="relations">

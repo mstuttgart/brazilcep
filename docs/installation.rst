@@ -30,7 +30,7 @@ Ou baixar o `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/mstuttgart/pycep-correios/tarball/master
+    $ curl -OL https://github.com/mstuttgart/pycep-correios/tarball/master
 
 Uma vez que você tenha uma cópia do código fonte, você pode instalá-lo com:
 
