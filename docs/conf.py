@@ -122,6 +122,7 @@ html_theme_options = {
     'github_user': 'mstuttgart',
     'github_repo': 'pycep-correios',
     'github_button': True,
+    'github_type': 'star',
     'github_banner': True,
     'travis_button': True,
     'sidebar_collapse': False,
