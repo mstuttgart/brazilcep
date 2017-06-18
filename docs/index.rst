@@ -1,6 +1,15 @@
 Bem vindo a PyCEPCorreios!
 ==========================
 
+.. image:: https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square
+    :target: https://pypi.python.org/pypi/pycep-correios
+
+.. image:: https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square
+    :target: https://pypi.python.org/pypi/pycep-correios
+
+.. image:: https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square
+    :target: https://github.com/mstuttgart/pycep-correios/blob/develop/LICENSE
+
 API para consulta de CEP diretamente do *webservice* dos Correios.
 
 A PyCEPCorreios possui as seguintes funcionalidades:
