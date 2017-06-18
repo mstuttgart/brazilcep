@@ -1,10 +1,9 @@
-Bem vindo PyCEPCorreios!
+Bem vindo a PyCEPCorreios!
 ========================
 
 API para consulta de CEP diretamente do *webservice* dos Correios.
 
-A PyCEPCorreios possui as seguintes funcionalidades para ajudar o desenvolvedor
-a trabalhar com consultas de CEPs.
+A PyCEPCorreios possui as seguintes funcionalidades:
 
 * Consulta de dados do endereço de um CEP
 * Formatacao de CEP
@@ -16,9 +15,6 @@ Veja os exemplos a seguir:
 .. code-block:: python
 
     >>> import pycep_correios
-
-    >>> pycep_correios.validar_cep('37503130')
-    True
 
     >>> endereco = pycep_correios.consultar_cep('37503130')
     >>> print(endereco['end'])
