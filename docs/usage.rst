@@ -16,6 +16,14 @@ A consulta de CEP é realizada através da função
 
     endereco = pycep_correios.consultar_cep('37503130')
 
+    print(endereco['end'])
+    print(endereco['bairro'])
+    print(endereco['cidade'])
+    print(endereco['complemento'])
+    print(endereco['complemento2'])
+    print(endereco['uf'])
+    print(endereco['cep'])
+
 O conteúdo de `endereco` é um `dict` contendo as seguintes valores:
 
 * **end**: corresponde ao logradouro do endereço do CEP
@@ -25,20 +33,6 @@ O conteúdo de `endereco` é um `dict` contendo as seguintes valores:
 * **complemento2**: semelhante ao `complemento`, pode indicar, por exemplo, o intervalo de números de residências ao qual o CEP pertence.
 * **uf**: a sigla do estado ao qual o CEP representa
 * **cep**: o CEP que foi consultado
-
-.. code:: python
-
-    from pycep_correios
-
-    endereco = pycep_correios.consultar_cep('37503130')
-
-    print(endereco['end'])
-    print(endereco['bairro'])
-    print(endereco['cidade'])
-    print(endereco['complemento'])
-    print(endereco['complemento2'])
-    print(endereco['uf'])
-    print(endereco['cep'])
 
 O comando tambem aceita CEPs contendo pontos e/ou hiphens. Como por exemplo:
 
