@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Bem vindo PyCEPCorreios! &#8212; PyCEP Correios 1.1.7 documentação</title>
+    <title>Bem vindo a PyCEPCorreios! &#8212; PyCEP Correios 1.1.7 documentação</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -44,11 +44,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="bem-vindo-pycepcorreios">
-<h1>Bem vindo PyCEPCorreios!<a class="headerlink" href="#bem-vindo-pycepcorreios" title="Link permanente para este título">¶</a></h1>
+  <div class="section" id="bem-vindo-a-pycepcorreios">
+<h1>Bem vindo a PyCEPCorreios!<a class="headerlink" href="#bem-vindo-a-pycepcorreios" title="Link permanente para este título">¶</a></h1>
 <p>API para consulta de CEP diretamente do <em>webservice</em> dos Correios.</p>
-<p>A PyCEPCorreios possui as seguintes funcionalidades para ajudar o desenvolvedor
-a trabalhar com consultas de CEPs.</p>
+<p>A PyCEPCorreios possui as seguintes funcionalidades:</p>
 <ul class="simple">
 <li>Consulta de dados do endereço de um CEP</li>
 <li>Formatacao de CEP</li>
@@ -56,19 +55,17 @@ a trabalhar com consultas de CEPs.</p>
 </ul>
 <p>Consultar o endereço de um CEP é muito simples com o PyCEPCorreios.
 Veja os exemplos a seguir:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycep_correios</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycep_correios</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pycep_correios</span><span class="o">.</span><span class="n">validar_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
-<span class="go">True</span>
+<span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;bairro&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cidade&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento2&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;uf&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cep&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;bairro&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cidade&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento2&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;uf&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cep&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">

@@ -4,7 +4,6 @@
 Instalação
 ==========
 
-
 Versão estável
 --------------
 
@@ -19,19 +18,19 @@ Este é o método recomendado para instalar PyCEPCorreios, desse modo sempre ser
 A partir do código fonte
 ------------------------
 
-O código fonte do PyCEPCorreios pode ser baixado em `Github repo`_.
+O código fonte do PyCEPCorreios pode ser baixado `aqui`_.
 
 Você pode realizar o *clone* do repositório público:
 
 .. code-block:: console
 
-    $ git clone git://github.com/mstuttgart/pycep_correios
+    $ git clone git://github.com/mstuttgart/pycep-correios
 
 Ou baixar o `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/mstuttgart/pycep_correios/tarball/master
+    $ curl  -OL https://github.com/mstuttgart/pycep-correios/tarball/master
 
 Uma vez que você tenha uma cópia do código fonte, você pode instalá-lo com:
 
@@ -40,5 +39,5 @@ Uma vez que você tenha uma cópia do código fonte, você pode instalá-lo com:
     $ python3 setup.py install
 
 
-.. _Github repo: https://github.com/mstuttgart/pycep_correios
-.. _tarball: https://github.com/mstuttgart/pycep_correios/tarball/master
+.. _aqui: https://github.com/mstuttgart/pycep-correios
+.. _tarball: https://github.com/mstuttgart/pycep-correios/tarball/master

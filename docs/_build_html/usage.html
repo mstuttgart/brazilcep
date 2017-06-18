@@ -55,6 +55,14 @@ tornar a sua utilização o mais simples possível.</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
 
 <span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;bairro&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cidade&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento2&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;uf&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cep&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>O conteúdo de <cite>endereco</cite> é um <cite>dict</cite> contendo as seguintes valores:</p>
@@ -67,19 +75,6 @@ tornar a sua utilização o mais simples possível.</p>
 <li><strong>uf</strong>: a sigla do estado ao qual o CEP representa</li>
 <li><strong>cep</strong>: o CEP que foi consultado</li>
 </ul>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
-
-<span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;37503130&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;bairro&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cidade&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;complemento2&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;uf&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">endereco</span><span class="p">[</span><span class="s1">&#39;cep&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
 <p>O comando tambem aceita CEPs contendo pontos e/ou hiphens. Como por exemplo:</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
 
