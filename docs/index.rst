@@ -1,5 +1,5 @@
 Bem vindo a PyCEPCorreios!
-========================
+==========================
 
 API para consulta de CEP diretamente do *webservice* dos Correios.
 
@@ -14,16 +14,17 @@ Veja os exemplos a seguir:
 
 .. code-block:: python
 
-    >>> import pycep_correios
+    import pycep_correios
 
-    >>> endereco = pycep_correios.consultar_cep('37503130')
-    >>> print(endereco['end'])
-    >>> print(endereco['bairro'])
-    >>> print(endereco['cidade'])
-    >>> print(endereco['complemento'])
-    >>> print(endereco['complemento2'])
-    >>> print(endereco['uf'])
-    >>> print(endereco['cep'])
+    endereco = pycep_correios.consultar_cep('37503130')
+
+    print(endereco['end'])
+    print(endereco['bairro'])
+    print(endereco['cidade'])
+    print(endereco['complemento'])
+    print(endereco['complemento2'])
+    print(endereco['uf'])
+    print(endereco['cep'])
 
 
 .. toctree::
