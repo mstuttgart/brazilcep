@@ -26,13 +26,13 @@ Se você está reportando um *bug*, por favor inclua:
 Corrigindo erros
 ~~~~~~~~~~~~~~~~
 
-Busque na lista de *issues* por aquelas com a *label* *Bug*.
+Busque na lista de *issues* por aquelas com a tag *Bug*.
 Qualquer *issue* marcada com "Bug" está aberto para quem quiser corrigi-la.
 
 Adicionando novos recursos
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Busque na lista de *issues* por aquelas com a *label* *Improvement* ou *New feature*.
+Busque na lista de *issues* por aquelas com a tag *Improvement* ou *New feature*.
 Qualquer *issue* marcada com esses *labels* esta aberta para quem quiser implementá-la.
 
 Melhorando a documentação
@@ -96,4 +96,4 @@ Antes de enviar um pedido de *Pull Request*, verifique se ele atende a essas dir
 
 1. O pedido de *Pull Request* deve incluir testes, quando for uma nova *feature*.
 2. Se o *Pull Request* adicionar funcionalidades, a documentação deve ser atualizada adicionado detalhes de uso da nova funcionalidade.
-3. O pedido de *Pull Request* deve funcionar para o Python 3.4 e 3.5, e para PyPy. Verificar https://travis-ci.org/mstuttgart/pycep-correios/pull_requests e certifique-se de que os testes passem para todas as versões do Python suportadas.
+3. O pedido de *Pull Request* deve funcionar para o Python 3.3, 3.4,3.5 e 3.6. Verificar https://travis-ci.org/mstuttgart/pycep-correios/pull_requests e certifique-se de que os testes passem para todas as versões do Python suportadas.
