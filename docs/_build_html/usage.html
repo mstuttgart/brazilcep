@@ -87,7 +87,7 @@ para o formato aceito pelos <em>webservice</em> dos correios.</p>
 <p>Quando consultamos um CEP com quantidade incorreto de digitos (diferente de 8)
 ou que não existe, a PyCEPCorreios dispara uma exceção <cite>CEPInvalido</cite>:</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
-<span class="kn">from</span> <span class="nn">pycep_correios.exceptions</span> <span class="k">import</span> <span class="n">CEPInvalido</span>
+<span class="kn">from</span> <span class="nn">pycep_correios.excecao</span> <span class="k">import</span> <span class="n">CEPInvalido</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;00000000&#39;</span><span class="p">)</span>
@@ -97,15 +97,6 @@ ou que não existe, a PyCEPCorreios dispara uma exceção <cite>CEPInvalido</cit
 </div>
 <p>Para outros tipos de exceção, como <em>timeout</em>, erro de conexão e etc, deve-se
 utilizar as exceções fornecidas pela biblioteca <em>requests</em></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
-<span class="kn">from</span> <span class="nn">pycep_correios.exceptions</span> <span class="k">import</span> <span class="n">CEPInvalido</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">endereco</span> <span class="o">=</span> <span class="n">pycep_correios</span><span class="o">.</span><span class="n">consultar_cep</span><span class="p">(</span><span class="s1">&#39;00000000&#39;</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">CEPInvalido</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="validando-ceps">
 <h2>Validando CEPs<a class="headerlink" href="#validando-ceps" title="Link permanente para este título">¶</a></h2>
@@ -183,11 +174,38 @@ simplesmente os remove. É utilizada internamente pelo comando <cite>consultar_c
 
 <h3>Navegação</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalação</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilização</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribuindo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authors.html">Créditos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="history.html">Histórico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#versao-estavel">Versão estável</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#a-partir-do-codigo-fonte">A partir do código fonte</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilização</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#consultando-ceps">Consultando CEPs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#validando-ceps">Validando CEPs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatando-ceps">Formatando CEPs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribuindo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#tipos-de-contribuicoes">Tipos de Contribuições</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#comecando-a-contribuir">Começando a contribuir!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#instrucoes-de-solicitacao-de-pull-request">Instruções de Solicitação de Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Créditos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#contribuidores">Contribuidores</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Histórico</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id1">2.0.0 (2017-06-05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id2">1.1.7 (2017-05-09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id3">1.1.6 (2017-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id4">1.1.1 (2017-02-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id5">1.0.1 (2016-08-03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id6">1.0.0 (2016-07-31)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id7">0.0.2 (2016-05-09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id8">0.0.1 (2016-05-05)</a></li>
+</ul>
+</li>
 </ul>
 
 <div class="relations">

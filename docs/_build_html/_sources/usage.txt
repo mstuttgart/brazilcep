@@ -52,7 +52,7 @@ ou que não existe, a PyCEPCorreios dispara uma exceção `CEPInvalido`:
 .. code:: python
 
     from pycep_correios
-    from pycep_correios.exceptions import CEPInvalido
+    from pycep_correios.excecao import CEPInvalido
 
     try:
         endereco = pycep_correios.consultar_cep('00000000')
@@ -61,16 +61,6 @@ ou que não existe, a PyCEPCorreios dispara uma exceção `CEPInvalido`:
 
 Para outros tipos de exceção, como *timeout*, erro de conexão e etc, deve-se
 utilizar as exceções fornecidas pela biblioteca *requests*
-
-.. code:: python
-
-    from pycep_correios
-    from pycep_correios.exceptions import CEPInvalido
-
-    try:
-        endereco = pycep_correios.consultar_cep('00000000')
-    except CEPInvalido as exc:
-        print(exc)
 
 Validando CEPs
 --------------
