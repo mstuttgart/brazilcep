@@ -127,7 +127,7 @@ html_theme_options = {
     'travis_button': True,
     'sidebar_collapse': False,
     'logo_name': True,
-    'description': 'Consulta de CEPs nos Correios',
+    'description': 'Consulta de CEP nos Correios',
     'sidebar_includehidden': True,
 }
 

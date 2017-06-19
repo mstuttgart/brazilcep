@@ -1,12 +1,12 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt_BR">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Utilização &#8212; PyCEP Correios 2.0.0 documentação</title>
+    <title>Utilização &#8212; documentação PyCEP Correios 2.0.0</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,7 +17,8 @@
         VERSION:     '2.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -27,7 +28,6 @@
     <link rel="shortcut icon" href="_static/logo.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Buscar" href="search.html" />
-    <link rel="top" title="PyCEP Correios 2.0.0 documentação" href="index.html" />
     <link rel="next" title="Contribuindo" href="contributing.html" />
     <link rel="prev" title="Instalação" href="installation.html" />
    
@@ -37,7 +37,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -49,8 +49,8 @@
 <h1>Utilização<a class="headerlink" href="#utilizacao" title="Link permanente para este título">¶</a></h1>
 <p>Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Ela for projetada de modo a
 tornar a sua utilização o mais simples possível.</p>
-<div class="section" id="consultando-ceps">
-<h2>Consultando CEPs<a class="headerlink" href="#consultando-ceps" title="Link permanente para este título">¶</a></h2>
+<div class="section" id="consultando-cep">
+<h2>Consultando CEP<a class="headerlink" href="#consultando-cep" title="Link permanente para este título">¶</a></h2>
 <p>A consulta de CEP é realizada através da função <cite>consultar_cep</cite>.</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycep_correios</span>
 
@@ -98,8 +98,8 @@ ou que não existe, a PyCEPCorreios dispara uma exceção <cite>CEPInvalido</cit
 <p>Para outros tipos de exceção, como <em>timeout</em>, erro de conexão e etc, deve-se
 utilizar as exceções fornecidas pela biblioteca <em>requests</em></p>
 </div>
-<div class="section" id="validando-ceps">
-<h2>Validando CEPs<a class="headerlink" href="#validando-ceps" title="Link permanente para este título">¶</a></h2>
+<div class="section" id="validando-cep">
+<h2>Validando CEP<a class="headerlink" href="#validando-cep" title="Link permanente para este título">¶</a></h2>
 <p>A validação de CEPs pode ser feita através do comando <cite>validar_cep</cite>. A função retorna
 <cite>True</cite> se a estrutura do CEP for válida e <cite>False</cite>, caso contrário.</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycep_correios</span>
@@ -112,11 +112,11 @@ utilizar as exceções fornecidas pela biblioteca <em>requests</em></p>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ops!! O CEP </span><span class="si">%s</span><span class="s1"> não é valido!!&#39;</span> <span class="o">%</span> <span class="n">meu_cep</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>A função também aceita CEPs contendo pontuação como, por exemplo, &#8220;37.503-003&#8221;.</p>
+<p>A função também aceita CEPs contendo pontuação como, por exemplo, «37.503-003».</p>
 </div>
-<div class="section" id="formatando-ceps">
-<h2>Formatando CEPs<a class="headerlink" href="#formatando-ceps" title="Link permanente para este título">¶</a></h2>
-<p>A funcao <cite>formatar_cep</cite> recebe uma string contendo o CEP, com pontos e hiphens e
+<div class="section" id="formatando-cep">
+<h2>Formatando CEP<a class="headerlink" href="#formatando-cep" title="Link permanente para este título">¶</a></h2>
+<p>A funcao <cite>formatar_cep</cite> recebe uma string contendo o CEP, com pontos e hífens e
 simplesmente os remove. É utilizada internamente pelo comando <cite>consultar_cep</cite>.</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycep_correios</span>
 
@@ -146,7 +146,7 @@ simplesmente os remove. É utilizada internamente pelo comando <cite>consultar_c
 
 
 
-<p class="blurb">Consulta de CEPs nos Correios</p>
+<p class="blurb">Consulta de CEP nos Correios</p>
 
 
 
@@ -180,9 +180,9 @@ simplesmente os remove. É utilizada internamente pelo comando <cite>consultar_c
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Utilização</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#consultando-ceps">Consultando CEPs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#validando-ceps">Validando CEPs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#formatando-ceps">Formatando CEPs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#consultando-cep">Consultando CEP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#validando-cep">Validando CEP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatando-cep">Formatando CEP</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribuindo</a><ul>
@@ -235,11 +235,11 @@ simplesmente os remove. É utilizada internamente pelo comando <cite>consultar_c
       &copy;2017, Michell Stuttgart.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="_sources/usage.txt"
+      <a href="_sources/usage.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
