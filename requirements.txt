@@ -1,6 +1,6 @@
-flake8
-tox
-coveralls
-Sphinx==1.4.8
-requests==2.13.0
+flake8==3.3.0
+tox==2.7.0
+coveralls==1.1
+Sphinx==1.6.2
+requests==2.18.1
 Jinja2==2.9.6
