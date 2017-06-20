@@ -79,7 +79,7 @@ A validação de CEPs pode ser feita através do comando `validar_cep`. A funç�
     else:
         print('Ops!! O CEP %s não é valido!!' % meu_cep)
 
-A função também aceita CEPs contendo pontuação como, por exemplo, "37.503-003".
+A função também aceita CEPs contendo pontuação como, por exemplo, `37.503-003`.
 
 Formatando CEP
 --------------
