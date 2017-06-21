@@ -39,4 +39,4 @@ deploy:
   on:
     tags: true
     repo: mstuttgart/pycep-correios
-    condition: $TOXENV == py35
+    condition: ${TOX_ENV} == pypi
