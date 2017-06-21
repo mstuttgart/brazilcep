@@ -13,7 +13,7 @@ Para instalar PyCEPCorreios, execute este comando no seu terminal:
 
     $ pip3 install pycep_correios
 
-Este é o método recomendado para instalar PyCEPCorreios, desse modo sempre será instalado a versão mais recente.
+Este é o método recomendado para instalar a PyCEPCorreios. Desse modo sempre será instalado a versão mais recente.
 
 A partir do código fonte
 ------------------------

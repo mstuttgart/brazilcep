@@ -4,8 +4,7 @@
 Contribuindo
 ============
 
-Contribuições são bem-vindas e muito apreciadas! Cada
-ajuda mesmo que um pouco, e o crédito sempre será atribuído.
+Contribuições são bem-vindas e muito apreciadas!
 
 Você pode contribuir de várias maneiras:
 
@@ -27,13 +26,13 @@ Corrigindo erros
 ~~~~~~~~~~~~~~~~
 
 Busque na lista de *issues* por aquelas com a tag *Bug*.
-Qualquer *issue* marcada com "Bug" está aberto para quem quiser corrigi-la.
+Qualquer *issue* marcada com "Bug" está aberta para quem quiser corrigí-la.
 
 Adicionando novos recursos
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Busque na lista de *issues* por aquelas com a tag *Improvement* ou *New feature*.
-Qualquer *issue* marcada com esses *labels* esta aberta para quem quiser implementá-la.
+Qualquer *issue* marcada com esses *tags* está aberta para quem quiser implementá-la.
 
 Melhorando a documentação
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,14 +40,14 @@ Melhorando a documentação
 A documentação da PyCEPCorreios sempre pode ser melhorada, seja como parte do
 da documentação oficial do PyCEPCorreios, em docstrings, ou mesmo na web em postagens de blog,
 artigos e etc. Então caso você tenha escrito alguma postagem sobre a PyCEPCorreios, por favor,
-me avise para que a mesma seja incluída como referência.
+me avise para que a mesma seja incluída aqui como referência.
 
 Enviar Comentários
 ~~~~~~~~~~~~~~~~~~
 
-A melhor maneira de enviar comentários é apresentar um problema em https://github.com/mstuttgart/pycep-correios/issues.
+A melhor maneira de enviar comentários é abrir uma *issue* em https://github.com/mstuttgart/pycep-correios/issues.
 
-Se você está propondo um recurso:
+Se você está propondo um novo recurso para PyCEPCorreios, por favor siga os seguintes passos:
 
 * Explique em detalhes como isso funcionaria.
 * Mantenha o escopo o mais simples possível, para facilitar a implementação.
@@ -76,18 +75,18 @@ Pronto para contribuir? Veja como configurar `pycep_correios` para desenvolvimen
 
    Agora você pode fazer suas mudanças localmente.
 
-5. Quando terminar de fazer alterações, verifique se suas alterações passam *flake8* e nos testes, incluindo testar outras versões do Python com tox::
+5. Quando terminar de fazer alterações, verifique se suas alterações passam no *flake8* e nos testes::
 
     $ flake8 pycep_correios tests
     $ python setup.py test
 
-6. Confirme as suas alterações e envie suas alterações para o GitHub::
+6. Confirme as suas alterações e as envie para o GitHub::
 
     $ git add .
     $ git commit -m "Descricao detalhada das sua alteracoes."
     $ git push origin nome-da-sua-branch
 
-7. Envie um *Pull Request* através do site GitHub.
+7. Envie um *Pull Request* para o repositório oficial da PyCEPCorreios no GitHub.
 
 Instruções de Solicitação de Pull Request
 -----------------------------------------
