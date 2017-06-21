@@ -1,33 +1,42 @@
+# Config file for automatic testing at travis-ci.org
+# This file will be regenerated if you run travis_pypi_setup.py
+
 language: python
 
-python:
-- 3.4
-- 3.5
+matrix:
+    include:
+      - python: 3.3
+        env: TOX_ENV=py33
+      - python: 3.4
+        env: TOX_ENV=py34
+      - python: 3.5
+        env: TOX_ENV=py35
+      - python: 3.6
+        env: TOX_ENV=py36
+      - python: 3.5
+        env: TOX_ENV=flake8
+      - python: 3.5
+        env: TOX_ENV=pypi
 
+# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
-- pip install -r requirements.txt
+  - pip install tox
 
-before_script:
-- flake8 pycep_correios
-- flake8 test
-
-script:
-- coverage run --source=pycep_correios setup.py test
-- python setup.py install
+# command to run tests, e.g. python setup.py test
+script: tox -e ${TOX_ENV}
 
 after_success:
-- coveralls
+  - coveralls
 
+# After you create the Github repo and add it to Travis, run the
+# travis_pypi_setup.py script to finish PyPI deployment setup
 deploy:
   provider: pypi
+  distributions: sdist bdist_wheel
   user: mstuttgart
   password:
     secure: HobE5ROuEvL6yUzb5NLvu01CAfo8oKgLZHJlP57pV8U1n1IATAd8zsX5CAb4x7GyGUwD4T1ZyK7HfgO0CDcgyWiP0V/sDRaX8Kjwo3pudhTMBDPlkhrr+/YqThD4ZMv4zc+2mLC8/eIX/MmvPcA+V4jCATwOwMzsOkVXq8tLHrBe1MjSc5F8IXtk2HfS0OCRnEpzJYjccE1lTItVP+i8QU42ggIH97sJxg4gmq3LArjozLuAdZ48EyB2ZKssZ00M1Kz01H4XeKvNonxd3aZlrcN33pcAHAy/be6zgA+3GiGGS4WtiecGKJGu4QXYPL5f9aKu/eI+1FmdB54+tYJmRjYn3HEJJYmrfcmKioavzITjrDenTJvzZpcRDeptj9EtlZ7d0Yhrh2QCPledVHeKetq+mrvfn0Kal/cWSah3CdcwOKs20hei/4eJ6SRb5+6DWOfg34WtLCaMkpdpD5C/ckdIvSiwR+tu+z9Me76LALWCylNdqTmqdoDpD0Z/bkZJSxZzNhsVnbXbHm1aQhA9lqDqGDTQ+5MYjc6UMtPbU6QewaXeBMpafKW+NFFf4MjH6et/s84QylcQoRM5gbGRSa+PnbtPO1RP7YF8TsJVWxEEmKeDv2j1zRg+yMNvrK0pvclQYZhV+u0ZtQhC0tNYNREZPwDJWH69sltbXQQwpOk=
   on:
     tags: true
-    distributions: sdist bdist_wheel
     repo: mstuttgart/pycep-correios
-    python:
-      - 3.4
-      - 3.5
-  skip_upload_docs: false
+    condition: $TOXENV == py35

@@ -1,12 +1,24 @@
 # -*- coding: utf-8 -*-
 
-__title__ = 'PyCEP Correios'
-__version__ = '1.1.7'
-__author__ = 'Michell Stuttgart Faria'
-__maintainer__ = 'Michell Stuttgart Faria'
-__license__ = 'MIT'
-__copyright__ = 'Copyright 2015-2017 Michell Stuttgart Faria'
-__status__ = 'Production'
+from .__version__ import (__title__,
+                          __description__,
+                          __version__,
+                          __author__,
+                          __author_email__,
+                          __maintainer__,
+                          __maintainer_email__,
+                          __url__,
+                          __download_url__,
+                          __copyright__,
+                          __license__)
 
-# Version synonym
-VERSION = __version__
+from .cliente import consultar_cep, formatar_cep, validar_cep
+from .excecoes import CEPInvalido
+
+__all__ = [
+    'consultar_cep',
+    'formatar_cep',
+    'validar_cep',
+    'CEPInvalido',
+    'CEPInvalido',
+]
