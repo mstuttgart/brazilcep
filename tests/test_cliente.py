@@ -1,14 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""
-test_pycep_correios
-----------------------------------
-
-Tests for `pycep_correios` module.
-"""
-
-import requests
 from unittest import mock, TestCase
 from jinja2 import Environment, PackageLoader
 
@@ -45,7 +37,7 @@ class TestCorreios(TestCase):
     @mock.patch('requests.post')
     def test_consultar_cep(self, mock_api_call):
 
-        # Here, we made request that will be successufully
+        # Criamos uma requisicao que sera bem sucedida
         param = {
             'text': self.response_xml,
             'ok': True,
@@ -56,7 +48,7 @@ class TestCorreios(TestCase):
 
         self.assertDictEqual(consultar_cep('70002900'), self.expected_address)
 
-        # Here, we made errors requests
+        # Aqui, construímos uma requisição que retornará erro
         param = {
             'text': self.response_xml_error,
             'ok': False,

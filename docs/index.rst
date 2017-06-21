@@ -46,3 +46,6 @@ Veja o exemplo a seguir:
     contributing
     authors
     history
+
+Encontrou algum erro? Tem alguma sugestão para melhorar a PyCEPCorreios? Deixe-me saber.
+Contribuições são muito bem vindas!

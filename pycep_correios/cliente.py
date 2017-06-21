@@ -12,9 +12,8 @@ URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/' \
 def consultar_cep(cep: str) -> dict:
     """Retorna o endereço correspondente ao número de CEP informado.
 
-        :param cep: CEP a ser consultado.
-        :returns: Dict com os dados do endereço do CEP consultado.
-
+    :param cep: CEP a ser consultado.
+    :returns: Dict com os dados do endereço do CEP consultado.
     """
 
     xml = monta_requisicao(formatar_cep(cep))

@@ -2,11 +2,12 @@
 Histórico
 =========
 
-2.0.0 (2017-06-05)
+2.0.0 (2017-06-20)
 ------------------
 
 * Atualização do código da PyCEPCorreios, deixando-a mais facil de ser utilizada
 * Remoção das exceções antigas, deixando apenas a Exceção padrão da lib
+* Remoção da classe PyCEPCorreios
 * Alteração dos *imports* da lib para facilitar seu uso e diminuir tamanho dos *imports*
 * Adicionado documentação com Sphinx
 * Adicionado testes com TOX
