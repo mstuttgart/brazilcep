@@ -55,7 +55,7 @@ source_encoding = 'utf-8-sig'
 master_doc = 'index'
 
 # General information about the project.
-project = u'PyCEP Correios'
+project = u'PyCEPCorreios'
 copyright = u"2017, Michell Stuttgart"
 
 # The version info for the project you're documenting, acts as replacement
@@ -129,6 +129,7 @@ html_theme_options = {
     'logo_name': True,
     'description': 'Consulta de CEP nos Correios',
     'sidebar_includehidden': True,
+    'extra_nav_links': {'pycep-correios @! PyPi': 'https://pypi.python.org/pypi/pycep-correios'}
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
