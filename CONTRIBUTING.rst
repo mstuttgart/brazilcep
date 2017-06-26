@@ -8,7 +8,7 @@ Contribuições são bem-vindas e muito apreciadas!
 
 Você pode contribuir de várias maneiras:
 
-Tipos de Contribuições
+Tipos de contribuições
 ----------------------
 
 Reportando erros
@@ -88,10 +88,10 @@ Pronto para contribuir? Veja como configurar `pycep_correios` para desenvolvimen
 
 7. Envie um *Pull Request* para o repositório oficial da PyCEPCorreios no GitHub.
 
-Instruções de Solicitação de Pull Request
------------------------------------------
+Criando um Pull Request
+-----------------------
 
-Antes de enviar um pedido de *Pull Request*, verifique se ele atende a essas diretrizes:
+Após enviar um pedido de *Pull Request*, verifique se ele atende a essas diretrizes:
 
 1. O pedido de *Pull Request* deve incluir testes, quando for uma nova *feature*.
 2. Se o *Pull Request* adicionar funcionalidades, a documentação deve ser atualizada adicionado detalhes de uso da nova funcionalidade.
