@@ -24,22 +24,21 @@ PyCEPCorreios
 .. image:: https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square
     :target: https://github.com/mstuttgart/pycep-correios/blob/develop/LICENSE
 
-.. image:: https://readthedocs.org/projects/pycep-correios/badge/?style=flat-square
-    :target: http://pycep-correios.readthedocs.io/pt/latest/?badge=latest
-    :alt: Documentation Status
-
 API para consulta de CEP diretamente do *webservice* dos Correios.
-
-
-* Free software: MIT license
-* Documentação: https://pycep-correios.readthedocs.io.
-
 
 Features
 --------
 * Consulta de dados do endereço de um CEP
 * Formatacao de CEP
 * Validação de estrutura do CEP
+
+Documentação
+------------
+
+Para mais detalhes sobre a PyCEPCorreios, por gentileza, consulte a documentação oficial:
+
+* Documentação online: https://pycep-correios.readthedocs.io.
+* Documentação PDF: https://media.readthedocs.org/pdf/pycep-correios/latest/pycep-correios.pdf
 
 Instalação
 ----------
