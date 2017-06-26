@@ -1,8 +1,5 @@
-pycep\_correios package
-=======================
-
-Submodules
-----------
+Documentação do Código
+======================
 
 pycep\_correios\.cliente module
 -------------------------------
@@ -24,15 +21,6 @@ pycep\_correios\.parser module
 ------------------------------
 
 .. automodule:: pycep_correios.parser
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: pycep_correios
     :members:
     :undoc-members:
     :show-inheritance:
