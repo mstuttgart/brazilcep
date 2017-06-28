@@ -11,13 +11,13 @@ version_path = os.path.join(os.path.abspath(os.path.dirname(__file__)),
                             '__version__.py')
 
 about = {}
-with open(version_path, 'r', 'utf-8') as f:
+with open(version_path, 'r') as f:
     exec(f.read(), about)
 
-with open('README.rst', 'r', 'utf-8') as readme_file:
+with open('README.rst', 'r') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.rst', 'r', 'utf-8') as history_file:
+with open('HISTORY.rst', 'r') as history_file:
     history = history_file.read()
 
 requirements = [
@@ -28,6 +28,7 @@ requirements = [
 test_requirements = [
     'coveralls == 1.1',
     'flake8 == 3.3.0',
+    'mock==2.0.0',
 ]
 
 setup(
@@ -56,6 +57,7 @@ setup(
         'Intended Audience :: Developers',
         'Natural Language :: Portuguese',
         'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
