@@ -26,7 +26,7 @@ Corrigindo erros
 ~~~~~~~~~~~~~~~~
 
 Busque na lista de *issues* por aquelas com a tag *Bug*.
-Qualquer *issue* marcada com "Bug" está aberta para quem quiser corrigí-la.
+Qualquer *issue* marcada com "Bug" está aberta para quem quiser corrigi-la.
 
 Adicionando novos recursos
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,7 +38,7 @@ Melhorando a documentação
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A documentação da PyCEPCorreios sempre pode ser melhorada, seja como parte do
-da documentação oficial do PyCEPCorreios, em docstrings, ou mesmo na web em postagens de blog,
+da documentação oficial do PyCEPCorreios, em *docstrings*, ou mesmo na web em postagens de blog,
 artigos e etc. Então caso você tenha escrito alguma postagem sobre a PyCEPCorreios, por favor,
 me avise para que a mesma seja incluída aqui como referência.
 
@@ -66,8 +66,8 @@ Pronto para contribuir? Veja como configurar `pycep_correios` para desenvolvimen
 3. Instale sua cópia local em um *virtualenv*. Supondo que você tenha instalado o *virtualenv*, é assim que você configura a seu *fork* para o desenvolvimento local::
 
     $ cd pycep-correios
-    $ virtualenv -p python3 env
-    $ pip3 install -r requirements.txt
+    $ virtualenv env
+    $ pip install -r requirements.txt
 
 4. Crie uma *branch* para desenvolvimento::
 
@@ -95,4 +95,4 @@ Após enviar um pedido de *Pull Request*, verifique se ele atende a essas diretr
 
 1. O pedido de *Pull Request* deve incluir testes, quando for uma nova *feature*.
 2. Se o *Pull Request* adicionar funcionalidades, a documentação deve ser atualizada adicionado detalhes de uso da nova funcionalidade.
-3. O pedido de *Pull Request* deve funcionar para o Python 3.3, 3.4, 3.5 e 3.6. Verificar https://travis-ci.org/mstuttgart/pycep-correios/pull_requests e certifique-se de que os testes passem para todas as versões do Python suportadas.
+3. O pedido de *Pull Request* deve funcionar para o Python 2.7+ e 3.3+. Verificar https://travis-ci.org/mstuttgart/pycep-correios/pull_requests e certifique-se de que os testes passem para todas as versões do Python suportadas.

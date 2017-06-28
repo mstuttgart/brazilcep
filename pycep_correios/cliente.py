@@ -9,7 +9,7 @@ URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/' \
       'AtendeCliente?wsdl'
 
 
-def consultar_cep(cep: str) -> dict:
+def consultar_cep(cep):
     """Retorna o endereço correspondente ao número de CEP informado.
 
     :param cep: CEP a ser consultado.
@@ -32,7 +32,7 @@ def consultar_cep(cep: str) -> dict:
             raise CEPInvalido(msg)
 
 
-def formatar_cep(cep: str) -> str:
+def formatar_cep(cep):
     """Formata CEP, removendo pontuação
 
     :param cep: CEP a ser formatado
@@ -43,7 +43,7 @@ def formatar_cep(cep: str) -> str:
     return cep
 
 
-def validar_cep(cep: str) -> bool:
+def validar_cep(cep):
     """Verifica se o CEP informado possui 8 digitos e é constituído apenas de
     números
 
