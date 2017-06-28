@@ -79,7 +79,6 @@ class TestCorreios(TestCase):
         template = self.env.get_template('consultacep.xml')
         xml = template.render(cep='37503005')
         xml = (xml.replace('\n', '')).replace('\t', '')
-        xml = xml
 
         self.assertEqual(xml, parser.monta_requisicao(cep='37503005'))
 
