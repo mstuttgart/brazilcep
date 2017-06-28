@@ -20,5 +20,4 @@ __all__ = [
     'formatar_cep',
     'validar_cep',
     'CEPInvalido',
-    'CEPInvalido',
 ]

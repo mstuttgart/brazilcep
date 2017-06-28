@@ -4,7 +4,7 @@ import xml.etree.cElementTree as Et
 from jinja2 import Environment, PackageLoader
 
 
-def parse_resposta(xml: str) -> dict:
+def parse_resposta(xml):
     """Extrai os endereço do xml retornado pelo webservice
 
     :param xml: xml retornado pelo webservice
@@ -27,7 +27,7 @@ def parse_resposta(xml: str) -> dict:
     return endereco
 
 
-def parse_resposta_com_erro(xml: str) -> str:
+def parse_resposta_com_erro(xml):
     """Realiza a leitura do XML retornado pelo servidor e extrai a mensagem de
     erro
 
@@ -37,7 +37,7 @@ def parse_resposta_com_erro(xml: str) -> str:
     return Et.fromstring(xml).findtext('.//faultstring')
 
 
-def monta_requisicao(cep: str) -> str:
+def monta_requisicao(cep):
     """Gera o XML utilizado para realizar a requisição ao webservice
 
     :param cep: CEP a ser consultado
