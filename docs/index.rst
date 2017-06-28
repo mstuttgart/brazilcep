@@ -10,8 +10,8 @@ Bem vindo a PyCEPCorreios!
 .. image:: https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square
     :target: https://github.com/mstuttgart/pycep-correios/blob/develop/LICENSE
 
-API para consulta de CEP diretamente no *webservice* dos Correios. O *webservice* utilizado é
-do serviço SIGEPWeb, fornecido pelos correios.
+A PyCEPCorreios é uma API para consulta de CEP diretamente no *webservice* dos Correios.
+O *webservice* em questão utilizado para cunsulta de CEP é o *webservice* do serviço SIGEPWeb, fornecido pelos correios.
 
 A PyCEPCorreios possui as seguintes funcionalidades:
 
