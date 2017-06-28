@@ -13,7 +13,8 @@ PyCEPCorreios
     :target: https://landscape.io/github/mstuttgart/pycep-correios/develop
 
 .. image:: https://img.shields.io/requires/github/mstuttgart/pycep-correios.svg?style=flat-square
-    :target: https://github.com/mstuttgart/pycep-correios
+    :target: https://requires.io/github/mstuttgart/pycep-correios/requirements/?branch=develop
+    :alt: Requirements Status
 
 .. image:: https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square
     :target: https://pypi.python.org/pypi/pycep-correios
@@ -46,9 +47,9 @@ O PyCEP Correios pode ser facilmente instalado com o comando a seguir:
 
 .. code:: bash
 
-    pip3 install pycep-correios
+    pip install pycep-correios
 
-Atualmente, a PyCEPCorreios possui suporte apenas para Python 3+.
+Atualmente, a PyCEPCorreios possui suporte para Python 2.7+ e 3.3+.
 
 Como usar
 ---------
