@@ -61,17 +61,18 @@ Veja os exemplos a seguir:
 
     >>> import pycep_correios
 
-    >>> pycep_correios.validar_cep('37503130')
-    True
-
     >>> endereco = pycep_correios.consultar_cep('37503130')
-    >>> print(endereco['end'])
-    >>> print(endereco['bairro'])
-    >>> print(endereco['cidade'])
-    >>> print(endereco['complemento'])
-    >>> print(endereco['complemento2'])
-    >>> print(endereco['uf'])
-    >>> print(endereco['cep'])
+    >>> print(endereco)
+    {
+        'bairro': 'Santo Antônio',
+        'cep': '37503130',
+        'cidade': 'Itajubá',
+        'end': 'Rua Geraldino Campista',
+        'id': '0',
+        'uf': 'MG',
+        'complemento': '',
+        'complemento2': '- até 214/215',
+    }
 
 Aviso de *bugs*, dúvidas e sugestões
 ------------------------------------
