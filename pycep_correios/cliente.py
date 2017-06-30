@@ -41,6 +41,8 @@ def formatar_cep(cep):
     :param cep: CEP a ser formatado
     :returns: string contendo o CEP formatado
     """
+    if not isinstance(cep, six.string_types) or not cep:
+        raise ValueError('cep deve ser uma string nao vazia')
     return CARACTERES_NUMERICOS.sub('', cep)
 
 
