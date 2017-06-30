@@ -112,3 +112,14 @@ simplesmente os remove. É utilizada internamente pelo comando `consultar_cep`.
 
     cep_formatado = pycep_correios.formatar_cep(meu_cep):
     print('O CEP %s esta formatado: %s' % (meu_cep, cep_formatado))
+
+Documentação
+------------
+
+Abaixo é possível consultar a documentação do código da PyCEPCorreios com mais
+detalhes.
+
+.. toctree::
+   :maxdepth: 4
+
+   pycep_correios

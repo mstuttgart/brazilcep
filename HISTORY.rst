@@ -2,6 +2,12 @@
 Histórico
 =========
 
+2.1.0 (2017-07-29)
+------------------
+
+* Adicionado suporte para Python 2.7+
+* Ajustes e correções na documentação
+
 2.0.0 (2017-06-20)
 ------------------
 

@@ -2,12 +2,16 @@
 Créditos
 ========
 
+Desenvolvedor
+-------------
+
 PyCEPCorreios foi desenvolvido originalmente por:
 
 * Michell Stuttgart <michellstut@gmail.com>
 
 Contribuidores
 --------------
+
 Agradecimentos aos seguintes contribuidores pelo esforço de fazer a PyCEPCorreios
 melhor:
 

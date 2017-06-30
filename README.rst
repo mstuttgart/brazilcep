@@ -13,7 +13,8 @@ PyCEPCorreios
     :target: https://landscape.io/github/mstuttgart/pycep-correios/develop
 
 .. image:: https://img.shields.io/requires/github/mstuttgart/pycep-correios.svg?style=flat-square
-    :target: https://github.com/mstuttgart/pycep-correios
+    :target: https://requires.io/github/mstuttgart/pycep-correios/requirements/?branch=develop
+    :alt: Requirements Status
 
 .. image:: https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square
     :target: https://pypi.python.org/pypi/pycep-correios
@@ -24,16 +25,7 @@ PyCEPCorreios
 .. image:: https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square
     :target: https://github.com/mstuttgart/pycep-correios/blob/develop/LICENSE
 
-.. image:: https://readthedocs.org/projects/pycep-correios/badge/?style=flat-square
-    :target: http://pycep-correios.readthedocs.io/pt/latest/?badge=latest
-    :alt: Documentation Status
-
 API para consulta de CEP diretamente do *webservice* dos Correios.
-
-
-* Free software: MIT license
-* Documentação: https://pycep-correios.readthedocs.io.
-
 
 Features
 --------
@@ -41,15 +33,23 @@ Features
 * Formatacao de CEP
 * Validação de estrutura do CEP
 
+Documentação
+------------
+
+Para mais detalhes sobre a PyCEPCorreios, por gentileza, consulte a documentação oficial:
+
+* Documentação online: https://pycep-correios.readthedocs.io.
+* Documentação PDF: https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf
+
 Instalação
 ----------
 O PyCEP Correios pode ser facilmente instalado com o comando a seguir:
 
 .. code:: bash
 
-    pip3 install pycep-correios
+    pip install pycep-correios
 
-Atualmente, a PyCEPCorreios possui suporte apenas para Python 3+.
+Atualmente, a PyCEPCorreios possui suporte para Python 2.7+ e 3.3+.
 
 Como usar
 ---------
@@ -61,17 +61,18 @@ Veja os exemplos a seguir:
 
     >>> import pycep_correios
 
-    >>> pycep_correios.validar_cep('37503130')
-    True
-
     >>> endereco = pycep_correios.consultar_cep('37503130')
-    >>> print(endereco['end'])
-    >>> print(endereco['bairro'])
-    >>> print(endereco['cidade'])
-    >>> print(endereco['complemento'])
-    >>> print(endereco['complemento2'])
-    >>> print(endereco['uf'])
-    >>> print(endereco['cep'])
+    >>> print(endereco)
+    {
+        'bairro': 'Santo Antônio',
+        'cep': '37503130',
+        'cidade': 'Itajubá',
+        'end': 'Rua Geraldino Campista',
+        'id': '0',
+        'uf': 'MG',
+        'complemento': '',
+        'complemento2': '- até 214/215',
+    }
 
 Aviso de *bugs*, dúvidas e sugestões
 ------------------------------------

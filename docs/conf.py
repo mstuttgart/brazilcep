@@ -55,7 +55,7 @@ source_encoding = 'utf-8-sig'
 master_doc = 'index'
 
 # General information about the project.
-project = u'PyCEP Correios'
+project = u'PyCEPCorreios'
 copyright = u"2017, Michell Stuttgart"
 
 # The version info for the project you're documenting, acts as replacement
@@ -129,6 +129,10 @@ html_theme_options = {
     'logo_name': True,
     'description': 'Consulta de CEP nos Correios',
     'sidebar_includehidden': True,
+    'extra_nav_links': {
+        'PyCEPCorreios @ PyPi': 'https://pypi.python.org/pypi/pycep-correios',
+        'PyCEPCorreios @ Github': 'https://github.com/mstuttgart/pycep-correios',
+    }
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -215,10 +219,10 @@ htmlhelp_basename = 'pycep_correiosdoc'
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
-    # 'papersize': 'letterpaper',
+    'papersize': 'a4paper',
 
     # The font size ('10pt', '11pt' or '12pt').
-    # 'pointsize': '10pt',
+    'pointsize': '10pt',
 
     # Additional stuff for the LaTeX preamble.
     # 'preamble': '',
@@ -229,13 +233,13 @@ latex_elements = {
 # [howto/manual]).
 latex_documents = [
     ('index', 'pycep_correios.tex',
-     u'PyCEPCorreios Documentation',
+     u'Documentação PyCEPCorreios',
      u'Michell Stuttgart', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at
 # the top of the title page.
-# latex_logo = None
+latex_logo = '_static/logo.jpg'
 
 # For "manual" documents, if this is true, then toplevel headings
 # are parts, not chapters.
@@ -260,7 +264,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'pycep_correios',
-     u'PyCEPCorreios Documentation',
+     u'Documentação PyCEPCorreios',
      [u'Michell Stuttgart'], 1)
 ]
 
@@ -275,11 +279,11 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('index', 'pycep_correios',
-     u'PyCEP Correios Documentation',
+     u'Documentação PyCEPCorreios',
      u'Michell Stuttgart',
      'pycep_correios',
-     'One line description of project.',
-     'Miscellaneous'),
+     'API para consulta de CEP diretamente do *webservice* dos Correios..',
+     'Tools'),
 ]
 
 # Documents to append as an appendix to all manuals.
