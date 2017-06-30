@@ -11,7 +11,7 @@ def parse_resposta(xml):
     :returns endereco: dict com os dados do endereço do CEP consultado
     """
 
-    end = Et.fromstring(xml).find('.//return')
+    end = Et.fromstring(xml.encode('utf8')).find('.//return')
 
     endereco = {
         'id': end.findtext('id'),
@@ -34,7 +34,7 @@ def parse_resposta_com_erro(xml):
     :param xml: XML retornado pelo webservice
     :returns: string contendo mensagem de erro
     """
-    return Et.fromstring(xml).findtext('.//faultstring')
+    return Et.fromstring(xml.encode('utf8')).findtext('.//faultstring')
 
 
 def monta_requisicao(cep):
