@@ -67,7 +67,11 @@ class TestCorreios(TestCase):
         self.assertRaises(CEPInvalido, consultar_cep, '00000000')
 
     def test_formatar_cep(self):
-        self.assertRaises(AttributeError, formatar_cep, 37503003)
+        self.assertRaises(ValueError, formatar_cep, 37503003)
+        self.assertRaises(ValueError, formatar_cep, '')
+        self.assertRaises(ValueError, formatar_cep, None)
+        self.assertRaises(ValueError, formatar_cep, False)
+        self.assertRaises(ValueError, formatar_cep, True)
         self.assertEqual(formatar_cep('37.503-003'), '37503003')
         self.assertEqual(formatar_cep('   37.503-003'), '37503003')
         self.assertEqual(formatar_cep('37 503-003'), '37503003')
