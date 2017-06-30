@@ -33,12 +33,12 @@ class TestCorreios(TestCase):
         template = self.env.get_template('resposta.xml')
         xml = template.render(**self.expected_address)
         self.response_xml = (xml.replace('\n', '')).replace('\t', '')
-        self.response_xml = self.response_xml.encode('utf8')
+        self.response_xml = self.response_xml
 
         template = self.env.get_template('resposta_error.xml')
         xml = template.render()
         self.response_xml_error = (xml.replace('\n', '')).replace('\t', '')
-        self.response_xml_error = self.response_xml_error.encode('utf8')
+        self.response_xml_error = self.response_xml_error
 
     @mock.patch('requests.post')
     def test_consultar_cep(self, mock_api_call):
