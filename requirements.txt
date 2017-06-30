@@ -5,3 +5,4 @@ Sphinx==1.6.2
 requests==2.18.1
 Jinja2==2.9.6
 mock==2.0.0
+twine
