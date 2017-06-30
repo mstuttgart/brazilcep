@@ -43,7 +43,7 @@ def formatar_cep(cep):
     :returns: string contendo o CEP formatado
     """
     if not isinstance(cep, six.string_types) or not cep:
-        raise ValueError('cep deve ser uma string nao vazia contendo somente numeros')
+        raise ValueError('cep deve ser uma string nao vazia contendo somente numeros')  # noqa: E501
     return CARACTERES_NUMERICOS.sub('', cep)
 
 
