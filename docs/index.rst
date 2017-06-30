@@ -24,17 +24,20 @@ Veja o exemplo a seguir:
 
 .. code-block:: python
 
-    import pycep_correios
+    >>> import pycep_correios
 
-    endereco = pycep_correios.consultar_cep('37503130')
-
-    print(endereco['end'])
-    print(endereco['bairro'])
-    print(endereco['cidade'])
-    print(endereco['complemento'])
-    print(endereco['complemento2'])
-    print(endereco['uf'])
-    print(endereco['cep'])
+    >>> endereco = pycep_correios.consultar_cep('37503130')
+    >>> print(endereco)
+    {
+        'bairro': 'Santo Antônio',
+        'cep': '37503130',
+        'cidade': 'Itajubá',
+        'end': 'Rua Geraldino Campista',
+        'id': '0',
+        'uf': 'MG',
+        'complemento': '',
+        'complemento2': '- até 214/215',
+    }
 
 
 .. toctree::
