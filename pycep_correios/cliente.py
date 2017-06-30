@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import re
 import requests
 
 from .excecoes import CEPInvalido
 from .parser import parse_resposta_com_erro, parse_resposta, monta_requisicao
+
+CARACTERES_NUMERICOS = re.compile(r'[^0-9]')
 
 URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/' \
       'AtendeCliente?wsdl'
@@ -33,14 +36,12 @@ def consultar_cep(cep):
 
 
 def formatar_cep(cep):
-    """Formata CEP, removendo pontuação
+    """Formata CEP, removendo qualquer caractere nao numerico
 
     :param cep: CEP a ser formatado
     :returns: string contendo o CEP formatado
     """
-    cep = cep.replace('-', '')
-    cep = cep.replace('.', '')
-    return cep
+    return CARACTERES_NUMERICOS.sub('', cep)
 
 
 def validar_cep(cep):
