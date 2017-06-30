@@ -84,9 +84,12 @@ class TestCorreios(TestCase):
         self.assertEqual(formatar_cep(u'37.503-003;'), '37503003')
 
     def test_validar_cep(self):
-        self.assertRaises(AttributeError, validar_cep, 37503003)
+        self.assertRaises(ValueError, validar_cep, 37503003)
+        self.assertRaises(ValueError, validar_cep, '')
         self.assertIs(validar_cep('37.503-003'), True)
         self.assertIs(validar_cep('37.503-00'), False)
+        self.assertIs(validar_cep('   37.503-003'), True)
+        self.assertIs(validar_cep('37.503&003saasd'), True)
 
     def test_monta_requisicao(self):
         template = self.env.get_template('consultacep.xml')
