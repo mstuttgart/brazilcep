@@ -2,7 +2,7 @@
 Créditos
 ========
 
-Desenvolvedor
+Autor
 -------------
 
 PyCEPCorreios foi desenvolvido originalmente por:
@@ -16,3 +16,4 @@ Agradecimentos aos seguintes contribuidores pelo esforço de fazer a PyCEPCorrei
 melhor:
 
 * `Aldo Soares <https://github.com/aldo774>`_
+* `Fábio C. Barrionuevo da Luz <https://github.com/luzfcb>`_
