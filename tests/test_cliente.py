@@ -67,13 +67,29 @@ class TestCorreios(TestCase):
         self.assertRaises(CEPInvalido, consultar_cep, '00000000')
 
     def test_formatar_cep(self):
-        self.assertRaises(AttributeError, formatar_cep, 37503003)
+        self.assertRaises(ValueError, formatar_cep, 37503003)
+        self.assertRaises(ValueError, formatar_cep, '')
+        self.assertRaises(ValueError, formatar_cep, None)
+        self.assertRaises(ValueError, formatar_cep, False)
+        self.assertRaises(ValueError, formatar_cep, True)
         self.assertEqual(formatar_cep('37.503-003'), '37503003')
+        self.assertEqual(formatar_cep('   37.503-003'), '37503003')
+        self.assertEqual(formatar_cep('37 503-003'), '37503003')
+        self.assertEqual(formatar_cep('37.503&003saasd'), '37503003')
+        self.assertEqual(formatar_cep('\n \r 37.503-003'), '37503003')
+        self.assertEqual(formatar_cep('\n \r 37.503-003'), '37503003')
+        # ponto e virgula
+        self.assertEqual(formatar_cep('37.503-003;'), '37503003')
+        # Unicode Greek Question Mark
+        self.assertEqual(formatar_cep(u'37.503-003;'), '37503003')
 
     def test_validar_cep(self):
-        self.assertRaises(AttributeError, validar_cep, 37503003)
+        self.assertRaises(ValueError, validar_cep, 37503003)
+        self.assertRaises(ValueError, validar_cep, '')
         self.assertIs(validar_cep('37.503-003'), True)
         self.assertIs(validar_cep('37.503-00'), False)
+        self.assertIs(validar_cep('   37.503-003'), True)
+        self.assertIs(validar_cep('37.503&003saasd'), True)
 
     def test_monta_requisicao(self):
         template = self.env.get_template('consultacep.xml')
