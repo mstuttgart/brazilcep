@@ -1,5 +1,6 @@
 # -*- encoding: utf8 -*-
 
+import six
 import xml.etree.cElementTree as Et
 from jinja2 import Environment, PackageLoader
 
@@ -11,10 +12,10 @@ def parse_resposta(xml):
     :returns endereco: dict com os dados do endereço do CEP consultado
     """
 
-    if isinstance(xml, bytes):
-        xml = xml.decode('utf8')
-    else:
+    if isinstance(xml, six.string_types):
         xml = xml.encode('utf8')
+    else:
+        xml = xml.decode('utf8')
 
     end = Et.fromstring(xml).find(u'.//return')
 
@@ -39,7 +40,7 @@ def parse_resposta_com_erro(xml):
     :param xml: XML retornado pelo webservice
     :returns: string contendo mensagem de erro
     """
-    if isinstance(xml, str):
+    if isinstance(xml, six.string_types):
         xml = xml.encode('utf8')
     else:
         xml = xml.decode('utf8')
