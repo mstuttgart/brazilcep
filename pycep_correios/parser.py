@@ -4,8 +4,8 @@ from __future__ import absolute_import, unicode_literals
 
 import xml.etree.cElementTree as Et
 
+import jinja2
 import six
-from jinja2 import Environment, PackageLoader
 
 
 def parse_resposta(xml):
@@ -57,7 +57,8 @@ def monta_requisicao(cep):
     :param cep: CEP a ser consultado
     :returns: string contendo o XML de consulta com CEP fornecido
     """
-    env = Environment(loader=PackageLoader('pycep_correios', 'templates'))
+    loader = jinja2.PackageLoader('pycep_correios', 'templates')
+    env = jinja2.Environment(loader=loader)
     template = env.get_template('consultacep.xml')
     xml = template.render(cep=cep)
     return (xml.replace('\n', '')).replace('\t', '')
