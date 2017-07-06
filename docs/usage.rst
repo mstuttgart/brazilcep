@@ -110,8 +110,11 @@ simplesmente os remove. É utilizada internamente pelo comando `consultar_cep`.
 
     meu_cep = '37.503-003'
 
-    cep_formatado = pycep_correios.formatar_cep(meu_cep):
-    print('O CEP %s esta formatado: %s' % (meu_cep, cep_formatado))
+    try:
+        cep_formatado = pycep_correios.formatar_cep(meu_cep)
+        print('O CEP %s esta formatado: %s' % (meu_cep, cep_formatado))
+    except ValueError as exc:
+        print('Erro ao formatar CEP: %s' % exc)
 
 Documentação
 ------------
