@@ -27,9 +27,9 @@ requirements = [
 ]
 
 test_requirements = [
-    'coveralls == 1.1',
-    'flake8 == 3.3.0',
-    'mock==2.0.0',
+    'coveralls >= 1.1',
+    'flake8 >= 3.3.0',
+    'mock >= 2.0.0',
 ]
 
 setup(
