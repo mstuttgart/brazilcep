@@ -44,6 +44,7 @@ def formatar_cep(cep):
 
     :param cep: CEP a ser formatado
     :returns: string contendo o CEP formatado
+    :raises ValueError: quando a string esta vazia ou não contem numeros
     """
     if not isinstance(cep, six.string_types) or not cep:
         raise ValueError('cep deve ser uma string nao vazia contendo somente numeros')  # noqa: E501
@@ -56,6 +57,7 @@ def validar_cep(cep):
 
     :param cep: CEP a ser validado
     :returns: True se o CEP informado é valido. Caso contrário, retorna False
+    :raises ValueError: quando a string esta vazia ou não contem numeros
     """
     cep = formatar_cep(cep)
     return cep.isdigit() and len(cep) == 8
