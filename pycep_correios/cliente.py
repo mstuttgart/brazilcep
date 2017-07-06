@@ -3,11 +3,12 @@
 from __future__ import absolute_import, unicode_literals
 
 import re
+
 import requests
 import six
 
 from .excecoes import CEPInvalido
-from .parser import parse_resposta_com_erro, parse_resposta, monta_requisicao
+from .parser import monta_requisicao, parse_resposta, parse_resposta_com_erro
 
 CARACTERES_NUMERICOS = re.compile(r'[^0-9]')
 
