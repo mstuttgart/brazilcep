@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+from unittest import TestCase
+
+from jinja2 import Environment, PackageLoader
+
+from pycep_correios import consultar_cep, formatar_cep, parser, validar_cep
+from pycep_correios.excecoes import CEPInvalido
+
 try:
     from unittest import mock
 except ImportError:
     import mock
-
-from unittest import TestCase
-from jinja2 import Environment, PackageLoader
-
-from pycep_correios import consultar_cep, formatar_cep, validar_cep
-from pycep_correios import parser
-from pycep_correios.excecoes import CEPInvalido
 
 
 class TestCorreios(TestCase):
@@ -34,12 +34,10 @@ class TestCorreios(TestCase):
         template = self.env.get_template('resposta.xml')
         xml = template.render(**self.expected_address)
         self.response_xml = (xml.replace('\n', '')).replace('\t', '')
-        # self.response_xml = self.response_xml
 
         template = self.env.get_template('resposta_error.xml')
         xml = template.render()
         self.response_xml_error = (xml.replace('\n', '')).replace('\t', '')
-        # self.response_xml_error = self.response_xml_error
 
     @mock.patch('requests.post')
     def test_consultar_cep(self, mock_api_call):
