@@ -20,7 +20,10 @@ def consultar_cep(cep):
     """Retorna o endereço correspondente ao número de CEP informado.
 
     :param cep: CEP a ser consultado.
-    :returns: Dict com os dados do endereço do CEP consultado.
+    :type cep: str
+    :return: Dados do endereço do CEP consultado.
+    :rtype: dict
+    :raises CEPInvalido: quando a cep é inexistente
     """
 
     xml = monta_requisicao(formatar_cep(cep))
@@ -43,7 +46,9 @@ def formatar_cep(cep):
     """Formata CEP, removendo qualquer caractere nao numerico
 
     :param cep: CEP a ser formatado
-    :returns: string contendo o CEP formatado
+    :type cep: str
+    :return: string contendo o CEP formatado
+    :rtype: str
     :raises ValueError: quando a string esta vazia ou não contem numeros
     """
     if not isinstance(cep, six.string_types) or not cep:
@@ -56,7 +61,9 @@ def validar_cep(cep):
     números
 
     :param cep: CEP a ser validado
-    :returns: True se o CEP informado é valido. Caso contrário, retorna False
+    :type cep: str
+    :return: True se o CEP informado é valido. Caso contrário, retorna False
+    :rtype: str
     :raises ValueError: quando a string esta vazia ou não contem numeros
     """
     cep = formatar_cep(cep)

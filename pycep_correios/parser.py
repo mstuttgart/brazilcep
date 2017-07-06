@@ -12,7 +12,9 @@ def parse_resposta(xml):
     """Extrai os endereço do xml retornado pelo webservice
 
     :param xml: xml retornado pelo webservice
-    :returns endereco: dict com os dados do endereço do CEP consultado
+    :type xml: str
+    :return: dados do endereço do CEP consultado
+    :rtype: dict
     """
 
     if isinstance(xml, six.string_types):
@@ -41,7 +43,9 @@ def parse_resposta_com_erro(xml):
     erro
 
     :param xml: XML retornado pelo webservice
-    :returns: string contendo mensagem de erro
+    :type xml: str
+    :return: string contendo mensagem de erro
+    :rtype: str
     """
     if isinstance(xml, six.string_types):
         xml = xml.encode('utf8')
@@ -55,7 +59,9 @@ def monta_requisicao(cep):
     """Gera o XML utilizado para realizar a requisição ao webservice
 
     :param cep: CEP a ser consultado
-    :returns: string contendo o XML de consulta com CEP fornecido
+    :type cep: str
+    :return: XML de consulta com CEP fornecido
+    :rtype: str
     """
     loader = jinja2.PackageLoader('pycep_correios', 'templates')
     env = jinja2.Environment(loader=loader)
