@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import, unicode_literals
 
 try:
     from unittest import mock
@@ -18,14 +19,14 @@ class TestCorreios(TestCase):
     def setUp(self):
 
         self.expected_address = {
-            'bairro': u'Santo Antônio',
-            'cep': u'37503130',
-            'cidade': u'Itajubá',
-            'end': u'Rua Geraldino Campista',
-            'id': u'0',
-            'uf': u'MG',
-            'complemento': u'',
-            'complemento2': u'- até 214/215',
+            'bairro': 'Santo Antônio',
+            'cep': '37503130',
+            'cidade': 'Itajubá',
+            'end': 'Rua Geraldino Campista',
+            'id': '0',
+            'uf': 'MG',
+            'complemento': '',
+            'complemento2': '- até 214/215',
         }
 
         self.env = Environment(loader=PackageLoader('tests', 'templates'))
@@ -33,12 +34,12 @@ class TestCorreios(TestCase):
         template = self.env.get_template('resposta.xml')
         xml = template.render(**self.expected_address)
         self.response_xml = (xml.replace('\n', '')).replace('\t', '')
-        self.response_xml = self.response_xml
+        # self.response_xml = self.response_xml
 
         template = self.env.get_template('resposta_error.xml')
         xml = template.render()
         self.response_xml_error = (xml.replace('\n', '')).replace('\t', '')
-        self.response_xml_error = self.response_xml_error
+        # self.response_xml_error = self.response_xml_error
 
     @mock.patch('requests.post')
     def test_consultar_cep(self, mock_api_call):

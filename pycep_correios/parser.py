@@ -1,7 +1,10 @@
 # -*- encoding: utf8 -*-
 
-import six
+from __future__ import absolute_import, unicode_literals
+
 import xml.etree.cElementTree as Et
+
+import six
 from jinja2 import Environment, PackageLoader
 
 
@@ -17,7 +20,7 @@ def parse_resposta(xml):
     else:
         xml = xml.decode('utf8')
 
-    end = Et.fromstring(xml).find(u'.//return')
+    end = Et.fromstring(xml).find('.//return')
 
     endereco = {
         'id': end.findtext('id'),
@@ -45,7 +48,7 @@ def parse_resposta_com_erro(xml):
     else:
         xml = xml.decode('utf8')
 
-    return Et.fromstring(xml).findtext(u'.//faultstring')
+    return Et.fromstring(xml).findtext('.//faultstring')
 
 
 def monta_requisicao(cep):

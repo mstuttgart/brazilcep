@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
 import re
 import requests
 import six
@@ -26,8 +28,8 @@ def consultar_cep(cep):
 
     try:
         resposta = requests.post(URL, data=xml, headers=header, verify=False)
-    except requests.exceptions.RequestException as e:
-        raise e
+    except requests.exceptions.RequestException as exc:
+        raise exc
     else:
         if resposta.ok:
             return parse_resposta(resposta.text)
