@@ -11,7 +11,7 @@ from . import excecoes, parser
 
 CARACTERES_NUMERICOS = re.compile(r'[^0-9]')
 
-URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl'  # noqa: F401
+URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl'  # noqa: E501
 
 
 def consultar_cep(cep):
