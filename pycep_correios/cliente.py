@@ -7,8 +7,7 @@ import re
 import requests
 import six
 
-from .excecoes import CEPInvalido
-from .parser import monta_requisicao, parse_resposta, parse_resposta_com_erro
+from . import excecoes, parser
 
 CARACTERES_NUMERICOS = re.compile(r'[^0-9]')
 
@@ -26,7 +25,7 @@ def consultar_cep(cep):
     :raises CEPInvalido: quando a cep é inexistente
     """
 
-    xml = monta_requisicao(formatar_cep(cep))
+    xml = parser.monta_requisicao(formatar_cep(cep))
 
     header = {'Content-type': 'text/xml; charset=;%s' % 'utf8'}
 
@@ -36,10 +35,10 @@ def consultar_cep(cep):
         raise exc
     else:
         if resposta.ok:
-            return parse_resposta(resposta.text)
+            return parser.parse_resposta(resposta.text)
         else:
-            msg = parse_resposta_com_erro(resposta.text)
-            raise CEPInvalido(msg)
+            msg = parser.parse_resposta_com_erro(resposta.text)
+            raise excecoes.CEPInvalido(msg)
 
 
 def formatar_cep(cep):

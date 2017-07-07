@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
-from unittest import TestCase
+import unittest
 
-from jinja2 import Environment, PackageLoader
+import jinja2
 
 from pycep_correios import consultar_cep, formatar_cep, parser, validar_cep
 from pycep_correios.excecoes import CEPInvalido
@@ -14,7 +14,7 @@ except ImportError:
     import mock
 
 
-class TestCorreios(TestCase):
+class TestCorreios(unittest.TestCase):
 
     def setUp(self):
 
@@ -29,7 +29,8 @@ class TestCorreios(TestCase):
             'complemento2': '- até 214/215',
         }
 
-        self.env = Environment(loader=PackageLoader('tests', 'templates'))
+        loader = jinja2.PackageLoader('tests', 'templates')
+        self.env = jinja2.Environment(loader=loader)
 
         template = self.env.get_template('resposta.xml')
         xml = template.render(**self.expected_address)
