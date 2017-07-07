@@ -11,8 +11,7 @@ from . import excecoes, parser
 
 CARACTERES_NUMERICOS = re.compile(r'[^0-9]')
 
-URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/' \
-      'AtendeCliente?wsdl'
+URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl'  # noqa: F401
 
 
 def consultar_cep(cep):
@@ -51,7 +50,8 @@ def formatar_cep(cep):
     :raises ValueError: quando a string esta vazia ou não contem numeros
     """
     if not isinstance(cep, six.string_types) or not cep:
-        raise ValueError('cep deve ser uma string nao vazia contendo somente numeros')  # noqa: E501
+        raise ValueError(
+            'cep deve ser uma string nao vazia contendo somente numeros')  # noqa: E501
     return CARACTERES_NUMERICOS.sub('', cep)
 
 
