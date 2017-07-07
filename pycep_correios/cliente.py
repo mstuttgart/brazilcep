@@ -51,7 +51,7 @@ def formatar_cep(cep):
     """
     if not isinstance(cep, six.string_types) or not cep:
         raise ValueError(
-            'cep deve ser uma string nao vazia contendo somente numeros')  # noqa: E501
+            'CEP deve ser uma string nao vazia contendo somente numeros')  # noqa: E501
     return CARACTERES_NUMERICOS.sub('', cep)
 
 
