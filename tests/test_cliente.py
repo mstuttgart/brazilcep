@@ -104,5 +104,5 @@ class TestCorreios(unittest.TestCase):
 
     def test_parse_resposta_com_erro(self):
         fault = parser.parse_resposta_com_erro(self.response_xml_error)
-        self.assertEqual(fault.strip(), 'BUSCA DEFINIDA COMO EXATA, '
-                                        '0 CEP DEVE TER 8 DIGITOS')
+        msg = 'BUSCA DEFINIDA COMO EXATA, 0 CEP DEVE TER 8 DIGITOS'
+        self.assertEqual(fault.strip(), msg)
