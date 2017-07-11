@@ -66,6 +66,8 @@ class TestCorreios(unittest.TestCase):
         mock_api_call.return_value = mock.MagicMock(**param)
         self.assertRaises(CEPInvalido, consultar_cep, '00000000')
 
+        self.assertRaises(KeyError, consultar_cep, '37503130', ambiente=3)
+
     def test_formatar_cep(self):
         self.assertRaises(ValueError, formatar_cep, 37503003)
         self.assertRaises(ValueError, formatar_cep, '')

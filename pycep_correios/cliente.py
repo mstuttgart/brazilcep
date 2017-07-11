@@ -11,25 +11,41 @@ from . import excecoes, parser
 
 CARACTERES_NUMERICOS = re.compile(r'[^0-9]')
 
-URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl'  # noqa: E501
+PRODUCAO = 1
+HOMOLOGACAO = 2
+
+URL = {
+    HOMOLOGACAO: 'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',  # noqa: E501
+    PRODUCAO: 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',  # noqa: E501
+}
 
 
-def consultar_cep(cep):
+def consultar_cep(cep, ambiente=PRODUCAO):
     """Retorna o endereço correspondente ao número de CEP informado.
 
     :param cep: CEP a ser consultado.
     :type cep: str
+    :param ambiente: Indica qual será o webservice utilizado na consulta de CEP. Valor default é PRODUCAO. # noqa: E501
+    :type ambiente: int
     :return: Dados do endereço do CEP consultado.
     :rtype: dict
     :raises CEPInvalido: quando a cep é inexistente
     """
+
+    if ambiente not in URL:
+        raise KeyError('Ambiente inválido! Valor deve ser 1 para produção e 2 '
+                       'para homologação')
 
     xml = parser.monta_requisicao(formatar_cep(cep))
 
     header = {'Content-type': 'text/xml; charset=;%s' % 'utf8'}
 
     try:
-        resposta = requests.post(URL, data=xml, headers=header, verify=False)
+        resposta = requests.post(URL[ambiente],
+                                 data=xml,
+                                 headers=header,
+                                 verify=False)
+
     except requests.exceptions.RequestException as exc:
         raise exc
     else:
@@ -50,8 +66,9 @@ def formatar_cep(cep):
     :raises ValueError: quando a string esta vazia ou não contem numeros
     """
     if not isinstance(cep, six.string_types) or not cep:
-        raise ValueError(
-            'CEP deve ser uma string nao vazia contendo somente numeros')  # noqa: E501
+        raise ValueError('CEP deve ser uma string não vazia '
+                         'contendo somente numeros')
+
     return CARACTERES_NUMERICOS.sub('', cep)
 
 
