@@ -6,6 +6,7 @@ import unittest
 import jinja2
 
 from pycep_correios import consultar_cep, formatar_cep, parser, validar_cep
+from pycep_correios import HOMOLOGACAO, PRODUCAO
 from pycep_correios.excecoes import CEPInvalido
 
 try:
@@ -15,9 +16,7 @@ except ImportError:
 
 
 class TestCorreios(unittest.TestCase):
-
     def setUp(self):
-
         self.expected_address = {
             'bairro': 'Santo Antônio',
             'cep': '37503130',
@@ -42,7 +41,6 @@ class TestCorreios(unittest.TestCase):
 
     @mock.patch('requests.post')
     def test_consultar_cep(self, mock_api_call):
-
         # Criamos uma requisicao que sera bem sucedida
         param = {
             'text': self.response_xml,
@@ -53,6 +51,10 @@ class TestCorreios(unittest.TestCase):
         mock_api_call.return_value = mock.MagicMock(**param)
 
         self.assertDictEqual(consultar_cep('70002900'), self.expected_address)
+        self.assertDictEqual(consultar_cep('70002900', ambiente=HOMOLOGACAO),
+                             self.expected_address)
+        self.assertDictEqual(consultar_cep('70002900', ambiente=PRODUCAO),
+                             self.expected_address)
 
         # Aqui, construímos uma requisição que retornará erro
         param = {
