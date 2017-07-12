@@ -1,5 +1,15 @@
 # -*- coding: utf-8 -*-
 
+"""
+pycep_correios.client
+~~~~~~~~~~~~~~~~~~~~~
+Este modulo implementa o cliente para consulta de CEP da PyCEPCorreios.
+
+:copyright: 2016-2017 por Michell Stuttgart Faria
+:license: MIT, veja o arquivo LICENSE para mais detalhes.
+
+"""
+
 from __future__ import absolute_import, unicode_literals
 
 import re
