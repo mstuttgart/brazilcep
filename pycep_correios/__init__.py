@@ -13,6 +13,7 @@ from .__version__ import (__title__,  # noqa: F401
                           __license__)
 
 from .cliente import consultar_cep, formatar_cep, validar_cep
+from .cliente import HOMOLOGACAO, PRODUCAO
 from .excecoes import CEPInvalido
 
 __all__ = [
@@ -20,4 +21,6 @@ __all__ = [
     'formatar_cep',
     'validar_cep',
     'CEPInvalido',
+    'HOMOLOGACAO',
+    'PRODUCAO',
 ]
