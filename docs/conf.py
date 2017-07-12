@@ -283,7 +283,7 @@ texinfo_documents = [
      u'Documentação PyCEPCorreios',
      u'Michell Stuttgart',
      'pycep_correios',
-     'API para consulta de CEP diretamente do *webservice* dos Correios..',
+     'API para consulta de CEP diretamente do *webservice* dos Correios.',
      'Tools'),
 ]
 
