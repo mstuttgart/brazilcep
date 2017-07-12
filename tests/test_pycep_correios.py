@@ -16,7 +16,9 @@ except ImportError:
 
 
 class TestCorreios(unittest.TestCase):
+
     def setUp(self):
+
         self.expected_address = {
             'bairro': 'Santo Antônio',
             'cep': '37503130',
