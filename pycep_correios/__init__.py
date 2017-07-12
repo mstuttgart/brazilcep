@@ -3,8 +3,10 @@
 """
 PyCEPCorreios
 ~~~~~~~~~~~~~
-PyCEPCorreios é uma API para consulta de CEP diretamente do *webservice* dos Correios.
-usage:
+PyCEPCorreios é uma API para consulta de CEP diretamente do *webservice* dos
+Correios.
+
+Uso:
    >>> import pycep_correios
    >>> endereco = pycep_correios.consultar_cep('37503130')
    >>> endereco
