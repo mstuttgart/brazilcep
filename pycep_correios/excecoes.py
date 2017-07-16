@@ -4,10 +4,6 @@
 class ExcecaoPyCEPCorreios(Exception):
     """ Excecao base da lib"""
 
-    def __init__(self, *args, **kwargs):
-        self.msg = kwargs.pop('msg', None)
-        super(ExcecaoPyCEPCorreios, self).__init__(*args, **kwargs)
-
 
 class CEPInvalido(ExcecaoPyCEPCorreios):
     """ Excecao disparada quando o CEP possui tamanho incorreto

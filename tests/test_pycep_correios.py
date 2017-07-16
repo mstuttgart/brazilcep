@@ -20,7 +20,7 @@ except ImportError:
     import mock
 
 
-class TestCorreios(unittest.TestCase):
+class TestPyCEPCorreios(unittest.TestCase):
 
     def setUp(self):
         self.expected_address = {
