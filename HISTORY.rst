@@ -2,12 +2,21 @@
 Histórico
 =========
 
-2.1.1 (2017-07-30)
+2.2.0 (2017-07-16)
+------------------
+
+* Melhorias no metodo de formatar_cep, que agora passou a utilizar expressão regular para verificar se o CEP é formado por caracteres.
+* A função *formatar_cep* agora passa a lançar a exceção *Value Error* quando o CEP não possui estrutura válida https://github.com/mstuttgart/pycep-correios/pull/22
+* Adicionado novas exceções ExcecaoPyCEPCorreios, Timeout, MultiploRedirecionamento, FalhaNaConexao. Consultar documentacao para exemplos de utilização delas. close https://github.com/mstuttgart/pycep-correios/issues/25
+* Adicionado ambientes de *Homologação* e *Producao*. Facilitando realizar consultas utilizadas para testes. close https://github.com/mstuttgart/pycep-correios/issues/24
+* Melhorias na organização da API.
+
+2.1.1 (2017-06-30)
 ------------------
 
 * Correção de erros de unicode com python2.7
 
-2.1.0 (2017-07-29)
+2.1.0 (2017-06-29)
 ------------------
 
 * Adicionado suporte para Python 2.7+
