@@ -12,7 +12,7 @@ A consulta de CEP é realizada através da função `consultar_cep`.
 
 .. code:: python
 
-    from pycep_correios
+    import pycep_correios
 
     endereco = pycep_correios.consultar_cep('37503130')
 
@@ -40,7 +40,7 @@ Por exemplo, a busca do endereço do cep `37503130` nos retorna os seguintes dad
 .. code:: python
 
     >>> print(endereco)
-    >>> {
+    {
         'bairro': 'Santo Antônio',
         'cep': '37503130',
         'cidade': 'Itajubá',
@@ -55,34 +55,72 @@ O comando tambem aceita números de CEP contendo pontos e/ou hífen. Como por ex
 
 .. code:: python
 
-    from pycep_correios
+    import pycep_correios
 
     endereco = pycep_correios.consultar_cep('37.503-130')
 
 Isso visa facilitar a utilização da PyCEPCorreios com CEPs fornecidos por outros sistemas como, por exemplo, um
-formulário de endereço a ser preenchido pelo usuário. Desse modo, o CEP informado pelo usuário sempre será automaticamente formatado
-para o formato aceito pelos *webservice* dos correios.
+formulário de endereço a ser preenchido pelo usuário. Desse modo, o CEP informado pelo usuário sempre será automaticamente formatado para o formato aceito pelos *webservice* dos correios.
 
 Quando consultamos um CEP com quantidade incorreto de digitos (diferente de 8)
-ou que não existe, a PyCEPCorreios dispara uma exceção `CEPInvalido`:
+ou que não existe, a PyCEPCorreios dispara uma exceção `CEPInvalido`. 
+
+A partir da versão 2.2.0, a PyCEPCorreios trouxe novos tipos de exceções, de modo a tornar a utilização da API mais robusta. A novas exceções são *Timout*, *FalhaNaConexao*, *MultiploRedirecionamento*. Todas essas exceções derivam da nova exceção base *ExcecaoPyCEPCorreios*:
 
 .. code:: python
 
-    from pycep_correios
-    from pycep_correios.excecao import CEPInvalido
+    from pycep_correios import consultar_cep
+    from pycep_correios.excecoes import (CEPInvalido,
+                                         ExcecaoPyCEPCorreios,
+                                         Timeout,
+                                         MultiploRedirecionamento,
+                                         FalhaNaConexao)
 
-    try:
+    try:        
         endereco = pycep_correios.consultar_cep('00000000')
+        
+    except Timeout as exc:
+        print(exec)
+        
+    except FalhaNaConexao as exc:
+        print(exc)
+        
+    except MultiploRedirecionamento as exc:
+        print(exc)
+        
     except CEPInvalido as exc:
         print(exc)
+        
+    except ExcecaoPyCEPCorreios as exc:
+        print(exc)
 
-Para outros tipos de exceção, como *timeout*, erro de conexão e etc, deve-se
-utilizar as exceções fornecidas pela biblioteca *requests*.
+Também podemos escolher se desejamos que a consulta seja realizada no *webservice* de homologação ou produção dos Correios.
+Isso pode ser útil quando estamos utilizando a PyCEPCorreios em ambiente de desenvolvimento.
+
+Para realizar a consulta utilizando ambiente basta passar a constante `HOMOLOGACAO` como
+parâmetro para o método.
+
+.. code:: python
+
+    from pycep_correios import consultar_cep
+    from pycep_correios import HOMOLOGACAO, PRODUCAO
+
+    # Realizando a consulta em ambiente de homologação
+    endereco = consultar_cep(cep='37503130', ambiente=HOMOLOGACAO)
+
+    # Realizando a consulta em ambiente de producao
+    endereco = consultar_cep(cep='37503130', ambiente=PRODUCAO)
+
+O valor *default* do parâmetro `ambiente` é `PRODUCAO`. Sendo assim, no caso de consultas utilizando o ambiente de produção,
+informar o valor `ambiente=PRODUCAO` torna-se facultativo.
+
+**NOTA**: Caso seja informado um valor diferente de `HOMOLOGACAO` ou `PRODUCAO` no parâmetro `ambiente`, uma
+exceção do tipo `KeyError` será lançada.
 
 Validando CEP
 -------------
 
-A validação d código de CEP pode ser feita através do comando `validar_cep`. A função retorna
+A validação de código de CEP pode ser feita através do comando `validar_cep`. A função retorna
 `True` se a estrutura do CEP for válida e `False`, caso contrário.
 
 .. code:: python
@@ -106,20 +144,12 @@ simplesmente os remove. É utilizada internamente pelo comando `consultar_cep`.
 
 .. code:: python
 
-    import pycep_correios
+    from pycep_correios import formatar_cep
 
     meu_cep = '37.503-003'
 
-    cep_formatado = pycep_correios.formatar_cep(meu_cep):
-    print('O CEP %s esta formatado: %s' % (meu_cep, cep_formatado))
-
-Documentação
-------------
-
-Abaixo é possível consultar a documentação do código da PyCEPCorreios com mais
-detalhes.
-
-.. toctree::
-   :maxdepth: 4
-
-   pycep_correios
+    try:
+        cep_formatado = formatar_cep(meu_cep)
+        print('O CEP %s esta formatado: %s' % (meu_cep, cep_formatado))
+    except ValueError as exc:
+        print('Erro ao formatar CEP: %s' % exc)

@@ -1,22 +1,28 @@
 # -*- encoding: utf8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
 import xml.etree.cElementTree as Et
-from jinja2 import Environment, PackageLoader
+
+import jinja2
+import six
 
 
 def parse_resposta(xml):
     """Extrai os endereço do xml retornado pelo webservice
 
     :param xml: xml retornado pelo webservice
-    :returns endereco: dict com os dados do endereço do CEP consultado
+    :type xml: str
+    :return: dados do endereço do CEP consultado
+    :rtype: dict
     """
 
-    if isinstance(xml, bytes):
-        xml = xml.decode('utf8')
-    else:
+    if isinstance(xml, six.string_types):
         xml = xml.encode('utf8')
+    else:
+        xml = xml.decode('utf8')
 
-    end = Et.fromstring(xml).find(u'.//return')
+    end = Et.fromstring(xml).find('.//return')
 
     endereco = {
         'id': end.findtext('id'),
@@ -37,23 +43,28 @@ def parse_resposta_com_erro(xml):
     erro
 
     :param xml: XML retornado pelo webservice
-    :returns: string contendo mensagem de erro
+    :type xml: str
+    :return: string contendo mensagem de erro
+    :rtype: str
     """
-    if isinstance(xml, str):
+    if isinstance(xml, six.string_types):
         xml = xml.encode('utf8')
     else:
         xml = xml.decode('utf8')
 
-    return Et.fromstring(xml).findtext(u'.//faultstring')
+    return Et.fromstring(xml).findtext('.//faultstring')
 
 
 def monta_requisicao(cep):
     """Gera o XML utilizado para realizar a requisição ao webservice
 
     :param cep: CEP a ser consultado
-    :returns: string contendo o XML de consulta com CEP fornecido
+    :type cep: str
+    :return: XML de consulta com CEP fornecido
+    :rtype: str
     """
-    env = Environment(loader=PackageLoader('pycep_correios', 'templates'))
+    loader = jinja2.PackageLoader('pycep_correios', 'templates')
+    env = jinja2.Environment(loader=loader)
     template = env.get_template('consultacep.xml')
     xml = template.render(cep=cep)
     return (xml.replace('\n', '')).replace('\t', '')

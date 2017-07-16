@@ -21,14 +21,15 @@ with open('HISTORY.rst', 'r') as history_file:
     history = history_file.read()
 
 requirements = [
-    'requests == 2.18.1',
-    'Jinja2 == 2.9.6',
+    'requests >= 2.18.1',
+    'Jinja2 >= 2.9.6',
+    'six>=1.10'
 ]
 
 test_requirements = [
-    'coveralls == 1.1',
-    'flake8 == 3.3.0',
-    'mock==2.0.0',
+    'coveralls >= 1.1',
+    'flake8 >= 3.3.0',
+    'mock >= 2.0.0',
 ]
 
 setup(
