@@ -2,7 +2,7 @@
 
 __title__ = 'pycep_correios'
 __description__ = 'API para busca de CEP no webservice dos Correios'
-__version__ = '2.1.1'
+__version__ = '2.2.0'
 __url__ = 'https://github.com/mstuttgart/pycep_correios'
 __download_url__ = 'https://github.com/mstuttgart/pycep_correios'
 __author__ = 'Michell Stuttgart Faria'
