@@ -56,8 +56,25 @@ def consultar_cep(cep, ambiente=PRODUCAO):
                                  headers=header,
                                  verify=False)
 
-    except requests.exceptions.RequestException as exc:
-        raise exc
+    except requests.ConnectTimeout as exc:
+        msg = 'Mensagem original: %s' % exc
+        raise excecoes.Timeout('Timout! Conexão excedeu limite de tempo! '
+                               '%s' % msg)
+
+    except requests.ConnectionError as exc:
+        msg = 'Mensagem original: %s' % exc
+        raise excecoes.FalhaNaConexao('Falha na Conexão! %s' % msg)
+
+    except requests.TooManyRedirects as exc:
+        msg = 'Mensagem original: %s' % exc
+        raise excecoes.MultiploRedirecionamento('Multiplos redirecionamentos '
+                                                'durante a conexão! %s' % msg)
+
+    except requests.RequestException as exc:
+        msg = 'Mensagem original: %s' % exc
+        raise excecoes.ExcecaoPyCEPCorreios('Uma excecao inesperada '
+                                            'ocorreu: %s' % msg)
+
     else:
         if resposta.ok:
             return parser.parse_resposta(resposta.text)

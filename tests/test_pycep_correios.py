@@ -4,10 +4,15 @@ from __future__ import absolute_import, unicode_literals
 import unittest
 
 import jinja2
+import requests
 
 from pycep_correios import consultar_cep, formatar_cep, parser, validar_cep
 from pycep_correios import HOMOLOGACAO, PRODUCAO
-from pycep_correios.excecoes import CEPInvalido
+from pycep_correios.excecoes import (CEPInvalido,
+                                     ExcecaoPyCEPCorreios,
+                                     Timeout,
+                                     MultiploRedirecionamento,
+                                     FalhaNaConexao)
 
 try:
     from unittest import mock
@@ -18,7 +23,6 @@ except ImportError:
 class TestCorreios(unittest.TestCase):
 
     def setUp(self):
-
         self.expected_address = {
             'bairro': 'Santo Antônio',
             'cep': '37503130',
@@ -71,6 +75,19 @@ class TestCorreios(unittest.TestCase):
         self.assertRaises(CEPInvalido, consultar_cep, '00000000')
 
         self.assertRaises(KeyError, consultar_cep, '37503130', ambiente=3)
+
+        # Verificamos as demais excecoes
+        mock_api_call.side_effect = requests.ConnectTimeout()
+        self.assertRaises(Timeout, consultar_cep, '37503130')
+
+        mock_api_call.side_effect = requests.ConnectionError('', '')
+        self.assertRaises(FalhaNaConexao, consultar_cep, '37503130')
+
+        mock_api_call.side_effect = requests.TooManyRedirects()
+        self.assertRaises(MultiploRedirecionamento, consultar_cep, '37503130')
+
+        mock_api_call.side_effect = requests.RequestException()
+        self.assertRaises(ExcecaoPyCEPCorreios, consultar_cep, '37503130')
 
     def test_formatar_cep(self):
         self.assertRaises(ValueError, formatar_cep, 37503003)
