@@ -17,8 +17,8 @@ matrix:
         env: TOX_ENV=py36
       - python: 3.5
         env: TOX_ENV=flake8
-      - python: 3.5
-        env: TOX_ENV=pypi
+      - python: pypy
+        env: TOX_ENV=pypy
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
@@ -41,4 +41,4 @@ deploy:
   on:
     tags: true
     repo: mstuttgart/pycep-correios
-    condition: ${TOX_ENV} == pypi
+    condition: ${TOX_ENV} == py35
