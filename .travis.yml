@@ -17,6 +17,8 @@ matrix:
         env: TOX_ENV=py36
       - python: 3.5
         env: TOX_ENV=flake8
+      - python: 3.5
+        env: TOX_ENV=coverage
       - python: pypy
         env: TOX_ENV=pypy
 
@@ -25,7 +27,8 @@ install:
   - pip install tox
 
 # command to run tests, e.g. python setup.py test
-script: tox -e ${TOX_ENV}
+script: 
+  - tox -e ${TOX_ENV}
 
 after_success:
   - coveralls
