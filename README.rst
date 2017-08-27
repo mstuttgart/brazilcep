@@ -12,10 +12,6 @@ PyCEPCorreios
 .. image:: https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg?style=flat-square
     :target: https://landscape.io/github/mstuttgart/pycep-correios/develop
 
-.. image:: https://img.shields.io/requires/github/mstuttgart/pycep-correios.svg?style=flat-square
-    :target: https://requires.io/github/mstuttgart/pycep-correios/requirements/?branch=develop
-    :alt: Requirements Status
-
 .. image:: https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square
     :target: https://pypi.python.org/pypi/pycep-correios
 
