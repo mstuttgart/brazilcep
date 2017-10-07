@@ -2,7 +2,6 @@
 PyCEPCorreios
 =============
 
-
 .. image:: https://img.shields.io/travis/mstuttgart/pycep-correios/develop.svg?style=flat-square
     :target: https://travis-ci.org/mstuttgart/pycep-correios
 
@@ -22,6 +21,9 @@ PyCEPCorreios
     :target: https://github.com/mstuttgart/pycep-correios/blob/develop/LICENSE
 
 API para consulta de CEP diretamente do *webservice* dos Correios.
+
+> Veja também em&nbsp;
+> <a href="docs/en-US/README.rst">🇺🇸</a>
 
 Features
 --------

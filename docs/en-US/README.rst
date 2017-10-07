@@ -1,18 +1,24 @@
+=============
 PyCEPCorreios
 =============
 
+.. image:: https://img.shields.io/travis/mstuttgart/pycep-correios/develop.svg?style=flat-square
+    :target: https://travis-ci.org/mstuttgart/pycep-correios
 
-[![Build Status](https://img.shields.io/travis/mstuttgart/pycep-correios/develop.svg?style=flat-square)](https://travis-ci.org/mstuttgart/pycep-correios)
+.. image:: https://img.shields.io/coveralls/mstuttgart/pycep-correios/develop.svg?style=flat-square
+    :target: https://coveralls.io/github/mstuttgart/pycep-correios?branch=develop
 
-[![Coverage Status](https://img.shields.io/coveralls/mstuttgart/pycep-correios/develop.svg?style=flat-square)](https://coveralls.io/github/mstuttgart/pycep-correios?branch=develop)
+.. image:: https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg?style=flat-square
+    :target: https://landscape.io/github/mstuttgart/pycep-correios/develop
 
-[![Health Status](https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg?style=flat-square)](https://landscape.io/github/mstuttgart/pycep-correios/develop)
+.. image:: https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square
+    :target: https://pypi.python.org/pypi/pycep-correios
 
-[![pypi](https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square)](https://pypi.python.org/pypi/pycep-correios)
+.. image:: https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square
+    :target: https://pypi.python.org/pypi/pycep-correios
 
-[![python versions](https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square)](https://pypi.python.org/pypi/pycep-correios)
-
-[![licences](https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square)](https://github.com/mstuttgart/pycep-correios/blob/develop/LICENSE)
+.. image:: https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square
+    :target: https://github.com/mstuttgart/pycep-correios/blob/develop/LICENSE
 
 
 API for querying CEP (zip code) from Correios (Brazilian Mail Service) webservices
@@ -36,7 +42,9 @@ Installing
 ----------
 One can easily install the PyCEP running the following command:
 
-    $pip install pycep-correios
+.. code:: bash
+
+    pip install pycep-correios
 
 
 Currently, the PyCEPCorreios supports Python 2.7+ and 3.3+.
@@ -47,6 +55,8 @@ Usage
 To find the address from CEP is a very simple job with PyCEPCorreios.
 
 Check this example:
+
+.. code-block:: python
 
     >>> import pycep_correios
 
