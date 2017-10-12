@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017, Michell Stuttgart
+# This file is distributed under the same license as the PyCEPCorreios
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyCEPCorreios 2.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-12 15:23-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.0\n"
+
+#: ../../../HISTORY.rst:3
+msgid "Histórico"
+msgstr ""
+
+#: ../../../HISTORY.rst:6
+msgid "2.2.0 (2017-07-16)"
+msgstr ""
+
+#: ../../../HISTORY.rst:8
+msgid ""
+"Melhorias no metodo de formatar_cep, que agora passou a utilizar "
+"expressão regular para verificar se o CEP é formado por caracteres."
+msgstr ""
+
+#: ../../../HISTORY.rst:9
+msgid ""
+"A função *formatar_cep* agora passa a lançar a exceção *Value Error* "
+"quando o CEP não possui estrutura válida https://github.com/mstuttgart"
+"/pycep-correios/pull/22"
+msgstr ""
+
+#: ../../../HISTORY.rst:10
+msgid ""
+"Adicionado novas exceções ExcecaoPyCEPCorreios, Timeout, "
+"MultiploRedirecionamento, FalhaNaConexao. Consultar documentacao para "
+"exemplos de utilização delas. close https://github.com/mstuttgart/pycep-"
+"correios/issues/25"
+msgstr ""
+
+#: ../../../HISTORY.rst:11
+msgid ""
+"Adicionado ambientes de *Homologação* e *Producao*. Facilitando realizar "
+"consultas utilizadas para testes. close https://github.com/mstuttgart"
+"/pycep-correios/issues/24"
+msgstr ""
+
+#: ../../../HISTORY.rst:12
+msgid "Melhorias na organização da API."
+msgstr ""
+
+#: ../../../HISTORY.rst:15
+msgid "2.1.1 (2017-06-30)"
+msgstr ""
+
+#: ../../../HISTORY.rst:17
+msgid "Correção de erros de unicode com python2.7"
+msgstr ""
+
+#: ../../../HISTORY.rst:20
+msgid "2.1.0 (2017-06-29)"
+msgstr ""
+
+#: ../../../HISTORY.rst:22
+msgid "Adicionado suporte para Python 2.7+"
+msgstr ""
+
+#: ../../../HISTORY.rst:23
+msgid "Ajustes e correções na documentação"
+msgstr ""
+
+#: ../../../HISTORY.rst:26
+msgid "2.0.0 (2017-06-20)"
+msgstr ""
+
+#: ../../../HISTORY.rst:28
+msgid ""
+"Atualização do código da PyCEPCorreios, deixando-a mais facil de ser "
+"utilizada"
+msgstr ""
+
+#: ../../../HISTORY.rst:29
+msgid "Remoção das exceções antigas, deixando apenas a Exceção padrão da lib"
+msgstr ""
+
+#: ../../../HISTORY.rst:30
+msgid "Remoção da classe PyCEPCorreios"
+msgstr ""
+
+#: ../../../HISTORY.rst:31
+msgid ""
+"Alteração dos *imports* da lib para facilitar seu uso e diminuir tamanho "
+"dos *imports*"
+msgstr ""
+
+#: ../../../HISTORY.rst:32
+msgid "Adicionado documentação com Sphinx"
+msgstr ""
+
+#: ../../../HISTORY.rst:33
+msgid "Adicionado testes com TOX"
+msgstr ""
+
+#: ../../../HISTORY.rst:34
+msgid "Adicionado método de validação de CEP e formatação de CEP"
+msgstr ""
+
+#: ../../../HISTORY.rst:37
+msgid "1.1.7 (2017-05-09)"
+msgstr ""
+
+#: ../../../HISTORY.rst:39
+msgid "[FIX] Corrigido erro `jinja2.exceptions.TemplateNotFound: consultacep.xml`"
+msgstr ""
+
+#: ../../../HISTORY.rst:40
+msgid "[FIX] Erro durante instalação da PyCEPCorreios via pip"
+msgstr ""
+
+#: ../../../HISTORY.rst:41
+msgid "[FIX] Atualizado código de exemplo no README.rst"
+msgstr ""
+
+#: ../../../HISTORY.rst:42
+msgid "[FIX] Atualizado exemplos na documentação"
+msgstr ""
+
+#: ../../../HISTORY.rst:45
+msgid "1.1.6 (2017-05-08)"
+msgstr ""
+
+#: ../../../HISTORY.rst:47
+msgid "[FIX] Correção de bug durante instalação. #15"
+msgstr ""
+
+#: ../../../HISTORY.rst:48
+msgid "[FIX] Correção de template xml ausente no pacote do modulo"
+msgstr ""
+
+#: ../../../HISTORY.rst:49
+msgid "[FIX] Melhorias gerais no código e correções de bugs"
+msgstr ""
+
+#: ../../../HISTORY.rst:52
+msgid "1.1.1 (2017-02-08)"
+msgstr ""
+
+#: ../../../HISTORY.rst:54
+msgid "Melhorias gerais no código"
+msgstr ""
+
+#: ../../../HISTORY.rst:55
+msgid "XML schema utilizando Jinja2"
+msgstr ""
+
+#: ../../../HISTORY.rst:58
+msgid "1.0.1 (2016-08-03)"
+msgstr ""
+
+#: ../../../HISTORY.rst:60
+msgid "Simplificação da classes Exceptions"
+msgstr ""
+
+#: ../../../HISTORY.rst:61
+msgid "Organização do código de teste"
+msgstr ""
+
+#: ../../../HISTORY.rst:62
+msgid "Utilização do mock para test"
+msgstr ""
+
+#: ../../../HISTORY.rst:65
+msgid "1.0.0 (2016-07-31)"
+msgstr ""
+
+#: ../../../HISTORY.rst:67
+msgid "API migrada para Python 3. Python 2.7 não será mais suportado"
+msgstr ""
+
+#: ../../../HISTORY.rst:68
+msgid ""
+"Substituição da lib *suds* pela lib *requests* para realizar as "
+"requisições"
+msgstr ""
+
+#: ../../../HISTORY.rst:71
+msgid "0.0.2 (2016-05-09)"
+msgstr ""
+
+#: ../../../HISTORY.rst:73
+msgid "`setup.py` com número de versão atualizado e dependência corrigidas."
+msgstr ""
+
+#: ../../../HISTORY.rst:76
+msgid "0.0.1 (2016-05-05)"
+msgstr ""
+
+#: ../../../HISTORY.rst:78
+msgid "Versão inicial."
+msgstr ""
+
+#: ../../../HISTORY.rst:79
+msgid "Permite busca no webservice dos correios dos dados de um CEP fornecido."
+msgstr ""
+

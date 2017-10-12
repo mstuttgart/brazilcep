@@ -34,7 +34,8 @@ Documentation
 
 For further information, please, fell free to reach the official documentation:
 
-* On-line: https://pycep-correios.readthedocs.io.
+* On-line: `🇧🇷 <https://pycep-correios.readthedocs.io/pt/stable/>`_
+* On-line: `🇺🇸 <https://pycep-correios.readthedocs.io/en/stable/>`_
 * PDF file: https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf
 
 

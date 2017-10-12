@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017, Michell Stuttgart
+# This file is distributed under the same license as the PyCEPCorreios
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PyCEPCorreios 2.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-12 15:23-0300\n"
+"PO-Revision-Date: 2017-10-12 17:12-0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.0\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: ../../usage.rst:3
+msgid "Utilização"
+msgstr "Usage"
+
+#: ../../usage.rst:5
+msgid ""
+"Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Ela "
+"foi refeita de modo a tornar a sua utilização o mais simples possível."
+msgstr ""
+"Searching an address using CEP code is very simple with PyCEPCorreios. "
+"It was made to make the usage as simpler as possible."
+
+#: ../../usage.rst:9
+msgid "Consultando CEP"
+msgstr "Consulting CEP"
+
+#: ../../usage.rst:11
+msgid "A consulta de CEP é realizada através da função `consultar_cep`."
+msgstr "Search by CEP code is done by the `consultar_cep` function."
+
+#: ../../usage.rst:27
+msgid ""
+"A variavel `endereco` recebe um `dict` contendo os dados do endereço "
+"relativo ao CEP e possui os seguintes valores:"
+msgstr ""
+"This function returns a `dict` with the data of the address and has the "
+"following values:"
+
+#: ../../usage.rst:30
+msgid "**end**: corresponde ao logradouro do endereço do CEP"
+msgstr "**end**: street name"
+
+#: ../../usage.rst:31
+msgid "**bairro**: bairro referente ao CEP pesquisado"
+msgstr "**bairro**: neighborhood"
+
+#: ../../usage.rst:32
+msgid "**cidade**: cidade referente ao CEP pesquisado"
+msgstr "**cidade**: city name"
+
+#: ../../usage.rst:33
+msgid "**complemento**: complemento referente ao CEP"
+msgstr "**complemento**: address complement"
+
+#: ../../usage.rst:34
+msgid ""
+"**complemento2**: semelhante ao `complemento`, pode indicar, por "
+"exemplo, o intervalo de números de residências ao qual o CEP pertence."
+msgstr ""
+"**complemento2**: similar to `complemento`, can show the range of house "
+"numbers within the CEP."
+
+#: ../../usage.rst:35
+msgid ""
+"**uf**: a sigla do estado (`SP` para São Paulo, `MG` para Minas Gerais e "
+"etc) ao qual o CEP representa"
+msgstr "**uf**: state (`SP` for São Paulo, `MG` for Minas Gerais, etc.)"
+
+#: ../../usage.rst:36
+msgid "**cep**: o CEP consultado"
+msgstr "**cep**: the CEP code"
+
+#: ../../usage.rst:38
+msgid ""
+"Por exemplo, a busca do endereço do cep `37503130` nos retorna os "
+"seguintes dados:"
+msgstr ""
+"Check the example, searching cep code `37503130` gives us the following:"
+
+#: ../../usage.rst:54
+msgid ""
+"O comando tambem aceita números de CEP contendo pontos e/ou hífen. Como "
+"por exemplo:"
+msgstr ""
+"The command also accepts CEP codes with dots and/or hiphen. As example:"
+
+#: ../../usage.rst:62
+msgid ""
+"Isso visa facilitar a utilização da PyCEPCorreios com CEPs fornecidos "
+"por outros sistemas como, por exemplo, um formulário de endereço a ser "
+"preenchido pelo usuário. Desse modo, o CEP informado pelo usuário sempre "
+"será automaticamente formatado para o formato aceito pelos *webservice* "
+"dos correios."
+msgstr ""
+"This is useful for external applications using PyCEPCorreios. They can "
+"send requests to PyCEPCorreios. The CEP code will always be formatted to "
+"the ECT *webservice*."
+
+#: ../../usage.rst:65
+msgid ""
+"Quando consultamos um CEP com quantidade incorreto de digitos (diferente "
+"de 8) ou que não existe, a PyCEPCorreios dispara uma exceção "
+"`CEPInvalido`."
+msgstr ""
+"When consulting a CEP with wrong format (number of digits different of "
+"8) or a code that doesn't exist, the exception `CEPInvalido` is raised. "
+
+#: ../../usage.rst:68
+msgid ""
+"A partir da versão 2.2.0, a PyCEPCorreios trouxe novos tipos de "
+"exceções, de modo a tornar a utilização da API mais robusta. A novas "
+"exceções são *Timout*, *FalhaNaConexao*, *MultiploRedirecionamento*. "
+"Todas essas exceções derivam da nova exceção base *ExcecaoPyCEPCorreios*:"
+msgstr ""
+"From version 2.2.0, PyCEPCorreios implements new types of exceptions. "
+"They are: Timout, FalhaNaConexao, MultiploRedirecionamento. All of those "
+"exceptions extends from the new base exception ExcecaoPyCEPCorreios:"
+
+#: ../../usage.rst:97
+msgid ""
+"Também podemos escolher se desejamos que a consulta seja realizada no "
+"*webservice* de homologação ou produção dos Correios. Isso pode ser útil "
+"quando estamos utilizando a PyCEPCorreios em ambiente de desenvolvimento."
+msgstr ""
+"You can also choose in which webservice you want the query to be run. "
+"Homologation or production webservice of Correios. This feature can be "
+"useful when you are using PyCEPCorreios in development environment."
+
+#: ../../usage.rst:100
+msgid ""
+"Para realizar a consulta utilizando ambiente basta passar a constante "
+"`HOMOLOGACAO` como parâmetro para o método."
+msgstr ""
+"To run the search in development environment you just need to set the "
+"`ambiente` parameter in the function. For development, set the parameter "
+"to `HOMOLOGACAO`:"
+
+#: ../../usage.rst:114
+msgid ""
+"O valor *default* do parâmetro `ambiente` é `PRODUCAO`. Sendo assim, no "
+"caso de consultas utilizando o ambiente de produção, informar o valor "
+"`ambiente=PRODUCAO` torna-se facultativo."
+msgstr ""
+"`PRODUCAO` is the default value of `ambiente`. If you are running in "
+"production, don't need to set the `ambiente=PRODUCAO`."
+
+#: ../../usage.rst:117
+msgid ""
+"**NOTA**: Caso seja informado um valor diferente de `HOMOLOGACAO` ou "
+"`PRODUCAO` no parâmetro `ambiente`, uma exceção do tipo `KeyError` será "
+"lançada."
+msgstr ""
+"**NOTE**: If you set some value different from `HOMOLOGACAO` or "
+"`PRODUCAO`, a `KeyError` exception will be thrown."
+
+#: ../../usage.rst:121
+msgid "Validando CEP"
+msgstr "Validating CEP"
+
+#: ../../usage.rst:123
+msgid ""
+"A validação de código de CEP pode ser feita através do comando "
+"`validar_cep`. A função retorna `True` se a estrutura do CEP for válida "
+"e `False`, caso contrário."
+msgstr ""
+"CEP code validation can be done with `validar_cep` command. That "
+"function returns `True` if the code is correct and `False` otherwise."
+
+#: ../../usage.rst:137
+msgid ""
+"A função também aceita CEPs contendo pontuação como, por exemplo, "
+"`37.503-003`."
+msgstr ""
+"That function also accepts CEP codes with punctuation: `37.503-003`."
+
+#: ../../usage.rst:140
+msgid "Formatando CEP"
+msgstr "CEP code Formatting"
+
+#: ../../usage.rst:142
+msgid ""
+"A funcao `formatar_cep` recebe uma string contendo o CEP, com pontos e "
+"hífens e simplesmente os remove. É utilizada internamente pelo comando "
+"`consultar_cep`."
+msgstr ""
+"The function `formatar_cep` gets a string with CEP code and removes dots "
+"and hiphens. That function is used internally by `consultar_cep`."

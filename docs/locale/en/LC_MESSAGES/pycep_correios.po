@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017, Michell Stuttgart
+# This file is distributed under the same license as the PyCEPCorreios
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PyCEPCorreios 2.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-12 15:23-0300\n"
+"PO-Revision-Date: 2017-10-12 17:07-0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.0\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: ../../pycep_correios.rst:2
+msgid "pycep\\_correios package"
+msgstr ""
+
+#: ../../pycep_correios.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../pycep_correios.rst:8
+msgid "pycep\\_correios\\.cliente module"
+msgstr ""
+
+#: of pycep_correios.cliente:2
+msgid "pycep_correios.client"
+msgstr ""
+
+#: of pycep_correios.cliente:3
+msgid "Este modulo implementa o cliente para consulta de CEP da PyCEPCorreios."
+msgstr "This module implements a client to search zip code to PyCEPCorreios"
+
+#: of pycep_correios pycep_correios.cliente
+msgid "copyright"
+msgstr ""
+
+#: of pycep_correios:24 pycep_correios.cliente:5
+msgid "2016-2017 por Michell Stuttgart Faria"
+msgstr ""
+
+#: of pycep_correios pycep_correios.cliente
+msgid "license"
+msgstr ""
+
+#: of pycep_correios:25 pycep_correios.cliente:6
+msgid "MIT, veja o arquivo LICENSE para mais detalhes."
+msgstr ""
+
+#: of pycep_correios.cliente.consultar_cep:1 pycep_correios.consultar_cep:1
+msgid "Retorna o endereço correspondente ao número de CEP informado."
+msgstr "Returns address to zip code. "
+
+#: of pycep_correios.cliente.consultar_cep pycep_correios.cliente.formatar_cep
+#: pycep_correios.cliente.validar_cep pycep_correios.consultar_cep
+#: pycep_correios.formatar_cep pycep_correios.parser.monta_requisicao
+#: pycep_correios.parser.parse_resposta
+#: pycep_correios.parser.parse_resposta_com_erro pycep_correios.validar_cep
+msgid "Parâmetros"
+msgstr "Parameters"
+
+#: of pycep_correios.cliente.consultar_cep:3 pycep_correios.consultar_cep:3
+msgid "CEP a ser consultado."
+msgstr "Zip Code to be search."
+
+#: of pycep_correios.cliente.consultar_cep:5 pycep_correios.consultar_cep:5
+msgid ""
+"Indica qual será o webservice utilizado na consulta de CEP. Valor default é "
+"PRODUCAO. # noqa: E501"
+msgstr ""
+"Set what webservice will be use to request. PRODUCAO is default value.  # "
+"noqa: E501"
+
+#: of pycep_correios.cliente.consultar_cep pycep_correios.cliente.formatar_cep
+#: pycep_correios.cliente.validar_cep pycep_correios.consultar_cep
+#: pycep_correios.formatar_cep pycep_correios.parser.monta_requisicao
+#: pycep_correios.parser.parse_resposta
+#: pycep_correios.parser.parse_resposta_com_erro pycep_correios.validar_cep
+msgid "Retorna"
+msgstr "Return"
+
+#: of pycep_correios.cliente.consultar_cep:7 pycep_correios.consultar_cep:7
+msgid "Dados do endereço do CEP consultado."
+msgstr "Address data to request ZIP code."
+
+#: of pycep_correios.cliente.consultar_cep pycep_correios.cliente.formatar_cep
+#: pycep_correios.cliente.validar_cep pycep_correios.consultar_cep
+#: pycep_correios.formatar_cep pycep_correios.parser.monta_requisicao
+#: pycep_correios.parser.parse_resposta
+#: pycep_correios.parser.parse_resposta_com_erro pycep_correios.validar_cep
+msgid "Tipo de retorno"
+msgstr ""
+
+#: of pycep_correios.cliente.consultar_cep pycep_correios.cliente.formatar_cep
+#: pycep_correios.cliente.validar_cep pycep_correios.consultar_cep
+#: pycep_correios.formatar_cep pycep_correios.validar_cep
+msgid "Levanta"
+msgstr ""
+
+#: of pycep_correios.cliente.consultar_cep:9 pycep_correios.consultar_cep:9
+msgid "quando a cep é inexistente"
+msgstr ""
+
+#: of pycep_correios.cliente.formatar_cep:1 pycep_correios.formatar_cep:1
+msgid "Formata CEP, removendo qualquer caractere nao numerico"
+msgstr ""
+
+#: of pycep_correios.cliente.formatar_cep:3 pycep_correios.formatar_cep:3
+msgid "CEP a ser formatado"
+msgstr ""
+
+#: of pycep_correios.cliente.formatar_cep:5 pycep_correios.formatar_cep:5
+msgid "string contendo o CEP formatado"
+msgstr ""
+
+#: of pycep_correios.cliente.formatar_cep:7
+#: pycep_correios.cliente.validar_cep:8 pycep_correios.formatar_cep:7
+#: pycep_correios.validar_cep:8
+msgid "quando a string esta vazia ou não contem numeros"
+msgstr ""
+
+#: of pycep_correios.cliente.validar_cep:1 pycep_correios.validar_cep:1
+msgid ""
+"Verifica se o CEP informado possui 8 digitos e é constituído apenas de "
+"números"
+msgstr ""
+
+#: of pycep_correios.cliente.validar_cep:4 pycep_correios.validar_cep:4
+msgid "CEP a ser validado"
+msgstr ""
+
+#: of pycep_correios.cliente.validar_cep:6 pycep_correios.validar_cep:6
+msgid "True se o CEP informado é valido. Caso contrário, retorna False"
+msgstr ""
+
+#: ../../pycep_correios.rst:16
+msgid "pycep\\_correios\\.excecoes module"
+msgstr ""
+
+#: of pycep_correios.CEPInvalido:1 pycep_correios.excecoes.CEPInvalido:1
+#: pycep_correios.excecoes.FalhaNaConexao:1
+#: pycep_correios.excecoes.MultiploRedirecionamento:1
+#: pycep_correios.excecoes.Timeout:1
+msgid "Base: :class:`pycep_correios.excecoes.ExcecaoPyCEPCorreios`"
+msgstr ""
+
+#: of pycep_correios.CEPInvalido:1 pycep_correios.excecoes.CEPInvalido:1
+msgid ""
+"Excecao disparada quando o CEP possui tamanho incorreto (diferente de 8) e/"
+"ou não existe"
+msgstr ""
+
+#: of pycep_correios.excecoes.ExcecaoPyCEPCorreios:1
+msgid "Base: :class:`Exception`"
+msgstr ""
+
+#: of pycep_correios.excecoes.ExcecaoPyCEPCorreios:1
+msgid "Excecao base da lib"
+msgstr ""
+
+#: of pycep_correios.excecoes.FalhaNaConexao:1
+msgid "Erro de conexao durante a requisicao"
+msgstr ""
+
+#: of pycep_correios.excecoes.MultiploRedirecionamento:1
+msgid "Excecao de multiplo redirecionamento"
+msgstr ""
+
+#: of pycep_correios.excecoes.Timeout:1
+msgid "Erro de TimeOut"
+msgstr ""
+
+#: ../../pycep_correios.rst:24
+msgid "pycep\\_correios\\.parser module"
+msgstr ""
+
+#: of pycep_correios.parser.monta_requisicao:1
+msgid "Gera o XML utilizado para realizar a requisição ao webservice"
+msgstr ""
+
+#: of pycep_correios.parser.monta_requisicao:3
+msgid "CEP a ser consultado"
+msgstr ""
+
+#: of pycep_correios.parser.monta_requisicao:5
+msgid "XML de consulta com CEP fornecido"
+msgstr ""
+
+#: of pycep_correios.parser.parse_resposta:1
+msgid "Extrai os endereço do xml retornado pelo webservice"
+msgstr ""
+
+#: of pycep_correios.parser.parse_resposta:3
+msgid "xml retornado pelo webservice"
+msgstr ""
+
+#: of pycep_correios.parser.parse_resposta:5
+msgid "dados do endereço do CEP consultado"
+msgstr ""
+
+#: of pycep_correios.parser.parse_resposta_com_erro:1
+msgid ""
+"Realiza a leitura do XML retornado pelo servidor e extrai a mensagem de erro"
+msgstr ""
+
+#: of pycep_correios.parser.parse_resposta_com_erro:4
+msgid "XML retornado pelo webservice"
+msgstr ""
+
+#: of pycep_correios.parser.parse_resposta_com_erro:6
+msgid "string contendo mensagem de erro"
+msgstr ""
+
+#: ../../pycep_correios.rst:33
+msgid "Module contents"
+msgstr ""
+
+#: of pycep_correios:2
+msgid "PyCEPCorreios"
+msgstr ""
+
+#: of pycep_correios:3
+msgid ""
+"PyCEPCorreios é uma API para consulta de CEP diretamente do *webservice* dos "
+"Correios."
+msgstr ""
+
+#: of pycep_correios:19
+msgid "Uso:"
+msgstr ""
+
+#: of pycep_correios:21
+msgid ""
+"Para outros metodos suportados, veja a documentação em https://pycep-"
+"correios.readthedocs.io."
+msgstr ""

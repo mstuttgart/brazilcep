@@ -22,7 +22,7 @@ PyCEPCorreios
 
 API para consulta de CEP diretamente do *webservice* dos Correios.
 
-Veja também em: `🇺🇸 <docs/en-US/README.rst>`_ 
+README: `🇺🇸 <docs/locale/en/README.rst>`_
 
 Features
 --------
@@ -33,9 +33,10 @@ Features
 Documentação
 ------------
 
-Para mais detalhes sobre a PyCEPCorreios, por gentileza, consulte a documentação oficial:
+Para mais detalhes sobre a PyCEPCorreios, por gentileza, consulte a documentação oficial (também disponível em Inglẽs):
 
-* Documentação online: https://pycep-correios.readthedocs.io.
+* Documentação online: `🇧🇷 <https://pycep-correios.readthedocs.io/pt/latest/>`_
+* Documentação online: `🇺🇸 <https://pycep-correios.readthedocs.io/en/latest/>`_
 * Documentação PDF: https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf
 
 Instalação

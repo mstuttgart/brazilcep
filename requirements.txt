@@ -2,6 +2,7 @@ flake8==3.3.0
 tox==2.7.0
 coveralls==1.1
 Sphinx==1.6.2
+sphinx-intl==0.9.10
 requests>=2.18.1
 Jinja2>=2.9.6
 mock==2.0.0
