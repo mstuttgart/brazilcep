@@ -37,7 +37,7 @@ Para mais detalhes sobre a PyCEPCorreios, por gentileza, consulte a documentaç�
 
 * Documentação online: `🇧🇷 <https://pycep-correios.readthedocs.io/pt/latest/>`_
 * Documentação online: `🇺🇸 <https://pycep-correios.readthedocs.io/en/latest/>`_
-* Documentação PDF: https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf
+* Documentação PDF: `aqui https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf`_
 
 Instalação
 ----------
@@ -78,7 +78,14 @@ Para dúvidas, sugestões e relatórios de *bugs*, por gentileza, crie uma *issu
 
 - Issue Tracker: https://github.com/mstuttgart/pycep-correios/issues
 
+Como contribuir
+---------------
+Deseja participar do desenvolvimento da PyCepCorreios? Torne-se um contribuidor do PyCEPCorreios!
+visite a documentação para verificar a *guideline* de contribuição:
+
+- Veja `aqui https://pycep-correios.readthedocs.io/pt/latest/contributing.html`_ como contribuir.
+
 Créditos
 --------
 
-Copyright (C) 2016-2017 por Michell Stuttgart Faria
+Copyright (C) 2016-2018 por Michell Stuttgart Faria
