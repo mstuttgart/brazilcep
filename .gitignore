@@ -60,3 +60,6 @@ target/
 main.py
 .idea
 /docs/_build_html/
+
+# vscode
+.vscode
