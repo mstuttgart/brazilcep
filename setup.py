@@ -17,7 +17,7 @@ with open(version_path, 'r') as f:
 with open('README.rst', 'r') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.rst', 'r') as history_file:
+with open('docs/history.rst', 'r') as history_file:
     history = history_file.read()
 
 requirements = [
