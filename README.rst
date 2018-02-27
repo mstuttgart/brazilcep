@@ -37,7 +37,7 @@ Para mais detalhes sobre a PyCEPCorreios, por gentileza, consulte a documentaç�
 
 * Documentação online: `🇧🇷 <https://pycep-correios.readthedocs.io/pt/latest/>`_
 * Documentação online: `🇺🇸 <https://pycep-correios.readthedocs.io/en/latest/>`_
-* Documentação PDF: `aqui https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf`_
+* Documentação PDF: `aqui <https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf>`_
 
 Instalação
 ----------
