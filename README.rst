@@ -83,7 +83,7 @@ Como contribuir
 Deseja participar do desenvolvimento da PyCepCorreios? Torne-se um contribuidor do PyCEPCorreios!
 visite a documentação para verificar a *guideline* de contribuição:
 
-- Veja `aqui https://pycep-correios.readthedocs.io/pt/latest/contributing.html`_ como contribuir.
+- Veja `aqui <https://pycep-correios.readthedocs.io/pt/latest/contributing.html>`_.
 
 Créditos
 --------
