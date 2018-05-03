@@ -21,8 +21,8 @@ with open('docs/history.rst', 'r') as history_file:
     history = history_file.read()
 
 requirements = [
-    'requests >= 2.18.1',
-    'Jinja2 >= 2.9.6',
+    'requests >= 2.1',
+    'Jinja2 >= 2.8',
     'six>=1.10'
 ]
 
