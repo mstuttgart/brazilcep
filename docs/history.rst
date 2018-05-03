@@ -2,6 +2,16 @@
 Histórico
 =========
 
+
+2.3.0 (2018-05-03)
+------------------
+
+* Adiciona logging para consulta de CEP 
+* Adiciona documentação em inglês
+* Versão requirida das libs *requests* e da *Jinja2* limitadas por baixo, para fins de compatibilidade
+* Remove suporte para Python 3.3
+
+
 2.2.0 (2017-07-16)
 ------------------
 
@@ -36,17 +46,17 @@ Histórico
 1.1.7 (2017-05-09)
 ------------------
 
-* [FIX] Corrigido erro `jinja2.exceptions.TemplateNotFound: consultacep.xml`
-* [FIX] Erro durante instalação da PyCEPCorreios via pip
-* [FIX] Atualizado código de exemplo no README.rst
-* [FIX] Atualizado exemplos na documentação
+* Corrigido erro `jinja2.exceptions.TemplateNotFound: consultacep.xml`
+* Erro durante instalação da PyCEPCorreios via pip
+* Atualizado código de exemplo no README.rst
+* Atualizado exemplos na documentação
 
 1.1.6 (2017-05-08)
 ------------------
 
-* [FIX] Correção de bug durante instalação. #15
-* [FIX] Correção de template xml ausente no pacote do modulo
-* [FIX] Melhorias gerais no código e correções de bugs
+* Correção de bug durante instalação. #15
+* Correção de template xml ausente no pacote do modulo
+* Melhorias gerais no código e correções de bugs
 
 1.1.1 (2017-02-08)
 ------------------
