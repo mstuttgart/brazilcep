@@ -16,8 +16,12 @@ import re
 
 import requests
 import six
+import logging
 
 from . import excecoes, parser
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 CARACTERES_NUMERICOS = re.compile(r'[^0-9]')
 
@@ -51,6 +55,7 @@ def consultar_cep(cep, ambiente=PRODUCAO):
     header = {'Content-type': 'text/xml; charset=;%s' % 'utf8'}
 
     try:
+        logger.info('Realizando consulta de CEP: %s' % cep)
         resposta = requests.post(URL[ambiente],
                                  data=xml,
                                  headers=header,
@@ -77,8 +82,10 @@ def consultar_cep(cep, ambiente=PRODUCAO):
 
     else:
         if resposta.ok:
+            logger.info('Consulta de CEP com sucesso!')
             return parser.parse_resposta(resposta.text)
         else:
+            logger.info('Consulta de CEP com erro!')
             msg = parser.parse_resposta_com_erro(resposta.text)
             raise excecoes.CEPInvalido(msg)
 
