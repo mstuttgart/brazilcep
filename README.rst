@@ -22,10 +22,9 @@ PyCEPCorreios
 
 API para consulta de CEP diretamente do *webservice* dos Correios.
 
-README: `🇺🇸 <docs/locale/en/README.rst>`_
-
 Features
 --------
+
 * Consulta de dados do endereço de um CEP
 * Formatacao de CEP
 * Validação de estrutura do CEP
@@ -37,10 +36,11 @@ Para mais detalhes sobre a PyCEPCorreios, por gentileza, consulte a documentaç�
 
 * Documentação online: `🇧🇷 <https://pycep-correios.readthedocs.io/pt/latest/>`_
 * Documentação online: `🇺🇸 <https://pycep-correios.readthedocs.io/en/latest/>`_
-* Documentação PDF: `aqui <https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf>`_
+* Documentação PDF: `download <https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf>`_
 
 Instalação
 ----------
+
 O PyCEP Correios pode ser facilmente instalado com o comando a seguir:
 
 .. code:: bash
@@ -74,12 +74,14 @@ Veja os exemplos a seguir:
 
 Aviso de *bugs*, dúvidas e sugestões
 ------------------------------------
+
 Para dúvidas, sugestões e relatórios de *bugs*, por gentileza, crie uma *issue*:
 
 - Issue Tracker: https://github.com/mstuttgart/pycep-correios/issues
 
 Como contribuir
 ---------------
+
 Deseja participar do desenvolvimento da PyCepCorreios? Torne-se um contribuidor do PyCEPCorreios!
 visite a documentação para verificar a *guideline* de contribuição:
 
@@ -91,7 +93,7 @@ Contribuidores
 Agradecimentos aos seguintes contribuidores pelo esforço de fazer a PyCEPCorreios
 melhor:
 
-* `Lista de contribuidores <https://github.com/mstuttgart/pycep-correios/graphs/contributors>`_
+- Lista de contribuidores: https://github.com/mstuttgart/pycep-correios/graphs/contributors
 
 
 Créditos
