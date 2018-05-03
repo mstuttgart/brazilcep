@@ -2,6 +2,12 @@
 Histórico
 =========
 
+2.3.1 (2018-05-03)
+------------------
+
+* Corrige README.rst
+* Adiciona comando para validação dpo setup.py no Makefile
+* Corrige link do repositorio e donwload
 
 2.3.0 (2018-05-03)
 ------------------
