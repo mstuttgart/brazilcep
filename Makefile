@@ -54,6 +54,9 @@ clean-docs: ## remove docs/_build and docs/_build_html folders
 lint: ## check style with flake8
 	flake8 pycep_correios tests
 
+check-setup: ## valida readme.rst e setup.py
+	python setup.py check --restructuredtext
+
 test-all: ## run tests on every Python version with tox
 	tox
 
