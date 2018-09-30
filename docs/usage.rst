@@ -65,34 +65,22 @@ formulário de endereço a ser preenchido pelo usuário. Desse modo, o CEP infor
 Quando consultamos um CEP com quantidade incorreto de digitos (diferente de 8)
 ou que não existe, a PyCEPCorreios dispara uma exceção `CEPInvalido`. 
 
-A partir da versão 2.2.0, a PyCEPCorreios trouxe novos tipos de exceções, de modo a tornar a utilização da API mais robusta. A novas exceções são *Timout*, *FalhaNaConexao*, *MultiploRedirecionamento*. Todas essas exceções derivam da nova exceção base *ExcecaoPyCEPCorreios*:
+A partir da versão **2.2.0**, a PyCEPCorreios trouxe novos tipos de exceções, de modo a tornar a utilização da API mais robusta. A novas exceções são *Timout*, *FalhaNaConexao*, *MultiploRedirecionamento*. Todas essas exceções derivam da nova exceção base *ExcecaoPyCEPCorreios*.
+
+**Update:** A partir da versão **3.0.0** as exceções CEPInvalido, Timeout, MultiploRedirecionamento, FalhaNaConexao não
+são mais utilizadas e serão removidas posteriormente na versão **4.0.0**. No lugar delas, utilize a exceção *ExcecaoPyCEPCorreios*,
+consultando o seu atributo *message* para verificar a causa do erro.
 
 .. code:: python
 
     from pycep_correios import consultar_cep
-    from pycep_correios.excecoes import (CEPInvalido,
-                                         ExcecaoPyCEPCorreios,
-                                         Timeout,
-                                         MultiploRedirecionamento,
-                                         FalhaNaConexao)
+    from pycep_correios.excecoes import ExcecaoPyCEPCorreios
 
     try:        
         endereco = pycep_correios.consultar_cep('00000000')
         
-    except Timeout as exc:
-        print(exec)
-        
-    except FalhaNaConexao as exc:
-        print(exc)
-        
-    except MultiploRedirecionamento as exc:
-        print(exc)
-        
-    except CEPInvalido as exc:
-        print(exc)
-        
     except ExcecaoPyCEPCorreios as exc:
-        print(exc)
+        print(exec.message)
 
 Também podemos escolher se desejamos que a consulta seja realizada no *webservice* de homologação ou produção dos Correios.
 Isso pode ser útil quando estamos utilizando a PyCEPCorreios em ambiente de desenvolvimento.

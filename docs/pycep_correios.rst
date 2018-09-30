@@ -20,15 +20,6 @@ pycep\_correios\.excecoes module
     :undoc-members:
     :show-inheritance:
 
-pycep\_correios\.parser module
-------------------------------
-
-.. automodule:: pycep_correios.parser
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
 Module contents
 ---------------
 
