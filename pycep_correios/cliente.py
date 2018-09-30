@@ -12,13 +12,13 @@ Este modulo implementa o cliente para consulta de CEP da PyCEPCorreios.
 
 from __future__ import absolute_import, unicode_literals
 
+import logging
 import re
 
-import requests
 import six
-import logging
+import zeep
 
-from . import excecoes, parser
+from . import excecoes
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -50,44 +50,11 @@ def consultar_cep(cep, ambiente=PRODUCAO):
         raise KeyError('Ambiente inválido! Valor deve ser 1 para produção e 2 '
                        'para homologação')
 
-    xml = parser.monta_requisicao(formatar_cep(cep))
-
-    header = {'Content-type': 'text/xml; charset=;%s' % 'utf8'}
-
     try:
-        logger.info('Realizando consulta de CEP: %s' % cep)
-        resposta = requests.post(URL[ambiente],
-                                 data=xml,
-                                 headers=header,
-                                 verify=False)
-
-    except requests.ConnectTimeout as exc:
-        msg = 'Mensagem original: %s' % exc
-        raise excecoes.Timeout('Timout! Conexão excedeu limite de tempo! '
-                               '%s' % msg)
-
-    except requests.ConnectionError as exc:
-        msg = 'Mensagem original: %s' % exc
-        raise excecoes.FalhaNaConexao('Falha na Conexão! %s' % msg)
-
-    except requests.TooManyRedirects as exc:
-        msg = 'Mensagem original: %s' % exc
-        raise excecoes.MultiploRedirecionamento('Multiplos redirecionamentos '
-                                                'durante a conexão! %s' % msg)
-
-    except requests.RequestException as exc:
-        msg = 'Mensagem original: %s' % exc
-        raise excecoes.ExcecaoPyCEPCorreios('Uma excecao inesperada '
-                                            'ocorreu: %s' % msg)
-
-    else:
-        if resposta.ok:
-            logger.info('Consulta de CEP com sucesso!')
-            return parser.parse_resposta(resposta.text)
-        else:
-            logger.info('Consulta de CEP com erro!')
-            msg = parser.parse_resposta_com_erro(resposta.text)
-            raise excecoes.CEPInvalido(msg)
+        client = zeep.Client(URL[ambiente])
+        return client.service.consultaCEP(formatar_cep(cep))
+    except zeep.exceptions.Fault as e:
+        raise excecoes.ExcecaoPyCEPCorreios(message=e.message)
 
 
 def formatar_cep(cep):
