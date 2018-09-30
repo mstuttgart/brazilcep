@@ -3,7 +3,6 @@ include README.rst
 include MANIFEST.in
 
 include setup.py
-include pycep_correios/templates/*.xml
 
 recursive-include tests *
 recursive-exclude * __pycache__
