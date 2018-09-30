@@ -27,6 +27,7 @@ install:
 # command to run tests, e.g. python setup.py test
 script: 
   - tox -e ${TOX_ENV}
+  - make check-setup
 
 after_success:
   - coveralls
