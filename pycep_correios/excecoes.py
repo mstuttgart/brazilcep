@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import deprecation
+
+from .__version__ import __version__
 
 
 class ExcecaoPyCEPCorreios(Exception):
@@ -12,18 +15,34 @@ class ExcecaoPyCEPCorreios(Exception):
         return '%s(%r)' % (self.__class__.__name__, self.message)
 
 
+@deprecation.deprecated(deprecated_in='3.0.0',
+                        removed_in='4.0.0',
+                        current_version=__version__,
+                        details='Utilize a ExcecaoPyCEPCorreios')
 class CEPInvalido(ExcecaoPyCEPCorreios):
     """ Excecao disparada quando o CEP possui tamanho incorreto
     (diferente de 8) e/ou não existe"""
 
 
+@deprecation.deprecated(deprecated_in='3.0.0',
+                        removed_in='4.0.0',
+                        current_version=__version__,
+                        details='Utilize a ExcecaoPyCEPCorreios')
 class FalhaNaConexao(ExcecaoPyCEPCorreios):
     """ Erro de conexao durante a requisicao """
 
 
+@deprecation.deprecated(deprecated_in='3.0.0',
+                        removed_in='4.0.0',
+                        current_version=__version__,
+                        details='Utilize a ExcecaoPyCEPCorreios')
 class MultiploRedirecionamento(ExcecaoPyCEPCorreios):
     """ Excecao de multiplo redirecionamento """
 
 
+@deprecation.deprecated(deprecated_in='3.0.0',
+                        removed_in='4.0.0',
+                        current_version=__version__,
+                        details='Utilize a ExcecaoPyCEPCorreios')
 class Timeout(ExcecaoPyCEPCorreios):
     """ Erro de TimeOut  """
