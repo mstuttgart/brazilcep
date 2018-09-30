@@ -4,6 +4,13 @@
 class ExcecaoPyCEPCorreios(Exception):
     """ Excecao base da lib"""
 
+    def __init__(self, message=''):
+        super(ExcecaoPyCEPCorreios, self).__init__(message)
+        self.message = message
+
+    def __repr__(self):
+        return '%s(%r)' % (self.__class__.__name__, self.message)
+
 
 class CEPInvalido(ExcecaoPyCEPCorreios):
     """ Excecao disparada quando o CEP possui tamanho incorreto
