@@ -132,9 +132,8 @@ html_theme_options = {
     'description': 'Consulta de CEP nos Correios',
     'sidebar_includehidden': True,
     'extra_nav_links': {
-        'PyPi': 'https://pypi.python.org/pypi/pycep-correios',
         'Github': 'https://github.com/mstuttgart/pycep-correios',
-        'Warehouse': 'https://pypi.org/project/pycep-correios',
+        'PyPi': 'https://pypi.org/project/pycep-correios',
     }
 }
 
