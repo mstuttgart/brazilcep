@@ -45,8 +45,9 @@ setup(
     packages=[
         'pycep_correios',
     ],
-    package_dir={'pycep_correios':
-                 'pycep_correios'},
+    package_dir={
+        'pycep_correios': 'pycep_correios',
+    },
     include_package_data=True,
     install_requires=requirements,
     license=about['__license__'],
