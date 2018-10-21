@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import deprecation
 
 from .__version__ import __version__

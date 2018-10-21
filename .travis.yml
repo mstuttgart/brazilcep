@@ -5,17 +5,15 @@ language: python
 
 matrix:
     include:
-      - python: 2.7
-        env: TOX_ENV=py27
       - python: 3.4
         env: TOX_ENV=py34
       - python: 3.5
         env: TOX_ENV=py35
       - python: 3.6
         env: TOX_ENV=py36
-      - python: 3.5
+      - python: 3.6
         env: TOX_ENV=flake8
-      - python: 3.5
+      - python: 3.6
         env: TOX_ENV=coverage
       - python: pypy
         env: TOX_ENV=pypy
@@ -42,4 +40,4 @@ deploy:
   on:
     tags: true
     repo: mstuttgart/pycep-correios
-    condition: ${TOX_ENV} == py35
+    condition: ${TOX_ENV} == py36

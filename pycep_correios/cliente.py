@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 """
 pycep_correios.client
@@ -9,17 +8,12 @@ Este modulo implementa o cliente para consulta de CEP da PyCEPCorreios.
 :license: MIT, veja o arquivo LICENSE para mais detalhes.
 
 """
-
-from __future__ import absolute_import, unicode_literals
-
 import logging
 import re
+import warnings
 
-import six
 import zeep
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-
-import warnings
 
 from . import excecoes
 
@@ -73,7 +67,7 @@ def formatar_cep(cep):
     :rtype: str
     :raises ValueError: quando a string esta vazia ou não contem numeros
     """
-    if not isinstance(cep, six.string_types) or not cep:
+    if not isinstance(cep, str) or not cep:
         raise ValueError('CEP deve ser uma string não vazia '
                          'contendo somente numeros')
 
