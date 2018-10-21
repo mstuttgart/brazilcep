@@ -35,7 +35,6 @@ Documentação
 Para mais detalhes sobre a PyCEPCorreios, por gentileza, consulte a documentação oficial (também disponível em Inglẽs):
 
 * Documentação online: `🇧🇷 <https://pycep-correios.readthedocs.io/pt/stable/>`_
-* Documentação online: `🇺🇸 <https://pycep-correios.readthedocs.io/en/stable/>`_
 * Documentação PDF: `download <https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf>`_
 
 Instalação
