@@ -34,7 +34,7 @@ Documentação
 
 Para mais detalhes sobre a PyCEPCorreios, por gentileza, consulte a documentação oficial (também disponível em Inglẽs):
 
-* Documentação online: `🇧🇷 <https://pycep-correios.readthedocs.io/pt/stable/>`_
+* Documentação online: `aqui <https://pycep-correios.readthedocs.io/pt/stable/>`_
 * Documentação PDF: `download <https://media.readthedocs.org/pdf/pycep-correios/stable/pycep-correios.pdf>`_
 
 Instalação
@@ -70,6 +70,21 @@ Veja os exemplos a seguir:
         'complemento': '',
         'complemento2': '- até 214/215',
     }
+
+ou 
+
+.. code-block:: python
+
+    import pycep_correios
+
+    endereco = pycep_correios.consultar_cep('37503130')
+    print(endereco.end)
+    print(endereco.bairro)
+    print(endereco.cidade)
+    print(endereco.complemento)
+    print(endereco.complemento2)
+    print(endereco.uf)
+    print(endereco.cep)
 
 Aviso de *bugs*, dúvidas e sugestões
 ------------------------------------
