@@ -2,6 +2,14 @@
 Histórico
 =========
 
+3.0.0 (2018-10-21)
+------------------
+
+* Alteração da API de consulta para [python-zeep](https://pypi.org/project/zeep/)
+* Antigas `exceptions` agora estão `deprecated`. Usar apenas `ExcecaoPyCEPCorreios`
+* Atualização da documentação
+* Remoção do suporte para Python 2.7
+
 2.3.1 (2018-05-03)
 ------------------
 
