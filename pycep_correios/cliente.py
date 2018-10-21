@@ -17,6 +17,9 @@ import re
 
 import six
 import zeep
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+import warnings
 
 from . import excecoes
 
@@ -51,8 +54,12 @@ def consultar_cep(cep, ambiente=PRODUCAO):
                        'para homologação')
 
     try:
-        client = zeep.Client(URL[ambiente])
-        return client.service.consultaCEP(formatar_cep(cep))
+        with warnings.catch_warnings():
+            # Desabilitamos o warning
+            warnings.simplefilter('ignore', InsecureRequestWarning)
+            warnings.simplefilter('ignore', ImportWarning)
+            client = zeep.Client(URL[ambiente])
+            return client.service.consultaCEP(formatar_cep(cep))
     except zeep.exceptions.Fault as e:
         raise excecoes.ExcecaoPyCEPCorreios(message=e.message)
 
