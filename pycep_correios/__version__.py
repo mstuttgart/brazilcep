@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 __title__ = 'pycep_correios'
 __description__ = 'API para busca de CEP no webservice dos Correios'
 __version__ = '3.0.0'

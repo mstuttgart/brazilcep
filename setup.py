@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from setuptools import setup
 import os
 
@@ -22,7 +20,6 @@ with open('docs/history.rst', 'r') as history_file:
 
 requirements = [
     'zeep>=2.0.0',
-    'six>=1.10',
     'deprecation',
 ]
 
@@ -58,7 +55,6 @@ setup(
         'Intended Audience :: Developers',
         'Natural Language :: Portuguese',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
