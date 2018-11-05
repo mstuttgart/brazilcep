@@ -19,7 +19,6 @@ A consulta de CEP é realizada através da função `consultar_cep`.
     print(endereco['end'])
     print(endereco['bairro'])
     print(endereco['cidade'])
-    print(endereco['complemento'])
     print(endereco['complemento2'])
     print(endereco['uf'])
     print(endereco['cep'])
@@ -35,7 +34,6 @@ ou tambem podemos
     print(endereco.end)
     print(endereco.bairro)
     print(endereco.cidade)
-    print(endereco.complemento)
     print(endereco.complemento2)
     print(endereco.uf)
     print(endereco.cep)
@@ -46,7 +44,6 @@ ao CEP e possui os seguintes valores:
 * **end**: corresponde ao logradouro do endereço do CEP
 * **bairro**: bairro referente ao CEP pesquisado
 * **cidade**: cidade referente ao CEP pesquisado
-* **complemento**: complemento referente ao CEP
 * **complemento2**: semelhante ao `complemento`, pode indicar, por exemplo, o intervalo de números de residências ao qual o CEP pertence.
 * **uf**: a sigla do estado (`SP` para São Paulo, `MG` para Minas Gerais e etc) ao qual o CEP representa
 * **cep**: o CEP consultado
@@ -61,9 +58,7 @@ Por exemplo, a busca do endereço do cep `37503130` nos retorna os seguintes dad
         'cep': '37503130',
         'cidade': 'Itajubá',
         'end': 'Rua Geraldino Campista',
-        'id': '0',
         'uf': 'MG',
-        'complemento': '',
         'complemento2': '- até 214/215',
     }
 
@@ -86,6 +81,9 @@ A partir da versão **2.2.0**, a PyCEPCorreios trouxe novos tipos de exceções,
 **Update:** A partir da versão **3.0.0** as exceções CEPInvalido, Timeout, MultiploRedirecionamento, FalhaNaConexao não
 são mais utilizadas e serão removidas posteriormente na versão **4.0.0**. No lugar delas, utilize a exceção *ExcecaoPyCEPCorreios*,
 consultando o seu atributo *message* para verificar a causa do erro.
+
+**Update: 05/11/2018** As novas consultas no webservice dos Correios não estão mais retornando as tags *id* e *complemento*. Sendo assim as mesmas serão
+desconsideradas pela PyCEPCorreios.
 
 .. code:: python
 
