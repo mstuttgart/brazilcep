@@ -75,9 +75,7 @@ Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Veja os ex
     'cep': '37503130',
     'cidade': 'Itajubá',
     'end': 'Rua Geraldino Campista',
-    'id': '0',
     'uf': 'MG',
-    'complemento': '',
     'complemento2': '- até 214/215',
 }
 ```
