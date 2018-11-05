@@ -1,10 +1,6 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
-
 import unittest
 
 from pycep_correios import consultar_cep, formatar_cep, validar_cep
-from pycep_correios import HOMOLOGACAO, PRODUCAO
 
 
 class TestPyCEPCorreios(unittest.TestCase):
@@ -15,10 +11,9 @@ class TestPyCEPCorreios(unittest.TestCase):
             'cep': '37503130',
             'cidade': 'Itajubá',
             'end': 'Rua Geraldino Campista',
-            'id': 0,
             'uf': 'MG',
-            'complemento': '',
             'complemento2': '- até 214/215',
+            'unidadesPostagem': [],
         }
 
     def test_consultar_cep(self):
@@ -29,10 +24,8 @@ class TestPyCEPCorreios(unittest.TestCase):
         self.assertEqual(endereco.bairro, 'Santo Antônio')
         self.assertEqual(endereco.cep, '37503130')
         self.assertEqual(endereco.cidade, 'Itajubá')
-        self.assertEqual(endereco.complemento, None)
         self.assertEqual(endereco.complemento2, '- até 214/215')
         self.assertEqual(endereco.end, 'Rua Geraldino Campista')
-        self.assertEqual(endereco.id, 0)
         self.assertEqual(endereco.uf, 'MG')
         self.assertEqual(endereco.unidadesPostagem, [])
 
@@ -41,10 +34,8 @@ class TestPyCEPCorreios(unittest.TestCase):
         self.assertEqual(endereco['bairro'], 'Santo Antônio')
         self.assertEqual(endereco['cep'], '37503130')
         self.assertEqual(endereco['cidade'], 'Itajubá')
-        self.assertEqual(endereco['complemento'], None)
         self.assertEqual(endereco['complemento2'], '- até 214/215')
         self.assertEqual(endereco['end'], 'Rua Geraldino Campista')
-        self.assertEqual(endereco['id'], 0)
         self.assertEqual(endereco['uf'], 'MG')
         self.assertEqual(endereco['unidadesPostagem'], [])
 
