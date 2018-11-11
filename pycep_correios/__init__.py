@@ -13,16 +13,14 @@ Uso:
         'cep': '37503130',
         'cidade': 'Itajubá',
         'end': 'Rua Geraldino Campista',
-        'id': '0',
         'uf': 'MG',
-        'complemento': '',
         'complemento2': '- até 214/215',
     }
 
 Para outros metodos suportados, veja a
 documentação em https://pycep-correios.readthedocs.io.
 
-:copyright: 2016-2017 por Michell Stuttgart Faria
+:copyright: 2016-2018 por Michell Stuttgart Faria
 :license: MIT, veja o arquivo LICENSE para mais detalhes.
 """
 
