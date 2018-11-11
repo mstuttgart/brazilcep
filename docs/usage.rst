@@ -23,21 +23,6 @@ A consulta de CEP é realizada através da função `consultar_cep`.
     print(endereco['uf'])
     print(endereco['cep'])
 
-ou tambem podemos
-
-.. code:: python
-
-    import pycep_correios
-
-    endereco = pycep_correios.consultar_cep('37503130')
-
-    print(endereco.end)
-    print(endereco.bairro)
-    print(endereco.cidade)
-    print(endereco.complemento2)
-    print(endereco.uf)
-    print(endereco.cep)
-
 A variavel `endereco` recebe um `dict` contendo os dados do endereço relativo
 ao CEP e possui os seguintes valores:
 

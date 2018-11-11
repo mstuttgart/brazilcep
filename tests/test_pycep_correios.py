@@ -21,16 +21,6 @@ class TestPyCEPCorreios(unittest.TestCase):
         # Realizamos a consulta de CEP
         endereco = consultar_cep('37.503-130')
 
-        self.assertEqual(endereco.bairro, 'Santo Antônio')
-        self.assertEqual(endereco.cep, '37503130')
-        self.assertEqual(endereco.cidade, 'Itajubá')
-        self.assertEqual(endereco.complemento2, '- até 214/215')
-        self.assertEqual(endereco.end, 'Rua Geraldino Campista')
-        self.assertEqual(endereco.uf, 'MG')
-        self.assertEqual(endereco.unidadesPostagem, [])
-
-        endereco = consultar_cep('37503130')
-
         self.assertEqual(endereco['bairro'], 'Santo Antônio')
         self.assertEqual(endereco['cep'], '37503130')
         self.assertEqual(endereco['cidade'], 'Itajubá')

@@ -53,7 +53,18 @@ def consultar_cep(cep, ambiente=PRODUCAO):
             warnings.simplefilter('ignore', InsecureRequestWarning)
             warnings.simplefilter('ignore', ImportWarning)
             client = zeep.Client(URL[ambiente])
-            return client.service.consultaCEP(formatar_cep(cep))
+            endereco = client.service.consultaCEP(formatar_cep(cep))
+
+            return {
+                'bairro': endereco.bairro,
+                'cep': endereco.cep,
+                'cidade': endereco.cidade,
+                'end': endereco.end,
+                'uf': endereco.uf,
+                'complemento2': endereco.complemento2,
+                'unidadesPostagem': endereco.unidadesPostagem,
+            }
+
     except zeep.exceptions.Fault as e:
         raise excecoes.ExcecaoPyCEPCorreios(message=e.message)
 
