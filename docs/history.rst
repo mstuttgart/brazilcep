@@ -2,6 +2,13 @@
 Histórico
 =========
 
+3.1.0 (2018-11-11)
+------------------
+
+* Correção no tipo do retorno do metodo consultar_cep (por questões de compatibilidade, agora retorna um dict)
+* Correção da documentação, pois as tags 'id' e 'complemento' não estão mais sendo retornadas pelo Correios.
+* Atualização do README.md para uso de markdown no pypi e documentação.
+
 3.0.0 (2018-10-21)
 ------------------
 
