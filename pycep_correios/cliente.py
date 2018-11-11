@@ -4,7 +4,7 @@ pycep_correios.client
 ~~~~~~~~~~~~~~~~~~~~~
 Este modulo implementa o cliente para consulta de CEP da PyCEPCorreios.
 
-:copyright: 2016-2017 por Michell Stuttgart Faria
+:copyright: 2016-2018 por Michell Stuttgart Faria
 :license: MIT, veja o arquivo LICENSE para mais detalhes.
 
 """
@@ -34,13 +34,18 @@ URL = {
 def consultar_cep(cep, ambiente=PRODUCAO):
     """Retorna o endereço correspondente ao número de CEP informado.
 
-    :param cep: CEP a ser consultado.
-    :type cep: str
-    :param ambiente: Indica qual será o webservice utilizado na consulta de CEP. Valor default é PRODUCAO. # noqa: E501
-    :type ambiente: int
-    :return: Dados do endereço do CEP consultado.
-    :rtype: dict
-    :raises CEPInvalido: quando a cep é inexistente
+    Arguments:
+        cep {str} -- CEP a ser consultado.
+
+    Keyword Arguments:
+        ambiente {int} -- Indica qual será o webservice utilizado na consulta de CEP. Valor default é PRODUCAO (default: {PRODUCAO})
+
+    Raises:
+        KeyError -- Quando ambiente selecionado não existe (esperado: PRODUCAO ou HOMOLOGACAO)
+        ExcecaoPyCEPCorreios -- Quando ocorre qualquer erro na consulta do CEP.
+
+    Returns:
+        dict -- Dados do endereço do CEP consultado.
     """
 
     if ambiente not in URL:
@@ -70,13 +75,16 @@ def consultar_cep(cep, ambiente=PRODUCAO):
 
 
 def formatar_cep(cep):
-    """Formata CEP, removendo qualquer caractere nao numerico
+    """Formata CEP, removendo qualquer caractere não numérico.
 
-    :param cep: CEP a ser formatado
-    :type cep: str
-    :return: string contendo o CEP formatado
-    :rtype: str
-    :raises ValueError: quando a string esta vazia ou não contem numeros
+    Arguments:
+        cep {str} -- CEP a ser formatado.
+
+    Raises:
+        ValueError -- Quando a string esta vazia ou não contem numeros.
+
+    Returns:
+        str -- string contendo o CEP formatado.
     """
     if not isinstance(cep, str) or not cep:
         raise ValueError('CEP deve ser uma string não vazia '
@@ -86,14 +94,13 @@ def formatar_cep(cep):
 
 
 def validar_cep(cep):
-    """Verifica se o CEP informado possui 8 digitos e é constituído apenas de
-    números
+    """Verifica se o CEP informado possui 8 digitos e é constituído apenas de números.
 
-    :param cep: CEP a ser validado
-    :type cep: str
-    :return: True se o CEP informado é valido. Caso contrário, retorna False
-    :rtype: str
-    :raises ValueError: quando a string esta vazia ou não contem numeros
+    Arguments:
+        cep {str} -- CEP a ser validado.
+
+    Returns:
+        [boolean] -- True se o CEP informado é valido. Caso contrário, retorna False.
     """
     cep = formatar_cep(cep)
     return cep.isdigit() and len(cep) == 8
