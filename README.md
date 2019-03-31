@@ -18,13 +18,13 @@
     <img src="https://img.shields.io/coveralls/mstuttgart/pycep-correios/develop.svg?style=flat-square" alt="Installs">
   </a>
   <a href="https://landscape.io/github/mstuttgart/pycep-correios/develop">
-      <img src="https://landscape.io/github/mstuttgart/pycep-correios/develop/landscape.svg?style=flat-square" alt="Ratings">
+      <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/mstuttgart/pycep-correios.svg?style=flat-square">
   </a>
   <a href="https://pypi.org/project/pycep-correios">
       <img src="https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square" alt="Ratings">
   </a>
   <a href="https://pypi.org/project/pycep-correios/">
-      <img src="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" alt="Ratings">
+      <img src="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" alt="Version">
   </a>
 </p>
 
