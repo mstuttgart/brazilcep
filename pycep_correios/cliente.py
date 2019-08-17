@@ -61,13 +61,13 @@ def consultar_cep(cep, ambiente=PRODUCAO):
             endereco = client.service.consultaCEP(formatar_cep(cep))
 
             return {
-                'bairro': endereco.bairro,
-                'cep': endereco.cep,
-                'cidade': endereco.cidade,
-                'end': endereco.end,
-                'uf': endereco.uf,
-                'complemento2': endereco.complemento2,
-                'unidadesPostagem': endereco.unidadesPostagem,
+                'bairro': getattr(endereco, 'bairro', ''),
+                'cep': getattr(endereco, 'cep', ''),
+                'cidade': getattr(endereco, 'cidade', ''),
+                'end': getattr(endereco, 'end', ''),
+                'uf': getattr(endereco, 'uf', ''),
+                'complemento2': getattr(endereco, 'complemento2', ''),
+                'unidadesPostagem': getattr(endereco, 'unidadesPostagem', ''),
             }
 
     except zeep.exceptions.Fault as e:
