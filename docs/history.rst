@@ -2,6 +2,13 @@
 Histórico
 =========
 
+3.2.0 (2019-08-18)
+------------------
+
+* Remove suporte para Python 3.4: https://www.python.org/downloads/release/python-3410/
+* Adiciona suporte para retorno com atributos ausentes
+* Adiciona mock aos testes
+
 3.1.0 (2018-11-11)
 ------------------
 
