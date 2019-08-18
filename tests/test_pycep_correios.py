@@ -1,6 +1,7 @@
 from unittest import TestCase, mock
 
 from pycep_correios import consultar_cep, formatar_cep, validar_cep
+from pycep_correios import excecoes
 
 
 class TestPyCEPCorreios(TestCase):
@@ -107,3 +108,23 @@ class TestPyCEPCorreios(TestCase):
         self.assertIs(validar_cep('37.503-00'), False)
         self.assertIs(validar_cep('   37.503-003'), True)
         self.assertIs(validar_cep('37.503&003saasd'), True)
+
+    def test_consultar_cep_integration(self):
+
+        # Aqui realizamos um teste de integração
+        # pra garantir o funcionamento do todo
+
+        # Realizamos a consulta de CEP
+        try:
+            endereco = consultar_cep('37.503-130')
+        except excecoes.ExcecaoPyCEPCorreios as exc:
+            print(exc.message)
+
+        self.assertEqual(endereco['bairro'], 'Santo Antônio')
+        self.assertEqual(endereco['cep'], '37503130')
+        self.assertEqual(endereco['cidade'], 'Itajubá')
+        self.assertEqual(endereco['complemento2'], '- até 214/215')
+        self.assertEqual(endereco['end'], 'Rua Geraldino Campista')
+        self.assertEqual(endereco['uf'], 'MG')
+        self.assertEqual(endereco['unidadesPostagem'], [])
+
