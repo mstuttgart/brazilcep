@@ -4,7 +4,7 @@
 Instalação
 ==========
 
-Atualmente, a PyCEPCorreios possui suporte para Python 3.4+.
+Atualmente, a PyCEPCorreios possui suporte para Python 3.5+.
 
 Versão estável
 --------------
