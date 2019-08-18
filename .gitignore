@@ -63,3 +63,8 @@ main.py
 
 # vscode
 .vscode
+
+# virtualenv
+.venv
+.env
+env
