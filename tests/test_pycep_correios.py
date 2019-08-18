@@ -53,6 +53,36 @@ class TestPyCEPCorreios(TestCase):
         # Verifica se o metodo consultaCEP foi chamado com os parametros corretos
         service_mk.consultaCEP.assert_called_with('37503130')
 
+
+    @mock.patch('zeep.Client')
+    def test_consultar_return_error(self, mk):
+
+        class MockClass:
+            def __init__(self, dictionary):
+                for k, v in dictionary.items():
+                    setattr(self, k, v)
+
+        # Utilizamps um retorno vazio para testar o retorno
+        # com atributos ausentes
+        end_esperado = {
+        }
+
+        service_mk = mk.return_value.service
+
+        # Criamos o mock para o valor de retorno
+        service_mk.consultaCEP.return_value = MockClass(end_esperado)
+
+        # Realizamos a consulta de CEP
+        endereco = consultar_cep('37.503-130')
+
+        self.assertEqual(endereco['bairro'], '')
+        self.assertEqual(endereco['cep'], '')
+        self.assertEqual(endereco['cidade'], '')
+        self.assertEqual(endereco['complemento2'], '')
+        self.assertEqual(endereco['end'], '')
+        self.assertEqual(endereco['uf'], '')
+        self.assertEqual(endereco['unidadesPostagem'], [])
+
     def test_formatar_cep(self):
         self.assertRaises(ValueError, formatar_cep, 37503003)
         self.assertRaises(ValueError, formatar_cep, '')
