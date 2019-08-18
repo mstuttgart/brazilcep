@@ -67,7 +67,7 @@ def consultar_cep(cep, ambiente=PRODUCAO):
                 'end': getattr(endereco, 'end', ''),
                 'uf': getattr(endereco, 'uf', ''),
                 'complemento2': getattr(endereco, 'complemento2', ''),
-                'unidadesPostagem': getattr(endereco, 'unidadesPostagem', ''),
+                'unidadesPostagem': getattr(endereco, 'unidadesPostagem', []),
             }
 
     except zeep.exceptions.Fault as e:
