@@ -20,7 +20,7 @@ Uso:
 Para outros metodos suportados, veja a
 documentação em https://pycep-correios.readthedocs.io.
 
-:copyright: 2016-2018 por Michell Stuttgart Faria
+:copyright: 2016-2019 por Michell Stuttgart Faria
 :license: MIT, veja o arquivo LICENSE para mais detalhes.
 """
 
