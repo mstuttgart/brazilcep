@@ -41,7 +41,7 @@
 ## Recursos
 
 -   Consulta de dados do endereço de um CEP
--   Formatacao de CEP
+-   Formatação de CEP
 -   Validação de estrutura do CEP
 
 ## Documentação
@@ -82,7 +82,7 @@ Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Veja os ex
 
 ## Como contribuir
 
-Deseja participar do desenvolvimento da PyCepCorreios? Torne-se um contribuidor do PyCEPCorreios! visite a documentação para verificar a *guideline* de contribuição:
+Deseja participar do desenvolvimento da PyCepCorreios? Torne-se um contribuidor do PyCEPCorreios! Visite a documentação para verificar a *guideline* de contribuição:
 
 -   Veja [aqui](https://pycep-correios.readthedocs.io/pt/stable/contributing.html).
 
