@@ -8,6 +8,7 @@ dist: xenial
 python:
   - "3.5"
   - "3.6"
+  - "3.7"
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
