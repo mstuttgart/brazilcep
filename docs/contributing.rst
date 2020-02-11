@@ -78,7 +78,7 @@ Pronto para contribuir? Veja como configurar `pycep_correios` para desenvolvimen
 5. Quando terminar de fazer alterações, verifique se suas alterações passam no *flake8* e nos testes::
 
     $ flake8 pycep_correios tests
-    $ python setup.py test
+    $ pytest
 
 6. Confirme as suas alterações e as envie para o GitHub::
 

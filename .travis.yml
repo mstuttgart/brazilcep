@@ -3,25 +3,22 @@
 
 language: python
 
-matrix:
-    include:
-      - python: 3.5
-        env: TOX_ENV=py35
-      - python: 3.6
-        env: TOX_ENV=py36
-      - python: 3.6
-        env: TOX_ENV=flake8
-      - python: 3.6
-        env: TOX_ENV=coverage
+dist: xenial
+
+python:
+  - "3.5"
+  - "3.6"
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
-  - pip install tox
+  - pip install -r requirements.txt
+  - pip install pytest-cov
+  - pip install coveralls
 
 # command to run tests, e.g. python setup.py test
 script: 
-  - tox -e ${TOX_ENV}
-  - make check-setup
+  - pytest --cov=pycep_correios/
+  - flake8 --ignore=E501 pycep_correios
 
 after_success:
   - coveralls

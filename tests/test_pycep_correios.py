@@ -1,7 +1,8 @@
 from unittest import TestCase, mock
 
-from pycep_correios import consultar_cep, formatar_cep, validar_cep
-from pycep_correios import excecoes
+import pytest
+
+from pycep_correios import consultar_cep, excecoes, formatar_cep, validar_cep
 
 
 class TestPyCEPCorreios(TestCase):
@@ -43,17 +44,16 @@ class TestPyCEPCorreios(TestCase):
         # Realizamos a consulta de CEP
         endereco = consultar_cep('37.503-130')
 
-        self.assertEqual(endereco['bairro'], 'Santo Antônio')
-        self.assertEqual(endereco['cep'], '37503130')
-        self.assertEqual(endereco['cidade'], 'Itajubá')
-        self.assertEqual(endereco['complemento2'], '- até 214/215')
-        self.assertEqual(endereco['end'], 'Rua Geraldino Campista')
-        self.assertEqual(endereco['uf'], 'MG')
-        self.assertEqual(endereco['unidadesPostagem'], [])
+        assert endereco['bairro'] == 'Santo Antônio'
+        assert endereco['cep'] == '37503130'
+        assert endereco['cidade'] == 'Itajubá'
+        assert endereco['complemento2'] == '- até 214/215'
+        assert endereco['end'] == 'Rua Geraldino Campista'
+        assert endereco['uf'] == 'MG'
+        assert endereco['unidadesPostagem'] == []
 
         # Verifica se o metodo consultaCEP foi chamado com os parametros corretos
         service_mk.consultaCEP.assert_called_with('37503130')
-
 
     @mock.patch('zeep.Client')
     def test_consultar_return_error(self, mk):
@@ -76,38 +76,57 @@ class TestPyCEPCorreios(TestCase):
         # Realizamos a consulta de CEP
         endereco = consultar_cep('37.503-130')
 
-        self.assertEqual(endereco['bairro'], '')
-        self.assertEqual(endereco['cep'], '')
-        self.assertEqual(endereco['cidade'], '')
-        self.assertEqual(endereco['complemento2'], '')
-        self.assertEqual(endereco['end'], '')
-        self.assertEqual(endereco['uf'], '')
-        self.assertEqual(endereco['unidadesPostagem'], [])
+        assert endereco['bairro'] == ''
+        assert endereco['cep'] == ''
+        assert endereco['cidade'] == ''
+        assert endereco['complemento2'] == ''
+        assert endereco['end'] == ''
+        assert endereco['uf'] == ''
+        assert endereco['unidadesPostagem'] == []
 
     def test_formatar_cep(self):
-        self.assertRaises(ValueError, formatar_cep, 37503003)
-        self.assertRaises(ValueError, formatar_cep, '')
-        self.assertRaises(ValueError, formatar_cep, None)
-        self.assertRaises(ValueError, formatar_cep, False)
-        self.assertRaises(ValueError, formatar_cep, True)
-        self.assertEqual(formatar_cep('37.503-003'), '37503003')
-        self.assertEqual(formatar_cep('   37.503-003'), '37503003')
-        self.assertEqual(formatar_cep('37 503-003'), '37503003')
-        self.assertEqual(formatar_cep('37.503&003saasd'), '37503003')
-        self.assertEqual(formatar_cep('\n \r 37.503-003'), '37503003')
-        self.assertEqual(formatar_cep('\n \r 37.503-003'), '37503003')
+
+        with pytest.raises(ValueError):
+            formatar_cep(37503003)
+
+        with pytest.raises(ValueError):
+            formatar_cep('')
+
+        with pytest.raises(ValueError):
+            formatar_cep(None)
+
+        with pytest.raises(ValueError):
+            formatar_cep(False)
+
+        with pytest.raises(ValueError):
+            formatar_cep(True)
+
+        assert formatar_cep('37.503-003') == '37503003'
+        assert formatar_cep('   37.503-003') == '37503003'
+        assert formatar_cep('37 503-003') == '37503003'
+        assert formatar_cep('37.503&003saasd') == '37503003'
+        assert formatar_cep('\n \r 37.503-003') == '37503003'
+        assert formatar_cep('\n \r 37.503-003') == '37503003'
+
         # ponto e virgula
         self.assertEqual(formatar_cep('37.503-003;'), '37503003')
+
         # Unicode Greek Question Mark
         self.assertEqual(formatar_cep(u'37.503-003;'), '37503003')
 
     def test_validar_cep(self):
-        self.assertRaises(ValueError, validar_cep, 37503003)
-        self.assertRaises(ValueError, validar_cep, '')
-        self.assertIs(validar_cep('37.503-003'), True)
-        self.assertIs(validar_cep('37.503-00'), False)
-        self.assertIs(validar_cep('   37.503-003'), True)
-        self.assertIs(validar_cep('37.503&003saasd'), True)
+
+        with pytest.raises(ValueError):
+            validar_cep(37503003)
+
+        with pytest.raises(ValueError):
+            validar_cep('')
+
+        assert validar_cep('37.503-003')
+        assert validar_cep('   37.503-003')
+        assert validar_cep('37.503&003saasd')
+
+        assert not validar_cep('37.503-00')
 
     def test_consultar_cep_integration(self):
 
@@ -120,11 +139,10 @@ class TestPyCEPCorreios(TestCase):
         except excecoes.ExcecaoPyCEPCorreios as exc:
             print(exc.message)
 
-        self.assertEqual(endereco['bairro'], 'Santo Antônio')
-        self.assertEqual(endereco['cep'], '37503130')
-        self.assertEqual(endereco['cidade'], 'Itajubá')
-        self.assertEqual(endereco['complemento2'], '- até 214/215')
-        self.assertEqual(endereco['end'], 'Rua Geraldino Campista')
-        self.assertEqual(endereco['uf'], 'MG')
-        self.assertEqual(endereco['unidadesPostagem'], [])
-
+        assert endereco['bairro'] == 'Santo Antônio'
+        assert endereco['cep'] == '37503130'
+        assert endereco['cidade'] == 'Itajubá'
+        assert endereco['complemento2'] == '- até 214/215'
+        assert endereco['end'] == 'Rua Geraldino Campista'
+        assert endereco['uf'] == 'MG'
+        assert endereco['unidadesPostagem'] == []

@@ -6,3 +6,4 @@ sphinx-intl==0.9.10
 zeep>=2.0.0
 twine
 deprecation
+pytest
