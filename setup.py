@@ -16,13 +16,14 @@ with open('README.md', 'r') as readme_file:
     readme = readme_file.read()
 
 requirements = [
-    'zeep>=2.0.0',
+    'requests>=2.22.0',
     'deprecation',
 ]
 
 test_requirements = [
     'pytest',
     'pytest-cov',
+    'requests-mock',
     'flake8 >= 3.3.0',
 ]
 
