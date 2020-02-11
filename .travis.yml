@@ -8,6 +8,7 @@ dist: xenial
 python:
   - "3.5"
   - "3.6"
+  - "3.7"
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
@@ -28,9 +29,8 @@ after_success:
 deploy:
   provider: pypi
   distributions: "sdist bdist_wheel"
-  user: mstuttgart
+  user: $PYPI_USERNAME
   password: $PYPI_PASSWORD
   on:
     tags: true
     repo: mstuttgart/pycep-correios
-    condition: ${TOX_ENV} == py36
