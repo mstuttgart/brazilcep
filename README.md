@@ -14,8 +14,8 @@
   <a href="https://travis-ci.org/mstuttgart/pycep-correios">
     <img src="https://img.shields.io/travis/mstuttgart/pycep-correios/develop.svg?style=flat-square" alt="Version">
   </a>
-  <a href="https://coveralls.io/github/mstuttgart/pycep-correios?branch=develop">
-    <img src="https://img.shields.io/coveralls/mstuttgart/pycep-correios/develop.svg?style=flat-square" alt="Installs">
+  <a href="https://codecov.io/gh/mstuttgart/pycep-correios?branch=develop">
+    <img alt="Codecov branch" src="https://img.shields.io/codecov/c/github/mstuttgart/pycep-correios/develop?style=flat-square">
   </a>
   <a href="https://landscape.io/github/mstuttgart/pycep-correios/develop">
       <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/mstuttgart/pycep-correios.svg?style=flat-square">
