@@ -23,7 +23,6 @@ requirements = [
 test_requirements = [
     'pytest',
     'pytest-cov',
-    'coveralls >= 1.1',
     'flake8 >= 3.3.0',
 ]
 

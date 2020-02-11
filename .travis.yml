@@ -1,31 +1,30 @@
-# Config file for automatic testing at travis-ci.org
-# This file will be regenerated if you run travis_pypi_setup.py
-
 language: python
 
 dist: xenial
+
+env:
+  - CODECOV_TOKEN=$CODECOV
 
 python:
   - "3.5"
   - "3.6"
   - "3.7"
 
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
   - pip install -r requirements.txt
   - pip install pytest-cov
-  - pip install coveralls
+  - pip install codecov
+  - pip install flake8
 
-# command to run tests, e.g. python setup.py test
+before_script:
+  - flake8 --ignore=E501 pycep_correios/
+
 script: 
-  - pytest --cov=pycep_correios/
-  - flake8 --ignore=E501 pycep_correios
+  - pytest --cov-report term --cov=pycep_correios
 
 after_success:
-  - coveralls
+  - codecov
 
-# After you create the Github repo and add it to Travis, run the
-# travis_pypi_setup.py script to finish PyPI deployment setup
 deploy:
   provider: pypi
   distributions: "sdist bdist_wheel"
