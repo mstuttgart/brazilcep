@@ -37,7 +37,7 @@ from .__version__ import (__title__,  # noqa: F401
                           __copyright__,
                           __license__)
 
-from .client import consultar_cep, formatar_cep, validar_cep
+from .client import consultar_cep, formatar_cep, validar_cep, get_address_from_cep
 from .client import HOMOLOGACAO, PRODUCAO
 from .excecoes import CEPInvalido
 from .exceptions import BaseException
@@ -46,6 +46,7 @@ __all__ = [
     'consultar_cep',
     'formatar_cep',
     'validar_cep',
+    'get_address_from_cep',
     'CEPInvalido',
     'BaseException',
     'HOMOLOGACAO',

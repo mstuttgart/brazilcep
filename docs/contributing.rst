@@ -95,4 +95,4 @@ Após enviar um pedido de *Pull Request*, verifique se ele atende a essas diretr
 
 1. O pedido de *Pull Request* deve incluir testes, quando for uma nova *feature*.
 2. Se o *Pull Request* adicionar funcionalidades, a documentação deve ser atualizada adicionado detalhes de uso da nova funcionalidade.
-3. O pedido de *Pull Request* deve funcionar para o Python 2.7+ e 3.5+. Verificar https://travis-ci.org/mstuttgart/pycep-correios/pull_requests e certifique-se de que os testes passem para todas as versões do Python suportadas.
+3. O pedido de *Pull Request* deve funcionar para o 3.5+. Verificar https://travis-ci.org/mstuttgart/pycep-correios/pull_requests e certifique-se de que os testes passem para todas as versões do Python suportadas.

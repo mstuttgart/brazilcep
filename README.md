@@ -8,7 +8,7 @@
   <br>
 </h1>
 
-<h4 align="center">API para consulta de CEP diretamente do <i>webservice</i> dos Correios</h4>
+<h4 align="center">API para consulta de CEP do <i>webservice</i> ViaCep</h4>
 
 <p align="center">
   <a href="https://travis-ci.org/mstuttgart/pycep-correios">
@@ -68,15 +68,15 @@ Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Veja os ex
 ```python
 >>> import pycep_correios
 
->>> endereco = pycep_correios.consultar_cep('37503130')
+>>> endereco = pycep_correios.get_address_from_cep('37503130')
 >>> print(endereco)
 {
     'bairro': 'Santo Antônio',
     'cep': '37503130',
     'cidade': 'Itajubá',
-    'end': 'Rua Geraldino Campista',
+    'logradouro': 'Rua Geraldino Campista',
     'uf': 'MG',
-    'complemento2': '- até 214/215',
+    'complemento': '- até 214/215',
 }
 ```
 
