@@ -18,6 +18,7 @@ with open('README.md', 'r') as readme_file:
 requirements = [
     'requests>=2.22.0',
     'deprecated',
+    'zeep>=2.0.0',
 ]
 
 test_requirements = [

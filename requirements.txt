@@ -7,3 +7,4 @@ deprecated
 pytest
 pytest-cov
 requests-mock
+zeep>=2.0.0
