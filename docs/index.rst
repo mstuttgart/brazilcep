@@ -10,8 +10,7 @@ Bem vindo a PyCEPCorreios!
 .. image:: https://img.shields.io/pypi/l/pycep-correios.svg?style=flat-square
     :target: https://github.com/mstuttgart/pycep-correios/blob/develop/LICENSE
 
-A PyCEPCorreios é uma API para consulta de CEP diretamente no *webservice* dos Correios.
-O *webservice* em questão utilizado para consulta de CEP é o *webservice* do serviço SIGEPWeb, fornecido pelos correios.
+A PyCEPCorreios é uma API para consulta de CEP no *webservice* ViaCep.
 
 A PyCEPCorreios possui as seguintes funcionalidades:
 
@@ -26,15 +25,15 @@ Veja o exemplo a seguir:
 
     >>> import pycep_correios
 
-    >>> endereco = pycep_correios.consultar_cep('37503130')
+    >>> endereco = pycep_correios.get_address_from_cep('37503130')
     >>> print(endereco)
     {
         'bairro': 'Santo Antônio',
         'cep': '37503130',
         'cidade': 'Itajubá',
-        'end': 'Rua Geraldino Campista',
+        'logradouro': 'Rua Geraldino Campista',
         'uf': 'MG',
-        'complemento2': '- até 214/215',
+        'complemento': '- até 214/215',
     }
 
 

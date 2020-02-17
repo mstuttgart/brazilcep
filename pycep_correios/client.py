@@ -8,15 +8,18 @@ Este modulo implementa o cliente para consulta de CEP da PyCEPCorreios.
 :license: MIT, veja o arquivo LICENSE para mais detalhes.
 
 """
+import json
 import logging
 import re
 import warnings
 
 import deprecated
+import requests
 import zeep
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 from . import excecoes
+from . import exceptions
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -30,6 +33,8 @@ URL = {
     HOMOLOGACAO: 'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',  # noqa: E501
     PRODUCAO: 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',  # noqa: E501
 }
+
+URL_GET_ADDRESS_FROM_CEP = 'http://www.viacep.com.br/ws/{}/json'
 
 
 @deprecated.deprecated(version='4.0.0', reason="'consultar_cep' is no longer supported and will be removed in a future release. Please, use 'get_address_from_cep' instead.")
@@ -106,3 +111,39 @@ def validar_cep(cep):
     """
     cep = formatar_cep(cep)
     return cep.isdigit() and len(cep) == 8
+
+
+def get_address_from_cep(cep):
+    """Retorna o endereço correspondente ao número de CEP informado.
+    Arguments:
+        cep {str} -- CEP a ser consultado.
+    Raises:
+        ExceptionPyCEPCorreios -- Quando ocorre qualquer erro na consulta do CEP.
+    Returns:
+        dict -- Dados do endereço do CEP consultado.
+    """
+
+    cep = formatar_cep(cep)
+
+    try:
+        response = requests.get(URL_GET_ADDRESS_FROM_CEP.format(cep))
+
+        if response.status_code == 200:
+            address = json.loads(response.text)
+
+            return {
+                'bairro': address['bairro'],
+                'cep': address['cep'],
+                'cidade': address['localidade'],
+                'logradouro': address['logradouro'],
+                'uf': address['uf'],
+                'complemento': address['complemento'],
+            }
+
+        elif response.status_code == 400:
+            raise exceptions.BaseException(message='Invalid CEP: %s' % cep)  # noqa
+        else:
+            raise exceptions.BaseException(message='Other error')
+
+    except requests.exceptions.RequestException as e:
+        raise exceptions.BaseException(message=e.message)
