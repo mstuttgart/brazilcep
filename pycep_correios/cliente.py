@@ -12,7 +12,7 @@ import logging
 import re
 import warnings
 
-import deprecation
+import deprecated
 import zeep
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
@@ -32,7 +32,7 @@ URL = {
 }
 
 
-@deprecation.deprecated(version='4.0.0', reason="'consultar_cep' is no longer supported and will be removed in a future release. Please use 'get_address_from_cep'")
+@deprecated.deprecated(version='4.0.0', reason="'consultar_cep' is no longer supported and will be removed in a future release. Please, use 'get_address_from_cep' instead.")
 def consultar_cep(cep, ambiente=PRODUCAO):
     """Retorna o endereço correspondente ao número de CEP informado.
 
