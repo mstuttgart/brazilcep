@@ -52,7 +52,8 @@ class TestPyCEPCorreios(TestCase):
         assert endereco['uf'] == 'MG'
         assert endereco['unidadesPostagem'] == []
 
-        # Verifica se o metodo consultaCEP foi chamado com os parametros corretos
+        # Verifica se o metodo consultaCEP foi chamado 
+        # com os parametros corretos
         service_mk.consultaCEP.assert_called_with('37503130')
 
     @mock.patch('zeep.Client')
