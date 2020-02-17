@@ -17,7 +17,7 @@ with open('README.md', 'r') as readme_file:
 
 requirements = [
     'requests>=2.22.0',
-    'deprecation',
+    'deprecated',
 ]
 
 test_requirements = [

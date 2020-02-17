@@ -3,7 +3,7 @@ Sphinx==1.6.2
 sphinx-intl==0.9.10
 requests==2.22.0
 twine
-deprecation
+deprecated
 pytest
 pytest-cov
 requests-mock
