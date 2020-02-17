@@ -37,8 +37,8 @@ from .__version__ import (__title__,  # noqa: F401
                           __copyright__,
                           __license__)
 
-from .cliente import consultar_cep, formatar_cep, validar_cep
-from .cliente import HOMOLOGACAO, PRODUCAO
+from .client import consultar_cep, formatar_cep, validar_cep
+from .client import HOMOLOGACAO, PRODUCAO
 from .excecoes import CEPInvalido
 
 __all__ = [

@@ -4,10 +4,10 @@ pycep\_correios package
 Submodules
 ----------
 
-pycep\_correios\.cliente module
+pycep\_correios\.client module
 -------------------------------
 
-.. automodule:: pycep_correios.cliente
+.. automodule:: pycep_correios.client
     :members:
     :undoc-members:
     :show-inheritance:
