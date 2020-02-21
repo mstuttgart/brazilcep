@@ -35,6 +35,7 @@ URL = {
 }
 
 URL_GET_ADDRESS_FROM_CEP = 'http://www.viacep.com.br/ws/{}/json'
+URL_GET_CEP_FROM_ADDRESS = 'http://www.viacep.com.br/ws/{}/{}/{}/json'
 
 
 @deprecated.deprecated(version='4.0.0', reason="'consultar_cep' is no longer supported and will be removed in a future release. Please, use 'get_address_from_cep' instead.")
@@ -118,7 +119,7 @@ def get_address_from_cep(cep):
     Arguments:
         cep {str} -- CEP a ser consultado.
     Raises:
-        ExceptionPyCEPCorreios -- Quando ocorre qualquer erro na consulta do CEP.
+        BaseException -- Quando ocorre qualquer erro na consulta do CEP.
     Returns:
         dict -- Dados do endereço do CEP consultado.
     """
@@ -144,6 +145,37 @@ def get_address_from_cep(cep):
             raise exceptions.BaseException(message='Invalid CEP: %s' % cep)  # noqa
         else:
             raise exceptions.BaseException(message='Other error')
+
+    except requests.exceptions.RequestException as e:
+        raise exceptions.BaseException(message=e.message)
+
+
+def get_cep_from_address(state, city, street):
+    """Retorna os CEPs correspondente ao endereço informado.
+
+    Arguments:
+        state {str} -- Sigla do estado da consulta
+        city {str} -- Cidade do CEP ser encontrado
+        street {str} -- Rua do CEP a ser encontrado
+    Raises:
+        BaseException -- Quando ocorre qualquer erro na consulta do CEP.
+    Returns:
+        dict -- Dados do endereço do CEP consultado.
+    """
+
+    try:
+        response = requests.get(
+            URL_GET_CEP_FROM_ADDRESS.format(state, city, street))
+
+        if response.status_code == 200:
+            return response.json()
+
+        elif response.status_code == 400:
+            raise exceptions.BaseException(
+                message='City and Street must be 3 characters of lenght')
+        else:
+            raise exceptions.BaseException(
+                message='Other error ocurred!')
 
     except requests.exceptions.RequestException as e:
         raise exceptions.BaseException(message=e.message)
