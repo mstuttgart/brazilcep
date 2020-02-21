@@ -81,7 +81,7 @@ def consultar_cep(cep, ambiente=PRODUCAO):
     except zeep.exceptions.Fault as e:
         raise excecoes.ExcecaoPyCEPCorreios(message=e.message)
 
-
+@deprecated.deprecated(version='4.0.0', reason="'formatar_cep' is no longer supported and will be removed in a future release. Please, use 'format_cep' instead.")
 def formatar_cep(cep):
     """Formata CEP, removendo qualquer caractere não numérico.
 
