@@ -46,11 +46,65 @@ ou que não existe, a PyCEPCorreios dispara uma exceção `BaseException`.
     from pycep_correios.exceptions import BaseException
 
     try:        
-        endereco = pycep_correios.
-        ('00000000')
+        endereco = pycep_correios.get_address_from_cep('00000000')
+    except BaseException as exc:
+        print(exec.message)
+
+Consultando endereços
+---------------------
+
+A PyCEPCorreios tambem permite a busca de uma determinada faiza de CEPs a partir de um
+endereço. Sendo assim, a partir do estado, cidade e logradouro é possível obter a faixa de CEP
+correspondentes.
+
+.. code:: python
+
+    from pycep_correios import get_cep_from_address
+    from pycep_correios.exceptions import BaseException
+
+    try:        
+        ceps = pycep_correios.get_cep_from_address('00000000')
         
     except BaseException as exc:
         print(exec.message)
+
+    
+    print(ceps)
+    >> [   
+        {
+            "cep": "37503-165",
+            "logradouro": "Rua Geraldino Campista",
+            "complemento": "de 871/872 ao fim",
+            "bairro": "Santa Luzia",
+            "localidade": "Itajubá",
+            "uf": "MG",
+            "unidade": "",
+            "ibge": "3132404",
+            "gia": ""
+        },
+        {
+            "cep": "37503-130",
+            "logradouro": "Rua Geraldino Campista",
+            "complemento": "até 214/215",
+            "bairro": "Santo Antônio",
+            "localidade": "Itajubá",
+            "uf": "MG",
+            "unidade": "",
+            "ibge": "3132404",
+            "gia": ""
+        },
+        {
+            "cep": "37503-003",
+            "logradouro": "Rua Geraldino Campista",
+            "complemento": "de 216/217 a 869/870",
+            "bairro": "Vila Poddis",
+            "localidade": "Itajubá",
+            "uf": "MG",
+            "unidade": "",
+            "ibge": "3132404",
+            "gia": ""
+        }
+    ]
 
 Validando CEP
 -------------
