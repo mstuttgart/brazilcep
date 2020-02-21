@@ -109,7 +109,7 @@ correspondentes.
 Validando CEP
 -------------
 
-A validação de código de CEP pode ser feita através do comando `validar_cep`. A função retorna
+A validação de código de CEP pode ser feita através do comando `validate_cep`. A função retorna
 `True` se a estrutura do CEP for válida e `False`, caso contrário.
 
 .. code:: python
@@ -118,7 +118,7 @@ A validação de código de CEP pode ser feita através do comando `validar_cep`
 
     meu_cep = '37.503-003'
 
-    if pycep_correios.validar_cep(meu_cep):
+    if pycep_correios.validate_cep(meu_cep):
         print('O CEP %s é valido!!' % meu_cep)
     else:
         print('Ops!! O CEP %s não é valido!!' % meu_cep)
