@@ -82,6 +82,7 @@ def consultar_cep(cep, ambiente=PRODUCAO):
     except zeep.exceptions.Fault as e:
         raise excecoes.ExcecaoPyCEPCorreios(message=e.message)
 
+
 @deprecated.deprecated(version='4.0.0', reason="'formatar_cep' is no longer supported and will be removed in a future release. Please, use 'format_cep' instead.")
 def formatar_cep(cep):
     """Formata CEP, removendo qualquer caractere não numérico.
@@ -199,3 +200,14 @@ def format_cep(cep):
             'CEP must be a non-empty string containing only numbers')
 
     return NUMBERS.sub('', cep)
+
+
+def validate_cep(cep):
+    """Verifica se o CEP informado possui 8 digitos e é constituído apenas de números.
+    Arguments:
+        cep {str} -- CEP a ser validado.
+    Returns:
+        [boolean] -- True se o CEP informado é valido. Caso contrário, retorna False.
+    """
+    cep = format_cep(cep)
+    return cep.isdigit() and len(cep) == 8
