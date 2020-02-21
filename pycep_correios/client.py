@@ -102,6 +102,7 @@ def formatar_cep(cep):
     return CARACTERES_NUMERICOS.sub('', cep)
 
 
+@deprecated.deprecated(version='4.0.0', reason="'validar_cep' is no longer supported and will be removed in a future release. Please, use 'validate_cep' instead.")
 def validar_cep(cep):
     """Verifica se o CEP informado possui 8 digitos e é constituído apenas de números.
 
