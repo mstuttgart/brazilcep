@@ -43,6 +43,7 @@ clean-pyc: ## remove Python file artifacts
 	find . -name '__pycache__' -exec rm -fr {} +
 
 clean-test: ## remove test and coverage artifacts
+	rm -fr .tox/
 	rm -f .coverage
 	rm -fr htmlcov/
 
@@ -57,7 +58,7 @@ check-setup: ## valida readme.rst e setup.py
 	python setup.py check --restructuredtext
 
 test-all: ## run tests on every Python version with tox
-	pytest
+	tox
 
 coverage: ## check code coverage quickly with the default Python
 	coverage run --source pycep_correios -m pytest
