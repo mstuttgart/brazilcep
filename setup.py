@@ -22,6 +22,7 @@ requirements = [
 ]
 
 test_requirements = [
+    'tox',
     'pytest',
     'pytest-cov',
     'requests-mock',
