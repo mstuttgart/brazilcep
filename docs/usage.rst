@@ -128,17 +128,17 @@ A função também aceita CEPs contendo pontuação como, por exemplo, `37.503-0
 Formatando CEP
 --------------
 
-A funcao `formatar_cep` recebe uma string contendo o CEP, com pontos e hífens e
+A funcao `format_cep` recebe uma string contendo o CEP, com pontos e hífens e
 simplesmente os remove. É utilizada internamente pelo comando `consultar_cep`.
 
 .. code:: python
 
-    from pycep_correios import formatar_cep
+    from pycep_correios import format_cep
 
     meu_cep = '37.503-003'
 
     try:
-        cep_formatado = formatar_cep(meu_cep)
+        cep_formatado = format_cep(meu_cep)
         print('O CEP %s esta formatado: %s' % (meu_cep, cep_formatado))
     except ValueError as exc:
         print('Erro ao formatar CEP: %s' % exc)

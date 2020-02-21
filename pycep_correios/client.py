@@ -25,6 +25,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 CARACTERES_NUMERICOS = re.compile(r'[^0-9]')
+NUMBERS = re.compile(r'[^0-9]')
 
 PRODUCAO = 1
 HOMOLOGACAO = 2
@@ -116,6 +117,7 @@ def validar_cep(cep):
 
 def get_address_from_cep(cep):
     """Retorna o endereço correspondente ao número de CEP informado.
+
     Arguments:
         cep {str} -- CEP a ser consultado.
     Raises:
@@ -124,7 +126,7 @@ def get_address_from_cep(cep):
         dict -- Dados do endereço do CEP consultado.
     """
 
-    cep = formatar_cep(cep)
+    cep = format_cep(cep)
 
     try:
         response = requests.get(URL_GET_ADDRESS_FROM_CEP.format(cep))
@@ -179,3 +181,20 @@ def get_cep_from_address(state, city, street):
 
     except requests.exceptions.RequestException as e:
         raise exceptions.BaseException(message=e.message)
+
+
+def format_cep(cep):
+    """Formata CEP, removendo qualquer caractere não numérico.
+
+    Arguments:
+        cep {str} -- CEP a ser formatado.
+    Raises:
+        ValueError -- Quando a string esta vazia ou não contem numeros.
+    Returns:
+        str -- string contendo o CEP formatado.
+    """
+    if not isinstance(cep, str) or not cep:
+        raise ValueError(
+            'CEP must be a non-empty string containing only numbers')
+
+    return NUMBERS.sub('', cep)
