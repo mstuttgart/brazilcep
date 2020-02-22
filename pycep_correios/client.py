@@ -18,8 +18,7 @@ import requests
 import zeep
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
-from . import excecoes
-from . import exceptions
+from . import excecoes, exceptions
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
