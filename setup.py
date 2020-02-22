@@ -1,46 +1,26 @@
 #!/usr/bin/env python
-from setuptools import setup
-import os
-
 from codecs import open
 
-version_path = os.path.join(os.path.abspath(os.path.dirname(__file__)),
-                            'pycep_correios',
-                            '__version__.py')
-
-about = {}
-with open(version_path, 'r') as f:
-    exec(f.read(), about)
+from setuptools import setup
 
 with open('README.md', 'r') as readme_file:
     readme = readme_file.read()
 
-requirements = [
-    'requests>=2.22.0',
-    'deprecated',
-    'zeep>=2.0.0',
-]
-
-test_requirements = [
-    'tox',
-    'pytest',
-    'pytest-cov',
-    'requests-mock',
-    'flake8 >= 3.3.0',
-]
+with open('requirements.txt', 'r') as requirements_file:
+    requirements = requirements_file.read()
 
 setup(
-    name=about['__title__'],
-    version=about['__version__'],
-    description=about['__description__'],
+    name='pycep_correios',
+    version='4.0.0',
+    description='API para consulta de endereços e CEPs',
     long_description=readme,
     long_description_content_type='text/markdown',
-    author=about['__author__'],
-    author_email=about['__author_email__'],
-    maintainer=about['__maintainer__'],
-    maintainer_email=about['__maintainer_email__'],
-    url=about['__url__'],
-    download_url=about['__download_url__'],
+    author='Michell Stuttgart Faria',
+    author_email='michellstut@gmail.com',
+    maintainer='Michell Stuttgart Faria',
+    maintainer_email='michellstut@gmail.com',
+    url='https://github.com/mstuttgart/pycep-correios',
+    download_url='https://github.com/mstuttgart/pycep-correios',
     packages=[
         'pycep_correios',
     ],
@@ -49,7 +29,7 @@ setup(
     },
     include_package_data=True,
     install_requires=requirements,
-    license=about['__license__'],
+    license='MIT License',
     zip_safe=False,
     keywords='correios desenvolvimento busca endereco cep',
     classifiers=[
@@ -62,5 +42,4 @@ setup(
         'Programming Language :: Python :: 3.7',
     ],
     test_suite='tests',
-    tests_require=test_requirements,
 )
