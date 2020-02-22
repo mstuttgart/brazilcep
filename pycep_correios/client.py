@@ -4,7 +4,7 @@ pycep_correios.client
 ~~~~~~~~~~~~~~~~~~~~~
 Este modulo implementa o cliente para consulta de CEP da PyCEPCorreios.
 
-:copyright: 2016-2019 por Michell Stuttgart Faria
+:copyright: 2016-2020 por Michell Stuttgart Faria
 :license: MIT, veja o arquivo LICENSE para mais detalhes.
 
 """
