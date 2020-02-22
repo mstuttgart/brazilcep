@@ -100,4 +100,4 @@ Agradecimentos aos seguintes contribuidores pelo esforço de fazer a PyCEPCorrei
 
 ## Créditos
 
-Copyright (C) 2016-2019 por Michell Stuttgart
+Copyright (C) 2016-2020 por Michell Stuttgart
