@@ -8,21 +8,17 @@ env:
 matrix:
     include:
       - python: 3.5
-        env: TOX_ENV=py35
       - python: 3.6
-        env: TOX_ENV=py36
       - python: 3.7
-        env: TOX_ENV=py37
-      - python: 3.6
-        env: TOX_ENV=flake8
-      - python: 3.6
-        env: TOX_ENV=coverage
 
 install:
-  - pip install tox
+  - make install
+
+before_script:
+  - make flake8
 
 script: 
-  - tox -e ${TOX_ENV}
+  - make test
 
 after_success:
   - codecov
@@ -35,4 +31,3 @@ deploy:
   on:
     tags: true
     repo: mstuttgart/pycep-correios
-    condition: ${TOX_ENV} == py36

@@ -42,7 +42,6 @@ clean-pyc: ## remove Python file artifacts
 	find . -name '__pycache__' -exec rm -fr {} +
 
 clean-test: ## remove test and coverage artifacts
-	rm -fr .tox/
 	rm -f .coverage
 	rm -fr htmlcov/
 
@@ -56,9 +55,6 @@ flake8: ## check style with flake8
 isort:  ## Check imports
 	isort --check --diff -tc -rc pycep_correios tests
 	isort -rc .
-
-test-all: ## run tests on every Python version with tox
-	tox
 
 test:
 	pytest -x -v
