@@ -28,7 +28,6 @@ help:
 
 clean: clean-build clean-pyc clean-test clean-docs ## remove all build, test, coverage and Python artifacts
 
-
 clean-build: ## remove build artifacts
 	rm -fr build/
 	rm -fr dist/
@@ -51,21 +50,22 @@ clean-docs: ## remove docs/_build and docs/_build_html folders
 	rm -rf docs/_build
 	rm -rf docs/_build_html
 
-lint: ## check style with flake8
-	flake8 pycep_correios tests
+flake8: ## check style with flake8
+	flake8 --ignore=E501 pycep_correios tests
 
-check-setup: ## valida readme.rst e setup.py
-	python setup.py check --restructuredtext
+isort:  ## Check imports
+	isort --check --diff -tc -rc pycep_correios tests
+	isort -rc .
 
 test-all: ## run tests on every Python version with tox
 	tox
 
-coverage: ## check code coverage quickly with the default Python
-	coverage run --source pycep_correios -m pytest
+test:
+	pytest -x -v
 
-		coverage report -m
-		coverage html
-		$(BROWSER) htmlcov/index.html
+coverage: ## check code coverage quickly with the default Python
+	pytest --cov=pycep_correios --cov-report=html:htmlcov
+	$(BROWSER) htmlcov/index.html
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/pycep_correios.rst
@@ -86,5 +86,5 @@ dist: clean ## builds source and wheel package
 	python setup.py bdist_wheel
 	ls -l dist
 
-install: clean ## install the package to the active Python's site-packages
-	python setup.py install
+install: 
+	pip install -U -r requirements-dev.txt

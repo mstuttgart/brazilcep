@@ -1,0 +1,7 @@
+-r requirements.txt
+tox
+Sphinx
+pytest
+pytest-cov
+isort
+flake8
