@@ -2,6 +2,18 @@
 Histórico
 =========
 
+4.0.0 (2020-02-22)
+------------------
+
+* Add support ViaCEP
+* Adiciona consulta de faixa de CEPs 
+* Adiciona function format_cep, validate_cep
+* Adiciona nova function de busca de CEP
+* Adiciona suporte para Python 3.7
+* Ajustes no codigo e documentação
+
+Milestone: https://github.com/mstuttgart/pycep-correios/milestone/4
+
 3.2.0 (2019-08-18)
 ------------------
 
