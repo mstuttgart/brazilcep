@@ -28,6 +28,7 @@ deploy:
   distributions: "sdist bdist_wheel"
   user: $PYPI_USERNAME
   password: $PYPI_PASSWORD
+  skip_existing: true
   on:
     tags: true
     repo: mstuttgart/pycep-correios
