@@ -63,7 +63,8 @@ correspondentes.
     from pycep_correios.exceptions import BaseException
 
     try:        
-        ceps = pycep_correios.get_cep_from_address('00000000')
+        ceps = pycep_correios.get_cep_from_address(
+            state='MG', city='Itajuba', street='Rua Geraldino Campista')
         
     except BaseException as exc:
         print(exec.message)
