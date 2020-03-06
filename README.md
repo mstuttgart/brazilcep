@@ -40,9 +40,10 @@
 
 ## Recursos
 
--   Consulta de dados do endereço de um CEP
+-   Consulta de dados de um endereço a partir do CEP
+-   Consulta de intervalo de CEP a partir de um endereço
 -   Formatação de CEP
--   Validação de estrutura do CEP
+-   Validação de CEP
 
 ## Documentação
 
