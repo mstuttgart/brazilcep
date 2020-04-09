@@ -136,12 +136,12 @@ def get_address_from_cep(cep):
             address = json.loads(response.text)
 
             return {
-                'bairro': address['bairro'],
-                'cep': address['cep'],
-                'cidade': address['localidade'],
-                'logradouro': address['logradouro'],
-                'uf': address['uf'],
-                'complemento': address['complemento'],
+                'bairro': address.get('bairro', ''),
+                'cep': address.get('cep', ''),
+                'cidade': address.get('localidade', ''),
+                'logradouro': address.get('logradouro', ''),
+                'uf': address.get('uf', ''),
+                'complemento': address.get('complemento', ''),
             }
 
         elif response.status_code == 400:
