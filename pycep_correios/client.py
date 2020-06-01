@@ -138,7 +138,6 @@ def get_address_from_cep(cep):
             if 'error' in address and address['error']:
                 raise exceptions.BaseException(message='Other error')
 
-
             return {
                 'bairro': address.get('bairro', ''),
                 'cep': address.get('cep', ''),
