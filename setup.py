@@ -11,7 +11,7 @@ with open('requirements.txt', 'r') as requirements_file:
 
 setup(
     name='pycep_correios',
-    version='4.0.1',
+    version='4.0.2',
     description='API para consulta de endereços e CEPs',
     long_description=readme,
     long_description_content_type='text/markdown',

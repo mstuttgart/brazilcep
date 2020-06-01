@@ -2,6 +2,13 @@
 Histórico
 =========
 
+4.0.2 (2020-05-31)
+------------------
+
+* Fix 'get_cep_from_address' usage example
+* fix(client): KeyError exception when address not foun - thanks Patrick Ferraz https://github.com/patricksferraz]
+* Add Error handling when status_code=200 - thanks Bruno Mello https://github.com/bgmello
+
 4.0.1 (2020-02-22)
 ------------------
 
@@ -55,7 +62,6 @@ Milestone: https://github.com/mstuttgart/pycep-correios/milestone/4
 * Adiciona documentação em inglês
 * Versão requirida das libs *requests* e da *Jinja2* limitadas por baixo, para fins de compatibilidade
 * Remove suporte para Python 3.3
-
 
 2.2.0 (2017-07-16)
 ------------------
