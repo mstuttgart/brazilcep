@@ -2,11 +2,17 @@
 Histórico
 =========
 
+4.0.3 (2020-06-08)
+------------------
+
+* Fix 'get_cep_from_address' error key - thanks Hendrix Costa https://github.com/hendrixcosta
+* Update docs
+
 4.0.2 (2020-05-31)
 ------------------
 
 * Fix 'get_cep_from_address' usage example
-* fix(client): KeyError exception when address not foun - thanks Patrick Ferraz https://github.com/patricksferraz]
+* fix(client): KeyError exception when address not found - thanks Patrick Ferraz https://github.com/patricksferraz
 * Add Error handling when status_code=200 - thanks Bruno Mello https://github.com/bgmello
 
 4.0.1 (2020-02-22)
