@@ -67,7 +67,8 @@ Pronto para contribuir? Veja como configurar `pycep_correios` para desenvolvimen
 
     $ cd pycep-correios
     $ virtualenv env -p python3
-    $ make install
+    $ source env/bin/activate
+    $ pip install -r requirements-dev.txt
 
 4. Crie uma *branch* para desenvolvimento::
 
@@ -83,7 +84,7 @@ Pronto para contribuir? Veja como configurar `pycep_correios` para desenvolvimen
 6. Confirme as suas alterações e as envie para o GitHub::
 
     $ git add .
-    $ git commit -m "Descricao detalhada das sua alteracoes."
+    $ git commit -m "Descricao detalhada das sua alteracoes. (de preferencia em ingles)"
     $ git push origin nome-da-sua-branch
 
 7. Envie um *Pull Request* para o repositório oficial da PyCEPCorreios no GitHub.
