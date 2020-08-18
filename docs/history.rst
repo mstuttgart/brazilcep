@@ -2,6 +2,11 @@
 Histórico
 =========
 
+4.0.4 (2020-08-18)
+------------------
+
+* Fix Fix AttributeError: 'ConnectionError' object has no attribute 'message'
+
 4.0.3 (2020-06-08)
 ------------------
 
