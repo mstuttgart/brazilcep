@@ -153,7 +153,7 @@ def get_address_from_cep(cep):
             raise exceptions.BaseException(message='Other error')
 
     except requests.exceptions.RequestException as e:
-        raise exceptions.BaseException(message=e.message)
+        raise exceptions.BaseException(message=e)
 
 
 def get_cep_from_address(state, city, street):
