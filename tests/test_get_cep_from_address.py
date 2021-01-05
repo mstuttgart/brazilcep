@@ -11,9 +11,10 @@ def test_success():
             "bairro": "Santa Luzia",
             "localidade": "Itajubá",
             "uf": "MG",
-            "unidade": "",
             "ibge": "3132404",
-            "gia": ""
+            "gia": "",
+            'ddd': '35',
+            'siafi': '4647',
         },
         {
             "cep": "37503-130",
@@ -22,9 +23,10 @@ def test_success():
             "bairro": "Santo Antônio",
             "localidade": "Itajubá",
             "uf": "MG",
-            "unidade": "",
             "ibge": "3132404",
-            "gia": ""
+            "gia": "",
+            'ddd': '35',
+            'siafi': '4647',
         },
         {
             "cep": "37503-003",
@@ -33,9 +35,10 @@ def test_success():
             "bairro": "Vila Poddis",
             "localidade": "Itajubá",
             "uf": "MG",
-            "unidade": "",
             "ibge": "3132404",
-            "gia": ""
+            "gia": "",
+            'ddd': '35',
+            'siafi': '4647',
         }
     ]
 
