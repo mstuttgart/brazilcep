@@ -1,4 +1,4 @@
-from .client import (HOMOLOGACAO, PRODUCAO, consultar_cep, format_cep,  # noqa
+from .client import (HOMOLOGACAO, PRODUCAO, VIACEP, APICEP, consultar_cep, format_cep,  # noqa
                      formatar_cep, get_address_from_cep, get_cep_from_address,
                      validar_cep, validate_cep)
 from .excecoes import CEPInvalido
@@ -16,4 +16,6 @@ __all__ = [
     'BaseException',
     'HOMOLOGACAO',
     'PRODUCAO',
+    'VIACEP',
+    'APICEP',
 ]

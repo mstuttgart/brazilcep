@@ -29,12 +29,19 @@ NUMBERS = re.compile(r'[^0-9]')
 PRODUCAO = 1
 HOMOLOGACAO = 2
 
+VIACEP = 1
+APICEP = 2
+
 URL = {
     HOMOLOGACAO: 'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',  # noqa: E501
     PRODUCAO: 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',  # noqa: E501
 }
 
-URL_GET_ADDRESS_FROM_CEP = 'http://www.viacep.com.br/ws/{}/json'
+URL_GET_ADDRESS_FROM_CEP = {
+    VIACEP: 'http://www.viacep.com.br/ws/{}/json',
+    APICEP: 'https://ws.apicep.com/cep/{}.json',
+}
+
 URL_GET_CEP_FROM_ADDRESS = 'http://www.viacep.com.br/ws/{}/{}/{}/json'
 
 
@@ -116,7 +123,7 @@ def validar_cep(cep):
     return cep.isdigit() and len(cep) == 8
 
 
-def get_address_from_cep(cep):
+def get_address_from_cep(cep, server=APICEP):
     """Retorna o endereço correspondente ao número de CEP informado.
 
     Arguments:
@@ -130,7 +137,7 @@ def get_address_from_cep(cep):
     cep = format_cep(cep)
 
     try:
-        response = requests.get(URL_GET_ADDRESS_FROM_CEP.format(cep))
+        response = requests.get(URL_GET_ADDRESS_FROM_CEP[server].format(cep))
 
         if response.status_code == 200:
             address = json.loads(response.text)
@@ -139,11 +146,11 @@ def get_address_from_cep(cep):
                 raise exceptions.BaseException(message='Other error')
 
             return {
-                'bairro': address.get('bairro', ''),
-                'cep': address.get('cep', ''),
-                'cidade': address.get('localidade', ''),
-                'logradouro': address.get('logradouro', ''),
-                'uf': address.get('uf', ''),
+                'bairro': address.get('bairro', '') or address.get('district', ''),
+                'cep': address.get('cep', '') or address.get('code', ''),
+                'cidade': address.get('localidade', '') or address.get('city', ''),
+                'logradouro': address.get('logradouro', '') or address.get('address', '').split(' - até')[0],
+                'uf': address.get('uf', '') or address.get('state', ''),
                 'complemento': address.get('complemento', ''),
             }
 
