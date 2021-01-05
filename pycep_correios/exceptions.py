@@ -1,10 +1,28 @@
 
 class BaseException(Exception):
-    """ base exception"""
+    """Base class for exceptions"""
 
-    def __init__(self, message=''):
-        super(BaseException, self).__init__(message)
-        self.message = message
 
-    def __repr__(self):
-        return '%s(%r)' % (self.__class__.__name__, self.message)
+class InvalidCEP(BaseException):
+    """Exception raised to invalid CEP requests"""
+
+
+class CEPNotFound(BaseException):
+    """Exception raised to CEP not founded requests"""
+
+
+class ConnectionError(BaseException):
+    """Exception raised to requests with connection errors"""
+
+
+class HTTPError(BaseException):
+    """Exception raised to requests with HTTPS errors"""
+
+
+class Timeout(BaseException):
+    """Exception raised to requests with timeout"""
+
+
+class InvalidCityStateName(BaseException):
+    """Exception raised to requests invalid city or state name. 
+    City and Street must be 3 characters of lenght"""
