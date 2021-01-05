@@ -29,6 +29,7 @@ NUMBERS = re.compile(r'[^0-9]')
 PRODUCAO = 1
 HOMOLOGACAO = 2
 
+CORREIOS = 0
 VIACEP = 1
 APICEP = 2
 
@@ -40,6 +41,7 @@ URL = {
 URL_GET_ADDRESS_FROM_CEP = {
     VIACEP: 'http://www.viacep.com.br/ws/{}/json',
     APICEP: 'https://ws.apicep.com/cep/{}.json',
+    CORREIOS: 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',  # noqa
 }
 
 URL_GET_CEP_FROM_ADDRESS = 'http://www.viacep.com.br/ws/{}/{}/{}/json'
@@ -134,7 +136,36 @@ def get_address_from_cep(cep, server=APICEP):
         dict -- Dados do endereço do CEP consultado.
     """
 
+    if server not in URL_GET_ADDRESS_FROM_CEP:
+        raise KeyError("""Invalid server. Please use this options: 
+        from pycep_correios import CORREIOS, VIACEP, APICEP
+    """)
+
     cep = format_cep(cep)
+
+    if server == CORREIOS:
+
+        try:
+            with warnings.catch_warnings():
+                # Desabilitamos o warning
+                warnings.simplefilter('ignore', InsecureRequestWarning)
+                warnings.simplefilter('ignore', ImportWarning)
+
+                client = zeep.Client(URL_GET_ADDRESS_FROM_CEP[CORREIOS])
+
+                address = client.service.consultaCEP(cep)
+
+                return {
+                    'bairro': getattr(address, 'bairro', ''),
+                    'cep': getattr(address, 'cep', ''),
+                    'cidade': getattr(address, 'cidade', ''),
+                    'logradouro': getattr(address, 'end', ''),
+                    'uf': getattr(address, 'uf', ''),
+                    'complemento': getattr(address, 'complemento2', ''),
+                }
+
+        except zeep.exceptions.Fault as e:
+            raise exceptions.BaseException(message=e)
 
     try:
         response = requests.get(URL_GET_ADDRESS_FROM_CEP[server].format(cep))
