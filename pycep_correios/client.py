@@ -147,14 +147,3 @@ def format_cep(cep):
             'CEP must be a non-empty string containing only numbers')
 
     return NUMBERS.sub('', cep)
-
-
-def validate_cep(cep):
-    """Verifica se o CEP informado possui 8 digitos e é constituído apenas de números.
-    Arguments:
-        cep {str} -- CEP a ser validado.
-    Returns:
-        [boolean] -- True se o CEP informado é valido. Caso contrário, retorna False.
-    """
-    cep = format_cep(cep)
-    return cep.isdigit() and len(cep) == 8
