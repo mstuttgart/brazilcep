@@ -1,33 +1,15 @@
-
-"""
-pycep_correios.client
-~~~~~~~~~~~~~~~~~~~~~
-Este modulo implementa o cliente para consulta de CEP da PyCEPCorreios.
-
-:copyright: 2016-2020 por Michell Stuttgart Faria
-:license: MIT, veja o arquivo LICENSE para mais detalhes.
-
-"""
-import json
+import enum
 import re
-import warnings
 
-import requests
-import zeep
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-
-from . import exceptions
-
+from . import apicep, correios, viacep
 
 NUMBERS = re.compile(r'[^0-9]')
 
-URL_GET_CEP_FROM_ADDRESS = 'http://www.viacep.com.br/ws/{}/{}/{}/json'
 
-
-class WebService():
-    CORREIOS = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl'  # noqa
-    VIACEP = 'http://www.viacep.com.br/ws/{}/json'
-    APICEP = 'https://ws.apicep.com/cep/{}.json'
+class WebService(enum.Enum):
+    CORREIOS = 0
+    VIACEP = 1
+    APICEP = 2
 
 
 def get_address_from_cep(cep, webservice=WebService.APICEP):
@@ -42,64 +24,76 @@ def get_address_from_cep(cep, webservice=WebService.APICEP):
     """
 
     if webservice not in (value for attribute, value in WebService.__dict__.items()):
-        raise KeyError("""Invalid webservice. Please use this options: 
+        raise KeyError("""Invalid webservice. Please use this options:
         WebService.CORREIOS, WebService.VIACEP, WebService.APICEP
     """)
 
     cep = _format_cep(cep)
 
     if webservice == WebService.CORREIOS:
+        return correios.fetch_address(cep)
 
-        try:
-            with warnings.catch_warnings():
-                # Desabilitamos o warning
-                warnings.simplefilter('ignore', InsecureRequestWarning)
-                warnings.simplefilter('ignore', ImportWarning)
+    if webservice == WebService.VIACEP:
+        return viacep.fetch_address(cep)
 
-                client = zeep.Client(webservice)
+    if webservice == WebService.APICEP:
+        return apicep.fetch_address(cep)
 
-                address = client.service.consultaCEP(cep)
+    #     try:
+    #         with warnings.catch_warnings():
+    #             # Desabilitamos o warning
+    #             warnings.simplefilter('ignore', InsecureRequestWarning)
+    #             warnings.simplefilter('ignore', ImportWarning)
 
-                return {
-                    'bairro': getattr(address, 'bairro', ''),
-                    'cep': getattr(address, 'cep', ''),
-                    'cidade': getattr(address, 'cidade', ''),
-                    'logradouro': getattr(address, 'end', ''),
-                    'uf': getattr(address, 'uf', ''),
-                    'complemento': getattr(address, 'complemento2', ''),
-                }
+    #             client = zeep.Client(webservice)
 
-        except zeep.exceptions.Fault as e:
-            raise exceptions.BaseException(message=e)
+    #             address = client.service.consultaCEP(cep)
 
-    else:
+    #             return {
+    #                 'bairro': getattr(address, 'bairro', ''),
+    #                 'cep': getattr(address, 'cep', ''),
+    #                 'cidade': getattr(address, 'cidade', ''),
+    #                 'logradouro': getattr(address, 'end', ''),
+    #                 'uf': getattr(address, 'uf', ''),
+    #                 'complemento': getattr(address, 'complemento2', ''),
+    #             }
 
-        try:
-            response = requests.get(webservice.format(cep))
+    #     except zeep.exceptions.Fault as e:
+    #         raise exceptions.BaseException(message=e)
 
-            if response.status_code == 200:
-                address = json.loads(response.text)
+    # else:
 
-                if address.get('erro'):
-                    raise exceptions.BaseException(message='Other error')
+    #     try:
+    #         response = requests.get(webservice.format(cep))
 
-                return {
-                    'bairro': address.get('bairro', '') or address.get('district', ''),
-                    'cep': address.get('cep', '') or address.get('code', ''),
-                    'cidade': address.get('localidade', '') or address.get('city', ''),
-                    'logradouro': address.get('logradouro', '') or address.get('address', '').split(' - até')[0],
-                    'uf': address.get('uf', '') or address.get('state', ''),
-                    'complemento': address.get('complemento', ''),
-                }
+    #         if response.status_code == 200:
 
-            elif response.status_code == 400:
-                raise exceptions.BaseException(message='Invalid CEP: %s' % cep)  # noqa
-            else:
-                raise exceptions.BaseException(
-                    message='Other error. Status code: %d' % response.status_code)
+    #             address = json.loads(response.text)
 
-        except requests.exceptions.RequestException as e:
-            raise exceptions.BaseException(message=e)
+    #             if address.get('erro'):
+    #                 raise exceptions.BaseException(message='Other error. Status code: %d' % response.status_code)  # noqa
+
+    #             return {
+    #                 'bairro': address.get('bairro', '') or address.get('district', ''),
+    #                 'cep': address.get('cep', '') or address.get('code', ''),
+    #                 'cidade': address.get('localidade', '') or address.get('city', ''),
+    #                 'logradouro': address.get('logradouro', '') or address.get('address', '').split(' - até')[0],
+    #                 'uf': address.get('uf', '') or address.get('state', ''),
+    #                 'complemento': address.get('complemento', ''),
+    #             }
+
+    #         elif response.status_code == 400:
+    #             raise exceptions.BaseException(message='Invalid CEP: %s' % cep)  # noqa
+
+    #         elif response.status_code == 404:
+    #             raise exceptions.BaseException(message='CEP not found: %s' % cep)  # noqa
+
+    #         else:
+    #             raise exceptions.BaseException(
+    #                 message='Other error. Status code: %d' % response.status_code)
+
+    #     except requests.exceptions.RequestException as e:
+    #         raise exceptions.BaseException(message=e)
 
 
 def get_cep_from_address(state, city, street):
@@ -115,22 +109,21 @@ def get_cep_from_address(state, city, street):
         dict -- Dados do endereço do CEP consultado.
     """
 
-    try:
-        response = requests.get(
-            URL_GET_CEP_FROM_ADDRESS.format(state, city, street))
+    return viacep.fetch_cep(state=state, city=city, street=street)
 
-        if response.status_code == 200:
-            return response.json()
+    # try:
+    #     response = requests.get(URL_GET_CEP_FROM_ADDRESS.format(state, city, street))  # noqa
 
-        elif response.status_code == 400:
-            raise exceptions.BaseException(
-                message='City and Street must be 3 characters of lenght')
-        else:
-            raise exceptions.BaseException(
-                message='Other error ocurred!')
+    #     if response.status_code == 200:
+    #         return response.json()
 
-    except requests.exceptions.RequestException as e:
-        raise exceptions.BaseException(message=e.message)
+    #     elif response.status_code == 400:
+    #         raise exceptions.BaseException('City and Street must be 3 characters of lenght')  # noqa
+    #     else:
+    #         raise exceptions.BaseException('Other error ocurred!')
+
+    # except requests.exceptions.RequestException as e:
+    #     raise exceptions.BaseException(e)
 
 
 def _format_cep(cep):
@@ -146,9 +139,4 @@ def _format_cep(cep):
     if not isinstance(cep, str) or not cep:
         raise ValueError('CEP must be a non-empty string containing only numbers')  # noqa
 
-    cep = NUMBERS.sub('', cep)
-
-    if len(cep) != 8:
-        raise ValueError('CEP must be 8 digits')
-
-    return cep
+    return NUMBERS.sub('', cep)

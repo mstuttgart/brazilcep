@@ -31,7 +31,7 @@ setup(
     install_requires=requirements,
     license='MIT License',
     zip_safe=False,
-    keywords='correios desenvolvimento busca endereco cep',
+    keywords='correios viacep apicep cep',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',

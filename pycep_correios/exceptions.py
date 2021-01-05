@@ -24,5 +24,5 @@ class Timeout(BaseException):
 
 
 class InvalidCityStateName(BaseException):
-    """Exception raised to requests invalid city or state name. 
+    """Exception raised to requests invalid city or state name.
     City and Street must be 3 characters of lenght"""
