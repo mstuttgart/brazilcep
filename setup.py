@@ -11,8 +11,8 @@ with open('requirements.txt', 'r') as requirements_file:
 
 setup(
     name='pycep_correios',
-    version='4.0.4',
-    description='API para consulta de endereços e CEPs',
+    version='5.0.0-rc',
+    description='API para consulta de CEPs',
     long_description=readme,
     long_description_content_type='text/markdown',
     author='Michell Stuttgart Faria',
@@ -40,6 +40,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
     test_suite='tests',
 )
