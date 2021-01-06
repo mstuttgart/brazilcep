@@ -21,8 +21,3 @@ class HTTPError(BaseException):
 
 class Timeout(BaseException):
     """Exception raised to requests with timeout"""
-
-
-class InvalidCityStateName(BaseException):
-    """Exception raised to requests invalid city or state name.
-    City and Street must be 3 characters of lenght"""
