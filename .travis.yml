@@ -2,26 +2,29 @@ language: python
 
 dist: xenial
 
-env:
-  - CODECOV_TOKEN=$CODECOV
-
 matrix:
     include:
       - python: 3.5
+        env: TOX_ENV=py35
       - python: 3.6
+        env: TOX_ENV=py36
       - python: 3.7
+        env: TOX_ENV=py37
+      - python: 3.8
+        env: TOX_ENV=py38
+      - python: 3.6
+        env: TOX_ENV=flake8
+      - python: 3.6
+        env: TOX_ENV=coverage
 
 install:
-  - make install
+  - pip install -U tox
 
-before_script:
-  - make flake8
-
-script: 
-  - make test
+script:
+  - tox -e ${TOX_ENV}
 
 after_success:
-  - codecov
+  - coveralls
 
 deploy:
   provider: pypi
@@ -32,3 +35,4 @@ deploy:
   on:
     tags: true
     repo: mstuttgart/pycep-correios
+    condition: ${TOX_ENV} == py36
