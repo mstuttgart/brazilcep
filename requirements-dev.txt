@@ -1,6 +1,7 @@
 -r requirements.txt
 pytest
 pytest-cov
+requests-mock
 isort
 flake8
 autopep8

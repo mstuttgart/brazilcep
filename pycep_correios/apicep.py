@@ -17,8 +17,6 @@ def fetch_address(cep):
             # Transforma o objeto requests em um dict
             address = json.loads(response.text)
 
-            print(address)
-
             if address['status'] == 400:
                 raise exceptions.InvalidCEP()
 

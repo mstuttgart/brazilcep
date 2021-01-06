@@ -1,7 +1,10 @@
 
 from unittest import mock
 
-from pycep_correios import WebService, get_address_from_cep
+import pytest
+import zeep
+
+from pycep_correios import WebService, exceptions, get_address_from_cep
 
 
 @mock.patch('zeep.Client')
@@ -39,3 +42,19 @@ def test_fetch_address_success(mk):
     # Verifica se o metodo consultaCEP foi chamado
     # com os parametros corretos
     service_mk.consultaCEP.assert_called_with('37503130')
+
+
+@mock.patch('zeep.Client')
+def test_fetch_address_fail(mk):
+    class MockClass:
+        def __init__(self, dictionary):
+            for k, v in dictionary.items():
+                setattr(self, k, v)
+
+    service_mk = mk.return_value.service
+
+    # Criamos o mock para o valor de retorno
+    service_mk.consultaCEP.side_effect = zeep.exceptions.Fault('error', 500)
+
+    with pytest.raises(exceptions.BaseException):
+        get_address_from_cep('37503130', webservice=WebService.CORREIOS)
