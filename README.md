@@ -9,8 +9,8 @@
 </h1>
 
 <p align="center">
-  <a href="https://travis-ci.org/mstuttgart/pycep-correios">
-    <img src="https://img.shields.io/travis/mstuttgart/pycep-correios/develop.svg?style=flat-square" alt="Version">
+  <a href="https://github.com/mstuttgart/pycep-correios/actions?query=workflow%3A%22Github+CI%22">
+    <img src="https://img.shields.io/github/workflow/status/mstuttgart/pycep-correios/Github%20CI/develop?label=Github%20CI&logo=Github&style=flat-square" alt="Version">
   </a>
   <a href="https://coveralls.io/github/mstuttgart/pycep-correios">
     <img alt="Coveralls github" src="https://img.shields.io/coveralls/github/mstuttgart/pycep-correios?style=flat-square">
