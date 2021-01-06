@@ -1,0 +1,26 @@
+# Se tiver essa diretiva, a recursividade para, ou seja,
+# esse é o arquivo raiz da configuração
+root = true
+
+# defaults
+[*]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = lf
+charset = utf-8
+
+# Docstrings and comments use max_line_length = 79
+[*.py]
+max_line_length = 79
+
+# Use 2 spaces for the HTML files
+[*.{html, xml}]
+indent_style = space
+indent_size = 2
+
+# Sh files use tabs for indentation
+[*.sh]
+indent_style = tab
+indent_size = 4
