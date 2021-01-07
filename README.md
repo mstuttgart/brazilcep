@@ -50,56 +50,39 @@ Atualmente, a PyCEPCorreios possui suporte para Python 3.5+.
 
 *A PyCEPCorreios foi desenvolvida para integração de consultas sob demandas em páginas web. A consulta de CEPs em massa através de *scripts* ou qualquer outros meios não é recomendada.*
 
-Consultar o endereço de um CEP é muito simples com o PyCEPCorreios. Veja os exemplos a seguir:
-
-```python
->>> import pycep_correios
-
->>> endereco = pycep_correios.get_address_from_cep('37503130')
->>> print(endereco)
-{
-    'bairro': 'Santo Antônio',
-    'cep': '37503130',
-    'cidade': 'Itajubá',
-    'logradouro': 'Rua Geraldino Campista',
-    'uf': 'MG',
-    'complemento': '- até 214/215',
-}
-```
-
 A PyCEPCorreios utiliza por padrão de consulta a API provida pelo serviço [ApiCEP](https://apicep.com/). Para utilização de outros serviços, devemos indica o serviço desejado ao chamar a função `get_address_from_cep`. O CEP sempre deve ser uma *string* e pode ou não conter pontuação.
 
-### Exemplo de consulta ao serviço dos *Correios*:
+### Exemplo de consulta ao serviço *ApiCEP* (default):
+
 
 ```python
->>> from pycep_correios import get_address_from_cep, WebService
+from pycep_correios import get_address_from_cep, WebService
 
->>> get_address_from_cep('37503-130', webservice=WebService.CORREIOS)
+address = get_address_from_cep('37503-130', webservice=WebService.APICEP)
 ```
-
-**Obs.:** O serviço de busca de CEP dos Correios é parte integrante do serviço SIGEPWeb e para uso do mesmo é necessário ter contrato com os Correios, conforme indicado no capítulo *Introdução* presente no [manual de integração do serviço](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf).
 
 ### Exemplo de consulta ao serviço *ViaCEP*:
 
 
 ```python
->>> from pycep_correios import get_address_from_cep, WebService
+from pycep_correios import get_address_from_cep, WebService
 
->>> get_address_from_cep('37503-130', webservice=WebService.VIACEP)
+address = get_address_from_cep('37503-130', webservice=WebService.VIACEP)
 ```
 
-### Exemplo de consulta ao serviço *ApiCEP*:
-
+### Exemplo de consulta ao serviço dos *Correios*:
 
 ```python
->>> from pycep_correios import get_address_from_cep, WebService
+from pycep_correios import get_address_from_cep, WebService
 
->>> get_address_from_cep('37503-130', webservice=WebService.APICEP)
+address = get_address_from_cep('37503-130', webservice=WebService.CORREIOS)
 ```
+
+**Obs.:** O serviço de busca de CEP dos Correios é parte integrante do serviço SIGEPWeb e para uso do mesmo é necessário ter contrato com os Correios, conforme indicado no capítulo *Introdução* presente no [manual de integração do serviço](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf).
 
 ### Retorno e Exceptions
 
-Independente do serviço escolhido, o formato de resposta sempre será o mesmo:
+Independente do serviço escolhido, o formato de resposta sempre será um objeto `dict` contendo as seguintes chaves:
 
 ```python
 {
