@@ -144,7 +144,7 @@ except exceptions.BaseException as e:
 
 ## Como contribuir
 
-Deseja participar do desenvolvimento da PyCEPCorreios? Veja a *guideline* de contribuição [aqui](CONTRIBUTING.md).
+Deseja participar do desenvolvimento da PyCEPCorreios? Veja a *guideline* de contribuição [aqui](https://github.com/mstuttgart/pycep-correios/blob/develop/CONTRIBUTING.md).
 
 ## Créditos
 
