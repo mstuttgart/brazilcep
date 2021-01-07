@@ -1,6 +1,6 @@
 # Changelog
 
-## 5.0.0 (2021-01-06)
+## 5.0.0 (2021-01-07)
 
 * Adiciona suporte para Python 3.8
 * Adiciona integração com consulta de CEP nos webservices dos Correios
