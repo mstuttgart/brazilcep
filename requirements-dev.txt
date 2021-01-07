@@ -1,6 +1,8 @@
 -r requirements.txt
-Sphinx
 pytest
 pytest-cov
+requests-mock
 isort
 flake8
+autopep8
+coveralls
