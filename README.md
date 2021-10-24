@@ -1,12 +1,11 @@
 
-<h1 align="center">
-  <br>
+<p align="center">
   <a href="https://pypi.org/project/pycep-correios/">
-  <img src="https://raw.githubusercontent.com/mstuttgart/pycep-correios/develop/.img/logo.jpg" width="30%"></a>
-  <br>
-  PyCEPCorreios
-  <br>
-</h1>
+    <img src="https://raw.githubusercontent.com/mstuttgart/pycep-correios/develop/.img/logo.jpg" width="30%">
+  </a>
+  <h3 align="center">PyCEPCorreios</h3>
+  <h4 align="center">API para busca de CEP integrado ao serviços dos Correios, ViaCEP e ApiCEP (WideNet)</h4>
+</p>
 
 <p align="center">
   <a href="https://github.com/mstuttgart/pycep-correios/actions?query=workflow%3A%22Github+CI%22">
@@ -25,8 +24,6 @@
       <img src="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" alt="Version">
   </a>
 </p>
-
-<p align="center">API para busca de CEP integrado ao serviços dos Correios, ViaCEP e ApiCEP (WideNet)</p>
 
 <p align="center">
   <a href="#instalação">Instalação</a> |
