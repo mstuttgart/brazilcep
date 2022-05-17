@@ -21,3 +21,6 @@ class HTTPError(BaseException):
 
 class Timeout(BaseException):
     """Exception raised to requests with timeout"""
+
+class BlockedByFlood(BaseException):
+    """Exception raised by flood of requests"""
