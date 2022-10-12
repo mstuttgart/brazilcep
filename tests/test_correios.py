@@ -43,6 +43,42 @@ def test_fetch_address_success(mk):
     # com os parametros corretos
     service_mk.consultaCEP.assert_called_with('37503130')
 
+@mock.patch('zeep.Client')
+def test_fetch_address_success_unique(mk):
+    class MockClass:
+        def __init__(self, dictionary):
+            for k, v in dictionary.items():
+                setattr(self, k, v)
+
+    expected_address = {
+        'bairro': '',
+        'cep': '9999999',
+        'cidade': 'Sarandi',
+        'complemento2': '',
+        'end': '',
+        'uf': 'PR',
+        'unidadesPostagem': [],
+    }
+
+    service_mk = mk.return_value.service
+
+    # Criamos o mock para o valor de retorno
+    service_mk.consultaCEP.return_value = MockClass(expected_address)
+
+    # Realizamos a consulta de CEP
+    endereco = get_address_from_cep('37503130', webservice=WebService.CORREIOS)
+
+    assert endereco['bairro'] == ''
+    assert endereco['cep'] == '9999999'
+    assert endereco['cidade'] == 'Sarandi'
+    assert endereco['complemento'] == ''
+    assert endereco['logradouro'] == ''
+    assert endereco['uf'] == 'PR'
+
+    # Verifica se o metodo consultaCEP foi chamado
+    # com os parametros corretos
+    service_mk.consultaCEP.assert_called_with('37503130')
+
 
 @mock.patch('zeep.Client')
 def test_fetch_address_fail(mk):
