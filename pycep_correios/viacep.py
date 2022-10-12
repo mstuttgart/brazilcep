@@ -21,12 +21,12 @@ def fetch_address(cep):
                 raise exceptions.CEPNotFound()
 
             return {
-                'bairro': address.get('bairro', ''),
-                'cep': address.get('cep', ''),
-                'cidade': address.get('localidade', ''),
-                'logradouro': address.get('logradouro', ''),
-                'uf': address.get('uf', ''),
-                'complemento': address.get('complemento', ''),
+                'bairro': address.get('bairro') or '',
+                'cep': address.get('cep') or '',
+                'cidade': address.get('localidade') or '',
+                'logradouro': address.get('logradouro') or '',
+                'uf': address.get('uf') or '',
+                'complemento': address.get('complemento') or '',
             }
 
         elif response.status_code == 400:
