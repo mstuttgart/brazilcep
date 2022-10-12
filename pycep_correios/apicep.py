@@ -19,7 +19,7 @@ def fetch_address(cep):
 
             if address['status'] == 400 and address['message'] == "CEP informado é inválido":
                 raise exceptions.InvalidCEP()
-            
+
             if address['status'] == 400 and address['message'] == "Blocked by flood":
                 raise exceptions.BlockedByFlood()
 
@@ -27,11 +27,11 @@ def fetch_address(cep):
                 raise exceptions.CEPNotFound()
 
             return {
-                'bairro': address.get('district', ''),
-                'cep': address.get('code', ''),
-                'cidade': address.get('city', ''),
-                'logradouro': address.get('address', '').split(' - até')[0],
-                'uf': address.get('state', ''),
+                'bairro': address.get('district') or '',
+                'cep': address.get('code') or '',
+                'cidade': address.get('city') or '',
+                'logradouro': (address.get('address') or '').split(' - até')[0],
+                'uf': address.get('state') or '',
                 'complemento': '',
             }
 
