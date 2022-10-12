@@ -128,4 +128,4 @@ Deseja participar do desenvolvimento da PyCEPCorreios? Veja a *guideline* de con
 
 ## Créditos
 
-Copyright (C) 2016-2021 por Michell Stuttgart
+Copyright (C) 2016-2022 por Michell Stuttgart

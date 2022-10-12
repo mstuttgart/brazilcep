@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.0 (2022-10-12)
+
+* Corrige: AttributeError: 'NoneType' object has no attribute 'split' ao consultar cep 99999-999
+* Adiciona nova excepetion 'BlockedByFlood' para excesso de consultas
+* Melhoras testes adicionando mock as consultas de ViaCEP e ApiCEP
+
 ## 5.0.0 (2021-01-07)
 
 * Adiciona suporte para Python 3.8
