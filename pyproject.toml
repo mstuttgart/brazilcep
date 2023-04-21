@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "brazilcep"
+version = "6.0.0-a1"
+description = "Python library to search brazilian CEP (brazilian zip codes)"
+authors = ["Michell Stuttgart <michellstut@gmail.com>"]
+repository = "https://github.com/mstuttgart/brazilcep"
+documentation = "https://mstuttgart.github.io/brazilcep"
+license = "MIT"
+readme = "README.md"
+packages = [{include = "brazilcep"}]
+
+include = ["CHANGELOG.md", "LICENSE"]
+keywords = ["correios", "viacep", "apicep", "cep", "brazil"]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/mstuttgart/brazilcep/issues"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+zeep = "^4.2.1"
+requests = "^2.28.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+requests-mock = "^1.10.0"
+nox = "^2022.11.21"
+
+[tool.poetry.group.coverage]
+optional = true
+
+[tool.poetry.group.coverage.dependencies]
+coveralls = "^3.3.1"
+pytest-cov = "^4.0.0"
+
+[tool.poetry.group.github-actions]
+optional = true
+
+[tool.poetry.group.github-actions.dependencies]
+pytest-github-actions-annotate-failures = "^0.1.7"
+
+[tool.poetry.group.doc.dependencies]
+mkdocs-material = "^9.1.6"
+
+[tool.poetry.group.lint.dependencies]
+black = "^23.3.0"
+pylint = "^2.17.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = "--doctest-modules"

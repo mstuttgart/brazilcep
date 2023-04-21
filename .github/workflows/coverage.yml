@@ -1,0 +1,31 @@
+on: pull_request
+
+name: Github CI Coverage
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Run image
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: "1.4.2"
+
+      - name: Install poetry packages
+        run: poetry install --with coverage
+
+      - name: Generate coverage report
+        run: |
+          poetry run coverage run -m --source=brazilcep pytest tests
+          poetry run coverage report
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
