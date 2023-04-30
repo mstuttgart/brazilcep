@@ -1,131 +1,108 @@
 
 <p align="center">
-  <a href="https://pypi.org/project/pycep-correios/">
-    <img src="https://raw.githubusercontent.com/mstuttgart/pycep-correios/develop/.img/logo.jpg" width="30%">
+  <a href="https://pypi.org/project/brazilcep/">
+    <img src="https://raw.githubusercontent.com/mstuttgart/brazilcep/develop/docs/static/logo.png" width="30%">
   </a>
-  <h3 align="center">PyCEPCorreios</h3>
-  <h4 align="center">API para busca de CEP integrado ao serviços dos Correios, ViaCEP e ApiCEP (WideNet)</h4>
+  <h3 align="center">BrazilCEP</h3>
+  <h4 align="center">Minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data.</h4>
 </p>
 
 <p align="center">
-  <a href="https://github.com/mstuttgart/pycep-correios/actions?query=workflow%3A%22Github+CI%22">
-    <img src="https://img.shields.io/github/workflow/status/mstuttgart/pycep-correios/Github%20CI/develop?label=Github%20CI&logo=Github&style=flat-square" alt="Version">
+  <a href="https://github.com/mstuttgart/brazilcep/actions?query=workflow%3A%22Github+CI%22">
+<img alt="GitHub Workflow Status (with branch)" src="https://img.shields.io/github/actions/workflow/status/mstuttgart/brazilcep/test-package.yml?branch=develop&style=flat-square">
   </a>
-  <a href="https://coveralls.io/github/mstuttgart/pycep-correios">
-    <img alt="Coveralls github" src="https://img.shields.io/coveralls/github/mstuttgart/pycep-correios?style=flat-square">
+   <a href="https://coveralls.io/github/mstuttgart/brazilcep">
+    <img alt="Coveralls github" src="https://img.shields.io/coveralls/github/mstuttgart/brazilcep?style=flat-square">
   </a>
-  <a href="https://codeclimate.com/github/mstuttgart/pycep-correios">
-      <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/mstuttgart/pycep-correios.svg?style=flat-square">
+  <a href="https://coveralls.io/github/mstuttgart/brazilcep">
+    <img alt="Status" src="https://img.shields.io/pypi/status/brazilcep?style=flat-square">
   </a>
-  <a href="https://pypi.org/project/pycep-correios">
-      <img src="https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square" alt="Ratings">
+  <a href="https://pypi.org/project/brazilcep">
+      <img src="https://img.shields.io/pypi/dm/brazilcep?style=flat-square" alt="Downloads">
   </a>
-  <a href="https://pypi.org/project/pycep-correios/">
-      <img src="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" alt="Version">
+  <a href="https://pypi.org/project/brazilcep">
+      <img src="https://img.shields.io/pypi/v/brazilcep.svg?style=flat-square" alt="Ratings">
+  </a>
+  <a href="https://pypi.org/project/brazilcep/">
+      <img src="https://img.shields.io/pypi/pyversions/brazilcep.svg?style=flat-square" alt="Version">
   </a>
 </p>
 
 <p align="center">
-  <a href="#instalação">Instalação</a> |
-  <a href="#como-usar">Como Usar</a> |
-  <a href="#como-contribuir">Como Contribuir</a> |
-  <a href="#créditos">Créditos</a>
+  <a href="#about">About</a> |
+  <a href="#install">Install</a> |
+  <a href="#how-to-use">How to Use</a> |
+  <a href="#documentation">Documentation</a>
+  <a href="#contribute">Contribute</a>
+  <a href="#credits">Credits</a>
 </p>
 
 
-## Instalação
+**BrazilCEP** is a minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data.
 
-A PyCEPCorreios pode ser facilmente instalada com o comando a seguir:
+Its objective is to provide a common query interface to all these search services, facilitating
+the integration of Python applications with these services.
 
+* Cross-platform: Windows, Mac, and Linux are officially supported.
+* Works with Python 3.8, 3.9, 3.10 and 3.11.
+* Currently supports several CEP API's:
+  * [ViaCEP](https://viacep.com.br)
+  * [ApiCEP (WideNet)](https://apicep.com)
+  * [Correios (SIGEPWeb)](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf)
+
+BrazilCEP started as a personal study project and evolved into a serious and open source project that is used by many developers on a daily basis.
+
+## Install
+
+The recommended way to get BrazilCEP is to **install the latest stable release**
+via [pip](http://pip-installer.org>):
+
+```sh
+$ pip install brazilcep
 ```
-pip install pycep-correios
-```
 
-Atualmente, a PyCEPCorreios possui suporte para Python 3.5+.
+We currently support **Python 3.8+ only**. Users on older interpreter versions
+are urged to upgrade.
 
-## Como usar
+## How to Use
 
-*A PyCEPCorreios foi desenvolvida para integração de consultas sob demandas em páginas web. A consulta de CEPs em massa através de *scripts* ou qualquer outros meios não é recomendada.*
-
-A PyCEPCorreios utiliza por padrão de consulta a API provida pelo serviço [ApiCEP](https://apicep.com/). Para utilização de outros serviços, devemos indica o serviço desejado ao chamar a função `get_address_from_cep`. O CEP sempre deve ser uma *string* e pode ou não conter pontuação.
-
-### Exemplo de consulta ao serviço *ApiCEP* (default):
-
+Making a request is very simple. Begin by importing the BrazilCEP module:
 
 ```python
-from pycep_correios import get_address_from_cep, WebService
-
-address = get_address_from_cep('37503-130', webservice=WebService.APICEP)
+>>> import brazilcep
 ```
 
-### Exemplo de consulta ao serviço *ViaCEP*:
-
+Now, call the `get_address_from_cep` to query any CEP:
 
 ```python
-from pycep_correios import get_address_from_cep, WebService
-
-address = get_address_from_cep('37503-130', webservice=WebService.VIACEP)
+>>> address = requests.get_address_from_cep('37503-130')
 ```
 
-### Exemplo de consulta ao serviço dos *Correios*:
+Now, we have a *dict* object called ``address``. We can
+get all the address information we need from this object:
 
 ```python
-from pycep_correios import get_address_from_cep, WebService
-
-address = get_address_from_cep('37503-130', webservice=WebService.CORREIOS)
-```
-
-**Obs.:** O serviço de busca de CEP dos Correios é parte integrante do serviço SIGEPWeb e para uso do mesmo é necessário ter contrato com os Correios, conforme indicado no capítulo *Introdução* presente no [manual de integração do serviço](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf).
-
-### Retorno e Exceptions
-
-Independente do serviço escolhido, o formato de resposta sempre será um objeto `dict` contendo as seguintes chaves:
-
-```python
+ >>> address
 {
-    'bairro': 'str',
-    'cep': 'str',
-    'cidade': 'str',
-    'logradouro': 'str',
+    'district': 'rua abc',
+    'cep': '37503130',
+    'city': 'city ABC',
+    'street': 'str',
     'uf': 'str',
-    'complemento': 'str',
+    'complement': 'str',
 }
 ```
 
-A PyCEPCorreios tambem dá suporte a um grupo de *exceptions* que podem ser utilizadas para tratamento de quaisquer erros que ocorram durante o processo de consulta.
+The CEP always must be a string.
 
-```python
+## Documentation
 
-from pycep_correios import get_address_from_cep, WebService, exceptions
+Documentation for the current version of BrazilCEP is available from the official docs [here](https://mstuttgart.github.io/brazilcep).
 
-try:
+## Contribute
 
-    address = get_address_from_cep('37503-130', webservice=WebService.APICEP)
+See this *guideline* [here](https://github.com/mstuttgart/brazilcep/blob/develop/CONTRIBUTING.md).
 
-except exceptions.InvalidCEP as eic:
-    print(eic)
+## Credits
 
-except exceptions.CEPNotFound as ecnf:
-    print(ecnf)
-
-except exceptions.ConnectionError as errc:
-    print(errc)
-
-except exceptions.Timeout as errt:
-    print(errt)
-
-except exceptions.HTTPError as errh:
-    print(errh)
-
-except exceptions.BaseException as e:
-    print(e)
-
-```
-
-## Como contribuir
-
-Deseja participar do desenvolvimento da PyCEPCorreios? Veja a *guideline* de contribuição [aqui](https://github.com/mstuttgart/pycep-correios/blob/develop/CONTRIBUTING.md).
-
-## Créditos
-
-Copyright (C) 2016-2022 por Michell Stuttgart
+Copyright (C) 2016-2023 by Michell Stuttgart
