@@ -1,6 +1,6 @@
 # Changelog
 
-## 6.0.0 (2023-04-30)
+## 6.0.0 (2023-05-01)
 
 - Rename lib to BrazilCEP
 - Create new pip package

@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "brazilcep"
-version = "6.0.0-a2"
-description = "Python library to query brazilian CEP (brazilian zip codes) data"
+version = "6.0.0"
+description = "Minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data"
 authors = ["Michell Stuttgart <michellstut@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -15,7 +15,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
@@ -24,7 +24,6 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
-    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
     "Topic :: Software Development :: Libraries",
     "Natural Language :: English",
     "Natural Language :: Portuguese (Brazilian)",
@@ -33,7 +32,7 @@ classifiers = [
 [tool.poetry.urls]
 "Repository" = "https://github.com/mstuttgart/brazilcep"
 "Bug Tracker" = "https://github.com/mstuttgart/brazilcep/issues"
-"Documentation" = "https://brazilcep.readthedocs.io/en/latest/"
+"Documentation" = "https://brazilcep.readthedocs.io/en/stable/"
 "Donation" = "https://ko-fi.com/mstuttgart"
 
 [tool.poetry.dependencies]

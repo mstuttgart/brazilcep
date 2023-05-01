@@ -40,6 +40,11 @@ Its objective is to provide a common query interface to all these search service
 }
 ```
 
+!!! tip
+
+    **BrazilCEP** is the new mane of former **PyCEPCorreio** python library.
+    If you want to migrate the old code to the new version, please see the [migrate](/migrate) section.
+
 ## Features
 
 * Cross-platform: Windows, Mac, and Linux are officially supported.
@@ -50,7 +55,3 @@ Its objective is to provide a common query interface to all these search service
   * [Correios (SIGEPWeb)](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf)
 
 BrazilCEP started as a personal study project and evolved into a serious and open source project that is used by many developers on a daily basis.
-
-!!! info
-    BrazilCEP is not responsible for the functioning, availability and support of any of these query API's. All of them are provided by third parties, and
-    this library just provides a handy way to centralize the CEP search on these services.

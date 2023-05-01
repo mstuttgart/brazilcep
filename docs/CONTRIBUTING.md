@@ -1,4 +1,4 @@
-# How to Contribute
+# Contribute
 
 Contributions are welcome and greatly appreciated!
 

@@ -42,6 +42,11 @@ The CEP always must be a string.
     BrazilCEP was developed to integrate on-demand queries into web pages.
     Querying CEP in bulk through scripts or any other means is not recommended.
 
+!!! info
+
+    BrazilCEP is not responsible for the functioning, availability and support of any of these query API's. All of them are provided by third parties, and
+    this library just provides a handy way to centralize the CEP search on these services.
+
 By default, BrazilCEP uses the API provided by the [ApiCEP](https://apicep.com) service.
 To use other services, we must indicate the desired service when calling the `get_address_from_cep`
 function.

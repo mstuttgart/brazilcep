@@ -50,7 +50,8 @@ the integration of Python applications with these services.
   * [ApiCEP (WideNet)](https://apicep.com)
   * [Correios (SIGEPWeb)](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf)
 
-BrazilCEP started as a personal study project and evolved into a serious and open source project that is used by many developers on a daily basis.
+BrazilCEP** is the new mane of former **PyCEPCorreio** python library.
+If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
 
 ## Install
 
@@ -97,7 +98,7 @@ The CEP always must be a string.
 
 ## Documentation
 
-Documentation for the current version of BrazilCEP is available from the official docs [here](https://brazilcep.readthedocs.io/).
+Documentation for the current version of BrazilCEP is available from the official docs [here](https://brazilcep.readthedocs.io/en/stable).
 
 ## Contribute
 
