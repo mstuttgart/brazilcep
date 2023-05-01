@@ -59,8 +59,9 @@ optional = true
 [tool.poetry.group.github-actions.dependencies]
 pytest-github-actions-annotate-failures = "^0.1.7"
 
-[tool.poetry.group.doc.dependencies]
+[tool.poetry.group.docs.dependencies]
 mkdocs-material = "^9.1.6"
+mkdocs = "^1.4.2"
 
 [tool.poetry.group.lint.dependencies]
 black = "^23.3.0"
