@@ -68,3 +68,6 @@ main.py
 .venv
 .env
 env
+
+# mkdocs
+site
