@@ -7,20 +7,20 @@
 </p>
 
 <p align="center">
-  <a href="https://coveralls.io/github/mstuttgart/pycep-correios">
-    <img alt="Status" src="https://img.shields.io/pypi/status/pycep-correios?style=flat-square">
+  <a href="https://coveralls.io/github/mstuttgart/brazilcep">
+    <img alt="Status" src="https://img.shields.io/pypi/status/brazilcep?style=flat-square">
   </a>
-  <a href="https://pypi.org/project/pycep-correios">
-      <img src="https://img.shields.io/pypi/dm/pycep-correios?style=flat-square" alt="Downloads">
+  <a href="https://pypi.org/project/brazilcep">
+      <img src="https://img.shields.io/pypi/dm/brazilcep?style=flat-square" alt="Downloads">
   </a>
-  <a href="https://pypi.org/project/pycep-correios">
-      <img src="https://img.shields.io/pypi/v/pycep-correios.svg?style=flat-square" alt="Ratings">
+  <a href="https://pypi.org/project/brazilcep">
+      <img src="https://img.shields.io/pypi/v/brazilcep.svg?style=flat-square" alt="Ratings">
   </a>
-  <a href="https://pypi.org/project/pycep-correios/">
-      <img src="https://img.shields.io/pypi/pyversions/pycep-correios.svg?style=flat-square" alt="Version">
+  <a href="https://pypi.org/project/brazilcep/">
+      <img src="https://img.shields.io/pypi/pyversions/brazilcep.svg?style=flat-square" alt="Version">
   </a>
-  <a href="https://coveralls.io/github/mstuttgart/pycep-correios">
-   <img alt="PyPI - License" src="https://img.shields.io/pypi/l/pycep-correios?color=yellow&style=flat-square">
+  <a href="https://coveralls.io/github/mstuttgart/brazilcep">
+   <img alt="PyPI - License" src="https://img.shields.io/pypi/l/brazilcep?color=yellow&style=flat-square">
   </a>
 </p>
 

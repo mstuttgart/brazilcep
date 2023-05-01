@@ -15,7 +15,7 @@ Making a request is very simple. Begin by importing the BrazilCEP module:
 Now, call the `get_address_from_cep` to query any CEP:
 
 ```python
->>> address = requests.get_address_from_cep('37503-130')
+>>> address = brazilcep.get_address_from_cep('37503-130')
 ```
 
 Now, we have a *dict* object called ``address``. We can

@@ -4,7 +4,7 @@ The recommended way to get BrazilCEP is to **install the latest stable release**
 via [pip](http://pip-installer.org>):
 
 ```sh
-$ pip install brazilcep
+pip install brazilcep
 ```
 
 We currently support **Python 3.8+ only**. Users on older interpreter versions
