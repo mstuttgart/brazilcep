@@ -12,6 +12,26 @@ packages = [{include = "brazilcep"}]
 include = ["CHANGELOG.md", "LICENSE"]
 keywords = ["correios", "viacep", "apicep", "cep", "brazil"]
 
+classifiers = [
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Software Development :: Libraries",
+    "Natural Language :: English",
+    "Natural Language :: Portuguese (Brazilian)",
+]
+
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/mstuttgart/brazilcep/issues"
 
