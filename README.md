@@ -37,6 +37,7 @@
   <a href="#credits">Credits</a>
 </p>
 
+## About
 
 **BrazilCEP** is a minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data.
 
@@ -50,8 +51,8 @@ the integration of Python applications with these services.
   * [ApiCEP (WideNet)](https://apicep.com)
   * [Correios (SIGEPWeb)](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf)
 
-BrazilCEP** is the new mane of former **PyCEPCorreio** python library.
-If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
+> **BrazilCEP** is the new mane of former **PyCEPCorreio** python library.
+  If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
 
 ## Install
 
