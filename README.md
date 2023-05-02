@@ -44,14 +44,13 @@
 Its objective is to provide a common query interface to all these search services, facilitating
 the integration of Python applications with these services.
 
-* Cross-platform: Windows, Mac, and Linux are officially supported.
-* Works with Python 3.8, 3.9, 3.10 and 3.11.
-* Currently supports several CEP API's:
-  * [ViaCEP](https://viacep.com.br)
-  * [ApiCEP (WideNet)](https://apicep.com)
-  * [Correios (SIGEPWeb)](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf)
+Currently supports several CEP API's:
 
-> **BrazilCEP** is the new mane of former **PyCEPCorreio** python library.
+- [ViaCEP](https://viacep.com.br)
+- [ApiCEP (WideNet)](https://apicep.com)
+- [Correios (SIGEPWeb)](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf)
+
+> **BrazilCEP** is the new name of former **PyCEPCorreio** python library.
   If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
 
 ## Install
