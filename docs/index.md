@@ -42,7 +42,7 @@ Its objective is to provide a common query interface to all these search service
 
 !!! tip
 
-    **BrazilCEP** is the new mane of former **PyCEPCorreio** python library.
+    **BrazilCEP** is the new name of former **PyCEPCorreio** python library.
     If you want to migrate the old code to the new version, please see the [migrate](/migrate) section.
 
 ## Features
