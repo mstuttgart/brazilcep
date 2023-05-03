@@ -1,9 +1,9 @@
 
 <p align="center">
   <a href="https://pypi.org/project/brazilcep/">
-    <img src="https://raw.githubusercontent.com/mstuttgart/brazilcep/develop/docs/static/logo.png" width="30%">
+    <img src="https://raw.githubusercontent.com/mstuttgart/brazilcep/develop/docs/static/logo.png" width="80%">
   </a>
-  <h3 align="center">BrazilCEP</h3>
+  <!-- <h3 align="center">BrazilCEP</h3> -->
   <h4 align="center">Minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data.</h4>
 </p>
 
