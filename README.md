@@ -3,7 +3,6 @@
   <a href="https://pypi.org/project/brazilcep/">
     <img src="https://raw.githubusercontent.com/mstuttgart/brazilcep/develop/docs/static/logo.png" width="80%">
   </a>
-  <h5 align="center">Minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data</h5>
 </p>
 
 <p align="center">
