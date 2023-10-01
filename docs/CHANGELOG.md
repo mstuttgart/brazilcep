@@ -1,6 +1,6 @@
 # Changelog
 
-## 6.1.0 (2023-10-01)
+## 6.2.0 (2023-10-01)
 
 - Add timeout settings
 - Add proxy settings. From: https://github.com/mstuttgart/brazilcep/issues/40
