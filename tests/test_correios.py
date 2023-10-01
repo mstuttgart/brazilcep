@@ -29,7 +29,7 @@ def test_fetch_address_success(mk):
     service_mk.consultaCEP.return_value = MockClass(expected_address)
 
     # Realizamos a consulta de CEP
-    address = get_address_from_cep("37503130", webservice=WebService.CORREIOS)
+    address = get_address_from_cep("37503130", webservice=WebService.CORREIOS, timeout=10)
 
     assert address["district"] == "Santo Antônio"
     assert address["cep"] == "37503130"
