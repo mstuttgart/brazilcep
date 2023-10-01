@@ -60,6 +60,5 @@ Its objective is to provide a common query interface to all these search service
 * Currently supports several CEP API's:
   * [ViaCEP](https://viacep.com.br)
   * [ApiCEP (WideNet)](https://apicep.com)
-  * [Correios (SIGEPWeb)](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf)
 
 BrazilCEP started as a personal study project and evolved into a serious and open source project that is used by many developers on a daily basis.

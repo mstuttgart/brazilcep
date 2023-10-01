@@ -8,7 +8,7 @@ readme = "README.md"
 packages = [{include = "brazilcep"}]
 
 include = ["CHANGELOG.md", "LICENSE"]
-keywords = ["correios", "viacep", "apicep", "cep", "brazil"]
+keywords = ["viacep", "apicep", "cep", "brazil"]
 
 classifiers = [
     "Topic :: Software Development :: Build Tools",
