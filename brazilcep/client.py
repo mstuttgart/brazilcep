@@ -37,12 +37,13 @@ services = {
 }
 
 
-def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=DEFAULT_TIMEOUT):
+def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxies=None):
     """Returns the address corresponding to the zip (cep) code entered.
 
     Args:
         cep (str): CEP to be queried.
-        timeout (int): Timeout request time, in seconds.
+        timeout (int): How many seconds to wait for the server to return data before giving up.
+        proxies (dict):  Dictionary mapping protocol to the URL of the proxy.
 
     Raises:
         RequestError: When connection error occurs in CEP query
@@ -63,7 +64,15 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=DEFAULT_TIME
     """
         )
 
-    return services[webservice](_format_cep(cep), timeout=timeout)
+    kwargs = {}
+
+    if timeout and isinstance(timeout, int):
+        kwargs["timeout"] = timeout
+
+    if proxies and isinstance(proxies, dict):
+        kwargs["proxies"] = proxies
+
+    return services[webservice](_format_cep(cep), **kwargs)
 
 
 def _format_cep(cep):
