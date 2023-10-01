@@ -1,10 +1,11 @@
 import pytest
-import requests
 
 from brazilcep import WebService, exceptions, get_address_from_cep
 
 
 def test_get_address_from_cep_success(requests_mock):
+    """ Set mock get return
+    """
     req_mock_text = """{
         \n  "cep": "37503-130",
         \n  "logradouro": "Rua Geraldino Campista",
@@ -21,7 +22,7 @@ def test_get_address_from_cep_success(requests_mock):
     requests_mock.get("http://www.viacep.com.br/ws/37503130/json", text=req_mock_text)
 
     # Realizamos a consulta de CEP
-    address = get_address_from_cep("37.503-130", webservice=WebService.VIACEP)
+    address = get_address_from_cep("37.503-130", webservice=WebService.VIACEP, timeout=10)
 
     assert address["district"] == "Santo Antônio"
     assert address["cep"] == "37503-130"

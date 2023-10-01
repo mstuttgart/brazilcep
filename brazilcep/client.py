@@ -15,6 +15,7 @@ import re
 from . import apicep, correios, viacep
 
 NUMBERS = re.compile(r"[^0-9]")
+DEFAULT_TIMEOUT = 5  # in seconds
 
 
 class WebService(enum.Enum):
@@ -36,11 +37,12 @@ services = {
 }
 
 
-def get_address_from_cep(cep, webservice=WebService.APICEP):
+def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=DEFAULT_TIMEOUT):
     """Returns the address corresponding to the zip (cep) code entered.
 
     Args:
         cep (str): CEP to be queried.
+        timeout (int): Timeout request time, in seconds.
 
     Raises:
         RequestError: When connection error occurs in CEP query
@@ -63,7 +65,7 @@ def get_address_from_cep(cep, webservice=WebService.APICEP):
 
     cep = _format_cep(cep)
 
-    return services[webservice](_format_cep(cep))
+    return services[webservice](_format_cep(cep), timeout=timeout)
 
 
 def _format_cep(cep):

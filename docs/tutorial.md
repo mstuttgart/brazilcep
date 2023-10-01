@@ -35,6 +35,18 @@ get all the address information we need from this object:
 
 The CEP always must be a string.
 
+## Timeout
+
+BrazilCEP also supports set a request timeout. Use the timeout option. The default timeout is 5 seconds:
+
+```python
+from brazilcep import get_address_from_cep
+
+# set timeout to 10 seconds
+get_address_from_cep('37503-130', timeout=10)
+
+```
+
 ## Unsing differents API's
 
 !!! note

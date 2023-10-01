@@ -15,12 +15,13 @@ from . import exceptions
 URL = "https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl"  # noqa
 
 
-def fetch_address(cep):
+def fetch_address(cep, timeout):
     """Fetch CORREIOS webservice for CEP address. CORREIOS provide
     a SOAP to query CEO requests.
 
     Args:
         cep (str):CEP to be searched.
+        timeout (int): Timeout request time, in seconds.
 
     Returns:
         address (dict): respective address data from CEP.
@@ -28,7 +29,8 @@ def fetch_address(cep):
 
     try:
 
-        client = zeep.Client(URL)
+        transport = zeep.transports.Transport(timeout=timeout)
+        client = zeep.Client(URL, transport=transport)
 
         address = client.service.consultaCEP(cep)
 
