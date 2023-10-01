@@ -1,17 +1,16 @@
-import sys
+import os
 
 import pytest
 
 from brazilcep import WebService, exceptions, get_address_from_cep
 
+IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
 
-@pytest.mark.skipif(sys.platform != "win32" and sys.version_info == (3,8), reason="requires python3.8 and linux")
+
+@pytest.mark.skipif(IN_GITHUB_ACTIONS, reason="Test doesn't work in Github Actions.")
 def test_fetch_address_success_real():
-
     # Realizamos a consulta de CEP
-    address = get_address_from_cep(
-        "37.503-130", webservice=WebService.APICEP
-    )
+    address = get_address_from_cep("37.503-130", webservice=WebService.APICEP)
 
     assert address["district"] == "Santo Antônio"
     assert address["cep"] == "37503-130"
@@ -60,11 +59,11 @@ def test_fetch_address_success(requests_mock):
 
     requests_mock.get("https://ws.apicep.com/cep/99999999.json", text=req_mock_text)
 
-    p = {"https": "00.00.000.000", "http": "00.00.000.000"}
+    proxies = {"https": "00.00.000.000", "http": "00.00.000.000"}
 
     # Realizamos a consulta de CEP
     address = get_address_from_cep(
-        "99999-999", webservice=WebService.APICEP, timeout=5, proxies=p
+        "99999-999", webservice=WebService.APICEP, timeout=5, proxies=proxies
     )
 
     assert address["district"] == ""
