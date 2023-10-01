@@ -10,7 +10,7 @@ It's simples migrate te code and require minimal steps.
 First, rename the `import` statements from:
 
 ```python title="PyCEPCorreios"
-import pycepicorreios
+import pycepcorreios
 ```
 to
 
