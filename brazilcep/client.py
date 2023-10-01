@@ -68,7 +68,8 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxie
         warnings.warn(
             "CORREIOS support has been deprecated, and we intend to remove it"
             " in a future release of BrazilCEP. Please use the WebService.VIACEP, WebService.APICEP"
-            " instead, as described in the documentation."
+            " instead, as described in the documentation.",
+            DeprecationWarning,
         )
 
         # override deprecated option
