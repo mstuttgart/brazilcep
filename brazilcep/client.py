@@ -63,8 +63,6 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=DEFAULT_TIME
     """
         )
 
-    cep = _format_cep(cep)
-
     return services[webservice](_format_cep(cep), timeout=timeout)
 
 
