@@ -1,5 +1,12 @@
 # Changelog
 
+## 6.1.0 (2023-10-01)
+
+- Add timeout settings
+- Add proxy settings. From: https://github.com/mstuttgart/brazilcep/issues/40
+- Add real tests to APICEP and ViaCEP
+- Update docs and README
+
 ## 6.0.0 (2023-05-01)
 
 - Rename lib to BrazilCEP
