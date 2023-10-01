@@ -29,7 +29,9 @@ def test_fetch_address_success(mk):
     service_mk.consultaCEP.return_value = MockClass(expected_address)
 
     # Realizamos a consulta de CEP
-    address = get_address_from_cep("37503130", webservice=WebService.CORREIOS, timeout=10)
+    address = get_address_from_cep(
+        "37503130", webservice=WebService.CORREIOS, timeout=10, proxies=None
+    )
 
     assert address["district"] == "Santo Antônio"
     assert address["cep"] == "37503130"
@@ -66,7 +68,7 @@ def test_fetch_address_success_unique(mk):
     service_mk.consultaCEP.return_value = MockClass(expected_address)
 
     # Realizamos a consulta de CEP
-    address = get_address_from_cep("37503130", webservice=WebService.CORREIOS)
+    address = get_address_from_cep("37503130", webservice=WebService.CORREIOS, proxies=None)
 
     assert address["district"] == ""
     assert address["cep"] == "9999999"
@@ -93,4 +95,4 @@ def test_fetch_address_fail(mk):
     service_mk.consultaCEP.side_effect = zeep.exceptions.Fault("error", 500)
 
     with pytest.raises(exceptions.BrazilCEPException):
-        get_address_from_cep("37503130", webservice=WebService.CORREIOS)
+        get_address_from_cep("37503130", webservice=WebService.CORREIOS, proxies=None)

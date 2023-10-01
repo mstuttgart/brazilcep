@@ -1,11 +1,27 @@
+import sys
+
 import pytest
 
 from brazilcep import WebService, exceptions, get_address_from_cep
 
+@pytest.mark.skipif(sys.platform != "win32" and sys.version_info == (3,8), reason="requires python3.8 and linux")
+def test_get_address_from_cep_success_real():
+
+    # Realizamos a consulta de CEP
+    address = get_address_from_cep(
+        "37.503-130", webservice=WebService.VIACEP
+    )
+
+    assert address["district"] == "Santo Antônio"
+    assert address["cep"] == "37503-130"
+    assert address["city"] == "Itajubá"
+    assert address["complement"] == "até 214/215"
+    assert address["street"] == "Rua Geraldino Campista"
+    assert address["uf"] == "MG"
+
 
 def test_get_address_from_cep_success(requests_mock):
-    """ Set mock get return
-    """
+    """Set mock get return"""
     req_mock_text = """{
         \n  "cep": "37503-130",
         \n  "logradouro": "Rua Geraldino Campista",
@@ -21,8 +37,12 @@ def test_get_address_from_cep_success(requests_mock):
 
     requests_mock.get("http://www.viacep.com.br/ws/37503130/json", text=req_mock_text)
 
+    p = {"https": "00.00.000.000", "http": "00.00.000.000"}
+
     # Realizamos a consulta de CEP
-    address = get_address_from_cep("37.503-130", webservice=WebService.VIACEP, timeout=10)
+    address = get_address_from_cep(
+        "37.503-130", webservice=WebService.VIACEP, timeout=10, proxies=p
+    )
 
     assert address["district"] == "Santo Antônio"
     assert address["cep"] == "37503-130"
