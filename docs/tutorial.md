@@ -105,13 +105,6 @@ The possible values for the `webservice` parameter are:
 
 * `Webservice.APICEP`
 * `Webservice.VIACEP`
-* `Webservice.CORREIOS`
-
-!!! info
-
-    The Correios CEP search service is an integral part of the SIGEPWeb service and
-    to use it, it is necessary to have a contract with the Correios, as indicated
-    in the Introduction chapter in the service `integration manual <>`_.
 
 ## Errors and Exceptions
 

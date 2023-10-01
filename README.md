@@ -53,7 +53,6 @@ Currently supports several CEP API's:
 
 - [ViaCEP](https://viacep.com.br)
 - [ApiCEP (WideNet)](https://apicep.com)
-- [Correios (SIGEPWeb)](http://www.corporativo.correios.com.br/encomendas/sigepweb/doc/Manual_de_Implementacao_do_Web_Service_SIGEP_WEB.pdf)
 
 > **BrazilCEP** is the new name of former **PyCEPCorreio** python library.
   If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.

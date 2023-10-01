@@ -28,6 +28,7 @@ def test_format_cep_success():
 
 
 def test_format_cep_fail():
+
     with pytest.raises(ValueError):
         _format_cep(37503003)
 
