@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "brazilcep"
-version = "6.0.0"
+version = "6.1.0"
 description = "Minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data"
 authors = ["Michell Stuttgart <michellstut@gmail.com>"]
 license = "MIT"
