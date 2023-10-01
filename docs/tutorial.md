@@ -47,6 +47,24 @@ get_address_from_cep('37503-130', timeout=10)
 
 ```
 
+## Proxy
+
+BrazilCEP also supports proxy setings following *requests* pattern. For more details,
+please official *requests* doc [here](https://requests.readthedocs.io/en/latest/user/advanced/#proxies).
+
+```python
+from brazilcep import get_address_from_cep
+
+proxies = {
+    'https': "00.00.000.000", 
+    'http': '00.00.000.000',
+}
+
+# set proxies
+get_address_from_cep('37503-130', proxies=proxies)
+
+```
+
 ## Unsing differents API's
 
 !!! note
