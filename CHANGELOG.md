@@ -1,5 +1,10 @@
 # Changelog
 
+## 6.1.0 (2023-10-01)
+
+- Add timeout parameters in requests
+- Update README typing errors
+
 ## 6.0.0 (2023-04-30)
 
 - Rename lib to BrazilCEP
