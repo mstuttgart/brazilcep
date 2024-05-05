@@ -1,9 +1,9 @@
-on: ["push", "pull_request"]
-
+---
 name: Github CI Coverage
 
-jobs:
+on: ["push"]
 
+jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -14,18 +14,19 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Run image
-        uses: abatilo/actions-poetry@v2
-        with:
-          poetry-version: "1.4.2"
-
-      - name: Install poetry packages
-        run: poetry install --with coverage
-
-      - name: Generate coverage report
+      - name: Install coverage dependencies
         run: |
-          poetry run coverage run -m --source=brazilcep pytest tests
-          poetry run coverage report
+          pip install -e ".[dev]"
+          pip install ".[coverage]"
+
+      - name: Run coverage tests
+        run: nox -s coverage
 
       - name: Coveralls
         uses: coverallsapp/github-action@v2
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}

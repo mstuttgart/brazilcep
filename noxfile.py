@@ -27,7 +27,7 @@ def coverage(session: nox.Session) -> None:
     """
     session.install("-e.[coverage]")
     session.run(
-        "pytest", "--cov=brazilcep", "--cov-report=html", "tests"
+        "pytest", "--cov", "brazilcep"
     )
 
 @nox.session
