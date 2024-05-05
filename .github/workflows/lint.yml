@@ -1,7 +1,7 @@
 ---
 name: Github CI Lint
 
-on: pull_request
+on: push
 
 jobs:
   build:
