@@ -17,15 +17,15 @@ theme:
     - content.code.copy
 
 nav:
-  - Home: 'index.md'
-  - 'install.md'
-  - 'tutorial.md'
-  - 'migrate.md'
-  - 'CONTRIBUTING.md'
-  - 'CHANGELOG.md'
+  - Home: "index.md"
+  - "install.md"
+  - "tutorial.md"
+  - "migrate.md"
+  - "CONTRIBUTING.md"
+  - "CHANGELOG.md"
 
 plugins:
-- search
+  - search
 
 markdown_extensions:
   - pymdownx.highlight:
