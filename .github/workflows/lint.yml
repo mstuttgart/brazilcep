@@ -1,10 +1,9 @@
+---
+name: Github CI Lint
 
 on: pull_request
 
-name: Github CI Lint
-
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -15,17 +14,10 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Run image
-        uses: abatilo/actions-poetry@v2
-        with:
-          poetry-version: "1.4.2"
-
-      - name: Check lock file
-        run: poetry lock --check
-
-      - name: Install poetry packages
-        run: poetry install --with lint
+      - name: Install test dependencies
+        run: |
+          pip install -e ".[dev]"
+          pip install ".[lint]"
 
       - name: Lint with pylint
-        run: |
-          poetry run pylint brazilcep
+        run: nox -s pylint
