@@ -8,9 +8,10 @@ This is the main module of BrazilCEP.
 :copyright: (c) 2023 by Michell Stuttgart.
 :license: MIT, see LICENSE for more details.
 """
-import warnings
+
 import enum
 import re
+import warnings
 
 from . import apicep, viacep
 
