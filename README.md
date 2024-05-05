@@ -54,6 +54,7 @@ Currently supports several CEP API's:
 - [ViaCEP](https://viacep.com.br)
 - [ApiCEP (WideNet)](https://apicep.com)
 
+> [!NOTE]
 > **BrazilCEP** is the new name of former **PyCEPCorreio** python library.
   If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
 
