@@ -67,8 +67,8 @@ via [pip](http://pip-installer.org>):
 pip install brazilcep
 ```
 
-We currently support **Python 3.8+ only**. Users on older interpreter versions
-are urged to upgrade.
+> [!NOTE]
+> We currently support **Python 3.8+ only**. Users on older interpreter versions are urged to upgrade.
 
 ## How to Use
 
