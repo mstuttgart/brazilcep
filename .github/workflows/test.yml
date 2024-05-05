@@ -1,6 +1,6 @@
 # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
+---
 name: Github CI PyTest
 
 on: push
@@ -11,8 +11,8 @@ jobs:
       fail-fast: false
 
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
-        runs-on: ubuntu-latest
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -21,13 +21,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      # - name: Run image
-      #   uses: abatilo/actions-poetry@v2
-      #   with:
-      #     poetry-version: ${{ matrix.poetry-version }}
-
-      - name: Install dependencies
-          pip install -e .[dev]
+      - name: Install test dependencies
+        run: pip install -e ".[dev]"
 
       - name: Run tests
-        run: nox tests
+        run: nox -s tests
