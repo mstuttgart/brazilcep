@@ -1,6 +1,6 @@
 # Migrate
 
-**BrazilCEP** is tne new name of former **PycepCorreios**. This page
+**BrazilCEP** is the new name of former **PycepCorreios**. This page
 guide you on to process of migrate old code to new version.
 
 It's simples migrate te code and require minimal steps.
