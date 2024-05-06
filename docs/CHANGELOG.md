@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.3.1 (2024-05-05)
+
+Update copyright and python version
+
 ## 6.3.0 (2024-05-05)
 
 - Change poetry `pyproject.toml` and use default `pyproject.toml` from Python docs
