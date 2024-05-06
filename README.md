@@ -113,4 +113,4 @@ See this *guideline* [here](https://github.com/mstuttgart/brazilcep/blob/develop
 
 ## Credits
 
-Copyright (C) 2016-2023 by Michell Stuttgart
+Copyright (C) 2016-2024 by Michell Stuttgart
