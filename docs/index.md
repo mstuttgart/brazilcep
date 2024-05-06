@@ -1,33 +1,36 @@
-<p align="center">
+
+<h2 align="center">
   <a href="https://pypi.org/project/brazilcep/">
-    <img src="https://raw.githubusercontent.com/mstuttgart/brazilcep/develop/docs/static/logo.png" width="80%">
+    <img src="https://github.com/mstuttgart/brazilcep/assets/8174740/fb7c86c8-6261-4300-b2e0-65877084d865" width="15%">
   </a>
-</p>
+  <br>
+      BrazilCEP
+</h2>
 
 <p align="center">
 
   <a href="https://github.com/mstuttgart/brazilcep/actions?query=workflow%3A%22Github+CI%22">
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/mstuttgart/brazilcep/test-package.yml?color=3771a1&branch=develop&style=flat-square">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/mstuttgart/brazilcep/test-package.yml?color=fcd800&branch=develop">
   </a>
 
-  <a href="https://coveralls.io/github/mstuttgart/brazilcep">
-    <img alt="Coveralls github" src="https://img.shields.io/coveralls/github/mstuttgart/brazilcep?color=fcd800&style=flat-square">
-  </a>
+ <a href="https://codecov.io/gh/mstuttgart/brazilcep" > 
+ <img alt="Codecov" src="https://img.shields.io/codecov/c/github/mstuttgart/brazilcep?color=fcd800">
+ </a>
 
   <a href="https://www.codefactor.io/repository/github/mstuttgart/brazilcep">
-    <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/mstuttgart/brazilcep/develop?color=fcd800&style=flat-square">
+    <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/mstuttgart/brazilcep/develop?color=fcd800">
   </a>
 
   <a href="https://pypi.org/project/brazilcep">
-    <img src="https://img.shields.io/pypi/dm/brazilcep?color=fcd800&style=flat-square" alt="Downloads">
+    <img src="https://img.shields.io/pypi/dm/brazilcep?color=fcd800" alt="Downloads">
   </a>
 
   <a href="https://pypi.org/project/brazilcep">
-    <img src="https://img.shields.io/pypi/v/brazilcep.svg?style=flat-square" alt="Ratings">
+    <img src="https://img.shields.io/pypi/v/brazilcep.svg?" alt="Ratings">
   </a>
 
   <a href="https://pypi.org/project/brazilcep/">
-    <img src="https://img.shields.io/pypi/pyversions/brazilcep.svg?style=flat-square" alt="Version">
+    <img src="https://img.shields.io/pypi/pyversions/brazilcep.svg" alt="Version">
   </a>
 
 </p>
