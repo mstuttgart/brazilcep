@@ -1,3 +1,4 @@
+---
 # .readthedocs.yaml
 # Read the Docs configuration file
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
@@ -11,14 +12,12 @@ build:
   tools:
     python: "3.11"
 
-  jobs:
-    # install poetry and docs dependencies
-    post_create_environment:
-      - pip install poetry
-      - poetry config virtualenvs.create false
-
-    post_install:
-      - poetry install --only docs
+python:
+  install:
+    - method: pip
+      path: .
+      extra_requirements:
+        - docs
 
 mkdocs:
   configuration: mkdocs.yml
