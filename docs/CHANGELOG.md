@@ -1,6 +1,6 @@
 # Changelog
 
-## 6.2.0 (2024-05-05)
+## 6.3.0 (2024-05-05)
 
 - Change poetry `pyproject.toml` and use default `pyproject.toml` from Python docs
 - Improve nox tests and dependencies enviromnents

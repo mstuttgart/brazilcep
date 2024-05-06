@@ -1,5 +1,19 @@
 # Changelog
 
+## 6.3.0 (2024-05-05)
+
+- Change poetry `pyproject.toml` and use default `pyproject.toml` from Python docs
+- Improve nox tests and dependencies enviromnents
+- Add support to Python 3.12
+
+## 6.2.0 (2023-10-01)
+
+- Add timeout settings
+- Add proxy settings. From: https://github.com/mstuttgart/brazilcep/issues/40
+- Add real tests to APICEP and ViaCEP
+- Update docs and README
+- Deprecated 'Correios' webservice support
+
 ## 6.1.0 (2023-10-01)
 
 - Add timeout parameters in requests
