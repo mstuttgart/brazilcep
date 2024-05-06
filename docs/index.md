@@ -10,7 +10,7 @@
 <p align="center">
 
   <a href="https://github.com/mstuttgart/brazilcep/actions?query=workflow%3A%22Github+CI%22">
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/mstuttgart/brazilcep/test-package.yml?color=fcd800&branch=develop">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/mstuttgart/brazilcep/test.yml?color=fcd800&branch=main">
   </a>
 
  <a href="https://codecov.io/gh/mstuttgart/brazilcep" > 
@@ -18,7 +18,7 @@
  </a>
 
   <a href="https://www.codefactor.io/repository/github/mstuttgart/brazilcep">
-    <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/mstuttgart/brazilcep/develop?color=fcd800">
+    <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/mstuttgart/brazilcep/main?color=fcd800">
   </a>
 
   <a href="https://pypi.org/project/brazilcep">
