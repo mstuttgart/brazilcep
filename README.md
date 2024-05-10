@@ -46,10 +46,9 @@
 
 ## About
 
-**BrazilCEP** is a minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data.
+**BrazilCEP** is a minimalist and easy-to-use python library designed to query CEP (Postal Address Code) data.
 
-Its objective is to provide a common query interface to all these search services, facilitating
-the integration of Python applications with these services.
+Its objective is to provide a common query interface to all these search services, facilitating the integration of Python applications with these services.
 
 Currently supports several CEP API's:
 
@@ -60,6 +59,11 @@ Currently supports several CEP API's:
 > **BrazilCEP** is the new name of former **PyCEPCorreio** python library.
   If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
 
+> [!TIP]
+> **CEP** or **Código de Endereçamento Postal** (*Postal Address Code*), as it is also known, is a system of numeric codes, created, maintained and organized by *Correios do Brazil* for
+> organizing addresses and deliveries of letters and parcels.
+
+
 ## Install
 
 The recommended way to get BrazilCEP is to **install the latest stable release**
@@ -69,7 +73,7 @@ via [pip](http://pip-installer.org>):
 pip install brazilcep
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > We currently support **Python 3.8+ only**. Users on older interpreter versions are urged to upgrade.
 
 ## How to Use
@@ -102,6 +106,14 @@ get all the address information we need from this object:
 ```
 
 The CEP always must be a string.
+
+> [!TIP]
+> BrazilCEP was developed to integrate on-demand queries into web pages.
+> Querying CEP in bulk through scripts or any other means is not recommended.
+
+> [!IMPORTANT]
+> BrazilCEP is not responsible for the functioning, availability and support of any of these query API's.
+> All of them are provided by third parties, and this library just provides a handy way to centralize the CEP search on these services.
 
 ## Documentation
 
