@@ -8,21 +8,21 @@ This module implements the BrazilCEP correios adapter.
 :license: MIT, see LICENSE for more details.
 """
 
-import json
-
 import requests
+from bs4 import BeautifulSoup
 
 from . import exceptions
 
-from bs4 import BeautifulSoup
 
 URL = "https://www2.correios.com.br/sistemas/buscacep/resultadoBuscaEndereco.cfm"
 
 # Lista de novas chaves
 address_keys = ["street", "district", "cep", "complement", "city", "uf"]
 
+
 def transform_address(address: dict) -> dict:
-    """Transforms an address dictionary to a new dictionary with standardized keys."""
+    """Transforms an address dictionary to a new dictionary
+    with standardized keys."""
 
     # Separar rua e complemento, se existir
     street, *complement = address["logradouro"].split("-", maxsplit=1)
@@ -37,8 +37,10 @@ def transform_address(address: dict) -> dict:
     # Mapear valores para as novas chaves
     return {k: v.strip() for k, v in zip(address_keys, address.values())}
 
+
 def extract_and_transform_cep(html: bytes) -> dict:
-    """Extracts address data from HTML and transforms it into a dictionary with standardized keys."""
+    """Extracts address data from HTML and transforms it into a dictionary.
+    with standardized keys."""
 
     # Analisar o HTML
     soup = BeautifulSoup(html, "html.parser")
@@ -48,10 +50,10 @@ def extract_and_transform_cep(html: bytes) -> dict:
 
     # Extrair dados da tabela
     data = {}
-    for th, td in zip(table.find_all("th"), table.find_all("td")):
+    for th_data, td_data in zip(table.find_all("th"), table.find_all("td")):
         # Processar chaves e valores
-        key = th.get_text(strip=True).replace(":", "").split("/")[0].lower()
-        value = td.get_text(strip=True)
+        key = th_data.get_text(strip=True).replace(":", "").split("/")[0].lower()
+        value = td_data.get_text(strip=True)
         data[key] = value
 
     # Transformar e retornar o endereço
@@ -77,7 +79,6 @@ def fetch_address(cep, **kwargs):
 
     address_data = extract_and_transform_cep(response.content)
 
-
     if address_data:
-            return address_data
+        return address_data
     raise exceptions.InvalidCEP()

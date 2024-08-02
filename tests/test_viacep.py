@@ -78,9 +78,7 @@ def test_get_address_invalid_cep(requests_mock):
 
 
 def test_fetch_address_404(requests_mock):
-    requests_mock.get(
-        "http://www.viacep.com.br/ws/37503130/json", status_code=404
-    )  # noqa
+    requests_mock.get("http://www.viacep.com.br/ws/37503130/json", status_code=404)  # noqa
 
     with pytest.raises(exceptions.BrazilCEPException):
         get_address_from_cep("37503-130", webservice=WebService.VIACEP)

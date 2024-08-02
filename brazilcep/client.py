@@ -11,7 +11,6 @@ This is the main module of BrazilCEP.
 
 import enum
 import re
-import warnings
 
 from . import apicep, viacep, correios
 
@@ -64,17 +63,6 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxie
         WebService.VIACEP, WebService.APICEP
     """
         )
-
-    # if webservice == WebService.CORREIOS:
-    #     warnings.warn(
-    #         "CORREIOS support has been deprecated, and we intend to remove it"
-    #         " in a future release of BrazilCEP. Please use the WebService.VIACEP, WebService.APICEP"
-    #         " instead, as described in the documentation.",
-    #         DeprecationWarning,
-    #     )
-
-    #     # override deprecated option
-    #     webservice = WebService.APICEP
 
     kwargs = {}
 
