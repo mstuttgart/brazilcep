@@ -14,25 +14,25 @@ def test_search_error():
         get_address_from_cep("37.503-130", webservice="VIACEP")
 
 
-def test_search_correios(requests_mock):
-    """Set mock get return"""
-    req_mock_text = """{
-        "status":200,
-        "ok":true,
-        "code":"37503-130",
-        "state":"MG",
-        "city":"Itajubá",
-        "district":"Santo Antônio",
-        "address":"Rua Geraldino Campista - até 214/215",
-        "statusText":"ok"
-    }"""
+# def test_search_correios(requests_mock):
+#     """Set mock get return"""
+#     req_mock_text = """{
+#         "status":200,
+#         "ok":true,
+#         "code":"37503-130",
+#         "state":"MG",
+#         "city":"Itajubá",
+#         "district":"Santo Antônio",
+#         "address":"Rua Geraldino Campista - até 214/215",
+#         "statusText":"ok"
+#     }"""
 
-    requests_mock.get("https://ws.apicep.com/cep/37503130.json", text=req_mock_text)
+#     requests_mock.get("https://ws.apicep.com/cep/37503130.json", text=req_mock_text)
 
-    with catch_warnings(record=True) as warn:
-        get_address_from_cep("37503130", webservice=WebService.CORREIOS)
-        assert len(warn) == 1
-        assert issubclass(warn[0].category, DeprecationWarning)
+#     with catch_warnings(record=True) as warn:
+#         get_address_from_cep("37503130", webservice=WebService.CORREIOS)
+#         assert len(warn) == 1
+#         assert issubclass(warn[0].category, DeprecationWarning)
 
 
 def test_format_cep_success():

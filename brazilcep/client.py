@@ -13,7 +13,7 @@ import enum
 import re
 import warnings
 
-from . import apicep, viacep
+from . import apicep, viacep, correios
 
 NUMBERS = re.compile(r"[^0-9]")
 DEFAULT_TIMEOUT = 5  # in seconds
@@ -32,7 +32,7 @@ class WebService(enum.Enum):
 
 
 services = {
-    WebService.CORREIOS: None,
+    WebService.CORREIOS: correios.fetch_address,
     WebService.VIACEP: viacep.fetch_address,
     WebService.APICEP: apicep.fetch_address,
 }
@@ -65,16 +65,16 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxie
     """
         )
 
-    if webservice == WebService.CORREIOS:
-        warnings.warn(
-            "CORREIOS support has been deprecated, and we intend to remove it"
-            " in a future release of BrazilCEP. Please use the WebService.VIACEP, WebService.APICEP"
-            " instead, as described in the documentation.",
-            DeprecationWarning,
-        )
+    # if webservice == WebService.CORREIOS:
+    #     warnings.warn(
+    #         "CORREIOS support has been deprecated, and we intend to remove it"
+    #         " in a future release of BrazilCEP. Please use the WebService.VIACEP, WebService.APICEP"
+    #         " instead, as described in the documentation.",
+    #         DeprecationWarning,
+    #     )
 
-        # override deprecated option
-        webservice = WebService.APICEP
+    #     # override deprecated option
+    #     webservice = WebService.APICEP
 
     kwargs = {}
 
