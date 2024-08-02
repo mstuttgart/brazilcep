@@ -30,7 +30,7 @@ classifiers = [
   "Natural Language :: Portuguese (Brazilian)",
 ]
 
-dependencies = ["zeep>=4.2.1", "requests>=2.28.2"]
+dependencies = ["zeep>=4.2.1", "requests>=2.28.2", "beautifulsoup4==4.12.3"]
 
 [project.optional-dependencies]
 dev = ["nox>=2022.11.21"]
