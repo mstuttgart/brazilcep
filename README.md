@@ -54,6 +54,7 @@ Currently supports several CEP API's:
 
 - [ViaCEP](https://viacep.com.br)
 - [ApiCEP (WideNet)](https://apicep.com)
+- [Correios (site)](https://www2.correios.com.br/sistemas/buscacep/resultadoBuscaEndereco.cfm)
 
 > [!NOTE]
 > **BrazilCEP** is the new name of former **PyCEPCorreio** python library.
