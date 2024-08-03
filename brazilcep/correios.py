@@ -22,7 +22,11 @@ address_keys = ["street", "district", "cep", "complement", "city", "uf"]
 
 def transform_address(address: dict) -> dict:
     """Transforms an address dictionary to a new dictionary
-    with standardized keys."""
+    with standardized keys.
+
+    Returns:
+        (dict): address dict keys formated.
+    """
 
     # Separar rua e complemento, se existir
     street, *complement = address["logradouro"].split("-", maxsplit=1)
@@ -40,13 +44,17 @@ def transform_address(address: dict) -> dict:
 
 def extract_and_transform_cep(html: bytes) -> dict:
     """Extracts address data from HTML and transforms it into a dictionary.
-    with standardized keys."""
+    with standardized keys.
+
+    Returns:
+        (dict): respective address data.
+    """
 
     # Analisar o HTML
     soup = BeautifulSoup(html, "html.parser")
     table = soup.find("table")
     if not table:
-        return None
+        return {}
 
     # Extrair dados da tabela
     data = {}
