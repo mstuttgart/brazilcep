@@ -13,7 +13,7 @@
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/mstuttgart/brazilcep/test.yml?color=fcd800&branch=main">
   </a>
 
- <a href="https://codecov.io/gh/mstuttgart/brazilcep" > 
+ <a href="https://codecov.io/gh/mstuttgart/brazilcep" >
  <img alt="Codecov" src="https://img.shields.io/codecov/c/github/mstuttgart/brazilcep?color=fcd800">
  </a>
 
@@ -54,6 +54,7 @@ Currently supports several CEP API's:
 
 - [ViaCEP](https://viacep.com.br)
 - [ApiCEP (WideNet)](https://apicep.com)
+- [OpenCEP](https://opencep.com/)
 - [Correios (site)](https://www2.correios.com.br/sistemas/buscacep/resultadoBuscaEndereco.cfm)
 
 > [!NOTE]
