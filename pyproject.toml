@@ -33,14 +33,17 @@ classifiers = [
 dependencies = ["zeep>=4.2.1", "requests>=2.28.2", "beautifulsoup4==4.12.3"]
 
 [project.optional-dependencies]
-dev = ["nox>=2022.11.21"]
 
-test = ["pytest>=7.3.1", "requests-mock>=1.10.0"]
-
-lint = ["pylint"]
+dev = [
+  "nox>=2022.11.21",
+  "pytest>=7.3.1",
+  "requests-mock>=1.10.0",
+  "black>=23.0,<24.0",
+  "isort>=5.12,<5.13",
+  "ruff",
+]
 
 coverage = ["coveralls>=3.3.1", "pytest-cov>=4.0.0", "requests-mock>=1.10.0"]
-
 docs = ["mkdocs-material>=9.1.6", "mkdocs>=1.4.2"]
 
 [project.urls]
@@ -49,4 +52,54 @@ Source = "https://github.com/mstuttgart/brazilcep"
 Tracker = "https://github.com/mstuttgart/brazilcep/issues"
 
 [tool.check-manifest]
-ignore = [".*", "test/**", "docs/**", "bin/**", "*.yml", "noxfile.py", ".pylintrc"]
+ignore = [
+  ".*",
+  "test/**",
+  "docs/**",
+  "bin/**",
+  "*.yml",
+  "noxfile.py",
+  ".pylintrc",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+my_package = ["py.typed"]
+
+[tool.setuptools.dynamic]
+version = { attr = "my_package.version.VERSION" }
+
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+exclude = '''
+(
+      __pycache__
+    | \.git
+    | \.mypy_cache
+    | \.pytest_cache
+    | \.vscode
+    | \.venv
+    | \bdist\b
+    | \bdoc\b
+    | \.nox
+    | \.github
+)
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+# You can override these pyright settings by adding a personal pyrightconfig.json file.
+[tool.pyright]
+reportPrivateImportUsage = false
+
+[tool.ruff]
+line-length = 115
+target-version = "py39"
+
+[tool.lint.per-file-ignores]
+"__init__.py" = ["F401"]

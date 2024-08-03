@@ -1,6 +1,6 @@
 import nox
 
-nox.options.sessions = ["tests", "pylint"]
+nox.options.sessions = ["tests", "lint"]
 
 
 @nox.session
@@ -8,17 +8,17 @@ def tests(session: nox.Session) -> None:
     """
     Run the unit and regular tests.
     """
-    session.install("-e.[test]")
+    session.install("-e.[dev]")
     session.run("pytest")
 
 
 @nox.session
-def pylint(session: nox.Session) -> None:
+def lint(session: nox.Session) -> None:
     """
-    Run pylint.
+    Run lint with ruff.
     """
-    session.install("-e.[lint]")
-    session.run("pylint", "brazilcep")
+    session.install("-e.[dev]")
+    session.run("ruff", "brazilcep")
 
 
 @nox.session
