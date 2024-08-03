@@ -1,6 +1,6 @@
 import nox
 
-nox.options.sessions = [ "tests", "pylint"]
+nox.options.sessions = ["tests", "pylint"]
 
 
 @nox.session
@@ -20,15 +20,15 @@ def pylint(session: nox.Session) -> None:
     session.install("-e.[lint]")
     session.run("pylint", "brazilcep")
 
+
 @nox.session
 def coverage(session: nox.Session) -> None:
     """
     Run coverage.
     """
     session.install("-e.[coverage]")
-    session.run(
-        "pytest", "--cov", "brazilcep"
-    )
+    session.run("pytest", "--cov", "brazilcep")
+
 
 @nox.session
 def check_manifest(session: nox.Session) -> None:
@@ -39,6 +39,7 @@ def check_manifest(session: nox.Session) -> None:
     session.install("check-manifest")
     session.run("check-manifest", *session.posargs)
 
+
 @nox.session
 def docs(session: nox.Session) -> None:
     """
@@ -46,4 +47,3 @@ def docs(session: nox.Session) -> None:
     """
     session.install("-e.[docs]")
     session.run("mkdocs", "serve" if session.interactive else "build")
-
