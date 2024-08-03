@@ -57,6 +57,4 @@ def fetch_address(cep, **kwargs):
             "complement": "",
         }
 
-    raise exceptions.BrazilCEPException(
-        f"Other error. Status code: {response.status_code}"
-    )
+    raise exceptions.BrazilCEPException(f"Other error. Status code: {response.status_code}")

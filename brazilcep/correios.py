@@ -13,7 +13,6 @@ from bs4 import BeautifulSoup
 
 from . import exceptions
 
-
 URL = "https://www2.correios.com.br/sistemas/buscacep/resultadoBuscaEndereco.cfm"
 
 # Lista de novas chaves

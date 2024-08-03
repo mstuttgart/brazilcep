@@ -12,7 +12,7 @@ This is the main module of BrazilCEP.
 import enum
 import re
 
-from . import apicep, viacep, correios, opencep
+from . import apicep, correios, opencep, viacep
 
 NUMBERS = re.compile(r"[^0-9]")
 DEFAULT_TIMEOUT = 5  # in seconds
