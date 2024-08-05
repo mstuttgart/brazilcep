@@ -23,7 +23,6 @@ jobs:
       - name: Install test dependencies
         run: |
           pip install -e ".[dev]"
-          pip install ".[lint]"
 
       - name: Lint with pylint
         run: nox -s pylint

@@ -1,5 +1,5 @@
 """
-brazilcep.apicep
+brazilcep.opencep
 ~~~~~~~~~~~~~~~~
 
 This module implements the BrazilCEP ApiCEP adapter.
@@ -14,11 +14,11 @@ import requests
 
 from . import exceptions
 
-URL = "https://ws.apicep.com/cep/{}.json"
+URL = "https://opencep.com/v1/{}"
 
 
 def fetch_address(cep, **kwargs):
-    """Fetch VIACEP webservice for CEP address. VIACEP provide
+    """Fetch OpenCEP webservice for CEP address. OpenCEP provide
     a REST API to query CEP requests.
 
     Args:
@@ -36,25 +36,19 @@ def fetch_address(cep, **kwargs):
         # Transforma o objeto requests em um dict
         address = json.loads(response.text)
 
-        if (
-            address["status"] == 400
-            and address["message"] == "CEP informado é inválido"
-        ):
-            raise exceptions.InvalidCEP()
-
-        if address["status"] == 400 and address["message"] == "Blocked by flood":
-            raise exceptions.BlockedByFlood()
-
-        if address["status"] == 404:
-            raise exceptions.CEPNotFound()
-
         return {
-            "district": address.get("district") or "",
-            "cep": address.get("code") or "",
-            "city": address.get("city") or "",
-            "street": (address.get("address") or "").split(" - até")[0],
-            "uf": address.get("state") or "",
+            "district": address.get("bairro") or "",
+            "cep": address.get("cep") or "",
+            "city": address.get("localidade") or "",
+            "street": address.get("logradouro") or "",
+            "uf": address.get("uf") or "",
             "complement": "",
         }
 
-    raise exceptions.BrazilCEPException(f"Other error. Status code: {response.status_code}")
+    elif response.status_code == 404:
+        raise exceptions.CEPNotFound()
+
+    else:
+        raise exceptions.BrazilCEPException(
+            f"Other error. Status code: {response.status_code}"
+        )

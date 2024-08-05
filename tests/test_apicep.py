@@ -35,9 +35,7 @@ def test_fetch_address_success(requests_mock):
     requests_mock.get("https://ws.apicep.com/cep/37503130.json", text=req_mock_text)
 
     # Realizamos a consulta de CEP
-    address = get_address_from_cep(
-        "37.503-130", webservice=WebService.APICEP, timeout=5
-    )
+    address = get_address_from_cep("37.503-130", webservice=WebService.APICEP, timeout=5)
 
     assert address["district"] == "Santo Antônio"
     assert address["cep"] == "37503-130"
