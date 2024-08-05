@@ -18,7 +18,7 @@ def lint(session: nox.Session) -> None:
     Run lint with ruff.
     """
     session.install("-e.[dev]")
-    session.run("ruff", "brazilcep")
+    session.run("ruff", "check", "brazilcep")
 
 
 @nox.session

@@ -12,6 +12,7 @@ facilitating the integration of Python applications with these services.
 :license: MIT, see LICENSE for more details.
 """
 
+from .version import VERSION, VERSION_SHORT
 from .client import WebService, get_address_from_cep
 
 __all__ = [
