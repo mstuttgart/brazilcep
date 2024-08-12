@@ -17,10 +17,6 @@
  <img alt="Codecov" src="https://img.shields.io/codecov/c/github/mstuttgart/brazilcep?color=fcd800">
  </a>
 
-  <a href="https://www.codefactor.io/repository/github/mstuttgart/brazilcep">
-    <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/mstuttgart/brazilcep/main?color=fcd800">
-  </a>
-
   <a href="https://pypi.org/project/brazilcep">
     <img src="https://img.shields.io/pypi/dm/brazilcep?color=fcd800" alt="Downloads">
   </a>
