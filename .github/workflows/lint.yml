@@ -24,5 +24,5 @@ jobs:
         run: |
           pip install -e ".[dev]"
 
-      - name: Lint with pylint
-        run: nox -s pylint
+      - name: Lint with ruff
+        run: nox -s lint
