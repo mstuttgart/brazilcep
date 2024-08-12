@@ -45,7 +45,7 @@ def fetch_address(cep, **kwargs):
             "complement": "",
         }
 
-    elif response.status_code == 404:
+    if response.status_code == 404:
         raise exceptions.CEPNotFound()
 
     else:
