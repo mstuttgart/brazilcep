@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "brazilcep"
-version = "6.3.1"
+version = "6.4.0"
 description = "Minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data"
 readme = "README.md"
 license = { file = "LICENSE" }
