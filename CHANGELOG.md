@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.4.1 (2024-08-18)
+
+- Fix beautifulsoup4 version
+
 ## 6.4.0 (2024-08-14)
 
 - Add API Correios (via Correios site) support 
