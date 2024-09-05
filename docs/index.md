@@ -60,6 +60,5 @@ Its objective is to provide a common query interface to all these search service
   * [ViaCEP](https://viacep.com.br)
   * [ApiCEP (WideNet)](https://apicep.com)
   * [OpenCEP](https://opencep.com/)
-  * [Correios (site)](https://www2.correios.com.br/sistemas/buscacep/resultadoBuscaEndereco.cfm)
 
 BrazilCEP started as a personal study project and evolved into a serious and open source project that is used by many developers on a daily basis.

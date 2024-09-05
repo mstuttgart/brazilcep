@@ -11,8 +11,9 @@ This is the main module of BrazilCEP.
 
 import enum
 import re
+from warnings import warn
 
-from . import apicep, correios, opencep, viacep
+from . import apicep, opencep, viacep
 
 NUMBERS = re.compile(r"[^0-9]")
 DEFAULT_TIMEOUT = 5  # in seconds
@@ -32,7 +33,8 @@ class WebService(enum.Enum):
 
 
 services = {
-    WebService.CORREIOS: correios.fetch_address,
+    # TOFIX: compatibility adjust. remove CORREIOS in next version
+    WebService.CORREIOS: opencep.fetch_address,
     WebService.VIACEP: viacep.fetch_address,
     WebService.APICEP: apicep.fetch_address,
     WebService.OPENCEP: opencep.fetch_address,
@@ -59,11 +61,12 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxie
 
     """
 
+    if webservice == WebService.CORREIOS:
+        warn("CORREIOS is going to be deprecated. Please, use other webservice.", DeprecationWarning, stacklevel=2)
+
     if webservice not in (value for _, value in WebService.__dict__.items()):
         raise KeyError(
-            """Invalid webservice. Please use this options:
-        WebService.VIACEP, WebService.APICEP, WebService.CORREIOs or WebService.OPENCEP
-    """
+            """Invalid webservice. Please use this options: WebService.VIACEP, WebService.APICEP or WebService.OPENCEP"""
         )
 
     kwargs = {}

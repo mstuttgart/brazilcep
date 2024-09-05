@@ -2,7 +2,7 @@ from warnings import catch_warnings
 
 import pytest
 
-from brazilcep import get_address_from_cep, WebService
+from brazilcep import WebService, get_address_from_cep
 from brazilcep.client import _format_cep
 
 
