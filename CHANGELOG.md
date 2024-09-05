@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.5.0 (2024-08-18)
+
+- Remove API Correios from website.
+
 ## 6.4.1 (2024-08-18)
 
 - Fix beautifulsoup4 version
