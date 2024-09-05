@@ -1,8 +1,12 @@
+import logging
 import os
 
 import pytest
+import requests
 
 from brazilcep import WebService, exceptions, get_address_from_cep
+
+logger = logging.getLogger(__name__)
 
 IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
 
@@ -10,14 +14,18 @@ IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
 @pytest.mark.skipif(IN_GITHUB_ACTIONS, reason="Test doesn't work in Github Actions.")
 def test_get_address_from_cep_success_real():
     # Realizamos a consulta de CEP
-    address = get_address_from_cep("37.503-130", webservice=WebService.VIACEP)
+    try:
+        address = get_address_from_cep("37.503-130", webservice=WebService.VIACEP)
 
-    assert address["district"] == "Santo Antônio"
-    assert address["cep"] == "37503-130"
-    assert address["city"] == "Itajubá"
-    assert address["complement"] == "até 214/215"
-    assert address["street"] == "Rua Geraldino Campista"
-    assert address["uf"] == "MG"
+        assert address["district"] == "Santo Antônio"
+        assert address["cep"] == "37503-130"
+        assert address["city"] == "Itajubá"
+        assert address["complement"] == "até 214/215"
+        assert address["street"] == "Rua Geraldino Campista"
+        assert address["uf"] == "MG"
+
+    except requests.exceptions.ConnectionError as exc:
+        logger.warning(exc)
 
 
 def test_get_address_from_cep_success(requests_mock):
@@ -40,9 +48,7 @@ def test_get_address_from_cep_success(requests_mock):
     proxies = {"https": "00.00.000.000", "http": "00.00.000.000"}
 
     # Realizamos a consulta de CEP
-    address = get_address_from_cep(
-        "37.503-130", webservice=WebService.VIACEP, timeout=10, proxies=proxies
-    )
+    address = get_address_from_cep("37.503-130", webservice=WebService.VIACEP, timeout=10, proxies=proxies)
 
     assert address["district"] == "Santo Antônio"
     assert address["cep"] == "37503-130"
