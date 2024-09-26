@@ -114,7 +114,7 @@ The CEP always must be a string.
 
 ## Documentation
 
-Documentation for the current version of BrazilCEP is available from the official docs [here](https://brazilcep.readthedocs.io/en/stable).
+Documentation for the current version of BrazilCEP is available from the official docs [here](https://brazilcep.readthedocs.io/).
 
 ## Contribute
 
