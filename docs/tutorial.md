@@ -105,6 +105,7 @@ The possible values for the `webservice` parameter are:
 
 * `Webservice.APICEP`
 * `Webservice.VIACEP`
+* `Webservice.OPENCEP`
 
 ## Errors and Exceptions
 
