@@ -73,7 +73,7 @@ pip install brazilcep
 > [!IMPORTANT]
 > We currently support **Python 3.8+ only**. Users on older interpreter versions are urged to upgrade.
 
-## How to Use
+## Quick Start
 
 Making a request is very simple. Begin by importing the BrazilCEP module:
 
@@ -114,7 +114,7 @@ The CEP always must be a string.
 
 ## Documentation
 
-Documentation for the current version of BrazilCEP is available from the official docs [here](https://brazilcep.readthedocs.io/).
+Documentation for the current version of BrazilCEP is available [here](https://brazilcep.readthedocs.io/).
 
 ## Contribute
 
