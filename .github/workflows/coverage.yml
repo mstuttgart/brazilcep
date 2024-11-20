@@ -22,11 +22,11 @@ jobs:
 
       - name: Install coverage dependencies
         run: |
-          pip install -e ".[dev]"
+          pip install ".[dev]"
           pip install ".[coverage]"
 
       - name: Run coverage tests
-        run: nox -s coverage
+        run: make coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4

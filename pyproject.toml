@@ -48,6 +48,7 @@ dev = [
 
 coverage = ["coveralls>=3.3.1", "pytest-cov>=4.0.0", "requests-mock>=1.10.0"]
 docs = ["mkdocs-material>=9.1.6", "mkdocs>=1.4.2"]
+build = ["build==1.2.2.post1"]
 
 [project.urls]
 Documentation = "https://github.com/mstuttgart/brazilcep/tree/main#readme"
