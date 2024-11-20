@@ -52,6 +52,4 @@ def fetch_address(cep, **kwargs):
     if response.status_code == 400:
         raise exceptions.InvalidCEP()
 
-    raise exceptions.BrazilCEPException(
-        f"Other error. Status code: {response.status_code}"
-    )
+    raise exceptions.BrazilCEPException(f"Other error. Status code: {response.status_code}")

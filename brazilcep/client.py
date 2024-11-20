@@ -62,7 +62,11 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxie
     """
 
     if webservice == WebService.CORREIOS:
-        warn("CORREIOS is going to be deprecated. Please, use other webservice.", DeprecationWarning, stacklevel=2)
+        warn(
+            "CORREIOS is going to be deprecated. Please, use other webservice.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
 
     if webservice not in (value for _, value in WebService.__dict__.items()):
         raise KeyError(

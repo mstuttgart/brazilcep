@@ -33,13 +33,9 @@ def fetch_address(cep, **kwargs):
     response = requests.get(URL.format(cep), **kwargs)  # pylint = missing-timeout
 
     if response.status_code == 200:
-        # Transforma o objeto requests em um dict
         address = json.loads(response.text)
 
-        if (
-            address["status"] == 400
-            and address["message"] == "CEP informado é inválido"
-        ):
+        if address["status"] == 400 and address["message"] == "CEP informado é inválido":
             raise exceptions.InvalidCEP()
 
         if address["status"] == 400 and address["message"] == "Blocked by flood":

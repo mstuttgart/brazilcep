@@ -33,7 +33,6 @@ def fetch_address(cep, **kwargs):
     response = requests.get(URL.format(cep), **kwargs)  # pylint = missing-timeout
 
     if response.status_code == 200:
-        # Transforma o objeto requests em um dict
         address = json.loads(response.text)
 
         return {
@@ -49,6 +48,4 @@ def fetch_address(cep, **kwargs):
         raise exceptions.CEPNotFound()
 
     else:
-        raise exceptions.BrazilCEPException(
-            f"Other error. Status code: {response.status_code}"
-        )
+        raise exceptions.BrazilCEPException(f"Other error. Status code: {response.status_code}")
