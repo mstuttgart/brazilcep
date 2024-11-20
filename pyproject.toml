@@ -35,7 +35,7 @@ dependencies = ["zeep>=4.2.1", "requests>=2.28.2"]
 [project.optional-dependencies]
 
 dev = [
-  "nox>=2022.11.21",
+  "tox>=4.23.2",
   "pytest>=7.3.1",
   "requests-mock>=1.10.0",
   "black>=23.0,<24.0",
