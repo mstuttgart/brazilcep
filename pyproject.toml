@@ -54,6 +54,7 @@ build = ["build==1.2.2.post1"]
 Documentation = "https://github.com/mstuttgart/brazilcep/tree/main#readme"
 Source = "https://github.com/mstuttgart/brazilcep"
 Tracker = "https://github.com/mstuttgart/brazilcep/issues"
+Changelog = "https://github.com/mstuttgart/brazilcep/blob/main/CHANGELOG.md"
 
 [tool.check-manifest]
 ignore = [
