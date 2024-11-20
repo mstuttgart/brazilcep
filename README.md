@@ -1,4 +1,3 @@
-
 <h2 align="center">
   <a href="https://pypi.org/project/brazilcep/">
     <img src="https://github.com/mstuttgart/brazilcep/assets/8174740/fb7c86c8-6261-4300-b2e0-65877084d865" width="15%">
@@ -52,14 +51,11 @@ Currently supports several CEP API's:
 - [ApiCEP (WideNet)](https://apicep.com)
 - [OpenCEP](https://opencep.com/)
 
-> [!NOTE]
-> **BrazilCEP** is the new name of former **PyCEPCorreio** python library.
-  If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
+> [!NOTE] > **BrazilCEP** is the new name of former **PyCEPCorreio** python library.
+> If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
 
-> [!TIP]
-> **CEP** or **Código de Endereçamento Postal** (*Postal Address Code*), as it is also known, is a system of numeric codes, created, maintained and organized by *Correios do Brazil* for
+> [!TIP] > **CEP** or **Código de Endereçamento Postal** (_Postal Address Code_), as it is also known, is a system of numeric codes, created, maintained and organized by _Correios do Brazil_ for
 > organizing addresses and deliveries of letters and parcels.
-
 
 ## Install
 
@@ -69,9 +65,6 @@ via [pip](http://pip-installer.org>):
 ```sh
 pip install brazilcep
 ```
-
-> [!IMPORTANT]
-> We currently support **Python 3.8+ only**. Users on older interpreter versions are urged to upgrade.
 
 ## Quick Start
 
@@ -87,7 +80,7 @@ Now, call the `get_address_from_cep` to query any CEP:
 >>> address = brazilcep.get_address_from_cep('37503-130')
 ```
 
-Now, we have a *dict* object called ``address``. We can
+Now, we have a _dict_ object called `address`. We can
 get all the address information we need from this object:
 
 ```python
@@ -118,7 +111,7 @@ Documentation for the current version of BrazilCEP is available [here](https://b
 
 ## Contribute
 
-See this *guideline* [here](https://github.com/mstuttgart/brazilcep/blob/develop/CONTRIBUTING.md).
+See this _guideline_ [here](https://github.com/mstuttgart/brazilcep/blob/develop/CONTRIBUTING.md).
 
 ## Credits
 

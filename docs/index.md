@@ -55,7 +55,7 @@ Its objective is to provide a common query interface to all these search service
 ## Features
 
 * Cross-platform: Windows, Mac, and Linux are officially supported.
-* Works with Python 3.8, 3.9, 3.10, 3.11 and 3.12.
+* Works with Python 3.9+.
 * Currently supports several CEP API's:
   * [ViaCEP](https://viacep.com.br)
   * [ApiCEP (WideNet)](https://apicep.com)
