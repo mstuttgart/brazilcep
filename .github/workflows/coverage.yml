@@ -28,9 +28,6 @@ jobs:
       - name: Run coverage tests
         run: nox -s coverage
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@v2
-
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
