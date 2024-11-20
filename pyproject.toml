@@ -40,6 +40,8 @@ dev = [
   "requests-mock>=1.10.0",
   "black>=23.0,<24.0",
   "isort>=5.12,<5.13",
+  "pre-commit>=4.0.1",
+  "python-dotenv",
   "ruff",
   "ipdb",
 ]

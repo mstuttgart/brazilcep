@@ -3,11 +3,13 @@ import os
 
 import pytest
 import requests
+from dotenv import load_dotenv
 
 from brazilcep import WebService, exceptions, get_address_from_cep
 
 logger = logging.getLogger(__name__)
 
+load_dotenv()
 IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
 SKIP_REAL_TEST = os.getenv("SKIP_REAL_TEST", False)
 
@@ -15,7 +17,6 @@ SKIP_REAL_TEST = os.getenv("SKIP_REAL_TEST", False)
 @pytest.mark.skipif(SKIP_REAL_TEST, reason="Skip real teste API.")
 @pytest.mark.skipif(IN_GITHUB_ACTIONS, reason="Test doesn't work in Github Actions.")
 def test_get_address_from_cep_success_real():
-
     try:
         address = get_address_from_cep("37.503-130", webservice=WebService.VIACEP)
 
@@ -49,7 +50,9 @@ def test_get_address_from_cep_success(requests_mock):
 
     proxies = {"https": "00.00.000.000", "http": "00.00.000.000"}
 
-    address = get_address_from_cep("37.503-130", webservice=WebService.VIACEP, timeout=10, proxies=proxies)
+    address = get_address_from_cep(
+        "37.503-130", webservice=WebService.VIACEP, timeout=10, proxies=proxies
+    )
 
     assert address["district"] == "Santo Antônio"
     assert address["cep"] == "37503-130"
