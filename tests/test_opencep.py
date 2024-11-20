@@ -5,11 +5,13 @@ import pytest
 from brazilcep import WebService, exceptions, get_address_from_cep
 
 IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
+SKIP_REAL_TEST = os.getenv("SKIP_REAL_TEST", False)
 
 
+@pytest.mark.skipif(SKIP_REAL_TEST, reason="Skip real teste API.")
 @pytest.mark.skipif(IN_GITHUB_ACTIONS, reason="Test doesn't work in Github Actions.")
 def test_fetch_address_success_real():
-    # Realizamos a consulta de CEP
+
     address = get_address_from_cep("37.503-130", webservice=WebService.OPENCEP)
 
     assert address["district"] == "Santo Antônio"
@@ -33,7 +35,6 @@ def test_fetch_address_success(requests_mock):
 
     requests_mock.get("https://opencep.com/v1/37503130", text=req_mock_text, status_code=200)
 
-    # Realizamos a consulta de CEP
     address = get_address_from_cep("37.503-130", webservice=WebService.OPENCEP, timeout=5)
 
     assert address["district"] == "Santo Antônio"
@@ -58,10 +59,7 @@ def test_fetch_address_success(requests_mock):
 
     proxies = {"https": "00.00.000.000", "http": "00.00.000.000"}
 
-    # Realizamos a consulta de CEP
-    address = get_address_from_cep(
-        "99999-999", webservice=WebService.OPENCEP, timeout=6, proxies=proxies
-    )
+    address = get_address_from_cep("99999-999", webservice=WebService.OPENCEP, timeout=6, proxies=proxies)
 
     assert address["district"] == "Jardim Centro Cívico"
     assert address["cep"] == "99999-999"
@@ -75,7 +73,6 @@ def test_fetch_address_cep_not_found(requests_mock):
 
     requests_mock.get("https://opencep.com/v1/00000000", status_code=404)
 
-    # Realizamos a consulta de CEP
     with pytest.raises(exceptions.CEPNotFound):
         get_address_from_cep("00000-000", webservice=WebService.OPENCEP)
 

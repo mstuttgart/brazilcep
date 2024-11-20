@@ -5,11 +5,13 @@ import pytest
 from brazilcep import WebService, exceptions, get_address_from_cep
 
 IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
+SKIP_REAL_TEST = os.getenv("SKIP_REAL_TEST", False)
 
 
+@pytest.mark.skipif(SKIP_REAL_TEST, reason="Skip real teste API.")
 @pytest.mark.skipif(IN_GITHUB_ACTIONS, reason="Test doesn't work in Github Actions.")
 def test_fetch_address_success_real():
-    # Realizamos a consulta de CEP
+
     address = get_address_from_cep("37.503-130", webservice=WebService.APICEP)
 
     assert address["district"] == "Santo Antônio"
@@ -21,6 +23,7 @@ def test_fetch_address_success_real():
 
 
 def test_fetch_address_success(requests_mock):
+
     req_mock_text = """{
         "status":200,
         "ok":true,
@@ -34,7 +37,6 @@ def test_fetch_address_success(requests_mock):
 
     requests_mock.get("https://ws.apicep.com/cep/37503130.json", text=req_mock_text)
 
-    # Realizamos a consulta de CEP
     address = get_address_from_cep("37.503-130", webservice=WebService.APICEP, timeout=5)
 
     assert address["district"] == "Santo Antônio"
@@ -59,10 +61,7 @@ def test_fetch_address_success(requests_mock):
 
     proxies = {"https": "00.00.000.000", "http": "00.00.000.000"}
 
-    # Realizamos a consulta de CEP
-    address = get_address_from_cep(
-        "99999-999", webservice=WebService.APICEP, timeout=5, proxies=proxies
-    )
+    address = get_address_from_cep("99999-999", webservice=WebService.APICEP, timeout=5, proxies=proxies)
 
     assert address["district"] == ""
     assert address["cep"] == "99999-999"
@@ -79,7 +78,6 @@ def test_fetch_address_cep_not_found(requests_mock):
 
     requests_mock.get("https://ws.apicep.com/cep/00000000.json", text=req_mock_text)
 
-    # Realizamos a consulta de CEP
     with pytest.raises(exceptions.CEPNotFound):
         get_address_from_cep("00000-000", webservice=WebService.APICEP)
 
@@ -109,7 +107,7 @@ def test_fetch_address_blocked_by_flood(requests_mock):
 
 
 def test_fetch_address_404(requests_mock):
-    requests_mock.get("https://ws.apicep.com/cep/37503130.json", status_code=404)  # noqa
+    requests_mock.get("https://ws.apicep.com/cep/37503130.json", status_code=404)
 
     with pytest.raises(exceptions.BrazilCEPException):
         get_address_from_cep("37503-130", webservice=WebService.APICEP)

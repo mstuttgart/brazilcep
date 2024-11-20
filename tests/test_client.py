@@ -5,6 +5,7 @@ import pytest
 from brazilcep import WebService, get_address_from_cep
 from brazilcep.client import _format_cep
 
+
 def test_search_error():
     with pytest.raises(KeyError):
         get_address_from_cep("37.503-130", webservice=5)
@@ -44,6 +45,7 @@ def test_format_cep_fail():
     with pytest.raises(ValueError):
         _format_cep(True)
 
+
 def test_a_deprecated_enum_value():
 
     with catch_warnings(record=True) as w:
@@ -55,4 +57,4 @@ def test_a_deprecated_enum_value():
         get_address_from_cep("37.503-130", webservice=WebService.CORREIOS)
         assert len(w) == 1
         assert issubclass(w[0].category, DeprecationWarning)
-        assert str(w[0].message) == 'CORREIOS is going to be deprecated. Please, use other webservice.'
+        assert str(w[0].message) == "CORREIOS is going to be deprecated. Please, use other webservice."
