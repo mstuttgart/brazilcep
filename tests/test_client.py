@@ -47,7 +47,6 @@ def test_format_cep_fail():
 
 
 def test_a_deprecated_enum_value():
-
     with catch_warnings(record=True) as w:
         # ADeprecatedEnum.FOO is not deprecated and should not throw any warning
         get_address_from_cep("37.503-130", webservice=WebService.OPENCEP)
@@ -57,4 +56,6 @@ def test_a_deprecated_enum_value():
         get_address_from_cep("37.503-130", webservice=WebService.CORREIOS)
         assert len(w) == 1
         assert issubclass(w[0].category, DeprecationWarning)
-        assert str(w[0].message) == "CORREIOS is going to be deprecated. Please, use other webservice."
+        assert (
+            str(w[0].message) == "CORREIOS is going to be deprecated. Please, use other webservice."
+        )
