@@ -10,8 +10,8 @@
 
 ## 6.4.0 (2024-08-14)
 
-- Add API Correios (via Correios site) support 
-- Add OpenCEP support 
+- Add API Correios (via Correios site) support
+- Add OpenCEP support
 
 ## 6.3.1 (2024-05-05)
 
