@@ -22,7 +22,7 @@ jobs:
 
       - name: Install test dependencies
         run: |
-          pip install -e ".[dev]"
+          pip install ".[dev]"
 
       - name: Lint with ruff
-        run: nox -s lint
+        run: make lint

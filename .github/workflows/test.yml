@@ -28,7 +28,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install test dependencies
-        run: pip install -e ".[dev]"
+        run: pip install ".[dev]"
 
       - name: Run tests
-        run: nox -s tests
+        run: make test

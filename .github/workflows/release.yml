@@ -20,11 +20,7 @@ jobs:
           python-version: "3.*"
 
       - name: Install pypa/build
-        run: >-
-          python3 -m
-          pip install
-          build
-          --user
+        run: pip install ".[build]"
 
       - name: Build a binary wheel and a source tarball
         run: python3 -m build
@@ -39,7 +35,8 @@ jobs:
     name: >-
       Publish Python 🐍 distribution 📦 to PyPI
 
-    if: startsWith(github.ref, 'refs/tags/') # only publish to PyPI on tag pushes
+    # only publish to PyPI on tag pushes
+    if: startsWith(github.ref, 'refs/tags/')
     needs:
       - build
     runs-on: ubuntu-latest
