@@ -19,5 +19,5 @@ python:
       extra_requirements:
         - docs
 
-mkdocs:
-  configuration: mkdocs.yml
+sphinx:
+  configuration: docs/conf.py

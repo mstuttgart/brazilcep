@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "brazilcep"
-version = "6.5.0"
 description = "Minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data"
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Michell Stuttgart", email = "michellstut@gmail.com" }]
 requires-python = ">=3.9"
+dynamic = ["version"]
 classifiers = [
   "Topic :: Software Development :: Build Tools",
   "Topic :: Software Development :: Libraries :: Python Modules",
@@ -30,7 +30,7 @@ classifiers = [
   "Natural Language :: Portuguese (Brazilian)",
 ]
 
-dependencies = ["zeep>=4.2.1", "requests>=2.28.2"]
+dependencies = ["requests>=2.28.2"]
 
 [project.optional-dependencies]
 
@@ -47,34 +47,41 @@ dev = [
 ]
 
 coverage = ["coveralls>=3.3.1", "pytest-cov>=4.0.0", "requests-mock>=1.10.0"]
-docs = ["mkdocs-material>=9.1.6", "mkdocs>=1.4.2"]
+
+docs = [
+  "Sphinx>=6,<8",
+  # "alabaster",
+  "readme-renderer==43",
+  "myst-parser>=1.0,<2.1",
+  "sphinx-copybutton==0.5.2",
+  "sphinx-autobuild==2021.3.14",
+  "sphinx-autodoc-typehints==1.23.3",
+]
+
 build = ["build==1.2.2.post1"]
 
 [project.urls]
 Documentation = "https://github.com/mstuttgart/brazilcep/tree/main#readme"
-Source = "https://github.com/mstuttgart/brazilcep"
+Repository = "https://github.com/mstuttgart/brazilcep"
 Tracker = "https://github.com/mstuttgart/brazilcep/issues"
 Changelog = "https://github.com/mstuttgart/brazilcep/blob/main/CHANGELOG.md"
 
 [tool.check-manifest]
 ignore = [
   ".*",
-  "test/**",
+  "tests/**",
   "docs/**",
   "bin/**",
   "*.yml",
-  "noxfile.py",
+  ".tox.ini",
   ".pylintrc",
 ]
 
 [tool.setuptools]
 include-package-data = true
 
-[tool.setuptools.package-data]
-my_package = ["py.typed"]
-
 [tool.setuptools.dynamic]
-version = { attr = "my_package.version.VERSION" }
+version = { attr = "brazilcep.__version__.__version__" }
 
 [tool.black]
 line-length = 100
@@ -97,6 +104,7 @@ exclude = '''
 [tool.isort]
 profile = "black"
 multi_line_output = 3
+skip = ["docs"]
 
 # You can override these pyright settings by adding a personal pyrightconfig.json file.
 [tool.pyright]
@@ -108,3 +116,7 @@ target-version = "py39"
 
 [tool.lint.per-file-ignores]
 "__init__.py" = ["F401"]
+
+[tool.coverage.run]
+branch = true
+omit = ["tests/*"]

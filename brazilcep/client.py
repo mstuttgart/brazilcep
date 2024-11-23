@@ -53,7 +53,7 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxie
         RequestError: When connection error occurs in CEP query
         Timeout: When occurs timeout of webservice response
         HTTPError: Invalid HTTP format query
-        CEPNotFund: CEP not exist in API
+        CEPNotFound: CEP not exist in API
         Exception: When any error occurs in the CEP query
 
     returns:

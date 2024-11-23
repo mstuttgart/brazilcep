@@ -13,7 +13,11 @@
   </a>
 
  <a href="https://codecov.io/gh/mstuttgart/brazilcep" >
- <img alt="Codecov" src="https://img.shields.io/codecov/c/github/mstuttgart/brazilcep?color=fcd800">
+  <img alt="Codecov" src="https://img.shields.io/codecov/c/github/mstuttgart/brazilcep?color=fcd800">
+ </a>
+
+<a href="https://brazilcep.readthedocs.io/" >
+  <img alt="readthedocs" src="https://img.shields.io/readthedocs/brazilcep?color=fcd800">
  </a>
 
   <a href="https://pypi.org/project/brazilcep">
@@ -41,7 +45,7 @@
 
 ## About
 
-**BrazilCEP** is a minimalist and easy-to-use python library designed to query CEP (Postal Address Code) data.
+**BrazilCEP** is a minimalist and easy-to-use Python library designed to query CEP (Postal Address Code) data.
 
 Its objective is to provide a common query interface to all these search services, facilitating the integration of Python applications with these services.
 
@@ -51,7 +55,7 @@ Currently supports several CEP API's:
 - [ApiCEP (WideNet)](https://apicep.com)
 - [OpenCEP](https://opencep.com/)
 
-> [!NOTE] > **BrazilCEP** is the new name of former **PyCEPCorreio** python library.
+> [!NOTE] > **BrazilCEP** is the new name of former **PyCEPCorreio** Python library.
 > If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
 
 > [!TIP] > **CEP** or **Código de Endereçamento Postal** (_Postal Address Code_), as it is also known, is a system of numeric codes, created, maintained and organized by _Correios do Brazil_ for
