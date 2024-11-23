@@ -5,7 +5,7 @@ Contributing
 .. _prs: https://github.com/mstuttgart/brazilcep/pulls
 .. _`main branch`: https://github.com/mstuttgart/brazilcep/tree/main
 
-Thanks for considering contributing! Please read this document to learn the 
+Thanks for considering contributing! Please read this document to learn the
 various ways you can contribute to this project and how to go about doing it.
 
 Bug reports and feature requests
@@ -15,11 +15,11 @@ Did you find a bug?
 -------------------
 
 First, do `a quick search <https://github.com/mstuttgart/brazilcep/issues>`_ to see whether your issue has already been reported.
-If your issue has already been reported, please comment on the existing issue. Otherwise, 
+If your issue has already been reported, please comment on the existing issue. Otherwise,
 open `a new GitHub issue <https://github.com/mstuttgart/brazilcep/issues>`_.
 
 Be sure to include a clear title
-and description. The description should include as much relevant information as possible and should explain how 
+and description. The description should include as much relevant information as possible and should explain how
 to reproduce the erroneous behavior as well as the behavior you expect to see.
 Ideally you would include a code sample or an executable test case demonstrating the expected behavior.
 
@@ -47,7 +47,7 @@ Contributing with fixes and new features
 When contributing with fixes and new features, please start forking/branching
 from the `main branch`_ to work on the latest code and reduce merging issues.
 
-Contributed PRs_ are required to include valid test coverage in order to be merged. 
+Contributed PRs_ are required to include valid test coverage in order to be merged.
 Please don't hesitate to ask for help if you need one with the tests.
 
 Thanks a lot for your support.
@@ -133,4 +133,3 @@ __ https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 
 
 Thanks for your contribution!
-

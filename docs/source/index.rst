@@ -79,7 +79,7 @@ you.
 .. toctree::
    :maxdepth: 3
 
-   dev/contributing
+   contributing
 
 Release History
 ---------------

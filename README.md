@@ -57,7 +57,7 @@ Currently supports several CEP API's:
 
 > [!NOTE]
 > **BrazilCEP** is the new name of former **PyCEPCorreio** Python library.
-> If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
+> If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/api.html#migrate-from-pycepcorreios) section in docs.
 
 > [!TIP]
 > **CEP** or **Código de Endereçamento Postal** (_Postal Address Code_), as it is also known, is a system of numeric codes, created, maintained and organized by _Correios do Brazil_ for
@@ -117,7 +117,7 @@ Documentation for the current version of BrazilCEP is available [here](https://b
 
 ## Contribute
 
-See this _guideline_ [here](https://github.com/mstuttgart/brazilcep/blob/develop/CONTRIBUTING.md).
+See this _guideline_ [here](https://brazilcep.readthedocs.io/contributing.html).
 
 ## Credits
 
