@@ -1,6 +1,17 @@
 Changelog
 =========
 
+6.6.0 (2024-11-23)
+------------------
+
+- Drop Python 3.8 support
+- Add Python 3.13 support
+- Add help, test, setup, coverage and docs commands on Makefile
+- Replace nox by tox
+- Add github issue and PR templates
+- Add pre-commit hook (validate)
+- Change mkdocs by sphinx (validate)
+
 6.5.0 (2024-08-18)
 ------------------
 
