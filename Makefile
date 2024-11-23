@@ -15,7 +15,7 @@ help:
 .PHONY : check
 check:
 	make pre-commit
-	# make docs
+	make docs
 	make test
 	make build
 
@@ -40,19 +40,21 @@ build :
 
 .PHONY : coverage
 coverage:
-	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --no-cov-on-fail
+	pytest --cov=brazilcep --cov-config=pyproject.toml --cov-report term-missing --no-cov-on-fail --cov-report=html
 
 .PHONY : lint
 lint:
-	isort --check .
-	black --check brazilcep tests --exclude .tox
-	ruff check .
+	isort --check brazilcep tests
+	black --check brazilcep tests
+	ruff check brazilcep tests
 	CUDA_VISIBLE_DEVICES='' pytest -v --color=yes --doctest-modules tests/ brazilcep/
 
 .PHONY : docs
 docs:
-	sphinx-build -E -T -W -b html -D language=en -j auto -q docs/source docs/build
+	rm -rf docs/build/
+	sphinx-autobuild -b html --watch brazilcep/ docs/source/ docs/build/
 
+.PHONY : pre-commit
 pre-commit:
 	pre-commit run --all-files
 
@@ -64,6 +66,7 @@ setup:
 	pip install -e ".[build]"
 	pre-commit install --hook-type pre-commit
 	pre-commit install --hook-type pre-push
+	pre-commit autoupdate
 
 .PHONY : test
 test:

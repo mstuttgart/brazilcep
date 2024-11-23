@@ -1,0 +1,136 @@
+============
+Contributing
+============
+
+.. _prs: https://github.com/mstuttgart/brazilcep/pulls
+.. _`main branch`: https://github.com/mstuttgart/brazilcep/tree/main
+
+Thanks for considering contributing! Please read this document to learn the 
+various ways you can contribute to this project and how to go about doing it.
+
+Bug reports and feature requests
+================================
+
+Did you find a bug?
+-------------------
+
+First, do `a quick search <https://github.com/mstuttgart/brazilcep/issues>`_ to see whether your issue has already been reported.
+If your issue has already been reported, please comment on the existing issue. Otherwise, 
+open `a new GitHub issue <https://github.com/mstuttgart/brazilcep/issues>`_.
+
+Be sure to include a clear title
+and description. The description should include as much relevant information as possible and should explain how 
+to reproduce the erroneous behavior as well as the behavior you expect to see.
+Ideally you would include a code sample or an executable test case demonstrating the expected behavior.
+
+Do you have a suggestion for an enhancement or new feature?
+-----------------------------------------------------------
+
+We use GitHub issues to track feature requests. Before you create a feature request:
+
+* Make sure you have a clear idea of the enhancement you would like. If you have a vague idea, consider discussing it first on a GitHub issue.
+* Check the documentation to make sure your feature does not already exist.
+* Do `a quick search <https://github.com/mstuttgart/brazilcep/issues>`_ to see whether your feature has already been suggested.
+
+When creating your request, please:
+
+* Provide a clear title and description.
+* Explain why the enhancement would be useful. It may be helpful to highlight the feature in other libraries.
+* Include code examples to demonstrate how the enhancement would be used.
+
+Contributions are welcome and greatly appreciated!
+
+
+Contributing with fixes and new features
+========================================
+
+When contributing with fixes and new features, please start forking/branching
+from the `main branch`_ to work on the latest code and reduce merging issues.
+
+Contributed PRs_ are required to include valid test coverage in order to be merged. 
+Please don't hesitate to ask for help if you need one with the tests.
+
+Thanks a lot for your support.
+
+
+Running tests
+-------------
+
+First step is setting up development environment and installing all the required dependencies with:
+
+.. code-block:: shell
+
+    $ virtualenv -p python3 .venv
+    $ source .venv/bin/activate
+
+    $ make setup
+
+The project provides automated style, tests and coverage checks:
+
+.. code-block:: shell
+
+    $ make check
+
+You can run them separately:
+
+.. code-block:: shell
+
+    $ make pre-commit
+    $ make test
+
+If you want to retrieve uncovered lines too:
+
+.. code-block:: shell
+
+    $ make coverage
+
+You can specific tests using ``pytest`` command:
+
+.. code-block:: shell
+
+    $ pytest tests/test_apicep.py
+
+Or even more granular:
+
+.. code-block:: shell
+
+    $ pytest tests/test_apicep.py::test_fetch_address_success
+
+Code Style
+----------
+
+BrazilCEP uses a collection of tools to ensure the code base has a consistent
+style as it grows. We have these orchestrated using a tool called
+`pre-commit`_. This can be installed locally and run over your changes prior
+to opening a PR, and will also be run as part of the CI approval process
+before a change is merged.
+
+To check pre-commit, run:
+
+.. code-block:: shell
+
+    $ make pre-commit
+
+You can find the full list of formatting requirements specified in the
+`.pre-commit-config.yaml`_ at the top level directory of Requests.
+
+.. _pre-commit: https://pre-commit.com/
+.. _.pre-commit-config.yaml: https://github.com/psf/requests/blob/main/.pre-commit-config.yaml
+
+Build sphinx documentation
+--------------------------
+
+.. _readthedocs.io: https://brazilcep.readthedocs.io/
+
+The project provides a Sphinx documentation source under ``./docs/source``,
+published online on `readthedocs.io`_.
+
+Great documentation is absolutely key in any a project. If you are not familiar
+with reStructuredText for Sphinx you can read a primer
+`here`__.
+
+__ https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+
+
+Thanks for your contribution!
+
