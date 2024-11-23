@@ -37,7 +37,7 @@
 <p align="center">
   <a href="#about">About</a> |
   <a href="#install">Install</a> |
-  <a href="#how-to-use">How to Use</a> |
+  <a href="#quick-start">How to Use</a> |
   <a href="#documentation">Documentation</a> |
   <a href="#contribute">Contribute</a> |
   <a href="#credits">Credits</a>

@@ -50,7 +50,6 @@ coverage = ["coveralls>=3.3.1", "pytest-cov>=4.0.0", "requests-mock>=1.10.0"]
 
 docs = [
   "Sphinx>=6,<8",
-  # "alabaster",
   "readme-renderer==43",
   "myst-parser>=1.0,<2.1",
   "sphinx-copybutton==0.5.2",
@@ -61,10 +60,10 @@ docs = [
 build = ["build==1.2.2.post1"]
 
 [project.urls]
-Documentation = "https://github.com/mstuttgart/brazilcep/tree/main#readme"
+Documentation = "https://brazilcep.readthedocs.io/index.html"
 Repository = "https://github.com/mstuttgart/brazilcep"
 Tracker = "https://github.com/mstuttgart/brazilcep/issues"
-Changelog = "https://github.com/mstuttgart/brazilcep/blob/main/CHANGELOG.md"
+Changelog = "https://github.com/mstuttgart/brazilcep/blob/main/CHANGELOG"
 
 [tool.check-manifest]
 ignore = [
