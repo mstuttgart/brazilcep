@@ -55,10 +55,12 @@ Currently supports several CEP API's:
 - [ApiCEP (WideNet)](https://apicep.com)
 - [OpenCEP](https://opencep.com/)
 
-> [!NOTE] > **BrazilCEP** is the new name of former **PyCEPCorreio** Python library.
+> [!NOTE]
+> **BrazilCEP** is the new name of former **PyCEPCorreio** Python library.
 > If you want to migrate the old code to the new version, please see the [migrate](https://brazilcep.readthedocs.io/en/latest/migrate/) section in docs.
 
-> [!TIP] > **CEP** or **Código de Endereçamento Postal** (_Postal Address Code_), as it is also known, is a system of numeric codes, created, maintained and organized by _Correios do Brazil_ for
+> [!TIP]
+> **CEP** or **Código de Endereçamento Postal** (_Postal Address Code_), as it is also known, is a system of numeric codes, created, maintained and organized by _Correios do Brazil_ for
 > organizing addresses and deliveries of letters and parcels.
 
 ## Install
