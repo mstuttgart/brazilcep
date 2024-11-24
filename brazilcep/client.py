@@ -73,15 +73,7 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxie
             """Invalid webservice. Please use this options: WebService.VIACEP, WebService.APICEP or WebService.OPENCEP"""
         )
 
-    kwargs = {}
-
-    if timeout and isinstance(timeout, int):
-        kwargs["timeout"] = timeout
-
-    if proxies and isinstance(proxies, dict):
-        kwargs["proxies"] = proxies
-
-    return services[webservice](_format_cep(cep), **kwargs)
+    return services[webservice](_format_cep(cep), timeout=timeout, proxies=proxies)
 
 
 def _format_cep(cep):

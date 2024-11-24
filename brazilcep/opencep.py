@@ -17,7 +17,7 @@ from . import exceptions
 URL = "https://opencep.com/v1/{}"
 
 
-def fetch_address(cep, **kwargs):
+def fetch_address(cep, timeout=None, proxies=None):
     """Fetch OpenCEP webservice for CEP address. OpenCEP provide
     a REST API to query CEP requests.
 
@@ -30,7 +30,7 @@ def fetch_address(cep, **kwargs):
         address (dict): respective address data from CEP.
     """
 
-    response = requests.get(URL.format(cep), **kwargs)  # pylint = missing-timeout
+    response = requests.get(URL.format(cep), timeout=timeout, proxies=proxies)
 
     if response.status_code == 200:
         address = json.loads(response.text)

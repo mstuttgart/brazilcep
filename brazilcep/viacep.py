@@ -17,7 +17,7 @@ from . import exceptions
 URL = "http://www.viacep.com.br/ws/{}/json"
 
 
-def fetch_address(cep, **kwargs):
+def fetch_address(cep, timeout, proxies):
     """Fetch APICEP webservice for CEP address. APICEP provide
     a REST API to query CEP requests.
 
@@ -31,7 +31,7 @@ def fetch_address(cep, **kwargs):
         address (dict): respective address data from CEP.
     """
 
-    response = requests.get(URL.format(cep), **kwargs)  # pylint = missing-timeout
+    response = requests.get(URL.format(cep), timeout=timeout, proxies=proxies)
 
     if response.status_code == 200:
         # Transforma o objeto requests em um dict
