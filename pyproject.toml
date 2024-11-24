@@ -37,6 +37,8 @@ dependencies = ["requests>=2.28.2"]
 dev = [
   "tox>=4.23.2",
   "pytest>=7.3.1",
+  "mypy>=1.0,<1.5",
+  "types-requests",
   "requests-mock>=1.10.0",
   "black>=23.0,<24.0",
   "isort>=5.12,<5.13",
@@ -79,6 +81,12 @@ ignore = [
 [tool.setuptools]
 include-package-data = true
 
+[tool.setuptools.packages.find]
+exclude = ["*.tests", "*.tests.*", "tests.*", "tests", "docs*", "scripts*"]
+
+[tool.setuptools.package-data]
+brazilcep = ["py.typed"]
+
 [tool.setuptools.dynamic]
 version = { attr = "brazilcep.__version__.__version__" }
 
@@ -115,6 +123,16 @@ target-version = "py39"
 
 [tool.lint.per-file-ignores]
 "__init__.py" = ["F401"]
+
+[tool.mypy]
+# ignore_missing_imports = true
+# no_site_packages = true
+# check_untyped_defs = true
+strict = false
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+strict_optional = false
 
 [tool.coverage.run]
 branch = true

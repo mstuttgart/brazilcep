@@ -9,6 +9,7 @@ This module implements the BrazilCEP ApiCEP adapter.
 """
 
 import json
+from typing import Union
 
 import requests
 
@@ -17,17 +18,17 @@ from . import exceptions
 URL = "https://opencep.com/v1/{}"
 
 
-def fetch_address(cep, timeout=None, proxies=None):
+def fetch_address(cep: str, timeout: Union[None, int], proxies: Union[None, dict]) -> dict:
     """Fetch OpenCEP webservice for CEP address. OpenCEP provide
     a REST API to query CEP requests.
 
     Args:
-        cep (str):CEP to be searched.
-        timeout (int): How many seconds to wait for the server to return data before giving up.
-        proxies (dict):  Dictionary mapping protocol to the URL of the proxy.
+        cep: CEP to be searched.
+        timeout: How many seconds to wait for the server to return data before giving up.
+        proxies: Dictionary mapping protocol to the URL of the proxy.
 
     Returns:
-        address (dict): respective address data from CEP.
+        Respective address data from CEP.
     """
 
     response = requests.get(URL.format(cep), timeout=timeout, proxies=proxies)
