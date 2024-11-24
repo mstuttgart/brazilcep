@@ -47,7 +47,7 @@ lint:
 	isort --check brazilcep tests
 	black --check brazilcep tests
 	ruff check brazilcep tests
-	CUDA_VISIBLE_DEVICES='' pytest -v --color=yes --doctest-modules tests/ brazilcep/
+	mypy brazilcep
 
 .PHONY : docs
 docs:
@@ -67,6 +67,7 @@ setup:
 	pre-commit install --hook-type pre-commit
 	pre-commit install --hook-type pre-push
 	pre-commit autoupdate
+	mypy --install-types
 
 .PHONY : test
 test:

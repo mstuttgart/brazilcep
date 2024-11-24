@@ -11,12 +11,13 @@ This is the main module of BrazilCEP.
 
 import enum
 import re
+from typing import Optional
 from warnings import warn
 
 from . import apicep, opencep, viacep
 
 NUMBERS = re.compile(r"[^0-9]")
-DEFAULT_TIMEOUT = 5  # in seconds
+DEFAULT_TIMEOUT: int = 5  # in seconds
 
 
 class WebService(enum.Enum):
@@ -32,7 +33,7 @@ class WebService(enum.Enum):
     OPENCEP = 3
 
 
-services = {
+services: dict = {
     # TOFIX: compatibility adjust. remove CORREIOS in next version
     WebService.CORREIOS: opencep.fetch_address,
     WebService.VIACEP: viacep.fetch_address,
@@ -41,13 +42,18 @@ services = {
 }
 
 
-def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxies=None):
+def get_address_from_cep(
+    cep: str,
+    webservice: WebService = WebService.APICEP,
+    timeout: Optional[int] = None,
+    proxies: Optional[dict] = None,
+) -> dict:
     """Returns the address corresponding to the zip (cep) code entered.
 
     Args:
-        cep (str): CEP to be queried.
-        timeout (int): How many seconds to wait for the server to return data before giving up.
-        proxies (dict):  Dictionary mapping protocol to the URL of the proxy.
+        cep: CEP to be queried.
+        timeout: How many seconds to wait for the server to return data before giving up.
+        proxies:  Dictionary mapping protocol to the URL of the proxy.
 
     Raises:
         RequestError: When connection error occurs in CEP query
@@ -57,8 +63,7 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxie
         Exception: When any error occurs in the CEP query
 
     returns:
-        address (dict): Address data of the queried CEP.
-
+        Address data of the queried CEP.
     """
 
     if webservice == WebService.CORREIOS:
@@ -76,7 +81,7 @@ def get_address_from_cep(cep, webservice=WebService.APICEP, timeout=None, proxie
     return services[webservice](_format_cep(cep), timeout=timeout, proxies=proxies)
 
 
-def _format_cep(cep):
+def _format_cep(cep: str) -> str:
     """Format CEP, removing any non-numeric characters.
 
     Args:
