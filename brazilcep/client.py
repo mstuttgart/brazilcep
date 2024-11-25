@@ -44,7 +44,7 @@ services: dict = {
 
 def get_address_from_cep(
     cep: str,
-    webservice: WebService = WebService.APICEP,
+    webservice: WebService = WebService.OPENCEP,
     timeout: Optional[int] = None,
     proxies: Optional[dict] = None,
 ) -> dict:
