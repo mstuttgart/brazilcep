@@ -48,22 +48,19 @@ def get_address_from_cep(
     timeout: Optional[int] = None,
     proxies: Optional[dict] = None,
 ) -> dict:
-    """Returns the address corresponding to the zip (cep) code entered.
+    """Returns the address corresponding to the zip (cep) code entered
 
     Args:
-        cep: CEP to be queried.
-        timeout: How many seconds to wait for the server to return data before giving up.
-        proxies:  Dictionary mapping protocol to the URL of the proxy.
+        cep: CEP to be queried
+        webservice: enum to webservice APIs
+        timeout: How many seconds to wait for the server to return data before giving up
+        proxies:  Dictionary mapping protocol to the URL of the proxy
 
     Raises:
-        RequestError: When connection error occurs in CEP query
-        Timeout: When occurs timeout of webservice response
-        HTTPError: Invalid HTTP format query
-        CEPNotFound: CEP not exist in API
-        Exception: When any error occurs in the CEP query
+        KeyError: raise if `webservice` parameter is a invalid webservice enum value
 
-    returns:
-        Address data of the queried CEP.
+    Returns:
+        Address data of the queried CEP
     """
 
     if webservice == WebService.CORREIOS:
