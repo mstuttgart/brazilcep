@@ -117,17 +117,7 @@ skip = ["docs"]
 [tool.pyright]
 reportPrivateImportUsage = false
 
-[tool.ruff]
-line-length = 115
-target-version = "py39"
-
-[tool.lint.per-file-ignores]
-"__init__.py" = ["F401"]
-
 [tool.mypy]
-# ignore_missing_imports = true
-# no_site_packages = true
-# check_untyped_defs = true
 strict = false
 
 [[tool.mypy.overrides]]
