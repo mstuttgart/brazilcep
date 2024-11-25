@@ -1,11 +1,12 @@
 import os
 
+import dotenv
 import pytest
-from dotenv import load_dotenv
+import requests
 
 from brazilcep import WebService, exceptions, get_address_from_cep
 
-load_dotenv()
+dotenv.load_dotenv()
 
 IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
 SKIP_REAL_TEST = os.getenv("SKIP_REAL_TEST", True)
@@ -22,6 +23,13 @@ def test_fetch_address_success_real():
     assert address["complement"] == ""
     assert address["street"] == "Rua Geraldino Campista"
     assert address["uf"] == "MG"
+
+
+@pytest.mark.skipif(SKIP_REAL_TEST, reason="Skip real teste API.")
+@pytest.mark.skipif(IN_GITHUB_ACTIONS, reason="Test doesn't work in Github Actions.")
+def test_fetch_address_cep_not_found_real():
+    with pytest.raises(exceptions.InvalidCEP):
+        get_address_from_cep("37.503-13", webservice=WebService.APICEP)
 
 
 def test_fetch_address_success(requests_mock):
@@ -98,19 +106,67 @@ def test_fetch_address_invalid_cep(requests_mock):
 
 
 def test_fetch_address_blocked_by_flood(requests_mock):
-    req_mock_text = """{
+    req_mock_text_400 = """{
         "status":400,
         "message": "Blocked by flood"
     }"""
 
-    requests_mock.get("https://ws.apicep.com/cep/3750313.json", text=req_mock_text)
+    requests_mock.get("https://ws.apicep.com/cep/37503130.json", text=req_mock_text_400)
 
     with pytest.raises(exceptions.BlockedByFlood):
-        get_address_from_cep("37503-13", webservice=WebService.APICEP)
+        get_address_from_cep("37503-130", webservice=WebService.APICEP)
+
+
+def test_fetch_address_429(requests_mock):
+    requests_mock.get("https://ws.apicep.com/cep/37503130.json", status_code=429)
+
+    with pytest.raises(exceptions.BlockedByFlood):
+        get_address_from_cep("37503-130", webservice=WebService.APICEP)
 
 
 def test_fetch_address_404(requests_mock):
     requests_mock.get("https://ws.apicep.com/cep/37503130.json", status_code=404)
 
     with pytest.raises(exceptions.BrazilCEPException):
+        get_address_from_cep("37503-130", webservice=WebService.APICEP)
+
+
+def test_connection_error(requests_mock):
+    requests_mock.get(
+        "https://ws.apicep.com/cep/37503130.json", exc=requests.exceptions.ConnectionError
+    )
+
+    with pytest.raises(exceptions.ConnectionError):
+        get_address_from_cep("37503-130", webservice=WebService.APICEP)
+
+
+def test_http_error(requests_mock):
+    requests_mock.get("https://ws.apicep.com/cep/37503130.json", exc=requests.exceptions.HTTPError)
+
+    with pytest.raises(exceptions.HTTPError):
+        get_address_from_cep("37503-130", webservice=WebService.APICEP)
+
+
+def test_url_required_error(requests_mock):
+    requests_mock.get(
+        "https://ws.apicep.com/cep/37503130.json", exc=requests.exceptions.URLRequired
+    )
+
+    with pytest.raises(exceptions.URLRequired):
+        get_address_from_cep("37503-130", webservice=WebService.APICEP)
+
+
+def test_too_many_redirects_error(requests_mock):
+    requests_mock.get(
+        "https://ws.apicep.com/cep/37503130.json", exc=requests.exceptions.TooManyRedirects
+    )
+
+    with pytest.raises(exceptions.TooManyRedirects):
+        get_address_from_cep("37503-130", webservice=WebService.APICEP)
+
+
+def test_timeout_error(requests_mock):
+    requests_mock.get("https://ws.apicep.com/cep/37503130.json", exc=requests.exceptions.Timeout)
+
+    with pytest.raises(exceptions.Timeout):
         get_address_from_cep("37503-130", webservice=WebService.APICEP)
