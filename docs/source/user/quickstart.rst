@@ -50,12 +50,7 @@ Timeouts
 You can tell BrazilCEP to stop waiting for a response after a given number of
 seconds with the ``timeout`` parameter. Nearly all production code should use
 this parameter in nearly all requests. Failure to do so can cause your program
-to hang indefinitely::
-
-    >>> get_address_from_cep('37503-130', timeout=0.001)
-    Traceback (most recent call last):
-      File "<stdin>", line 1, in <module>
-    requests.exceptions.Timeout: HTTPConnectionPool(host='http://www.viacep.com.br/ws/37503130/json', port=80): Request timed out. (timeout=0.001)
+to hang indefinitely.
 
 Proxy
 -----
@@ -87,7 +82,7 @@ Unsing differents API's
     BrazilCEP is not responsible for the functioning, availability and support of any of these query API's. All of them are provided by third parties, and
     this library just provides a handy way to centralize the CEP search on these services.
 
-By default, BrazilCEP uses the API provided by the `ApiCEP <https://apicep.com>`_ service.
+By default, BrazilCEP uses the API provided by the `OpenCEP <https://opencep.com>`_ service.
 
 To use other services, we must indicate the desired service when calling the `get_address_from_cep`
 function.
