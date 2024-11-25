@@ -23,3 +23,23 @@ class CEPNotFound(BrazilCEPException):
 
 class BlockedByFlood(BrazilCEPException):
     """Exception raised by flood of requests"""
+
+
+class ConnectionError(BrazilCEPException):
+    """Exception raised by a connection error"""
+
+
+class HTTPError(BrazilCEPException):
+    """Exception raised by HTTP error"""
+
+
+class URLRequired(BrazilCEPException):
+    """Exception raised by using a invalid URL to make a request"""
+
+
+class TooManyRedirects(BrazilCEPException):
+    """Exception raised by too many redirects"""
+
+
+class Timeout(BrazilCEPException):
+    """Exception raised by request timed out"""

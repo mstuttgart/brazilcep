@@ -120,13 +120,21 @@ Errors and Exceptions
 BrazilCEP also supports a group of exceptions that can be used to
 handle any errors that occur during the query process.
 
-If a invalid CEP request has be made, a :exc:`~brazilcep.exceptions.InvalidCEP` exception is
-raised.
+:exc:`~brazilcep.exceptions.InvalidCEP` exception raised by a request with invalid CEP.
 
-If a CEP request not find CEP address, a :exc:`~brazilcep.exceptions.CEPNotFound` exception is raised.
+:exc:`~brazilcep.exceptions.CEPNotFound` exception is raised when CEP is not find in selected API.
 
-To a large number of CEP requests in short range of time, a :exc:`~brazilcep.exceptions.BlockedByFlood` exception is raised.
+:exc:`~brazilcep.exceptions.BlockedByFlood`: exception raides by a large number of CEP requests in short range of time
 
-All exceptions that BrazilCEP explicitly raises inherit from
-:exc:`brazilcep.exceptions.BrazilCEPException`.
+:exc:`~brazilcep.exceptions.ConnectionError`: exception raised by a connection error.
+
+:exc:`~brazilcep.exceptions.HTTPError`: exception raised by HTTP error.
+
+:exc:`~brazilcep.exceptions.URLRequired`: exception raised by using a invalid URL to make a CEP request.
+
+:exc:`~brazilcep.exceptions.TooManyRedirects`: Exception raised by too many redirects.
+
+:exc:`~brazilcep.exceptions.Timeout`: exception raised by request timed out.
+
+All exceptions that BrazilCEP explicitly raises inherit from :exc:`brazilcep.exceptions.BrazilCEPException`.
 

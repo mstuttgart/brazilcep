@@ -19,6 +19,11 @@ Exceptions
 ----------
 
 .. autoexception:: brazilcep.exceptions.BrazilCEPException
+.. autoexception:: brazilcep.exceptions.ConnectionError
+.. autoexception:: brazilcep.exceptions.HTTPError
+.. autoexception:: brazilcep.exceptions.URLRequired
+.. autoexception:: brazilcep.exceptions.TooManyRedirects
+.. autoexception:: brazilcep.exceptions.Timeout
 .. autoexception:: brazilcep.exceptions.InvalidCEP
 .. autoexception:: brazilcep.exceptions.CEPNotFound
 .. autoexception:: brazilcep.exceptions.BlockedByFlood
@@ -72,8 +77,5 @@ This is the new code::
 
 The follow `Exceptions` have been removed:
 
-* `ConnectionError`
-* `Timeout`
-* `HTTPError`
 * `BaseException`
 
