@@ -71,7 +71,7 @@ setup:
 
 .PHONY : test
 test:
-	pytest
+	pytest -v
 
 .PHONY : tox
 tox:
