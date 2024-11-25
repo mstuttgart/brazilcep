@@ -1,11 +1,13 @@
 import os
 
+import dotenv
 import pytest
-from dotenv import load_dotenv
+import requests
 
 from brazilcep import WebService, exceptions, get_address_from_cep
 
-load_dotenv()
+dotenv.load_dotenv()
+
 IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
 SKIP_REAL_TEST = os.getenv("SKIP_REAL_TEST", True)
 
@@ -21,6 +23,13 @@ def test_fetch_address_success_real():
     assert address["complement"] == ""
     assert address["street"] == "Rua Geraldino Campista"
     assert address["uf"] == "MG"
+
+
+@pytest.mark.skipif(SKIP_REAL_TEST, reason="Skip real teste API.")
+@pytest.mark.skipif(IN_GITHUB_ACTIONS, reason="Test doesn't work in Github Actions.")
+def test_fetch_address_cep_not_found_real():
+    with pytest.raises(exceptions.CEPNotFound):
+        get_address_from_cep("00000-000", webservice=WebService.OPENCEP)
 
 
 def test_fetch_address_success(requests_mock):
@@ -83,4 +92,39 @@ def test_fetch_address_500(requests_mock):
     requests_mock.get("https://opencep.com/v1/37503130", status_code=500)
 
     with pytest.raises(exceptions.BrazilCEPException):
+        get_address_from_cep("37503-130", webservice=WebService.OPENCEP)
+
+
+def test_connection_error(requests_mock):
+    requests_mock.get("https://opencep.com/v1/37503130", exc=requests.exceptions.ConnectionError)
+
+    with pytest.raises(exceptions.ConnectionError):
+        get_address_from_cep("37503-130", webservice=WebService.OPENCEP)
+
+
+def test_http_error(requests_mock):
+    requests_mock.get("https://opencep.com/v1/37503130", exc=requests.exceptions.HTTPError)
+
+    with pytest.raises(exceptions.HTTPError):
+        get_address_from_cep("37503-130", webservice=WebService.OPENCEP)
+
+
+def test_url_required_error(requests_mock):
+    requests_mock.get("https://opencep.com/v1/37503130", exc=requests.exceptions.URLRequired)
+
+    with pytest.raises(exceptions.URLRequired):
+        get_address_from_cep("37503-130", webservice=WebService.OPENCEP)
+
+
+def test_too_many_redirects_error(requests_mock):
+    requests_mock.get("https://opencep.com/v1/37503130", exc=requests.exceptions.TooManyRedirects)
+
+    with pytest.raises(exceptions.TooManyRedirects):
+        get_address_from_cep("37503-130", webservice=WebService.OPENCEP)
+
+
+def test_timeout_error(requests_mock):
+    requests_mock.get("https://opencep.com/v1/37503130", exc=requests.exceptions.Timeout)
+
+    with pytest.raises(exceptions.Timeout):
         get_address_from_cep("37503-130", webservice=WebService.OPENCEP)
