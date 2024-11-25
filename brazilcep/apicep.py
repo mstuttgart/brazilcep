@@ -23,15 +23,42 @@ def fetch_address(cep: str, timeout: Union[None, int], proxies: Union[None, dict
     a REST API to query CEP requests.
 
     Args:
-        cep: CEP to be searched.
-        timeout: How many seconds to wait for the server to return data before giving up.
-        proxies:  Dictionary mapping protocol to the URL of the proxy.
+        cep: CEP to be searched
+        timeout: How many seconds to wait for the server to return data before giving up
+        proxies: Dictionary mapping protocol to the URL of the proxy
+
+    Raises:
+        exceptions.ConnectionError: raised by a connection error
+        exceptions.HTTPError: raised by HTTP error
+        exceptions.URLRequired: raised by using a invalid URL to make a request
+        exceptions.TooManyRedirects: raised by too many redirects
+        exceptions.Timeout: raised by request timed out
+        exceptions.InvalidCEP: raised to invalid CEP requests
+        exceptions.BlockedByFlood: raised by flood of requests
+        exceptions.CEPNotFound: raised to CEP not founded requests
+        exceptions.BrazilCEPException: Base class for exception
 
     Returns:
-        Respective address data from CEP.
+        Address data from CEP
     """
 
-    response = requests.get(URL.format(cep), timeout=timeout, proxies=proxies)
+    try:
+        response = requests.get(URL.format(cep), timeout=timeout, proxies=proxies)
+
+    except requests.exceptions.ConnectionError as exc:
+        raise exceptions.ConnectionError(exc)
+
+    except requests.exceptions.HTTPError as exc:
+        raise exceptions.HTTPError(exc)
+
+    except requests.exceptions.URLRequired as exc:
+        raise exceptions.URLRequired(exc)
+
+    except requests.exceptions.TooManyRedirects as exc:
+        raise exceptions.TooManyRedirects(exc)
+
+    except requests.exceptions.Timeout as exc:
+        raise exceptions.Timeout(exc)
 
     if response.status_code == 200:
         address = json.loads(response.text)
@@ -53,5 +80,8 @@ def fetch_address(cep: str, timeout: Union[None, int], proxies: Union[None, dict
             "uf": address.get("state") or "",
             "complement": "",
         }
+
+    elif response.status_code == 429:
+        raise exceptions.BlockedByFlood()
 
     raise exceptions.BrazilCEPException(f"Other error. Status code: {response.status_code}")
