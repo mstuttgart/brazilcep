@@ -112,10 +112,10 @@ To check pre-commit, run:
     $ make pre-commit
 
 You can find the full list of formatting requirements specified in the
-`.pre-commit-config.yaml`_ at the top level directory of Requests.
+`.pre-commit-config.yaml`_ at the top level directory of BrazilCEP.
 
 .. _pre-commit: https://pre-commit.com/
-.. _.pre-commit-config.yaml: https://github.com/psf/requests/blob/main/.pre-commit-config.yaml
+.. _.pre-commit-config.yaml: https://github.com/mstuttgart/brazilcep/blob/main/.pre-commit-config.yaml
 
 Build sphinx documentation
 --------------------------
