@@ -1,15 +1,32 @@
 import os
+from unittest.mock import patch
 
 import dotenv
 import pytest
 import requests
 
-from brazilcep import WebService, exceptions, get_address_from_cep
+from brazilcep import (
+    WebService,
+    async_get_address_from_cep,
+    exceptions,
+    get_address_from_cep,
+)
 
 dotenv.load_dotenv()
 
 IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
 SKIP_REAL_TEST = os.getenv("SKIP_REAL_TEST", True)
+
+RESPONSE_MOCK_TEXT_SUCCESS = """{
+    "status":200,
+    "ok":true,
+    "code":"37503-130",
+    "state":"MG",
+    "city":"Itajubá",
+    "district":"Santo Antônio",
+    "address":"Rua Geraldino Campista - até 214/215",
+    "statusText":"ok"
+}"""
 
 
 @pytest.mark.skipif(SKIP_REAL_TEST, reason="Skip real teste API.")
@@ -33,18 +50,7 @@ def test_fetch_address_cep_not_found_real():
 
 
 def test_fetch_address_success(requests_mock):
-    req_mock_text = """{
-        "status":200,
-        "ok":true,
-        "code":"37503-130",
-        "state":"MG",
-        "city":"Itajubá",
-        "district":"Santo Antônio",
-        "address":"Rua Geraldino Campista - até 214/215",
-        "statusText":"ok"
-    }"""
-
-    requests_mock.get("https://ws.apicep.com/cep/37503130.json", text=req_mock_text)
+    requests_mock.get("https://ws.apicep.com/cep/37503130.json", text=RESPONSE_MOCK_TEXT_SUCCESS)
 
     address = get_address_from_cep("37.503-130", webservice=WebService.APICEP, timeout=5)
 
@@ -170,3 +176,14 @@ def test_timeout_error(requests_mock):
 
     with pytest.raises(exceptions.Timeout):
         get_address_from_cep("37503-130", webservice=WebService.APICEP)
+
+
+@pytest.mark.asyncio
+async def test_async_get_address_from_cep():
+
+    async def __mock_aiohttp_get(*args, **kwargs):
+        return 200, RESPONSE_MOCK_TEXT_SUCCESS
+
+    with patch("brazilcep.apicep.aiohttp_get", side_effect=__mock_aiohttp_get):
+        result = await async_get_address_from_cep("37503-130", webservice=WebService.APICEP)
+        assert isinstance(result, dict)

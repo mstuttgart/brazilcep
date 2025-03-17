@@ -13,10 +13,11 @@ facilitating the integration of Python applications with these services.
 """
 
 from .__version__ import __version__
-from .client import WebService, get_address_from_cep
+from .client import WebService, async_get_address_from_cep, get_address_from_cep
 
 __all__ = [
     "get_address_from_cep",
+    "async_get_address_from_cep",
     "WebService",
     "__version__",
 ]

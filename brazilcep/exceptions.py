@@ -43,3 +43,7 @@ class TooManyRedirects(BrazilCEPException):
 
 class Timeout(BrazilCEPException):
     """Exception raised by request timed out"""
+
+
+class JSONLoadError(BrazilCEPException):
+    """Exception raised by json.load error"""
