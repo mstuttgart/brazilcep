@@ -1,40 +1,47 @@
+# Exclude specific directories from pre-commit checks
 exclude: "docs/"
 
 repos:
+  # Pre-commit hooks for general code quality checks
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
-      - id: check-yaml
-      - id: debug-statements
-      - id: end-of-file-fixer
-      - id: trailing-whitespace
-      - id: check-builtin-literals
-      - id: mixed-line-ending
+      - id: check-yaml  # Validate YAML files
+      - id: debug-statements  # Detect debug statements (e.g., print, pdb)
+      - id: end-of-file-fixer  # Ensure files end with a newline
+      - id: trailing-whitespace  # Remove trailing whitespace
+      - id: check-builtin-literals  # Check for unnecessary use of built-in literals
+      - id: mixed-line-ending  # Fix mixed line endings
         args:
-          - --fix=lf
+          - --fix=lf  # Convert to LF line endings
 
+  # Sort imports automatically
   - repo: https://github.com/PyCQA/isort
     rev: 6.0.1
     hooks:
       - id: isort
 
+  # Format Python code with Black
   - repo: https://github.com/psf/black
     rev: 25.1.0
     hooks:
       - id: black
 
+  # Lint Python code with Ruff
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.11.2
     hooks:
       - id: ruff
 
+  # Format tox.ini files
   - repo: https://github.com/tox-dev/tox-ini-fmt
     rev: "1.5.0"
     hooks:
       - id: tox-ini-fmt
 
+  # Upgrade Python syntax to modern versions
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.19.1
     hooks:
       - id: pyupgrade
-        args: [--py39-plus]
+        args: [--py39-plus]  # Target Python 3.9+ syntax
