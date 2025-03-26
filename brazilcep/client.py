@@ -1,9 +1,19 @@
 """
 brazilcep.client
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
-This module implements the BrazilCEP client.
-This is the main module of BrazilCEP.
+This module implements the BrazilCEP client, which provides functionality
+to query address information based on Brazilian postal codes (CEP) using
+various web services.
+
+Main Features:
+- Synchronous and asynchronous methods to fetch address data.
+- Support for multiple web services: ViaCEP, ApiCEP, and OpenCEP.
+- Automatic formatting of CEP input to ensure valid queries.
+- Customizable timeout and proxy support for HTTP requests.
+
+Note:
+- The CORREIOS web service is deprecated and will be removed in future versions.
 
 :copyright: (c) 2023 by Michell Stuttgart.
 :license: MIT, see LICENSE for more details.
@@ -11,7 +21,7 @@ This is the main module of BrazilCEP.
 
 import enum
 import re
-from typing import Optional
+from typing import Callable, Optional
 from warnings import warn
 
 from . import apicep, opencep, viacep
@@ -21,66 +31,64 @@ DEFAULT_TIMEOUT: int = 5  # in seconds
 
 
 class WebService(enum.Enum):
-    """Enum with the webservices available for consultation.
+    """Enum representing the available web services for CEP queries.
 
-    Note: These values are passed as an argument to
-    CEP query method.
+    Attributes:
+        CORREIOS: Deprecated web service (to be removed in future versions).
+        VIACEP: ViaCEP web service.
+        APICEP: ApiCEP web service.
+        OPENCEP: OpenCEP web service.
     """
 
-    CORREIOS = 0
+    CORREIOS = 0  # Deprecated
     VIACEP = 1
     APICEP = 2
     OPENCEP = 3
 
 
-services: dict = {
-    # TOFIX: compatibility adjust. remove CORREIOS in next version
-    WebService.CORREIOS: opencep.fetch_address,
+services: dict[WebService, Callable] = {
     WebService.VIACEP: viacep.fetch_address,
     WebService.APICEP: apicep.fetch_address,
     WebService.OPENCEP: opencep.fetch_address,
+    # Deprecated: Remove CORREIOS in the next major version
+    WebService.CORREIOS: opencep.fetch_address,
 }
 
-async_services: dict = {
-    # TOFIX: compatibility adjust. remove CORREIOS in next version
-    WebService.CORREIOS: opencep.async_fetch_address,
+async_services: dict[WebService, Callable] = {
     WebService.VIACEP: viacep.async_fetch_address,
     WebService.APICEP: apicep.async_fetch_address,
     WebService.OPENCEP: opencep.async_fetch_address,
+    # Deprecated: Remove CORREIOS in the next major version
+    WebService.CORREIOS: opencep.async_fetch_address,
 }
 
 
 def get_address_from_cep(
     cep: str,
     webservice: WebService = WebService.OPENCEP,
-    timeout: Optional[int] = None,
+    timeout: Optional[int] = DEFAULT_TIMEOUT,
     proxies: Optional[dict] = None,
 ) -> dict:
-    """Returns the address corresponding to the zip (cep) code entered
+    """Fetch the address corresponding to the provided CEP (zip code).
 
     Args:
-        cep: CEP to be queried
-        webservice: enum to webservice APIs
-        timeout: How many seconds to wait for the server to return data before giving up
-        proxies:  Dictionary mapping protocol to the URL of the proxy
+        cep (str): The CEP to be queried.
+        webservice (WebService): The web service to use for the query. Defaults to WebService.OPENCEP.
+        timeout (Optional[int]): Timeout in seconds for the request. Defaults to DEFAULT_TIMEOUT.
+        proxies (Optional[dict]): Dictionary mapping protocol to the URL of the proxy.
 
     Raises:
-        KeyError: raise if `webservice` parameter is a invalid webservice enum value
+        ValueError: If the provided CEP is invalid.
+        KeyError: If the provided webservice is not a valid WebService enum value.
 
     Returns:
-        Address data of the queried CEP
+        dict: Address data corresponding to the queried CEP.
     """
-
     if webservice == WebService.CORREIOS:
         warn(
-            "CORREIOS is going to be deprecated. Please, use other webservice.",
+            "CORREIOS is deprecated and will be removed in future versions. Please use another web service.",
             DeprecationWarning,
             stacklevel=2,
-        )
-
-    if webservice not in (value for _, value in WebService.__dict__.items()):
-        raise KeyError(
-            """Invalid webservice. Please use this options: WebService.VIACEP, WebService.APICEP or WebService.OPENCEP"""
         )
 
     return services[webservice](_format_cep(cep), timeout=timeout, proxies=proxies)
@@ -89,40 +97,81 @@ def get_address_from_cep(
 async def async_get_address_from_cep(
     cep: str,
     webservice: WebService = WebService.OPENCEP,
-    timeout: Optional[int] = None,
+    timeout: Optional[int] = DEFAULT_TIMEOUT,
     proxies: Optional[dict] = None,
 ) -> dict:
+    """Asynchronously fetch the address associated with a given CEP (Brazilian postal code).
+
+    This function queries a specified web service to retrieve address information
+    based on the provided CEP. It supports multiple web services and allows customization
+    of request parameters such as timeout and proxy settings.
+
+    Args:
+        cep (str): The CEP (Brazilian postal code) to query. Must be a valid 8-digit string.
+        webservice (WebService, optional): The web service to use for the query. Defaults to WebService.OPENCEP.
+            Supported values are:
+            - WebService.OPENCEP
+            - WebService.VIACEP
+            - WebService.APICEP
+            - WebService.CORREIOS (deprecated)
+        timeout (Optional[int], optional): The maximum time, in seconds, to wait for a response. Defaults to DEFAULT_TIMEOUT.
+        proxies (Optional[dict], optional): A dictionary mapping protocols (e.g., "http", "https") to proxy URLs.
+
+    Raises:
+        ValueError: If the provided CEP is invalid (e.g., not properly formatted or not 8 digits).
+        KeyError: If the specified webservice is not a valid WebService enum value.
+        DeprecationWarning: If the deprecated WebService.CORREIOS is used.
+
+    Returns:
+        dict: A dictionary containing the address data corresponding to the queried CEP. The structure of the
+        returned data may vary depending on the web service used.
+
+    Examples:
+        >>> address = await async_get_address_from_cep("01001000", webservice=WebService.VIACEP)
+        >>> print(address)
+        {
+            "cep": "01001-000",
+            "logradouro": "Praça da Sé",
+            "complemento": "lado ímpar",
+            "bairro": "Sé",
+            "localidade": "São Paulo",
+            "uf": "SP",
+            "ibge": "3550308",
+            "gia": "1004",
+            "ddd": "11",
+            "siafi": "7107"
+        }
+    """
     if webservice == WebService.CORREIOS:
         warn(
-            "CORREIOS is going to be deprecated. Please, use other webservice.",
+            "CORREIOS is deprecated and will be removed in future versions. Please use another web service.",
             DeprecationWarning,
             stacklevel=2,
         )
 
-    if webservice not in (value for _, value in WebService.__dict__.items()):
-        raise KeyError(
-            """Invalid webservice. Please use this options: WebService.VIACEP, WebService.APICEP or WebService.OPENCEP"""
-        )
-
-    return await async_services[webservice](_format_cep(cep), timeout=timeout, proxies=proxies)
-
-
-async_get_address_from_cep.__doc__ = get_address_from_cep.__doc__
+    formatted_cep = _format_cep(cep)
+    return await async_services[webservice](formatted_cep, timeout=timeout, proxies=proxies)
 
 
 def _format_cep(cep: str) -> str:
-    """Format CEP, removing any non-numeric characters.
+    """Format a Brazilian postal code (CEP) by removing non-numeric characters and validating its structure.
+
+    This function ensures that the input is a valid CEP by stripping out any characters
+    that are not digits and verifying that the resulting string contains exactly 8 digits.
 
     Args:
         cep (str): CEP to be formatted.
 
     Raises:
-        ValueError: When the string is empty or does not contain numbers.
+        ValueError: If the input is not a string, is empty, or does not contain exactly 8 digits after formatting.
 
-    returns:
-        cep (str): string containing the formatted CEP.
+    Returns:
+        str: A string containing the formatted CEP.
     """
-    if not isinstance(cep, str) or not cep:
-        raise ValueError("CEP must be a non-empty string containing only numbers")
+    if not isinstance(cep, str) or not cep.strip():
+        raise ValueError("CEP must be a non-empty string.")
 
     return NUMBERS.sub("", cep)
+
+
+async_get_address_from_cep.__doc__ = get_address_from_cep.__doc__
