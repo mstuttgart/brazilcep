@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Optional
 
 import aiohttp
 import requests
@@ -7,46 +7,63 @@ from . import exceptions
 
 
 async def aiohttp_get(
-    url: str, timeout: Union[None, int], raise_for_status: bool = False
+    url: str, timeout: Optional[int] = None, raise_for_status: bool = False
 ) -> tuple[int, str]:
-    try:
-        async with aiohttp.ClientSession() as session:
-            base_timeout = aiohttp.ClientTimeout(30)
-            if timeout:
-                base_timeout = aiohttp.ClientTimeout(timeout)
+    """Perform an asynchronous GET request using aiohttp.
 
-            async with session.get(url, timeout=base_timeout) as response:
+    Args:
+        url (str): The URL to request.
+        timeout (Optional[int]): Timeout in seconds for the request.
+        raise_for_status (bool): Whether to raise an exception for HTTP errors.
+
+    Returns:
+        tuple[int, str]: The HTTP status code and response text.
+
+    Raises:
+        exceptions.HTTPError: Raised for any exception during the request.
+    """
+    try:
+        client_timeout = aiohttp.ClientTimeout(total=timeout or 30)
+
+        async with aiohttp.ClientSession(timeout=client_timeout) as session:
+            async with session.get(url) as response:
                 if raise_for_status:
                     response.raise_for_status()
+
                 response_text = await response.text()
                 return response.status, response_text
-    # TODO: Aplicar tratamento de erros
+
+    except aiohttp.ClientError as exc:
+        raise exceptions.HTTPError(exc)
+
     except Exception as exc:
         raise exceptions.HTTPError(exc)
 
 
 def requests_get(
-    url: str, timeout: Union[None, int], proxies: Union[None, dict]
+    url: str, timeout: Optional[int] = None, proxies: Optional[dict] = None
 ) -> tuple[int, str]:
-    """Execute `requests.get` and applies exception handling
+    """
+    Perform a synchronous GET request using requests.
 
-
-    Raises:
-        exceptions.ConnectionError: raised by a connection error
-        exceptions.HTTPError: raised by HTTP error
-        exceptions.URLRequired: raised by using a invalid URL to make a request
-        exceptions.TooManyRedirects: raised by too many redirects
-        exceptions.Timeout: raised by request timed out
-        exceptions.InvalidCEP: raised to invalid CEP requests
-        exceptions.BlockedByFlood: raised by flood of requests
-        exceptions.CEPNotFound: raised to CEP not founded requests
-        exceptions.BrazilCEPException: Base class for exception
+    Args:
+        url (str): The URL to request.
+        timeout (Optional[int]): Timeout in seconds for the request.
+        proxies (Optional[dict]): Proxy configuration for the request.
 
     Returns:
-        The JSON Response from the endpoint
+        tuple[int, str]: The HTTP status code and response text.
+
+    Raises:
+        exceptions.ConnectionError: Raised for connection errors.
+        exceptions.HTTPError: Raised for HTTP errors.
+        exceptions.URLRequired: Raised for invalid URLs.
+        exceptions.TooManyRedirects: Raised for too many redirects.
+        exceptions.Timeout: Raised for request timeouts.
     """
     try:
         response = requests.get(url, timeout=timeout, proxies=proxies)
+        return response.status_code, response.text
 
     except requests.exceptions.ConnectionError as exc:
         raise exceptions.ConnectionError(exc)
@@ -63,4 +80,5 @@ def requests_get(
     except requests.exceptions.Timeout as exc:
         raise exceptions.Timeout(exc)
 
-    return response.status_code, response.text
+    except Exception as exc:
+        raise exceptions.HTTPError(exc)
