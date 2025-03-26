@@ -6,17 +6,19 @@ API Reference
 
 .. module:: brazilcep
 
-This part of the documentation covers all the interfaces of BrazilCEP. 
+This section of the documentation provides details about all the interfaces of BrazilCEP.
 
 Client
 ------
 
-The main BrazilCEP' functionality can be accessed by this function.
+The primary functionality of BrazilCEP can be accessed through the following function:
 
 .. autofunction:: get_address_from_cep
 
 Exceptions
 ----------
+
+The following exceptions are available in BrazilCEP:
 
 .. autoexception:: brazilcep.exceptions.BrazilCEPException
 .. autoexception:: brazilcep.exceptions.ConnectionError
@@ -31,51 +33,61 @@ Exceptions
 Webservices
 -----------
 
+BrazilCEP supports the following webservice integrations:
+
 .. autofunction:: brazilcep.apicep.fetch_address
 .. autofunction:: brazilcep.opencep.fetch_address
 .. autofunction:: brazilcep.viacep.fetch_address
 
+Migration from PyCEPCorreios
+----------------------------
 
-Migrate from PyCEPCorreios
---------------------------
+**BrazilCEP** is the new name for the former **PyCEPCorreios**. Migrating your code is simple and requires minimal changes.
 
-**BrazilCEP** is the new name of former **PyCEPCorreios**. It's simples migrate te code and require minimal steps.
+1. Update the `import` statements from:
 
-First, rename the `import` statements from::
+  .. code-block:: python
 
-  >>> import pycepcorreios
+    import pycepcorreios
 
-to::
+  to:
 
-  >>> import brazilcep
+  .. code-block:: python
 
-The next step, is adjust the *keys* of query returned by `get_address_from_cep` function.
+    import brazilcep
 
-The keys have simply been translated to english. Take a look on this old code::
+2. Adjust the *keys* in the query results returned by the `get_address_from_cep` function.
 
-    >>> get_address_from_cep('37503-130')
+  The keys have been translated to English. Below is an example of the old and new formats:
+
+  Old format:
+
+  .. code-block:: python
+
+    get_address_from_cep('37503-130')
     {
-      'bairro': 'rua abc',
-      'cep': '37503130',
-      'cidade': 'city ABC',
-      'logradouro': 'str',
-      'uf': 'str',
-      'complemento': 'str',
+       'bairro': 'rua abc',
+       'cep': '37503130',
+       'cidade': 'city ABC',
+       'logradouro': 'str',
+       'uf': 'str',
+       'complemento': 'str',
     }
 
-This is the new code::
+  New format:
 
-    >>> get_address_from_cep('37503-130')
+  .. code-block:: python
+
+    get_address_from_cep('37503-130')
     {
-      'district': 'rua abc',
-      'cep': '37503130',
-      'city': 'city ABC',
-      'street': 'str',
-      'uf': 'str',
-      'complement': 'str',
+       'district': 'rua abc',
+       'cep': '37503130',
+       'city': 'city ABC',
+       'street': 'str',
+       'uf': 'str',
+       'complement': 'str',
     }
 
-The follow `Exceptions` have been removed:
+3. Note that the following exception has been removed:
 
-* `BaseException`
-
+  * `BaseException`

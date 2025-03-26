@@ -20,10 +20,14 @@ BrazilCEP: Query CEP Easily™
 
 **BrazilCEP** is a minimalist and easy-to-use Python library designed to query CEP (Postal Address Code) data.
 
--------------------
+---
 
-A simple use example::
+Quick Example
+-------------
 
+A simple usage example::
+
+    >>> import brazilcep
     >>> brazilcep.get_address_from_cep('37503-130')
     {
         'district': 'rua abc',
@@ -34,23 +38,29 @@ A simple use example::
         'complement': 'str',
     }
 
+**BrazilCEP** aims to provide a unified query interface for various CEP search services, simplifying the integration of Python applications with these services.
 
-**BrazilCEP** objective is to provide a common query interface to all these search services, facilitating the integration of Python applications with these services.
+Supported CEP APIs
+------------------
 
-Currently supports several CEP API's:
+Currently, BrazilCEP supports the following CEP APIs:
 
-- `ViaCEP <https://viacep.com.br>`_.
-- `ApiCEP (WideNet) <https://apicep.com>`_.
-- `OpenCEP <https://opencep.com/>`_.
+- `ViaCEP <https://viacep.com.br>`_
+- `ApiCEP (WideNet) <https://apicep.com>`_
+- `OpenCEP <https://opencep.com/>`_
 
-**CEP** or **Código de Endereçamento Postal** (*Postal Address Code*), as it is also known, is a system of numeric codes, 
-created, maintained and organized by *Correios do Brazil* for organizing addresses and deliveries of letters and parcels.
+What is CEP?
+------------
+
+**CEP** or **Código de Endereçamento Postal** (*Postal Address Code*) is a system of numeric codes created, maintained, and organized by *Correios do Brazil* to streamline the organization of addresses and the delivery of letters and parcels.
+
+Documentation Overview
+----------------------
 
 The User Guide
---------------
+~~~~~~~~~~~~~~
 
-This part of the documentation, which is mostly prose, begins with some
-background information about BRazilCEP.
+This section provides background information and step-by-step instructions for using BrazilCEP.
 
 .. toctree::
    :maxdepth: 2
@@ -58,23 +68,20 @@ background information about BRazilCEP.
    user/install
    user/quickstart
 
-The API Documentation / Guide
------------------------------
+The API Documentation
+~~~~~~~~~~~~~~~~~~~~~
 
-If you are looking for information on a specific function, class, or method,
-this part of the documentation is for you.
+For details on specific functions, classes, or methods, refer to this section.
 
 .. toctree::
    :maxdepth: 2
 
    api
 
-
 The Contributor Guide
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
-If you want to contribute to the project, this part of the documentation is for
-you.
+If you want to contribute to the project, this section provides all the necessary guidelines.
 
 .. toctree::
    :maxdepth: 3
@@ -82,9 +89,12 @@ you.
    contributing
 
 Release History
----------------
+~~~~~~~~~~~~~~~
+
+For a detailed changelog of the project, see this section.
 
 .. toctree::
    :maxdepth: 1
 
    changes
+
