@@ -30,14 +30,13 @@ classifiers = [
   "Natural Language :: Portuguese (Brazilian)",
 ]
 
-dependencies = ["requests>=2.28.2"]
+dependencies = ["requests>=2.28.2", "aiohttp>=3.8.1"]
 
 [project.optional-dependencies]
 
 dev = [
   "tox>=4.23.2",
   "pytest>=7.3.1",
-  "aiohttp",
   "pytest-asyncio",
   "mypy>=1.0,<1.5",
   "types-requests",
@@ -60,7 +59,6 @@ docs = [
   "sphinx-autobuild==2021.3.14",
   "sphinx-autodoc-typehints==1.23.3",
 ]
-
 build = ["build==1.2.2.post1"]
 
 [project.urls]
@@ -97,16 +95,16 @@ line-length = 100
 include = '\.pyi?$'
 exclude = '''
 (
-      __pycache__
-    | \.git
-    | \.mypy_cache
-    | \.pytest_cache
-    | \.vscode
-    | \.venv
-    | \bdist\b
-    | \bdoc\b
-    | \.nox
-    | \.github
+  __pycache__
+  | \.git
+  | \.mypy_cache
+  | \.pytest_cache
+  | \.vscode
+  | \.venv
+  | \bdist\b
+  | \bdoc\b
+  | \.nox
+  | \.github
 )
 '''
 
@@ -115,7 +113,6 @@ profile = "black"
 multi_line_output = 3
 skip = ["docs"]
 
-# You can override these pyright settings by adding a personal pyrightconfig.json file.
 [tool.pyright]
 reportPrivateImportUsage = false
 
