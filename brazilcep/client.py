@@ -12,9 +12,6 @@ Main Features:
 - Automatic formatting of CEP input to ensure valid queries.
 - Customizable timeout and proxy support for HTTP requests.
 
-Note:
-- The CORREIOS web service is deprecated and will be removed in future versions.
-
 :copyright: (c) 2023 by Michell Stuttgart.
 :license: MIT, see LICENSE for more details.
 """
@@ -22,7 +19,6 @@ Note:
 import enum
 import re
 from typing import Callable, Optional
-from warnings import warn
 
 from . import apicep, opencep, viacep
 
@@ -34,13 +30,11 @@ class WebService(enum.Enum):
     """Enum representing the available web services for CEP queries.
 
     Attributes:
-        CORREIOS: Deprecated web service (to be removed in future versions).
         VIACEP: ViaCEP web service.
         APICEP: ApiCEP web service.
         OPENCEP: OpenCEP web service.
     """
 
-    CORREIOS = 0  # Deprecated
     VIACEP = 1
     APICEP = 2
     OPENCEP = 3
@@ -50,16 +44,12 @@ services: dict[WebService, Callable] = {
     WebService.VIACEP: viacep.fetch_address,
     WebService.APICEP: apicep.fetch_address,
     WebService.OPENCEP: opencep.fetch_address,
-    # Deprecated: Remove CORREIOS in the next major version
-    WebService.CORREIOS: opencep.fetch_address,
 }
 
 async_services: dict[WebService, Callable] = {
     WebService.VIACEP: viacep.async_fetch_address,
     WebService.APICEP: apicep.async_fetch_address,
     WebService.OPENCEP: opencep.async_fetch_address,
-    # Deprecated: Remove CORREIOS in the next major version
-    WebService.CORREIOS: opencep.async_fetch_address,
 }
 
 
@@ -84,13 +74,6 @@ def get_address_from_cep(
     Returns:
         dict: Address data corresponding to the queried CEP.
     """
-    if webservice == WebService.CORREIOS:
-        warn(
-            "CORREIOS is deprecated and will be removed in future versions. Please use another web service.",
-            DeprecationWarning,
-            stacklevel=2,
-        )
-
     return services[webservice](_format_cep(cep), timeout=timeout, proxies=proxies)
 
 
@@ -113,14 +96,12 @@ async def async_get_address_from_cep(
             - WebService.OPENCEP
             - WebService.VIACEP
             - WebService.APICEP
-            - WebService.CORREIOS (deprecated)
         timeout (Optional[int], optional): The maximum time, in seconds, to wait for a response. Defaults to DEFAULT_TIMEOUT.
         proxies (Optional[dict], optional): A dictionary mapping protocols (e.g., "http", "https") to proxy URLs.
 
     Raises:
         ValueError: If the provided CEP is invalid (e.g., not properly formatted or not 8 digits).
         KeyError: If the specified webservice is not a valid WebService enum value.
-        DeprecationWarning: If the deprecated WebService.CORREIOS is used.
 
     Returns:
         dict: A dictionary containing the address data corresponding to the queried CEP. The structure of the
@@ -142,15 +123,7 @@ async def async_get_address_from_cep(
             "siafi": "7107"
         }
     """
-    if webservice == WebService.CORREIOS:
-        warn(
-            "CORREIOS is deprecated and will be removed in future versions. Please use another web service.",
-            DeprecationWarning,
-            stacklevel=2,
-        )
-
-    formatted_cep = _format_cep(cep)
-    return await async_services[webservice](formatted_cep, timeout=timeout, proxies=proxies)
+    return await async_services[webservice](_format_cep(cep), timeout=timeout, proxies=proxies)
 
 
 def _format_cep(cep: str) -> str:
