@@ -41,6 +41,14 @@ services: dict = {
     WebService.OPENCEP: opencep.fetch_address,
 }
 
+async_services: dict = {
+    # TOFIX: compatibility adjust. remove CORREIOS in next version
+    WebService.CORREIOS: opencep.async_fetch_address,
+    WebService.VIACEP: viacep.async_fetch_address,
+    WebService.APICEP: apicep.async_fetch_address,
+    WebService.OPENCEP: opencep.async_fetch_address,
+}
+
 
 def get_address_from_cep(
     cep: str,
@@ -76,6 +84,31 @@ def get_address_from_cep(
         )
 
     return services[webservice](_format_cep(cep), timeout=timeout, proxies=proxies)
+
+
+async def async_get_address_from_cep(
+    cep: str,
+    webservice: WebService = WebService.OPENCEP,
+    timeout: Optional[int] = None,
+    proxies: Optional[dict] = None,
+) -> dict:
+
+    if webservice == WebService.CORREIOS:
+        warn(
+            "CORREIOS is going to be deprecated. Please, use other webservice.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+
+    if webservice not in (value for _, value in WebService.__dict__.items()):
+        raise KeyError(
+            """Invalid webservice. Please use this options: WebService.VIACEP, WebService.APICEP or WebService.OPENCEP"""
+        )
+
+    return await async_services[webservice](_format_cep(cep), timeout=timeout, proxies=proxies)
+
+
+async_get_address_from_cep.__doc__ = get_address_from_cep.__doc__
 
 
 def _format_cep(cep: str) -> str:

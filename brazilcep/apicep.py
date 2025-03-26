@@ -11,11 +11,55 @@ This module implements the BrazilCEP ApiCEP adapter.
 import json
 from typing import Union
 
-import requests
-
 from . import exceptions
+from .utils import aiohttp_get, requests_get
 
 URL = "https://ws.apicep.com/cep/{}.json"
+
+
+def __format_response(response: dict) -> dict:
+    """Formats the OpenCEP API response
+
+    Args:
+        response: The API JSON response
+
+    Returns:
+        Address data from the API JSON response
+    """
+
+    return {
+        "district": response.get("district") or "",
+        "cep": response.get("code") or "",
+        "city": response.get("city") or "",
+        "street": (response.get("address") or "").split(" - até")[0],
+        "uf": response.get("state") or "",
+        "complement": "",
+    }
+
+
+def __handle_response(status_code: int, text: str):
+    """Handle response from API based on status_code and text (content of the response)"""
+    if status_code == 200:
+        response_json = json.loads(text)
+
+        if (
+            response_json["status"] == 400
+            and response_json["message"] == "CEP informado é inválido"
+        ):
+            raise exceptions.InvalidCEP()
+
+        if response_json["status"] == 400 and response_json["message"] == "Blocked by flood":
+            raise exceptions.BlockedByFlood()
+
+        if response_json["status"] == 404:
+            raise exceptions.CEPNotFound()
+
+        return __format_response(response_json)
+
+    elif status_code == 429:
+        raise exceptions.BlockedByFlood()
+
+    raise exceptions.BrazilCEPException(f"Other error. Status code: {status_code}")
 
 
 def fetch_address(cep: str, timeout: Union[None, int], proxies: Union[None, dict]) -> dict:
@@ -41,47 +85,15 @@ def fetch_address(cep: str, timeout: Union[None, int], proxies: Union[None, dict
     Returns:
         Address data from CEP
     """
+    status_code, text = requests_get(url=URL.format(cep), timeout=timeout, proxies=proxies)
+    return __handle_response(status_code=status_code, text=text)
 
-    try:
-        response = requests.get(URL.format(cep), timeout=timeout, proxies=proxies)
 
-    except requests.exceptions.ConnectionError as exc:
-        raise exceptions.ConnectionError(exc)
+async def async_fetch_address(
+    cep: str, timeout: Union[None, int], proxies: Union[None, dict]
+) -> dict:
+    status_code, text = await aiohttp_get(URL.format(cep), timeout=timeout, raise_for_status=True)
+    return __handle_response(status_code=status_code, text=text)
 
-    except requests.exceptions.HTTPError as exc:
-        raise exceptions.HTTPError(exc)
 
-    except requests.exceptions.URLRequired as exc:
-        raise exceptions.URLRequired(exc)
-
-    except requests.exceptions.TooManyRedirects as exc:
-        raise exceptions.TooManyRedirects(exc)
-
-    except requests.exceptions.Timeout as exc:
-        raise exceptions.Timeout(exc)
-
-    if response.status_code == 200:
-        address = json.loads(response.text)
-
-        if address["status"] == 400 and address["message"] == "CEP informado é inválido":
-            raise exceptions.InvalidCEP()
-
-        if address["status"] == 400 and address["message"] == "Blocked by flood":
-            raise exceptions.BlockedByFlood()
-
-        if address["status"] == 404:
-            raise exceptions.CEPNotFound()
-
-        return {
-            "district": address.get("district") or "",
-            "cep": address.get("code") or "",
-            "city": address.get("city") or "",
-            "street": (address.get("address") or "").split(" - até")[0],
-            "uf": address.get("state") or "",
-            "complement": "",
-        }
-
-    elif response.status_code == 429:
-        raise exceptions.BlockedByFlood()
-
-    raise exceptions.BrazilCEPException(f"Other error. Status code: {response.status_code}")
+async_fetch_address.__doc__ = fetch_address.__doc__
