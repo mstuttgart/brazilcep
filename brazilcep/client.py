@@ -92,7 +92,6 @@ async def async_get_address_from_cep(
     timeout: Optional[int] = None,
     proxies: Optional[dict] = None,
 ) -> dict:
-
     if webservice == WebService.CORREIOS:
         warn(
             "CORREIOS is going to be deprecated. Please, use other webservice.",

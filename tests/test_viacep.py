@@ -148,7 +148,6 @@ def test_timeout_error(requests_mock):
 
 @pytest.mark.asyncio
 async def test_async_get_address_from_cep():
-
     async def __mock_aiohttp_get(*args, **kwargs):
         return 200, RESPONSE_MOCK_TEXT_SUCCESS
 
