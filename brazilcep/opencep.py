@@ -1,8 +1,17 @@
 """
 brazilcep.opencep
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
-This module implements the BrazilCEP ApiCEP adapter.
+This module provides an adapter for the BrazilCEP library to interact with the OpenCEP API.
+
+The OpenCEP API is a RESTful web service that allows querying Brazilian postal codes (CEPs)
+to retrieve address information. This module includes both synchronous and asynchronous
+functions for fetching address data, handling API responses, and formatting the results.
+
+Features:
+- Fetch address data using a CEP (postal code).
+- Handle API responses and errors gracefully.
+- Support for both synchronous and asynchronous operations.
 
 :copyright: (c) 2023 by Michell Stuttgart.
 :license: MIT, see LICENSE for more details.
@@ -11,20 +20,31 @@ This module implements the BrazilCEP ApiCEP adapter.
 import json
 from typing import Union
 
-from . import exceptions
-from .utils import aiohttp_get, requests_get
+from . import exceptions, utils
 
 URL = "https://opencep.com/v1/{}"
 
 
 def __format_response(response: dict) -> dict:
-    """Formats the OpenCEP API response
+    """Formats the response from the OpenCEP API into a standardized address dictionary.
+
+    This function processes the raw JSON response from the OpenCEP API and extracts
+    relevant address fields, ensuring that all string values are stripped of leading
+    and trailing whitespace. If a field is missing in the response, it defaults to
+    an empty string.
 
     Args:
-        response: The API JSON response
+        response (dict): The raw JSON response from the OpenCEP API.
 
     Returns:
-        Address data from the API JSON response
+
+        dict: A dictionary containing the following standardized address fields:
+            - district (str): The neighborhood or district name (from "bairro").
+            - cep (str): The postal code (from "cep").
+            - city (str): The city name (from "localidade").
+            - street (str): The street name (from "logradouro").
+            - uf (str): The state abbreviation (from "uf").
+            - complement (str): Additional address details (from "complemento").
     """
 
     return {
@@ -37,52 +57,102 @@ def __format_response(response: dict) -> dict:
     }
 
 
-def __handle_response(status_code: int, text: str):
-    """Handle response from API based on status_code and text (content of the response)"""
-    if status_code == 200:
-        response_json = json.loads(text)
-        return __format_response(response_json)
-
-    if status_code == 404:
-        raise exceptions.CEPNotFound()
-
-    else:
-        raise exceptions.BrazilCEPException(f"Other error. Status code: {status_code}")
-
-
-def fetch_address(cep: str, timeout: Union[None, int], proxies: Union[None, dict]) -> dict:
-    """Fetch OpenCEP webservice for CEP address. OpenCEP provide
-    a REST API to query CEP requests.
+def __handle_response(status_code: int, text: str) -> dict:
+    """Handles the API response based on the status code and response content.
 
     Args:
-        cep: CEP to be searched
-        timeout: How many seconds to wait for the server to return data before giving up
-        proxies: Dictionary mapping protocol to the URL of the proxy
+        status_code (int): The HTTP status code returned by the API.
+        text (str): The raw response content from the API.
 
     Raises:
-        exceptions.ConnectionError: raised by a connection error
-        exceptions.HTTPError: raised by HTTP error
-        exceptions.URLRequired: raised by using a invalid URL to make a request
-        exceptions.TooManyRedirects: raised by too many redirects
-        exceptions.Timeout: raised by request timed out
-        exceptions.InvalidCEP: raised to invalid CEP requests
-        exceptions.BlockedByFlood: raised by flood of requests
-        exceptions.CEPNotFound: raised to CEP not founded requests
-        exceptions.BrazilCEPException: Base class for exception
+        exceptions.CEPNotFound: If the CEP is not found (404 status code).
+        exceptions.BrazilCEPException: For any other non-successful status codes.
 
     Returns:
-        Address data from CEP
+        dict: A formatted dictionary containing address information if the request is successful.
     """
+    try:
+        if status_code == 200:
+            response_json = json.loads(text)
+            return __format_response(response_json)
 
-    status_code, text = requests_get(url=URL.format(cep), timeout=timeout, proxies=proxies)
+        if status_code == 404:
+            raise exceptions.CEPNotFound()
+
+        raise exceptions.BrazilCEPException(f"Unexpected error. Status code: {status_code}")
+
+    except json.JSONDecodeError as e:
+        raise exceptions.BrazilCEPException(f"Failed to parse JSON response: {e}")
+
+
+def fetch_address(
+    cep: str, timeout: Union[None, int] = None, proxies: Union[None, dict] = None
+) -> dict:
+    """Fetch address data from the OpenCEP API using a given CEP.
+
+    This function queries the OpenCEP REST API to retrieve address information
+    for a given Brazilian postal code (CEP). It handles various exceptions and
+    returns a standardized address dictionary.
+
+    Args:
+        cep (str): The CEP (postal code) to be searched.
+        timeout (Union[None, int], optional): The timeout in seconds for the request. Defaults to None.
+        proxies (Union[None, dict], optional): A dictionary mapping protocol to the URL of the proxy. Defaults to None.
+
+    Raises:
+        exceptions.ConnectionError: Raised for connection errors.
+        exceptions.HTTPError: Raised for HTTP errors.
+        exceptions.URLRequired: Raised for invalid URLs.
+        exceptions.TooManyRedirects: Raised for too many redirects.
+        exceptions.Timeout: Raised when the request times out.
+        exceptions.InvalidCEP: Raised for invalid CEP requests.
+        exceptions.BlockedByFlood: Raised when requests are blocked due to flooding.
+        exceptions.CEPNotFound: Raised when the CEP is not found.
+        exceptions.BrazilCEPException: Base class for other exceptions.
+
+    Returns:
+        dict: A dictionary containing standardized address data.
+    """
+    status_code, text = utils.requests_get(url=URL.format(cep), timeout=timeout, proxies=proxies)
     return __handle_response(status_code=status_code, text=text)
 
 
 async def async_fetch_address(
-    cep: str, timeout: Union[None, int], proxies: Union[None, dict]
+    cep: str, timeout: Union[None, int] = None, proxies: Union[None, dict] = None
 ) -> dict:
-    status_code, text = await aiohttp_get(URL.format(cep), timeout=timeout, raise_for_status=True)
-    return __handle_response(status_code=status_code, text=text)
+    """Fetch address data asynchronously from the OpenCEP API using a given CEP.
+
+    This function queries the OpenCEP REST API asynchronously to retrieve address information
+    for a given Brazilian postal code (CEP). It handles various exceptions and
+    returns a standardized address dictionary.
+
+    Args:
+        cep (str): The CEP (postal code) to be searched.
+        timeout (Union[None, int], optional): The timeout in seconds for the request. Defaults to None.
+        proxies (Union[None, dict], optional): A dictionary mapping protocol to the URL of the proxy. Defaults to None.
+
+    Raises:
+        exceptions.ConnectionError: Raised for connection errors.
+        exceptions.HTTPError: Raised for HTTP errors.
+        exceptions.URLRequired: Raised for invalid URLs.
+        exceptions.TooManyRedirects: Raised for too many redirects.
+        exceptions.Timeout: Raised when the request times out.
+        exceptions.InvalidCEP: Raised for invalid CEP requests.
+        exceptions.BlockedByFlood: Raised when requests are blocked due to flooding.
+        exceptions.CEPNotFound: Raised when the CEP is not found.
+        exceptions.BrazilCEPException: Base class for other exceptions.
+
+    Returns:
+        dict: A dictionary containing standardized address data.
+    """
+    try:
+        status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
+        return __handle_response(status_code=status_code, text=text)
+
+    except Exception as e:
+        raise exceptions.BrazilCEPException(
+            f"An error occurred while fetching the address asynchronously: {e}"
+        )
 
 
 async_fetch_address.__doc__ = fetch_address.__doc__
