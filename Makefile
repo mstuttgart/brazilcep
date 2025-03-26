@@ -1,64 +1,63 @@
-.PHONY : help
+.PHONY: help check clean build coverage lint docs pre-commit setup test tox
+
+# Help target to display available commands
 help:
 	@echo "Usage: make <target>"
-	@echo "    check         run pre-commit and tests"
-	@echo "    coverage      identify code not covered with tests"
-	@echo "    lint          run lint check on module"
-	@echo "    docs          run documentation build process"
-	@echo "    help          show summary of available commands"
-	@echo "    build         build package distribution"
-	@echo "    pre-commit    run pre-commit against all files"
-	@echo "    setup         setup development environment"
-	@echo "    test          run tests (in parallel)"
-	@echo "    tox           run tox (in parallel)"
+	@echo ""
+	@echo "Available targets:"
+	@echo "    check         Run pre-commit, docs, tests, and build"
+	@echo "    clean         Clean up generated files and caches"
+	@echo "    build         Build package distribution"
+	@echo "    coverage      Identify code not covered with tests"
+	@echo "    lint          Run lint checks on the module"
+	@echo "    docs          Build documentation"
+	@echo "    pre-commit    Run pre-commit against all files"
+	@echo "    setup         Set up the development environment"
+	@echo "    test          Run tests (in parallel)"
+	@echo "    tox           Run tox (in parallel)"
+	@echo "    help          Show this summary of available commands"
 
-.PHONY : check
+# Run all checks
 check:
-	make pre-commit
-	make docs
-	make test
-	make build
+	$(MAKE) pre-commit
+	$(MAKE) docs
+	$(MAKE) test
+	$(MAKE) build
 
-.PHONY : clean
+# Clean up generated files and caches
 clean:
-	find . -name *.mo -delete
-	find . -name *.pyc -delete
-	rm -rf .mypy_cache/*
-	rm -rf .pytest_cache/*
-	rm -rf .ruff_cache/*
-	rm -rf dist/*
-	rm -rf docs/build/*
-	rm -rf docs/source/_autosummary/*
-	rm -rf tox/*
-	rm -rf .coverage
-	rm -rf .coverage.xml
+	find . -name "*.mo" -delete
+	find . -name "*.pyc" -delete
+	rm -rf .mypy_cache/ .pytest_cache/ .ruff_cache/ dist/ tox/
+	rm -rf docs/build/ docs/source/_autosummary/
+	rm -f .coverage .coverage.xml
 
-.PHONY : build
-build :
+# Build package distribution
+build:
 	rm -rf *.egg-info/
 	python3 -m build
 
-.PHONY : coverage
+# Run coverage analysis
 coverage:
-	pytest --cov=brazilcep --cov-config=pyproject.toml --cov-report term-missing --no-cov-on-fail --cov-report=html
+	pytest --cov=brazilcep --cov-config=pyproject.toml --cov-report=term-missing --no-cov-on-fail --cov-report=html
 
-.PHONY : lint
+# Run lint checks
 lint:
 	isort --check brazilcep tests
 	black --check brazilcep tests
 	ruff check brazilcep tests
 	mypy brazilcep
 
-.PHONY : docs
+# Build documentation
 docs:
 	rm -rf docs/build/
 	sphinx-autobuild -b html --watch brazilcep/ docs/source/ docs/build/
 
-.PHONY : pre-commit
+# Run pre-commit hooks
 pre-commit:
 	pre-commit run --all-files
 
-.PHONY : setup
+# Set up the development environment
 setup:
 	pip install -e ".[dev]"
 	pip install -e ".[coverage]"
@@ -69,10 +68,10 @@ setup:
 	pre-commit autoupdate
 	mypy --install-types
 
-.PHONY : test
+# Run tests
 test:
 	pytest -v
 
-.PHONY : tox
+# Run tox
 tox:
 	tox --parallel auto
