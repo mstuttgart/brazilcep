@@ -1,4 +1,4 @@
-name: Publish Python 🐍 distribution 📦 to PyPI and TestPyPI
+name: Publish Python 🐍 Distribution 📦 to PyPI and TestPyPI
 
 on:
   push:
@@ -9,36 +9,34 @@ on:
 
 jobs:
   build:
-    name: Build distribution 📦
+    name: Build Distribution 📦
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.*"
 
-      - name: Install pypa/build
+      - name: Install Build Dependencies
         run: pip install ".[build]"
 
-      - name: Build a binary wheel and a source tarball
+      - name: Build Distribution Packages
         run: python3 -m build
 
-      - name: Store the distribution packages
-        uses: actions/upload-artifact@v3
+      - name: Upload Distribution Packages
+        uses: actions/upload-artifact@v4
         with:
           name: python-package-distributions
           path: dist/
 
   publish-to-pypi:
-    name: >-
-      Publish Python 🐍 distribution 📦 to PyPI
-
-    # only publish to PyPI on tag pushes
-    if: startsWith(github.ref, 'refs/tags/')
-    needs:
-      - build
+    name: Publish Distribution 📦 to PyPI
+    if: startsWith(github.ref, 'refs/tags/') # Only publish on tag pushes
+    needs: build
     runs-on: ubuntu-latest
 
     environment:
@@ -49,11 +47,11 @@ jobs:
       id-token: write
 
     steps:
-      - name: Download all the dists
-        uses: actions/download-artifact@v3
+      - name: Download Distribution Packages
+        uses: actions/download-artifact@v4
         with:
           name: python-package-distributions
           path: dist/
 
-      - name: Publish distribution 📦 to PyPI
+      - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
