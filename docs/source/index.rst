@@ -25,7 +25,7 @@ BrazilCEP: Query CEP Easily™
 Quick Example
 -------------
 
-A simple usage example::
+Here’s a simple usage example::
 
     >>> import brazilcep
     >>> brazilcep.get_address_from_cep('37503-130')
@@ -38,7 +38,9 @@ A simple usage example::
         'complement': 'str',
     }
 
-**BrazilCEP** aims to provide a unified query interface for various CEP search services, simplifying the integration of Python applications with these services.
+Its goal is to provide a unified query interface for multiple search services, simplifying the integration of Python applications with these services.
+
+Starting from version 7.0.0, **BrazilCEP** introduces support for asynchronous operations. 
 
 Supported CEP APIs
 ------------------
@@ -52,13 +54,13 @@ Currently, BrazilCEP supports the following CEP APIs:
 What is CEP?
 ------------
 
-**CEP** or **Código de Endereçamento Postal** (*Postal Address Code*) is a system of numeric codes created, maintained, and organized by *Correios do Brazil* to streamline the organization of addresses and the delivery of letters and parcels.
+**CEP** or **Código de Endereçamento Postal** (*Postal Address Code*) is a system of numeric codes created, maintained, and organized by *Correios do Brasil* to streamline address organization and the delivery of letters and parcels.
 
 Documentation Overview
 ----------------------
 
-The User Guide
-~~~~~~~~~~~~~~
+User Guide
+~~~~~~~~~~
 
 This section provides background information and step-by-step instructions for using BrazilCEP.
 
@@ -68,8 +70,8 @@ This section provides background information and step-by-step instructions for u
    user/install
    user/quickstart
 
-The API Documentation
-~~~~~~~~~~~~~~~~~~~~~
+API Documentation
+~~~~~~~~~~~~~~~~~
 
 For details on specific functions, classes, or methods, refer to this section.
 
@@ -78,8 +80,8 @@ For details on specific functions, classes, or methods, refer to this section.
 
    api
 
-The Contributor Guide
-~~~~~~~~~~~~~~~~~~~~~
+Contributor Guide
+~~~~~~~~~~~~~~~~~
 
 If you want to contribute to the project, this section provides all the necessary guidelines.
 
@@ -91,7 +93,7 @@ If you want to contribute to the project, this section provides all the necessar
 Release History
 ~~~~~~~~~~~~~~~
 
-For a detailed changelog of the project, see this section.
+For a detailed changelog of the project, refer to this section.
 
 .. toctree::
    :maxdepth: 1
