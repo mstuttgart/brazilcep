@@ -5,92 +5,86 @@ Contributing
 .. _prs: https://github.com/mstuttgart/brazilcep/pulls
 .. _`main branch`: https://github.com/mstuttgart/brazilcep/tree/main
 
-Thanks for considering contributing! Please read this document to learn the
-various ways you can contribute to this project and how to go about doing it.
+Thank you for considering contributing! This document outlines the various ways you can contribute to this project and how to get started.
 
-Bug reports and feature requests
+Bug Reports and Feature Requests
 ================================
 
-Did you find a bug?
--------------------
+Found a Bug?
+------------
 
-First, do `a quick search <https://github.com/mstuttgart/brazilcep/issues>`_ to see whether your issue has already been reported.
-If your issue has already been reported, please comment on the existing issue. Otherwise,
-open `a new GitHub issue <https://github.com/mstuttgart/brazilcep/issues>`_.
+Before reporting an issue, please perform `a quick search <https://github.com/mstuttgart/brazilcep/issues>`_ to check if it has already been reported. If it exists, feel free to comment on the existing issue. Otherwise, open `a new GitHub issue <https://github.com/mstuttgart/brazilcep/issues>`_.
 
-Be sure to include a clear title
-and description. The description should include as much relevant information as possible and should explain how
-to reproduce the erroneous behavior as well as the behavior you expect to see.
-Ideally you would include a code sample or an executable test case demonstrating the expected behavior.
+When reporting a bug, ensure you include:
 
-Do you have a suggestion for an enhancement or new feature?
------------------------------------------------------------
+* A clear and concise title.
+* A detailed description with relevant information.
+* Steps to reproduce the issue and the expected behavior.
+* If possible, a code sample or an executable test case demonstrating the issue.
 
-We use GitHub issues to track feature requests. Before you create a feature request:
+Have a Suggestion for an Enhancement or New Feature?
+----------------------------------------------------
 
-* Make sure you have a clear idea of the enhancement you would like. If you have a vague idea, consider discussing it first on a GitHub issue.
-* Check the documentation to make sure your feature does not already exist.
-* Do `a quick search <https://github.com/mstuttgart/brazilcep/issues>`_ to see whether your feature has already been suggested.
+We use GitHub issues to track feature requests. Before creating a feature request:
 
-When creating your request, please:
+* Ensure you have a clear idea of the enhancement. If unsure, consider discussing it first in a GitHub issue.
+* Check the documentation to confirm the feature does not already exist.
+* Perform `a quick search <https://github.com/mstuttgart/brazilcep/issues>`_ to see if the feature has already been suggested.
 
-* Provide a clear title and description.
-* Explain why the enhancement would be useful. It may be helpful to highlight the feature in other libraries.
-* Include code examples to demonstrate how the enhancement would be used.
+When submitting a feature request, please:
 
-Contributions are welcome and greatly appreciated!
+* Provide a clear and descriptive title.
+* Explain why the enhancement would be useful, possibly referencing similar features in other libraries.
+* Include code examples to demonstrate how the feature would be used.
 
+Contributions are always welcome and greatly appreciated!
 
-Contributing with fixes and new features
-========================================
+Contributing Fixes and New Features
+===================================
 
-When contributing with fixes and new features, please start forking/branching
-from the `main branch`_ to work on the latest code and reduce merging issues.
+When contributing fixes or new features, start by forking or branching from the `main branch`_ to ensure you work on the latest code and minimize merge conflicts.
 
-Contributed PRs_ are required to include valid test coverage in order to be merged.
-Please don't hesitate to ask for help if you need one with the tests.
+All contributed PRs_ must include valid test coverage to be considered for merging. If you need help with writing tests, don't hesitate to ask.
 
-Thanks a lot for your support.
+Thank you for your support!
 
-
-Running tests
+Running Tests
 -------------
 
-First step is setting up development environment and installing all the required dependencies with:
+To set up the development environment and install all required dependencies, run:
 
 .. code-block:: shell
 
     $ virtualenv -p python3 .venv
     $ source .venv/bin/activate
-
     $ make setup
 
-The project provides automated style, tests and coverage checks:
+The project provides automated style checks, tests, and coverage reports:
 
 .. code-block:: shell
 
     $ make check
 
-You can run them separately:
+You can also run them individually:
 
 .. code-block:: shell
 
     $ make pre-commit
     $ make test
 
-If you want to retrieve uncovered lines too:
+To retrieve uncovered lines, use:
 
 .. code-block:: shell
 
     $ make coverage
 
-You can specific tests using ``pytest`` command:
+To run specific tests, use the ``pytest`` command:
 
 .. code-block:: shell
 
     $ pytest tests/test_apicep.py
 
-Or even more granular:
+For more granular testing:
 
 .. code-block:: shell
 
@@ -99,37 +93,28 @@ Or even more granular:
 Code Style
 ----------
 
-BrazilCEP uses a collection of tools to ensure the code base has a consistent
-style as it grows. We have these orchestrated using a tool called
-`pre-commit`_. This can be installed locally and run over your changes prior
-to opening a PR, and will also be run as part of the CI approval process
-before a change is merged.
+BrazilCEP uses a collection of tools to maintain consistent code style. These tools are orchestrated using `pre-commit`_, which can be installed locally to check your changes before opening a PR. The CI process will also run these checks before merging.
 
-To check pre-commit, run:
+To run pre-commit checks locally:
 
 .. code-block:: shell
 
     $ make pre-commit
 
-You can find the full list of formatting requirements specified in the
-`.pre-commit-config.yaml`_ at the top level directory of BrazilCEP.
+The full list of formatting requirements is specified in the `.pre-commit-config.yaml`_ file located in the project's root directory.
 
 .. _pre-commit: https://pre-commit.com/
 .. _.pre-commit-config.yaml: https://github.com/mstuttgart/brazilcep/blob/main/.pre-commit-config.yaml
 
-Build sphinx documentation
---------------------------
+Building Sphinx Documentation
+-----------------------------
 
 .. _readthedocs.io: https://brazilcep.readthedocs.io/
 
-The project provides a Sphinx documentation source under ``./docs/source``,
-published online on `readthedocs.io`_.
+The project includes Sphinx documentation sources under ``./docs/source``, which are published online at `readthedocs.io`_.
 
-Great documentation is absolutely key in any a project. If you are not familiar
-with reStructuredText for Sphinx you can read a primer
-`here`__.
+High-quality documentation is essential for any project. If you're not familiar with reStructuredText for Sphinx, you can read a primer `here`__.
 
 __ https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 
-
-Thanks for your contribution!
+Thank you for your contribution!
