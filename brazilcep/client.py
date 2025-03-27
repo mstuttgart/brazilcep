@@ -64,7 +64,7 @@ def get_address_from_cep(
     Args:
         cep (str): The CEP to be queried.
         webservice (WebService): The web service to use for the query. Defaults to WebService.OPENCEP.
-        timeout (Optional[int]): Timeout in seconds for the request. Defaults to DEFAULT_TIMEOUT.
+        timeout (Optional[int]): Timeout in seconds for the request. Defaults to 5 seconds.
         proxies (Optional[dict]): Dictionary mapping protocol to the URL of the proxy.
 
     Raises:
@@ -96,7 +96,7 @@ async def async_get_address_from_cep(
             - WebService.OPENCEP
             - WebService.VIACEP
             - WebService.APICEP
-        timeout (Optional[int], optional): The maximum time, in seconds, to wait for a response. Defaults to DEFAULT_TIMEOUT.
+        timeout (Optional[int], optional): The maximum time, in seconds, to wait for a response. Defaults to 5 seconds.
         proxies (Optional[dict], optional): A dictionary mapping protocols (e.g., "http", "https") to proxy URLs.
 
     Raises:

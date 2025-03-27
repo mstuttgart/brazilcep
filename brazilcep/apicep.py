@@ -168,7 +168,6 @@ async def async_fetch_address(
     """
 
     status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
-
     return __handle_response(status_code=status_code, text=text)
 
 
