@@ -128,7 +128,7 @@ asyncio.run(main())
 
 ## Documentation
 
-Comprehensive documentation for BrazilCEP is available [here](https://brazilcep.readthedocs.io/).
+Comprehensive documentation for BrazilCEP is available on [ReadTheDocs](https://brazilcep.readthedocs.io/).
 
 ## Contribute
 
