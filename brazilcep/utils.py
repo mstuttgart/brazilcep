@@ -13,31 +13,36 @@ async def aiohttp_get(
 
     Args:
         url (str): The URL to request.
-        timeout (Optional[int]): Timeout in seconds for the request.
-        raise_for_status (bool): Whether to raise an exception for HTTP errors.
+        timeout (Optional[int]): Timeout in seconds for the request. Defaults to None.
+        raise_for_status (bool): Whether to raise an exception for HTTP errors. Deafults to False.
 
     Returns:
         tuple[int, str]: The HTTP status code and response text.
 
     Raises:
-        exceptions.HTTPError: Raised for any exception during the request.
+        exceptions.Timeout: Raised when the request times out.
+        exceptions.ConnectionError: Raised for connection-related errors.
+        exceptions.BrazilCEPException: Raised for any general exception during the request.
     """
     try:
-        client_timeout = aiohttp.ClientTimeout(total=timeout or 30)
+        async with aiohttp.ClientSession() as session:
+            client_timeout = aiohttp.ClientTimeout(total=timeout or 30)
 
-        async with aiohttp.ClientSession(timeout=client_timeout) as session:
-            async with session.get(url) as response:
+            async with session.get(url, timeout=client_timeout) as response:
                 if raise_for_status:
                     response.raise_for_status()
 
                 response_text = await response.text()
                 return response.status, response_text
 
-    except aiohttp.ClientError as exc:
-        raise exceptions.HTTPError(exc)
+    except aiohttp.ConnectionTimeoutError as exc:
+        raise exceptions.Timeout(exc)
 
-    except Exception as exc:
-        raise exceptions.HTTPError(exc)
+    except aiohttp.ClientConnectionError as exc:
+        raise exceptions.ConnectionError(exc)
+
+    except (aiohttp.ClientError, Exception) as exc:
+        raise exceptions.BrazilCEPException(exc)
 
 
 def requests_get(
@@ -48,8 +53,8 @@ def requests_get(
 
     Args:
         url (str): The URL to request.
-        timeout (Optional[int]): Timeout in seconds for the request.
-        proxies (Optional[dict]): Proxy configuration for the request.
+        timeout (Optional[int]): Timeout in seconds for the request. Defaults to None.
+        proxies (Optional[dict]): Proxy configuration for the request. Defaults to None.
 
     Returns:
         tuple[int, str]: The HTTP status code and response text.
@@ -60,6 +65,7 @@ def requests_get(
         exceptions.URLRequired: Raised for invalid URLs.
         exceptions.TooManyRedirects: Raised for too many redirects.
         exceptions.Timeout: Raised for request timeouts.
+        exceptions.BrazilCEPException: Raised for any general exception during the request.
     """
     try:
         response = requests.get(url, timeout=timeout, proxies=proxies)
@@ -81,4 +87,4 @@ def requests_get(
         raise exceptions.Timeout(exc)
 
     except Exception as exc:
-        raise exceptions.HTTPError(exc)
+        raise exceptions.BrazilCEPException(exc)

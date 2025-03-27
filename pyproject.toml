@@ -126,3 +126,6 @@ strict_optional = false
 [tool.coverage.run]
 branch = true
 omit = ["tests/*"]
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"

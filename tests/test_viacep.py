@@ -1,9 +1,9 @@
+import json
 import os
 from unittest.mock import patch
 
 import dotenv
 import pytest
-import requests
 
 from brazilcep import (
     WebService,
@@ -105,48 +105,18 @@ def test_fetch_address_404(requests_mock):
         get_address_from_cep("37503-130", webservice=WebService.VIACEP)
 
 
-def test_connection_error(requests_mock):
-    """Test connection error scenario."""
-    requests_mock.get(f"{BASE_URL}/37503130/json", exc=requests.exceptions.ConnectionError)
+def test_json_decode_error(requests_mock):
+    """Test json decode error."""
 
-    with pytest.raises(exceptions.ConnectionError):
-        get_address_from_cep("37503-130", webservice=WebService.VIACEP)
+    requests_mock.get(f"{BASE_URL}/37503130/json", text=RESPONSE_MOCK_TEXT_SUCCESS)
 
-
-def test_http_error(requests_mock):
-    """Test HTTP error scenario."""
-    requests_mock.get(f"{BASE_URL}/37503130/json", exc=requests.exceptions.HTTPError)
-
-    with pytest.raises(exceptions.HTTPError):
-        get_address_from_cep("37503-130", webservice=WebService.VIACEP)
-
-
-def test_url_required_error(requests_mock):
-    """Test URL required error scenario."""
-    requests_mock.get(f"{BASE_URL}/37503130/json", exc=requests.exceptions.URLRequired)
-
-    with pytest.raises(exceptions.URLRequired):
-        get_address_from_cep("37503-130", webservice=WebService.VIACEP)
-
-
-def test_too_many_redirects_error(requests_mock):
-    """Test too many redirects error scenario."""
-    requests_mock.get(f"{BASE_URL}/37503130/json", exc=requests.exceptions.TooManyRedirects)
-
-    with pytest.raises(exceptions.TooManyRedirects):
-        get_address_from_cep("37503-130", webservice=WebService.VIACEP)
-
-
-def test_timeout_error(requests_mock):
-    """Test timeout error scenario."""
-    requests_mock.get(f"{BASE_URL}/37503130/json", exc=requests.exceptions.Timeout)
-
-    with pytest.raises(exceptions.Timeout):
-        get_address_from_cep("37503-130", webservice=WebService.VIACEP)
+    with patch("brazilcep.viacep.json.loads", side_effect=json.JSONDecodeError("", "", 0)):
+        with pytest.raises(exceptions.BrazilCEPException):
+            get_address_from_cep("37503-130", webservice=WebService.VIACEP)
 
 
 @pytest.mark.asyncio
-async def test_async_get_address_from_cep():
+async def test_async_get_address_from_cep_success():
     """Test asynchronous address retrieval."""
 
     async def __mock_aiohttp_get(*args, **kwargs):

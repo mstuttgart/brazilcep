@@ -145,14 +145,8 @@ async def async_fetch_address(
     Returns:
         dict: A dictionary containing standardized address data.
     """
-    try:
-        status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
-        return __handle_response(status_code=status_code, text=text)
-
-    except Exception as e:
-        raise exceptions.BrazilCEPException(
-            f"An error occurred while fetching the address asynchronously: {e}"
-        )
+    status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
+    return __handle_response(status_code=status_code, text=text)
 
 
 async_fetch_address.__doc__ = fetch_address.__doc__

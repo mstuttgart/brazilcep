@@ -90,12 +90,17 @@ def __handle_response(status_code: int, text: str):
             if message == "Blocked by flood":
                 raise exceptions.BlockedByFlood()
 
-        if status == 404:
+            raise exceptions.BrazilCEPException(
+                f"Unexpected error. Status: {status}, Message: {message}"
+            )
+
+        elif status == 404:
             raise exceptions.CEPNotFound()
 
-        return __format_response(response_json)
+        else:
+            return __format_response(response_json)
 
-    if status_code == 429:
+    elif status_code == 429:
         raise exceptions.BlockedByFlood()
 
     raise exceptions.BrazilCEPException(
@@ -161,9 +166,8 @@ async def async_fetch_address(
     Returns:
         dict: A dictionary containing the formatted address data.
     """
-    status_code, text = await utils.aiohttp_get(
-        url=URL.format(cep), timeout=timeout, raise_for_status=True
-    )
+
+    status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
 
     return __handle_response(status_code=status_code, text=text)
 

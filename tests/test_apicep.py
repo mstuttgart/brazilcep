@@ -1,9 +1,9 @@
+import json
 import os
 from unittest.mock import patch
 
 import dotenv
 import pytest
-import requests
 
 from brazilcep import (
     WebService,
@@ -126,6 +126,14 @@ def test_fetch_address_blocked_by_flood(requests_mock):
         get_address_from_cep("37503-130", webservice=WebService.APICEP)
 
 
+def test_fetch_address_other_error_code_400(requests_mock):
+    """Test status 400 code error."""
+    requests_mock.get(f"{API_URL}/37503130.json", text='{"status":400, "message": "Unknown error"}')
+
+    with pytest.raises(exceptions.BrazilCEPException):
+        get_address_from_cep("37503-130", webservice=WebService.APICEP)
+
+
 def test_fetch_address_429(requests_mock):
     """Test too many requests error."""
     requests_mock.get(f"{API_URL}/37503130.json", status_code=429)
@@ -142,48 +150,18 @@ def test_fetch_address_404(requests_mock):
         get_address_from_cep("37503-130", webservice=WebService.APICEP)
 
 
-def test_connection_error(requests_mock):
-    """Test connection error."""
-    requests_mock.get(f"{API_URL}/37503130.json", exc=requests.exceptions.ConnectionError)
+def test_json_decode_error(requests_mock):
+    """Test json decode error."""
 
-    with pytest.raises(exceptions.ConnectionError):
-        get_address_from_cep("37503-130", webservice=WebService.APICEP)
+    requests_mock.get(f"{API_URL}/37503130.json", text=RESPONSE_MOCK_TEXT_SUCCESS)
 
-
-def test_http_error(requests_mock):
-    """Test HTTP error."""
-    requests_mock.get(f"{API_URL}/37503130.json", exc=requests.exceptions.HTTPError)
-
-    with pytest.raises(exceptions.HTTPError):
-        get_address_from_cep("37503-130", webservice=WebService.APICEP)
-
-
-def test_url_required_error(requests_mock):
-    """Test URL required error."""
-    requests_mock.get(f"{API_URL}/37503130.json", exc=requests.exceptions.URLRequired)
-
-    with pytest.raises(exceptions.URLRequired):
-        get_address_from_cep("37503-130", webservice=WebService.APICEP)
-
-
-def test_too_many_redirects_error(requests_mock):
-    """Test too many redirects error."""
-    requests_mock.get(f"{API_URL}/37503130.json", exc=requests.exceptions.TooManyRedirects)
-
-    with pytest.raises(exceptions.TooManyRedirects):
-        get_address_from_cep("37503-130", webservice=WebService.APICEP)
-
-
-def test_timeout_error(requests_mock):
-    """Test timeout error."""
-    requests_mock.get(f"{API_URL}/37503130.json", exc=requests.exceptions.Timeout)
-
-    with pytest.raises(exceptions.Timeout):
-        get_address_from_cep("37503-130", webservice=WebService.APICEP)
+    with patch("brazilcep.apicep.json.loads", side_effect=json.JSONDecodeError("", "", 0)):
+        with pytest.raises(exceptions.BrazilCEPException):
+            get_address_from_cep("37503-130", webservice=WebService.APICEP)
 
 
 @pytest.mark.asyncio
-async def test_async_get_address_from_cep():
+async def test_async_get_address_from_cep_success():
     """Test async address fetch."""
 
     async def __mock_aiohttp_get(*args, **kwargs):

@@ -113,23 +113,8 @@ def fetch_address(
     Returns:
         dict: A dictionary containing standardized address information.
     """
-    try:
-        status_code, text = utils.requests_get(
-            url=URL.format(cep), timeout=timeout, proxies=proxies
-        )
-        return __handle_response(status_code=status_code, text=text)
-
-    except exceptions.ConnectionError as e:
-        raise exceptions.ConnectionError(f"Connection error occurred: {e}")
-
-    except exceptions.Timeout as e:
-        raise exceptions.Timeout(f"Request timed out: {e}")
-
-    except exceptions.HTTPError as e:
-        raise exceptions.HTTPError(f"HTTP error occurred: {e}")
-
-    # except Exception as e:
-    #     raise exceptions.BrazilCEPException(f"An unexpected error occurred: {e}")
+    status_code, text = utils.requests_get(url=URL.format(cep), timeout=timeout, proxies=proxies)
+    return __handle_response(status_code=status_code, text=text)
 
 
 async def async_fetch_address(
@@ -159,21 +144,8 @@ async def async_fetch_address(
     Returns:
         dict: A dictionary containing standardized address information.
     """
-    try:
-        status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
-        return __handle_response(status_code=status_code, text=text)
-
-    except exceptions.ConnectionError as e:
-        raise exceptions.ConnectionError(f"Connection error occurred: {e}")
-
-    except exceptions.Timeout as e:
-        raise exceptions.Timeout(f"Request timed out: {e}")
-
-    except exceptions.HTTPError as e:
-        raise exceptions.HTTPError(f"HTTP error occurred: {e}")
-
-    except Exception as e:
-        raise exceptions.BrazilCEPException(f"An unexpected error occurred: {e}")
+    status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
+    return __handle_response(status_code=status_code, text=text)
 
 
 async_fetch_address.__doc__ = fetch_address.__doc__
