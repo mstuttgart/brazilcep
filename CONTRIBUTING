@@ -90,6 +90,14 @@ For more granular testing:
 
     $ pytest tests/test_apicep.py::test_fetch_address_success
 
+To run tests against the real API, create a `.env` file in the project's root directory with the following content:
+
+.. code-block:: ini
+
+    SKIP_REAL_TEST=False
+
+This will enable tests that interact with the live API. Ensure you have the necessary permissions and understand the implications of running tests against the real API.
+
 Code Style
 ----------
 
