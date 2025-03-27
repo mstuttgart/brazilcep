@@ -5,32 +5,28 @@ Quickstart
 
 .. module:: brazilcep.client
 
-Eager to get started? This page gives a good introduction in how to get started
-with BrazilCEP.
+Eager to get started? This page provides a quick introduction to using BrazilCEP.
 
-First, make sure that:
+First, ensure that:
 
 * BrazilCEP is :ref:`installed <install>`
 
-
-Let's get started with some simple examples.
-
+Let's dive into some simple examples.
 
 Make a CEP Request
 ------------------
 
-Making a request with BrazilCEP is very simple.
+Making a request with BrazilCEP is straightforward.
 
-Begin by importing the BrazilCEP module::
+Start by importing the BrazilCEP module::
 
     >>> import brazilcep
 
-Now, call the `get_address_from_cep` to query any CEP::
+Next, use the `get_address_from_cep` function to query any CEP::
 
     >>> address = brazilcep.get_address_from_cep('37503-130')
 
-Now, we have a *dict* object called ``address``. We can
-get all the address information we need from this object::
+The result is a *dict* object called ``address``. You can retrieve all the address information you need from this object::
 
     >>> address
     {
@@ -42,20 +38,42 @@ get all the address information we need from this object::
         'complement': 'str',
     }
 
-The CEP always must be a string.
+**Note:** The CEP must always be a string.
+
+Asynchronous Requests with BrazilCEP
+------------------------------------
+
+BrazilCEP (version >= 7.0.0) also supports asynchronous operations , allowing you to retrieve address information for a given CEP without blocking your application. This is particularly useful for web applications or services that require high responsiveness.
+
+To perform an asynchronous request, use the `async_get_address_from_cep` function:
+
+.. code-block:: python
+
+    import asyncio
+    import brazilcep
+
+    async def main():
+    address = await brazilcep.async_get_address_from_cep('37503-130')
+    print(address)
+
+    asyncio.run(main())
+
+.. note::
+
+    - This function is asynchronous and must be awaited when called.
+    - Ensure that your environment supports asynchronous programming before using this function.
+
+By leveraging asynchronous requests, you can improve the performance and scalability of your applications when working with CEP data.
 
 Timeouts
 --------
 
-You can tell BrazilCEP to stop waiting for a response after a given number of
-seconds with the ``timeout`` parameter. Nearly all production code should use
-this parameter in nearly all requests. Failure to do so can cause your program
-to hang indefinitely.
+You can specify a timeout for BrazilCEP requests using the ``timeout`` parameter. This is highly recommended for production code to prevent your program from hanging indefinitely.
 
 Proxy
 -----
 
-BrazilCEP also supports proxy setings following *requests* pattern::
+BrazilCEP supports proxy settings following the *requests* library pattern::
 
     from brazilcep import get_address_from_cep
 
@@ -64,34 +82,31 @@ BrazilCEP also supports proxy setings following *requests* pattern::
         'http': '00.00.000.000',
     }
 
-    # set proxies
+    # Set proxies
     get_address_from_cep('37503-130', proxies=proxies)
 
-For more details, please official `requests doc <https://requests.readthedocs.io/en/latest/user/advanced/#proxies>`_.
+For more details, refer to the official `requests documentation <https://requests.readthedocs.io/en/latest/user/advanced/#proxies>`_.
 
-Unsing differents API's
------------------------
-
-.. note::
-
-    BrazilCEP was developed to integrate on-demand queries into web pages.
-    Querying CEP in bulk through scripts or any other means is not recommended.
+Using Different APIs
+---------------------
 
 .. note::
 
-    BrazilCEP is not responsible for the functioning, availability and support of any of these query API's. All of them are provided by third parties, and
-    this library just provides a handy way to centralize the CEP search on these services.
+    BrazilCEP is designed for on-demand queries, such as integration into web pages. Bulk querying of CEPs through scripts or other means is not recommended.
+
+.. note::
+
+    BrazilCEP is not responsible for the functionality, availability, or support of any third-party query APIs. This library simply provides a centralized way to search for CEPs using these services.
 
 By default, BrazilCEP uses the API provided by the `OpenCEP <https://opencep.com>`_ service.
 
-To use other services, we must indicate the desired service when calling the `get_address_from_cep`
-function.
+To use other services, specify the desired service when calling the `get_address_from_cep` function.
 
-Begin by importing the BrazilCEP `Webservice` class::
+Start by importing the BrazilCEP `WebService` class::
 
     >>> from brazilcep import get_address_from_cep, WebService
 
-Now, call the `get_address_from_cep` method with `webservice` parameter::
+Then, call the `get_address_from_cep` method with the `webservice` parameter::
 
     >>> get_address_from_cep('37503-130', webservice=WebService.APICEP)
     {
@@ -105,31 +120,22 @@ Now, call the `get_address_from_cep` method with `webservice` parameter::
 
 The possible values for the `webservice` parameter are:
 
-* `Webservice.APICEP`
-* `Webservice.VIACEP`
-* `Webservice.OPENCEP`
+* `WebService.APICEP`
+* `WebService.VIACEP`
+* `WebService.OPENCEP`
 
 Errors and Exceptions
 ---------------------
 
-BrazilCEP also supports a group of exceptions that can be used to
-handle any errors that occur during the query process.
+BrazilCEP provides a set of exceptions to handle errors during the query process:
 
-:exc:`~brazilcep.exceptions.InvalidCEP` exception raised by a request with invalid CEP.
+- :exc:`~brazilcep.exceptions.InvalidCEP`: Raised when an invalid CEP is provided.
+- :exc:`~brazilcep.exceptions.CEPNotFound`: Raised when the CEP is not found in the selected API.
+- :exc:`~brazilcep.exceptions.BlockedByFlood`: Raised when too many CEP requests are made in a short period.
+- :exc:`~brazilcep.exceptions.ConnectionError`: Raised when a connection error occurs.
+- :exc:`~brazilcep.exceptions.HTTPError`: Raised when an HTTP error occurs.
+- :exc:`~brazilcep.exceptions.URLRequired`: Raised when an invalid URL is used for a CEP request.
+- :exc:`~brazilcep.exceptions.TooManyRedirects`: Raised when too many redirects occur.
+- :exc:`~brazilcep.exceptions.Timeout`: Raised when a request times out.
 
-:exc:`~brazilcep.exceptions.CEPNotFound` exception is raised when CEP is not find in selected API.
-
-:exc:`~brazilcep.exceptions.BlockedByFlood`: exception raides by a large number of CEP requests in short range of time
-
-:exc:`~brazilcep.exceptions.ConnectionError`: exception raised by a connection error.
-
-:exc:`~brazilcep.exceptions.HTTPError`: exception raised by HTTP error.
-
-:exc:`~brazilcep.exceptions.URLRequired`: exception raised by using a invalid URL to make a CEP request.
-
-:exc:`~brazilcep.exceptions.TooManyRedirects`: Exception raised by too many redirects.
-
-:exc:`~brazilcep.exceptions.Timeout`: exception raised by request timed out.
-
-All exceptions that BrazilCEP explicitly raises inherit from :exc:`brazilcep.exceptions.BrazilCEPException`.
-
+All exceptions explicitly raised by BrazilCEP inherit from :exc:`brazilcep.exceptions.BrazilCEPException`.

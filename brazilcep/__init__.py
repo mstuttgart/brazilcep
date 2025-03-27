@@ -2,13 +2,19 @@
 BrazilCEP
 ~~~~~~~~~
 
-BrazilCEP is a minimalist and easy-to-use python library designed to query
-CEP (brazilian zip codes) data.
+BrazilCEP is a lightweight and user-friendly Python library for querying
+CEP (Brazilian postal codes) data.
 
-Its objective is to provide a common query interface to all these search services,
-facilitating the integration of Python applications with these services.
+The library provides a unified and consistent interface for accessing
+multiple CEP lookup services, making it easier to integrate Python
+applications with these services.
 
-:copyright: (c) 2024 by Michell Stuttgart.
+Features:
+- Simple and intuitive API.
+- Support for both synchronous and asynchronous queries.
+- Compatible with multiple CEP web services.
+
+:copyright: (c) 2023 by Michell Stuttgart.
 :license: MIT, see LICENSE for more details.
 """
 

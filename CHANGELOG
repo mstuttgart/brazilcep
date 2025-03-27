@@ -1,253 +1,255 @@
 Changelog
 =========
 
+7.0.0 (2025-03-27)
+------------------
+
+- Introduced async request functionality. Special thanks to [Iago Borba de Almeida](https://github.com/iagobalmeida) for the contribution.
+- Refined pre-commit hooks for better code consistency.
+- Updated documentation to fix syntax errors, add async request usage details, and enhance overall clarity.
+- Improved test coverage to ensure higher reliability.
+- Enhanced both documentation and code quality for better maintainability.
+- Optimized Makefile for streamlined usage.
+- Removed the deprecated Correios webservice to simplify the codebase.
+
 6.7.0 (2024-11-25)
 ------------------
 
-* Add new exceptions to encapsulate requests exceptions
-* Improve brazilcep api and docs
+- Added new exceptions to encapsulate request errors
+- Improved BrazilCEP API and documentation
 
 6.6.1 (2024-11-23)
 ------------------
 
-Update links on pypi
+- Updated PyPI links
 
 6.6.0 (2024-11-23)
 ------------------
 
-- Drop Python 3.8 support
-- Add Python 3.13 support
-- Add help, test, setup, coverage and docs commands on Makefile
-- Replace nox by tox
-- Add github issue and PR templates
-- Add pre-commit hook (validate)
-- Change mkdocs by sphinx (validate)
+- Dropped Python 3.8 support
+- Added Python 3.13 support
+- Added `help`, `test`, `setup`, `coverage`, and `docs` commands to Makefile
+- Replaced Nox with Tox
+- Added GitHub issue and PR templates
+- Introduced pre-commit hooks
+- Migrated documentation from MkDocs to Sphinx
 
 6.5.0 (2024-08-18)
 ------------------
 
-- Remove API Correios from website.
+- Removed API Correios from the website
 
 6.4.1 (2024-08-18)
 ------------------
 
-- Fix beautifulsoup4 version
+- Fixed `beautifulsoup4` version
 
 6.4.0 (2024-08-14)
 ------------------
 
-- Add API Correios (via Correios site) support
-- Add OpenCEP support
+- Added API Correios (via Correios site) support
+- Added OpenCEP support
 
 6.3.1 (2024-05-05)
 ------------------
 
-Update copyright and python version
+- Updated copyright and Python version
 
 6.3.0 (2024-05-05)
 ------------------
 
-- Change poetry `pyproject.toml` and use default `pyproject.toml` from Python docs
-- Improve nox tests and dependencies enviromnents
-- Add support to Python 3.12
+- Updated `pyproject.toml` to align with Python documentation standards
+- Improved Nox tests and dependency environments
+- Added support for Python 3.12
 
 6.2.0 (2023-10-01)
 ------------------
 
-- Add timeout settings
-- Add proxy settings. From: https://github.com/mstuttgart/brazilcep/issues/40
-- Add real tests to APICEP and ViaCEP
-- Update docs and README
-- Deprecated 'Correios' webservice support
+- Added timeout settings
+- Added proxy settings (https://github.com/mstuttgart/brazilcep/issues/40)
+- Added real tests for APICEP and ViaCEP
+- Updated documentation and README
+- Deprecated Correios webservice support
 
 6.1.0 (2023-10-01)
 ------------------
 
-- Add timeout parameters in requests
-- Update README typing errors
+- Added timeout parameters for requests
+- Fixed typos in README
 
 6.0.0 (2023-04-30)
 ------------------
 
-- Rename lib to BrazilCEP
-- Create new pip package
-- Remove support for Python 3.5, 3.6, and 3.7
-- Add support to Python 3.9, 3.10, and 3.11
-- Add poetry to manage project dependencies
-- Add matrix test of Python versions using nox
-- Improve docs and code
-- Fix Github actions lint
-- Fix Github actions coverage
-- Improve lint test
-- Improve coverage test
-- Create docs site (translate to English)
-- Update contribute doc to use poetry
+- Renamed library to BrazilCEP
+- Created a new pip package
+- Dropped support for Python 3.5, 3.6, and 3.7
+- Added support for Python 3.9, 3.10, and 3.11
+- Introduced Poetry for dependency management
+- Added matrix testing for Python versions using Nox
+- Improved documentation and code quality
+- Fixed GitHub Actions lint and coverage issues
+- Enhanced lint and coverage tests
+- Created a documentation site (translated to English)
+- Updated contribution guide to use Poetry
 
 5.1.0 (2022-10-12)
 ------------------
 
-* Corrige: AttributeError: 'NoneType' object has no attribute 'split' ao consultar cep 99999-999
-* Adiciona nova exception 'BlockedByFlood' para excesso de consultas
-* Melhoras testes adicionando mock as consultas de ViaCEP e ApiCEP
+- Fixed `AttributeError: 'NoneType' object has no attribute 'split'` when querying CEP `99999-999`
+- Added new exception `BlockedByFlood` for excessive queries
+- Improved tests by adding mocks for ViaCEP and ApiCEP queries
 
 5.0.0 (2021-01-07)
 ------------------
 
-* Adiciona suporte para Python 3.8
-* Adiciona integração com consulta de CEP nos webservices dos Correios
-* Adiciona integração com consulta de CEP no webservice da APICEP.com
-* Adiciciona novas exceptions para melhor tratamentos de erros.
-* Remove deprecated methods (consulta_cep, validar_cep, formatar_cep)
-* Remove deprecated exceptions (ExcecaoPyCEPCorreios, CEPInvalido, FalhaNaConexao, MultiploRedirecionamento, Timeout)
-* Remove function 'get_cep_from_address', por falta de uso
-* Remove documentação antiga e centraliza exemplos de uso no README
-* Uso de TOX para testes em diferentes versões do Python
-* Adiciona novos testes e aumenta taxa do coverage
+- Added support for Python 3.8
+- Integrated Correios and APICEP.com webservices for CEP queries
+- Introduced new exceptions for better error handling
+- Removed deprecated methods and exceptions
+- Removed unused `get_cep_from_address` function
+- Centralized usage examples in README
+- Adopted Tox for testing across Python versions
+- Added new tests and improved coverage
 
 4.0.4 (2020-08-18)
 ------------------
 
-* Corrige "AttributeError: 'ConnectionError' object has no attribute 'message'"
+- Fixed `AttributeError: 'ConnectionError' object has no attribute 'message'`
 
 4.0.3 (2020-06-08)
 ------------------
 
-* Corrige 'get_cep_from_address' error key - thanks Hendrix Costa https://github.com/hendrixcosta
-* Corrige docs
+- Fixed `get_cep_from_address` error key - Thanks to Hendrix Costa (https://github.com/hendrixcosta)
+- Updated documentation
 
 4.0.2 (2020-05-31)
 ------------------
 
-* Corrige exemplo de uso do 'get_cep_from_address'
-* Corrige "(client): KeyError exception when address not found" - thanks Patrick Ferraz https://github.com/patricksferraz
-* Adiciona captura de erro com status_code=200 - thanks Bruno Mello https://github.com/bgmello
+- Fixed usage example for `get_cep_from_address`
+- Fixed `KeyError` exception when address not found - Thanks to Patrick Ferraz (https://github.com/patricksferraz)
+- Added error handling for `status_code=200` - Thanks to Bruno Mello (https://github.com/bgmello)
 
 4.0.1 (2020-02-22)
 ------------------
 
-* Corrige travis.yml deploy
+- Fixed `travis.yml` deployment issues
 
 4.0.0 (2020-02-22)
 ------------------
 
-* Adiciona suporte a API do ViaCEP (https://viacep.com.br/)
-* Adiciona consulta de faixa de CEPs
-* Adiciona function format_cep, validate_cep
-* Adiciona nova function de busca de CEP
-* Adiciona suporte para Python 3.7
-* Ajustes no codigo e documentação
+- Added support for ViaCEP API (https://viacep.com.br/)
+- Introduced CEP range queries
+- Added `format_cep` and `validate_cep` functions
+- Added support for Python 3.7
+- Improved code and documentation
 
 Milestone: https://github.com/mstuttgart/pycep-correios/milestone/4
 
 3.2.0 (2019-08-18)
 ------------------
 
-* Remove suporte para Python 3.4: https://www.python.org/downloads/release/python-3410/
-* Adiciona suporte para retorno com atributos ausentes
-* Adiciona mock aos testes
+- Dropped support for Python 3.4
+- Added support for responses with missing attributes
+- Added mocks to tests
 
 3.1.0 (2018-11-11)
 ------------------
 
-* Correção no tipo do retorno do metodo consultar_cep (por questões de compatibilidade, agora retorna um dict)
-* Correção da documentação, pois as tags 'id' e 'complemento' não estão mais sendo retornadas pelo Correios.
-* Atualização do README.md para uso de markdown no pypi e documentação.
+- Fixed return type of `consultar_cep` method (now returns a dictionary)
+- Updated documentation to reflect changes in Correios API
+- Updated README for PyPI compatibility
 
 3.0.0 (2018-10-21)
 ------------------
 
-* Alteração da API de consulta para [python-zeep](https://pypi.org/project/zeep/)
-* Antigas `exceptions` agora estão `deprecated`. Usar apenas `ExcecaoPyCEPCorreios`
-* Atualização da documentação
-* Remoção do suporte para Python 2.7
+- Migrated API to use [python-zeep](https://pypi.org/project/zeep/)
+- Deprecated old exceptions
+- Updated documentation
+- Dropped support for Python 2.7
 
 2.3.1 (2018-05-03)
 ------------------
 
-* Corrige README.rst
-* Adiciona comando para validação dpo setup.py no Makefile
-* Corrige link do repositorio e donwload
+- Fixed `README.rst`
+- Added validation command to `setup.py` in Makefile
+- Fixed repository and download links
 
 2.3.0 (2018-05-03)
 ------------------
 
-* Adiciona logging para consulta de CEP
-* Adiciona documentação em inglês
-* Versão requirida das libs *requests* e da *Jinja2* limitadas por baixo, para fins de compatibilidade
-* Remove suporte para Python 3.3
+- Added logging for CEP queries
+- Added English documentation
+- Limited versions of `requests` and `Jinja2` for compatibility
+- Dropped support for Python 3.3
 
 2.2.0 (2017-07-16)
 ------------------
 
-* Melhorias no metodo de formatar_cep, que agora passou a utilizar expressão regular para verificar se o CEP é formado por caracteres.
-* A função *formatar_cep* agora passa a lançar a exceção *Value Error* quando o CEP não possui estrutura válida https://github.com/mstuttgart/pycep-correios/pull/22
-* Adicionado novas exceções ExcecaoPyCEPCorreios, Timeout, MultiploRedirecionamento, FalhaNaConexao. Consultar documentacao para exemplos de utilização delas. close https://github.com/mstuttgart/pycep-correios/issues/25
-* Adicionado ambientes de *Homologação* e *Producao*. Facilitando realizar consultas utilizadas para testes. close https://github.com/mstuttgart/pycep-correios/issues/24
-* Melhorias na organização da API.
+- Improved `formatar_cep` method with regex validation
+- Introduced new exceptions for better error handling
+- Added environments for testing and production
+- Improved API organization
 
 2.1.1 (2017-06-30)
 ------------------
 
-* Correção de erros de unicode com python2.7
+- Fixed Unicode errors in Python 2.7
 
 2.1.0 (2017-06-29)
 ------------------
 
-* Adicionado suporte para Python 2.7+
-* Ajustes e correções na documentação
+- Added support for Python 2.7+
+- Updated documentation
 
 2.0.0 (2017-06-20)
 ------------------
 
-* Atualização do código da PyCEPCorreios, deixando-a mais facil de ser utilizada
-* Remoção das exceções antigas, deixando apenas a Exceção padrão da lib
-* Remoção da classe PyCEPCorreios
-* Alteração dos *imports* da lib para facilitar seu uso e diminuir tamanho dos *imports*
-* Adicionado documentação com Sphinx
-* Adicionado testes com TOX
-* Adicionado método de validação de CEP e formatação de CEP
+- Refactored PyCEPCorreios for easier usage
+- Removed old exceptions and classes
+- Simplified imports
+- Added Sphinx documentation
+- Added Tox testing
+- Introduced CEP validation and formatting methods
 
 1.1.7 (2017-05-09)
 ------------------
 
-* Corrigido erro `jinja2.exceptions.TemplateNotFound: consultacep.xml`
-* Erro durante instalação da PyCEPCorreios via pip
-* Atualizado código de exemplo no README.rst
-* Atualizado exemplos na documentação
+- Fixed `jinja2.exceptions.TemplateNotFound: consultacep.xml`
+- Resolved installation issues with PyCEPCorreios via pip
+- Updated README and documentation examples
 
 1.1.6 (2017-05-08)
 ------------------
 
-* Correção de bug durante instalação. 15
-* Correção de template xml ausente no pacote do modulo
-* Melhorias gerais no código e correções de bugs
+- Fixed installation bugs
+- Improved code and resolved bugs
 
 1.1.1 (2017-02-08)
 ------------------
 
-* Melhorias gerais no código
-* XML schema utilizando Jinja2
+- General code improvements
+- Added XML schema using Jinja2
 
 1.0.1 (2016-08-03)
 ------------------
 
-* Simplificação da classes Exceptions
-* Organização do código de teste
-* Utilização do mock para test
+- Simplified exception classes
+- Organized test code
+- Used mocks for testing
 
 1.0.0 (2016-07-31)
 ------------------
 
-* API migrada para Python 3. Python 2.7 não será mais suportado
-* Substituição da lib *suds* pela lib *requests* para realizar as requisições
+- Migrated API to Python 3 (dropped Python 2.7 support)
+- Replaced `suds` with `requests` for HTTP requests
 
 0.0.2 (2016-05-09)
 ------------------
 
-* `setup.py` com número de versão atualizado e dependência corrigidas.
+- Updated `setup.py` version and dependencies
 
 0.0.1 (2016-05-05)
 ------------------
 
-* Versão inicial.
-* Permite busca no webservice dos correios dos dados de um CEP fornecido.
+- Initial release
+- Enabled CEP lookup via Correios webservice

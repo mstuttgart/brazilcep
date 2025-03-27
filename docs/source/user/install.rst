@@ -3,38 +3,44 @@
 Installation
 ============
 
-This part of the documentation covers the installation of BrazilCEP. 
+This section of the documentation explains how to install **BrazilCEP**.
 
-**BrazilCEP** currently supports the follow Python versions:
+Supported Python Versions
+-------------------------
 
-   .. image:: https://img.shields.io/pypi/pyversions/brazilcep.svg
+**BrazilCEP** supports the following Python versions:
+
+.. image:: https://img.shields.io/pypi/pyversions/brazilcep.svg
     :target: https://pypi.org/project/brazilcep/
     :alt: Python Version Support Badge
 
+Installing BrazilCEP
+--------------------
 
-Install from PyPi
------------------
+### Install from PyPI
 
-To install **BrazilCEP**, simply run this simple command in your terminal of choice::
+To install **BrazilCEP** from PyPI, run the following command in your terminal::
 
-    pip install brazilcep
+     pip install brazilcep
 
-Install from Source Code
-------------------------
+### Install from Source Code
 
-**BrazilCEP** is actively developed on GitHub, where the code is
-`always available <https://github.com/mstuttgart/brazilcep>`_.
+The source code for **BrazilCEP** is hosted on GitHub and is always available for download.
 
-You can either clone the public repository::
+1. Clone the public repository::
 
-    git clone https://github.com/mstuttgart/brazilcep.git
+         git clone https://github.com/mstuttgart/brazilcep.git
 
-Or, download the `tarball <https://github.com/mstuttgart/brazilcep/tarball/main>`_::
+    Or download the `tarball <https://github.com/mstuttgart/brazilcep/tarball/main>`_::
 
-    curl -OL https://github.com/mstuttgart/brazilcep/tarball/main
+         curl -OL https://github.com/mstuttgart/brazilcep/tarball/main
 
-Once you have a copy of the source, you can embed it in your own Python
-package, or install it into your site-packages easily::
+2. Navigate to the project directory::
 
-    cd brazilcep
-    pip install -e .
+         cd brazilcep
+
+3. Install the package in editable mode::
+
+         pip install -e .
+
+You can now use **BrazilCEP** in your Python projects.
