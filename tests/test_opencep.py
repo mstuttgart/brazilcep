@@ -128,6 +128,24 @@ def test_json_decode_error(requests_mock):
             get_address_from_cep("37503-130", webservice=WebService.OPENCEP)
 
 
+@pytest.mark.skipif(
+    SKIP_REAL_TEST or IN_GITHUB_ACTIONS, reason="Skip real API tests in certain environments."
+)
+@pytest.mark.asyncio
+async def test_async_fetch_address_success_real():
+    """
+    Test fetching an address asynchronously using real API.
+    """
+    address = await async_get_address_from_cep("37503-130", webservice=WebService.OPENCEP)
+
+    assert address["district"] == "Santo Antônio"
+    assert address["cep"] == "37503-130"
+    assert address["city"] == "Itajubá"
+    assert address["complement"] == ""
+    assert address["street"] == "Rua Geraldino Campista"
+    assert address["uf"] == "MG"
+
+
 @pytest.mark.asyncio
 async def test_async_get_address_from_cep_success():
     """
