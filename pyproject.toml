@@ -4,19 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "brazilcep"
-description = "Minimalist and easy-to-use python library designed to query CEP (brazilian zip codes) data"
+description = "Minimalist and easy-to-use Python library designed to query CEP (Postal Address Code) data"
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Michell Stuttgart", email = "michellstut@gmail.com" }]
 requires-python = ">=3.9"
 dynamic = ["version"]
 classifiers = [
-  "Topic :: Software Development :: Build Tools",
-  "Topic :: Software Development :: Libraries :: Python Modules",
-  "Intended Audience :: Developers",
-  "Operating System :: OS Independent",
   "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
@@ -25,15 +23,18 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Build Tools",
   "Topic :: Software Development :: Libraries",
+  "Topic :: Software Development :: Libraries :: Python Modules",
   "Natural Language :: English",
   "Natural Language :: Portuguese (Brazilian)",
 ]
-
-dependencies = ["requests>=2.28.2", "aiohttp>=3.8.1"]
+dependencies = [
+  "requests>=2.28.2",
+  "aiohttp>=3.8.1",
+]
 
 [project.optional-dependencies]
-
 dev = [
   "tox>=4.23.2",
   "pytest>=7.3.1",
@@ -48,14 +49,12 @@ dev = [
   "ruff",
   "ipdb",
 ]
-
 coverage = [
   "coveralls>=3.3.1",
   "pytest-cov>=4.0.0",
   "requests-mock>=1.10.0",
   "codecov-cli>=2.0.15",
 ]
-
 docs = [
   "Sphinx>=6,<8",
   "readme-renderer==43",
@@ -87,7 +86,14 @@ ignore = [
 include-package-data = true
 
 [tool.setuptools.packages.find]
-exclude = ["*.tests", "*.tests.*", "tests.*", "tests", "docs*", "scripts*"]
+exclude = [
+  "*.tests",
+  "*.tests.*",
+  "tests.*",
+  "tests",
+  "docs*",
+  "scripts*",
+]
 
 [tool.setuptools.package-data]
 brazilcep = ["py.typed"]

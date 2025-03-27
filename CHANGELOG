@@ -4,13 +4,13 @@ Changelog
 7.0.0 (2025-03-27)
 ------------------
 
-- Added async request feature! - Thanks to Iago Borba de Almeida (https://github.com/iagobalmeida)
-- Adjusted pre-commit hooks
-- Updated documentation (fixed syntax errors, added async request docs, and improved text)
-- Improved coverage
-- Enhanced documentation and code quality
-- Optimized Makefile code
-- Removed deprecated Correios webservice
+- Introduced async request functionality. Special thanks to [Iago Borba de Almeida](https://github.com/iagobalmeida) for the contribution.
+- Refined pre-commit hooks for better code consistency.
+- Updated documentation to fix syntax errors, add async request usage details, and enhance overall clarity.
+- Improved test coverage to ensure higher reliability.
+- Enhanced both documentation and code quality for better maintainability.
+- Optimized Makefile for streamlined usage.
+- Removed the deprecated Correios webservice to simplify the codebase.
 
 6.7.0 (2024-11-25)
 ------------------
