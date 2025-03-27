@@ -49,7 +49,12 @@ dev = [
   "ipdb",
 ]
 
-coverage = ["coveralls>=3.3.1", "pytest-cov>=4.0.0", "requests-mock>=1.10.0"]
+coverage = [
+  "coveralls>=3.3.1",
+  "pytest-cov>=4.0.0",
+  "requests-mock>=1.10.0",
+  "codecov-cli>=2.0.15",
+]
 
 docs = [
   "Sphinx>=6,<8",

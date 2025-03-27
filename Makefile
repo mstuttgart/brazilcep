@@ -39,7 +39,7 @@ build:
 
 # Run coverage analysis
 coverage:
-	pytest --cov=brazilcep --cov-config=pyproject.toml --cov-report=term-missing --no-cov-on-fail --cov-report=html
+	pytest --cov=brazilcep --cov-config=pyproject.toml --cov-report=term-missing --no-cov-on-fail --cov-report=html --junitxml=junit.xml -o junit_family=legacy
 
 # Run lint checks
 lint:
