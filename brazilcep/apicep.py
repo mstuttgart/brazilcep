@@ -26,7 +26,8 @@ URL = "https://ws.apicep.com/cep/{}.json"
 
 
 def __format_response(response: dict) -> dict:
-    """Formats the response from the ApiCEP API into a standardized address dictionary.
+    """
+    Formats the response from the ApiCEP API into a standardized address dictionary.
 
     This function processes the raw JSON response from the ApiCEP API and extracts
     relevant address information, ensuring that all fields are properly formatted
@@ -58,7 +59,8 @@ def __format_response(response: dict) -> dict:
 
 
 def __handle_response(status_code: int, text: str):
-    """Handles the API response based on the HTTP status code and response content.
+    """
+    Handles the API response based on the HTTP status code and response content.
 
     Args:
         status_code (int): The HTTP status code returned by the API.
@@ -111,7 +113,8 @@ def __handle_response(status_code: int, text: str):
 def fetch_address(
     cep: str, timeout: Union[None, int] = None, proxies: Union[None, dict] = None
 ) -> dict:
-    """Fetch address data from the ApiCEP web service using a given CEP.
+    """
+    Fetch address data from the ApiCEP web service using a given CEP.
 
     This function sends a synchronous HTTP request to the ApiCEP API to retrieve
     address information for the provided CEP (Brazilian postal code).
@@ -142,7 +145,8 @@ def fetch_address(
 async def async_fetch_address(
     cep: str, timeout: Union[None, int] = None, proxies: Union[None, dict] = None
 ) -> dict:
-    """Fetch address data asynchronously from the ApiCEP web service using a given CEP.
+    """
+    Fetch address data asynchronously from the ApiCEP web service using a given CEP.
 
     This function sends an asynchronous HTTP request to the ApiCEP API to retrieve
     address information for the provided CEP (Brazilian postal code).
@@ -169,6 +173,3 @@ async def async_fetch_address(
 
     status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
     return __handle_response(status_code=status_code, text=text)
-
-
-async_fetch_address.__doc__ = fetch_address.__doc__

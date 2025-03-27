@@ -26,7 +26,8 @@ URL = "http://www.viacep.com.br/ws/{}/json"
 
 
 def __format_response(response: dict) -> dict:
-    """Transforms the raw ViaCEP API response into a standardized address dictionary.
+    """
+    Transforms the raw ViaCEP API response into a standardized address dictionary.
 
     This function extracts and formats specific fields from the API response,
     ensuring that all string values are stripped of leading and trailing whitespace.
@@ -55,7 +56,8 @@ def __format_response(response: dict) -> dict:
 
 
 def __handle_response(status_code: int, text: str) -> dict:
-    """Handles the API response based on the status code and response content.
+    """
+    Handles the API response based on the status code and response content.
 
     Args:
         status_code (int): The HTTP status code returned by the API.
@@ -89,15 +91,16 @@ def __handle_response(status_code: int, text: str) -> dict:
 def fetch_address(
     cep: str, timeout: Union[None, int] = None, proxies: Union[None, dict] = None
 ) -> dict:
-    """Fetch address information for a given CEP using the ViaCEP API.
+    """
+    Fetch address information for a given CEP using the ViaCEP API.
 
     This function sends a synchronous HTTP request to the ViaCEP API to retrieve
     address information for the specified CEP (postal code).
 
     Args:
-        cep (str): The CEP (postal code) to be searched.
-        timeout (Union[None, int], optional): The maximum time to wait for a response, in seconds.
-        proxies (Union[None, dict], optional): A dictionary mapping protocol to the URL of the proxy.
+        cep (str): The CEP to be searched.
+        timeout (Union[None, int], optional): The number of seconds to wait for the server to respond. Defaults to None.
+        proxies (Union[None, dict], optional): A dictionary mapping protocol to the URL of the proxy. Defaults to None.
 
     Raises:
         exceptions.ConnectionError: Raised for connection errors.
@@ -106,7 +109,6 @@ def fetch_address(
         exceptions.TooManyRedirects: Raised if too many redirects occur.
         exceptions.Timeout: Raised if the request times out.
         exceptions.InvalidCEP: Raised if the provided CEP is invalid.
-        exceptions.BlockedByFlood: Raised if the request is blocked due to flooding.
         exceptions.CEPNotFound: Raised if the CEP is not found in the API response.
         exceptions.BrazilCEPException: Base class for other exceptions.
 
@@ -120,15 +122,16 @@ def fetch_address(
 async def async_fetch_address(
     cep: str, timeout: Union[None, int] = None, proxies: Union[None, dict] = None
 ) -> dict:
-    """Fetch address information for a given CEP asynchronously using the ViaCEP API.
+    """
+    Fetch address information for a given CEP asynchronously using the ViaCEP API.
 
     This function sends an asynchronous HTTP request to the ViaCEP API to retrieve
     address information for the specified CEP (postal code).
 
     Args:
-        cep (str): The CEP (postal code) to be searched.
-        timeout (Union[None, int], optional): The maximum time to wait for a response, in seconds.
-        proxies (Union[None, dict], optional): A dictionary mapping protocol to the URL of the proxy.
+        cep (str): The CEP to be searched.
+        timeout (Union[None, int], optional): The number of seconds to wait for the server to respond. Defaults to None.
+        proxies (Union[None, dict], optional): A dictionary mapping protocol to the URL of the proxy. Defaults to None.
 
     Raises:
         exceptions.ConnectionError: Raised for connection errors.
@@ -137,7 +140,6 @@ async def async_fetch_address(
         exceptions.TooManyRedirects: Raised if too many redirects occur.
         exceptions.Timeout: Raised if the request times out.
         exceptions.InvalidCEP: Raised if the provided CEP is invalid.
-        exceptions.BlockedByFlood: Raised if the request is blocked due to flooding.
         exceptions.CEPNotFound: Raised if the CEP is not found in the API response.
         exceptions.BrazilCEPException: Base class for other exceptions.
 
@@ -146,6 +148,3 @@ async def async_fetch_address(
     """
     status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
     return __handle_response(status_code=status_code, text=text)
-
-
-async_fetch_address.__doc__ = fetch_address.__doc__

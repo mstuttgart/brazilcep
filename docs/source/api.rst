@@ -14,6 +14,7 @@ Client
 The primary functionality of BrazilCEP can be accessed through the following function:
 
 .. autofunction:: get_address_from_cep
+.. autofunction:: async_get_address_from_cep
 
 Exceptions
 ----------

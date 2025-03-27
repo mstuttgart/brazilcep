@@ -26,40 +26,60 @@ Classes:
 
 
 class BrazilCEPException(Exception):
-    """Base class for exceptions"""
+    """
+    Base class for exceptions
+    """
 
 
 class InvalidCEP(BrazilCEPException):
-    """Exception raised for invalid CEP requests"""
+    """
+    Exception raised for invalid CEP requests
+    """
 
 
 class CEPNotFound(BrazilCEPException):
-    """Exception raised when a CEP is not found"""
+    """
+    Exception raised when a CEP is not found
+    """
 
 
 class BlockedByFlood(BrazilCEPException):
-    """Exception raised due to a flood of requests being blocked"""
+    """
+    Exception raised due to a flood of requests being blocked
+    """
 
 
 class ConnectionError(BrazilCEPException):
-    """Exception raised by a BrazilCEP connection error"""
+    """
+    Exception raised by a BrazilCEP connection error
+    """
 
 
 class HTTPError(BrazilCEPException):
-    """Exception raised by HTTP error"""
+    """
+    Exception raised by HTTP error
+    """
 
 
 class URLRequired(BrazilCEPException):
-    """Exception raised for using an invalid URL to make a request"""
+    """
+    Exception raised for using an invalid URL to make a request
+    """
 
 
 class TooManyRedirects(BrazilCEPException):
-    """Exception raised by too many redirects"""
+    """
+    Exception raised by too many redirects
+    """
 
 
 class Timeout(BrazilCEPException):
-    """Exception raised when a request times out"""
+    """
+    Exception raised when a request times out
+    """
 
 
 class JSONLoadError(BrazilCEPException):
-    """Exception raised when a JSON loading operation fails"""
+    """
+    Exception raised when a JSON loading operation fails
+    """

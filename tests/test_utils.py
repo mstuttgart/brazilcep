@@ -13,7 +13,9 @@ URL = "https://api.com/99999999"
 
 
 def test_requests_get_timeout_error(requests_mock):
-    """Test requests_get with a timeout error."""
+    """
+    Test requests_get with a timeout error.
+    """
 
     requests_mock.get(URL, exc=requests.exceptions.Timeout)
 
@@ -22,7 +24,9 @@ def test_requests_get_timeout_error(requests_mock):
 
 
 def test_connection_error(requests_mock):
-    """Test requests_get with a connection error."""
+    """
+    Test requests_get with a connection error.
+    """
     requests_mock.get(URL, exc=requests.exceptions.ConnectionError)
 
     with pytest.raises(exceptions.ConnectionError):
@@ -30,7 +34,9 @@ def test_connection_error(requests_mock):
 
 
 def test_http_error(requests_mock):
-    """Test requests_get with a HTTP error."""
+    """
+    Test requests_get with a HTTP error.
+    """
     requests_mock.get(URL, exc=requests.exceptions.HTTPError)
 
     with pytest.raises(exceptions.HTTPError):
@@ -38,7 +44,9 @@ def test_http_error(requests_mock):
 
 
 def test_url_required_error(requests_mock):
-    """Test requests_get with a URL required error."""
+    """
+    Test requests_get with a URL required error.
+    """
     requests_mock.get(URL, exc=requests.exceptions.URLRequired)
 
     with pytest.raises(exceptions.URLRequired):
@@ -46,7 +54,9 @@ def test_url_required_error(requests_mock):
 
 
 def test_too_many_redirects_error(requests_mock):
-    """Test requests_get with a too many redirects error."""
+    """
+    Test requests_get with a too many redirects error.
+    """
     requests_mock.get(URL, exc=requests.exceptions.TooManyRedirects)
 
     with pytest.raises(exceptions.TooManyRedirects):
@@ -54,7 +64,9 @@ def test_too_many_redirects_error(requests_mock):
 
 
 def test_general_exception_error(requests_mock):
-    """Test requests_get with a general_exception error."""
+    """
+    Test requests_get with a general_exception error.
+    """
     requests_mock.get(URL, exc=Exception)
 
     with pytest.raises(exceptions.BrazilCEPException):
@@ -66,7 +78,9 @@ def test_general_exception_error(requests_mock):
 
 @pytest.mark.asyncio
 async def test_aiohttp_get_success():
-    """Test aiohttp_get with a successful response."""
+    """
+    Test aiohttp_get with a successful response.
+    """
 
     mock_response = MagicMock()
     mock_response.status = 200
@@ -81,7 +95,9 @@ async def test_aiohttp_get_success():
 
 @pytest.mark.asyncio
 async def test_aiohttp_get_connection_error():
-    """Test aiohttp_get with a connection error."""
+    """
+    Test aiohttp_get with a connection error.
+    """
 
     with patch(
         "brazilcep.utils.aiohttp.ClientSession.get", side_effect=aiohttp.ClientConnectionError
@@ -92,7 +108,9 @@ async def test_aiohttp_get_connection_error():
 
 @pytest.mark.asyncio
 async def test_aiohttp_get_timeout():
-    """Test aiohttp_get with a timeout error."""
+    """
+    Test aiohttp_get with a timeout error.
+    """
 
     with patch(
         "brazilcep.utils.aiohttp.ClientSession.get", side_effect=aiohttp.ConnectionTimeoutError
@@ -103,7 +121,9 @@ async def test_aiohttp_get_timeout():
 
 @pytest.mark.asyncio
 async def test_aiohttp_get_client_error():
-    """Test aiohttp_get with a client error."""
+    """
+    Test aiohttp_get with a client error.
+    """
 
     with patch("brazilcep.utils.aiohttp.ClientSession.get", side_effect=aiohttp.ClientError):
         with pytest.raises(exceptions.BrazilCEPException):
@@ -112,7 +132,9 @@ async def test_aiohttp_get_client_error():
 
 @pytest.mark.asyncio
 async def test_aiohttp_get_general_exception():
-    """Test aiohttp_get with a general exception."""
+    """
+    Test aiohttp_get with a general exception.
+    """
 
     with patch("brazilcep.utils.aiohttp.ClientSession.get", side_effect=Exception):
         with pytest.raises(exceptions.BrazilCEPException):
@@ -121,7 +143,9 @@ async def test_aiohttp_get_general_exception():
 
 @pytest.mark.asyncio
 async def test_raise_for_status():
-    """Test aiohttp_get with raise_for_status response."""
+    """
+    Test aiohttp_get with raise_for_status response.
+    """
 
     mock_response = MagicMock()
     mock_response.raise_for_status = MagicMock(side_effect=aiohttp.ClientResponseError)

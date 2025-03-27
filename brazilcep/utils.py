@@ -9,7 +9,8 @@ from . import exceptions
 async def aiohttp_get(
     url: str, timeout: Optional[int] = None, raise_for_status: bool = False
 ) -> tuple[int, str]:
-    """Perform an asynchronous GET request using aiohttp.
+    """
+    Perform an asynchronous GET request using aiohttp.
 
     Args:
         url (str): The URL to request.

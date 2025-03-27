@@ -36,7 +36,9 @@ API_URL = "https://ws.apicep.com/cep"
     SKIP_REAL_TEST or IN_GITHUB_ACTIONS, reason="Skip real API tests in certain environments."
 )
 def test_fetch_address_success_real():
-    """Test successful address fetch with real API."""
+    """
+    Test successful address fetch with real API.
+    """
     address = get_address_from_cep("37.503-130", webservice=WebService.APICEP)
 
     assert address["district"] == "Santo Antônio"
@@ -51,13 +53,17 @@ def test_fetch_address_success_real():
     SKIP_REAL_TEST or IN_GITHUB_ACTIONS, reason="Skip real API tests in certain environments."
 )
 def test_fetch_address_cep_not_found_real():
-    """Test invalid CEP with real API."""
+    """
+    Test invalid CEP with real API.
+    """
     with pytest.raises(exceptions.InvalidCEP):
         get_address_from_cep("37.503-13", webservice=WebService.APICEP)
 
 
 def test_fetch_address_success(requests_mock):
-    """Test successful address fetch with mocked API."""
+    """
+    Test successful address fetch with mocked API.
+    """
 
     requests_mock.get(f"{API_URL}/37503130.json", text=RESPONSE_MOCK_TEXT_SUCCESS)
 
@@ -99,7 +105,9 @@ def test_fetch_address_success(requests_mock):
 
 
 def test_fetch_address_cep_not_found(requests_mock):
-    """Test CEP not found error."""
+    """
+    Test CEP not found error.
+    """
     requests_mock.get(f"{API_URL}/00000000.json", text='{"status":404}')
 
     with pytest.raises(exceptions.CEPNotFound):
@@ -107,7 +115,9 @@ def test_fetch_address_cep_not_found(requests_mock):
 
 
 def test_fetch_address_invalid_cep(requests_mock):
-    """Test invalid CEP error."""
+    """
+    Test invalid CEP error.
+    """
     requests_mock.get(
         f"{API_URL}/3750313.json", text='{"status":400, "message": "CEP informado é inválido"}'
     )
@@ -117,7 +127,9 @@ def test_fetch_address_invalid_cep(requests_mock):
 
 
 def test_fetch_address_blocked_by_flood(requests_mock):
-    """Test blocked by flood error."""
+    """
+    Test blocked by flood error.
+    """
     requests_mock.get(
         f"{API_URL}/37503130.json", text='{"status":400, "message": "Blocked by flood"}'
     )
@@ -127,7 +139,9 @@ def test_fetch_address_blocked_by_flood(requests_mock):
 
 
 def test_fetch_address_other_error_code_400(requests_mock):
-    """Test status 400 code error."""
+    """
+    Test status 400 code error.
+    """
     requests_mock.get(f"{API_URL}/37503130.json", text='{"status":400, "message": "Unknown error"}')
 
     with pytest.raises(exceptions.BrazilCEPException):
@@ -135,7 +149,9 @@ def test_fetch_address_other_error_code_400(requests_mock):
 
 
 def test_fetch_address_429(requests_mock):
-    """Test too many requests error."""
+    """
+    Test too many requests error.
+    """
     requests_mock.get(f"{API_URL}/37503130.json", status_code=429)
 
     with pytest.raises(exceptions.BlockedByFlood):
@@ -143,7 +159,9 @@ def test_fetch_address_429(requests_mock):
 
 
 def test_fetch_address_404(requests_mock):
-    """Test generic 404 error."""
+    """
+    Test generic 404 error.
+    """
     requests_mock.get(f"{API_URL}/37503130.json", status_code=404)
 
     with pytest.raises(exceptions.BrazilCEPException):
@@ -151,7 +169,9 @@ def test_fetch_address_404(requests_mock):
 
 
 def test_json_decode_error(requests_mock):
-    """Test json decode error."""
+    """
+    Test json decode error.
+    """
 
     requests_mock.get(f"{API_URL}/37503130.json", text=RESPONSE_MOCK_TEXT_SUCCESS)
 
@@ -162,7 +182,9 @@ def test_json_decode_error(requests_mock):
 
 @pytest.mark.asyncio
 async def test_async_get_address_from_cep_success():
-    """Test async address fetch."""
+    """
+    Test async address fetch.
+    """
 
     async def __mock_aiohttp_get(*args, **kwargs):
         return 200, RESPONSE_MOCK_TEXT_SUCCESS

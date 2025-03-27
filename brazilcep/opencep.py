@@ -26,7 +26,8 @@ URL = "https://opencep.com/v1/{}"
 
 
 def __format_response(response: dict) -> dict:
-    """Formats the response from the OpenCEP API into a standardized address dictionary.
+    """
+    Formats the response from the OpenCEP API into a standardized address dictionary.
 
     This function processes the raw JSON response from the OpenCEP API and extracts
     relevant address fields, ensuring that all string values are stripped of leading
@@ -58,7 +59,8 @@ def __format_response(response: dict) -> dict:
 
 
 def __handle_response(status_code: int, text: str) -> dict:
-    """Handles the API response based on the status code and response content.
+    """
+    Handles the API response based on the status code and response content.
 
     Args:
         status_code (int): The HTTP status code returned by the API.
@@ -88,15 +90,16 @@ def __handle_response(status_code: int, text: str) -> dict:
 def fetch_address(
     cep: str, timeout: Union[None, int] = None, proxies: Union[None, dict] = None
 ) -> dict:
-    """Fetch address data from the OpenCEP API using a given CEP.
+    """
+    Fetch address data from the OpenCEP API using a given CEP.
 
     This function queries the OpenCEP REST API to retrieve address information
     for a given Brazilian postal code (CEP). It handles various exceptions and
     returns a standardized address dictionary.
 
     Args:
-        cep (str): The CEP (postal code) to be searched.
-        timeout (Union[None, int], optional): The timeout in seconds for the request. Defaults to None.
+        cep (str): The CEP to be searched.
+        timeout (Union[None, int], optional): The number of seconds to wait for the server to respond. Defaults to None.
         proxies (Union[None, dict], optional): A dictionary mapping protocol to the URL of the proxy. Defaults to None.
 
     Raises:
@@ -106,7 +109,6 @@ def fetch_address(
         exceptions.TooManyRedirects: Raised for too many redirects.
         exceptions.Timeout: Raised when the request times out.
         exceptions.InvalidCEP: Raised for invalid CEP requests.
-        exceptions.BlockedByFlood: Raised when requests are blocked due to flooding.
         exceptions.CEPNotFound: Raised when the CEP is not found.
         exceptions.BrazilCEPException: Base class for other exceptions.
 
@@ -120,15 +122,16 @@ def fetch_address(
 async def async_fetch_address(
     cep: str, timeout: Union[None, int] = None, proxies: Union[None, dict] = None
 ) -> dict:
-    """Fetch address data asynchronously from the OpenCEP API using a given CEP.
+    """
+    Fetch address data asynchronously from the OpenCEP API using a given CEP.
 
     This function queries the OpenCEP REST API asynchronously to retrieve address information
     for a given Brazilian postal code (CEP). It handles various exceptions and
     returns a standardized address dictionary.
 
     Args:
-        cep (str): The CEP (postal code) to be searched.
-        timeout (Union[None, int], optional): The timeout in seconds for the request. Defaults to None.
+        cep (str): The CEP to be searched.
+        timeout (Union[None, int], optional): The number of seconds to wait for the server to respond. Defaults to None.
         proxies (Union[None, dict], optional): A dictionary mapping protocol to the URL of the proxy. Defaults to None.
 
     Raises:
@@ -138,7 +141,6 @@ async def async_fetch_address(
         exceptions.TooManyRedirects: Raised for too many redirects.
         exceptions.Timeout: Raised when the request times out.
         exceptions.InvalidCEP: Raised for invalid CEP requests.
-        exceptions.BlockedByFlood: Raised when requests are blocked due to flooding.
         exceptions.CEPNotFound: Raised when the CEP is not found.
         exceptions.BrazilCEPException: Base class for other exceptions.
 
@@ -147,6 +149,3 @@ async def async_fetch_address(
     """
     status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
     return __handle_response(status_code=status_code, text=text)
-
-
-async_fetch_address.__doc__ = fetch_address.__doc__

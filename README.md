@@ -106,6 +106,26 @@ The CEP must always be provided as a string.
 > [!IMPORTANT]
 > BrazilCEP does not guarantee the availability or support of any third-party query APIs. This library serves as a convenient interface for accessing these services.
 
+#### Asynchronous Requests with BrazilCEP
+
+BrazilCEP (version >= 7.0.0) also supports asynchronous operations , allowing you to retrieve address information for a given CEP without blocking your application. This is particularly useful for web applications or services that require high responsiveness.
+
+To perform an asynchronous request, use the `async_get_address_from_cep` function:
+
+```python
+import asyncio
+import brazilcep
+
+async def main():
+  address = await brazilcep.async_get_address_from_cep('37503-130')
+  print(address)
+
+asyncio.run(main())
+```
+> [!NOTE]
+> This function is asynchronous and must be awaited when called.
+> Ensure that your environment supports asynchronous programming before using this function.
+
 ## Documentation
 
 Comprehensive documentation for BrazilCEP is available [here](https://brazilcep.readthedocs.io/).

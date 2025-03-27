@@ -37,7 +37,9 @@ RESPONSE_MOCK_TEXT_SUCCESS = """{
     reason="Skip real API tests in certain environments.",
 )
 def test_get_address_from_cep_success_real():
-    """Test successful address retrieval from real API."""
+    """
+    Test successful address retrieval from real API.
+    """
     address = get_address_from_cep("37.503-130", webservice=WebService.VIACEP)
 
     assert address["district"] == "Santo Antônio"
@@ -53,13 +55,17 @@ def test_get_address_from_cep_success_real():
     reason="Skip real API tests in certain environments.",
 )
 def test_get_address_from_cep_not_found_real():
-    """Test address not found scenario with real API."""
+    """
+    Test address not found scenario with real API.
+    """
     with pytest.raises(exceptions.CEPNotFound):
         get_address_from_cep("00000-000", webservice=WebService.VIACEP)
 
 
 def test_get_address_from_cep_success(requests_mock):
-    """Test successful address retrieval with mocked API."""
+    """
+    Test successful address retrieval with mocked API.
+    """
     requests_mock.get(f"{BASE_URL}/37503130/json", text=RESPONSE_MOCK_TEXT_SUCCESS)
 
     proxies = {"https": "00.00.000.000", "http": "00.00.000.000"}
@@ -77,7 +83,9 @@ def test_get_address_from_cep_success(requests_mock):
 
 
 def test_get_address_from_cep_not_found(requests_mock):
-    """Test address not found scenario with mocked API."""
+    """
+    Test address not found scenario with mocked API.
+    """
     mock_response = '{"erro": "true"}'
 
     requests_mock.get(f"{BASE_URL}/00000000/json", text=mock_response)
@@ -90,7 +98,9 @@ def test_get_address_from_cep_not_found(requests_mock):
 
 
 def test_get_address_invalid_cep(requests_mock):
-    """Test invalid CEP scenario."""
+    """
+    Test invalid CEP scenario.
+    """
     requests_mock.get(f"{BASE_URL}/3750313/json", status_code=400)
 
     with pytest.raises(exceptions.InvalidCEP):
@@ -98,7 +108,9 @@ def test_get_address_invalid_cep(requests_mock):
 
 
 def test_fetch_address_404(requests_mock):
-    """Test 404 error scenario."""
+    """
+    Test 404 error scenario.
+    """
     requests_mock.get(f"{BASE_URL}/37503130/json", status_code=404)
 
     with pytest.raises(exceptions.BrazilCEPException):
@@ -106,7 +118,9 @@ def test_fetch_address_404(requests_mock):
 
 
 def test_json_decode_error(requests_mock):
-    """Test json decode error."""
+    """
+    Test json decode error.
+    """
 
     requests_mock.get(f"{BASE_URL}/37503130/json", text=RESPONSE_MOCK_TEXT_SUCCESS)
 
@@ -117,7 +131,9 @@ def test_json_decode_error(requests_mock):
 
 @pytest.mark.asyncio
 async def test_async_get_address_from_cep_success():
-    """Test asynchronous address retrieval."""
+    """
+    Test asynchronous address retrieval.
+    """
 
     async def __mock_aiohttp_get(*args, **kwargs):
         return 200, RESPONSE_MOCK_TEXT_SUCCESS

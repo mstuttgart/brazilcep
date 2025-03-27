@@ -40,6 +40,31 @@ The result is a *dict* object called ``address``. You can retrieve all the addre
 
 **Note:** The CEP must always be a string.
 
+Asynchronous Requests with BrazilCEP
+------------------------------------
+
+BrazilCEP (version >= 7.0.0) also supports asynchronous operations , allowing you to retrieve address information for a given CEP without blocking your application. This is particularly useful for web applications or services that require high responsiveness.
+
+To perform an asynchronous request, use the `async_get_address_from_cep` function:
+
+.. code-block:: python
+
+    import asyncio
+    import brazilcep
+
+    async def main():
+    address = await brazilcep.async_get_address_from_cep('37503-130')
+    print(address)
+
+    asyncio.run(main())
+
+.. note::
+
+    - This function is asynchronous and must be awaited when called.
+    - Ensure that your environment supports asynchronous programming before using this function.
+
+By leveraging asynchronous requests, you can improve the performance and scalability of your applications when working with CEP data.
+
 Timeouts
 --------
 
