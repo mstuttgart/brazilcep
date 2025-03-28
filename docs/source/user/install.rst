@@ -14,16 +14,15 @@ Supported Python Versions
     :target: https://pypi.org/project/brazilcep/
     :alt: Python Version Support Badge
 
-Installing BrazilCEP
---------------------
-
-### Install from PyPI
+Install from PyPI
+-----------------
 
 To install **BrazilCEP** from PyPI, run the following command in your terminal::
 
      pip install brazilcep
 
-### Install from Source Code
+Install from Source Code
+------------------------
 
 The source code for **BrazilCEP** is hosted on GitHub and is always available for download.
 
@@ -31,7 +30,7 @@ The source code for **BrazilCEP** is hosted on GitHub and is always available fo
 
          git clone https://github.com/mstuttgart/brazilcep.git
 
-    Or download the `tarball <https://github.com/mstuttgart/brazilcep/tarball/main>`_::
+Or download the `tarball <https://github.com/mstuttgart/brazilcep/tarball/main>`_::
 
          curl -OL https://github.com/mstuttgart/brazilcep/tarball/main
 
