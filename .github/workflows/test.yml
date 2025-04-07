@@ -4,12 +4,12 @@
 name: Github CI PyTest
 
 on:
-  pull_request:
-    branches:
-      - "*"
   push:
     branches:
-      - "*"
+      - main
+      - develop
+
+  pull_request:
 
 jobs:
   ci:

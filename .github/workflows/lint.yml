@@ -2,12 +2,12 @@
 name: Github CI Lint
 
 on:
-  pull_request:
-    branches:
-      - "*"
   push:
     branches:
-      - "*"
+      - main
+      - develop
+
+  pull_request:
 
 jobs:
   build:
