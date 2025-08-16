@@ -17,7 +17,8 @@ dotenv.load_dotenv()
 IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
 SKIP_REAL_TEST = os.getenv("SKIP_REAL_TEST", False)
 
-BASE_URL = "http://www.viacep.com.br/ws"
+BASE_URL = "https://viacep.com.br/ws"
+
 RESPONSE_MOCK_TEXT_SUCCESS = """{
     "cep": "37503-130",
     "logradouro": "Rua Geraldino Campista",

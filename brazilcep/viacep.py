@@ -22,7 +22,7 @@ from typing import Union
 
 from . import exceptions, utils
 
-URL = "http://viacep.com.br/ws/{}/json"
+URL = "https://viacep.com.br/ws/{}/json"
 
 
 def __format_response(response: dict) -> dict:
