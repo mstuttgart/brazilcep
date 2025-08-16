@@ -22,7 +22,7 @@ from typing import Union
 
 from brazilcep import exceptions, utils
 
-URL = "https://ws.apicep.com/cep/{}.json"
+URL = "https://cdn.apicep.com/file/apicep/{}.json"
 
 
 def __format_response(response: dict) -> dict:
@@ -78,36 +78,20 @@ def __handle_response(status_code: int, text: str):
 
     if status_code == 200:
         try:
-            response_json = json.loads(text)
+            return __format_response(json.loads(text))
         except json.JSONDecodeError as e:
             raise exceptions.BrazilCEPException(f"Failed to parse JSON response: {e}")
 
-        status = response_json.get("status")
-        message = response_json.get("message")
-
-        if status == 400:
-            if message == "CEP informado é inválido":
-                raise exceptions.InvalidCEP()
-
-            if message == "Blocked by flood":
-                raise exceptions.BlockedByFlood()
-
-            raise exceptions.BrazilCEPException(
-                f"Unexpected error. Status: {status}, Message: {message}"
-            )
-
-        elif status == 404:
-            raise exceptions.CEPNotFound()
-
-        else:
-            return __format_response(response_json)
+    elif status_code == 404:
+        raise exceptions.CEPNotFound()
 
     elif status_code == 429:
         raise exceptions.BlockedByFlood()
 
-    raise exceptions.BrazilCEPException(
-        f"Unexpected error. Status code: {status_code}, Response: {text}"
-    )
+    else:
+        raise exceptions.BrazilCEPException(
+            f"Unexpected error. Status code: {status_code}, Response: {text}"
+        )
 
 
 def fetch_address(
@@ -138,6 +122,8 @@ def fetch_address(
     Returns:
         dict: A dictionary containing the formatted address data.
     """
+    # apicep exige que o CEP esteja no formato XXXXX-XXX
+    cep = f"{cep[:5]}-{cep[5:]}"
     status_code, text = utils.requests_get(url=URL.format(cep), timeout=timeout, proxies=proxies)
     return __handle_response(status_code=status_code, text=text)
 
@@ -170,6 +156,8 @@ async def async_fetch_address(
     Returns:
         dict: A dictionary containing the formatted address data.
     """
+    # apicep exige que o CEP esteja no formato XXXXX-XXX
+    cep = f"{cep[:5]}-{cep[5:]}"
 
     status_code, text = await utils.aiohttp_get(url=URL.format(cep), timeout=timeout)
     return __handle_response(status_code=status_code, text=text)
