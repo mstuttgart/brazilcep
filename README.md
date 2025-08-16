@@ -21,15 +21,15 @@
   </a>
 
   <a href="https://pypi.org/project/brazilcep">
-    <img alt="Downloads" src="https://img.shields.io/pypi/dm/brazilcep?color=fcd800">
+    <img alt="Downloads" src="https://static.pepy.tech/badge/brazilcep">
   </a>
 
   <a href="https://pypi.org/project/brazilcep">
-    <img alt="PyPI Version" src="https://img.shields.io/pypi/v/brazilcep.svg?color=fcd800">
+    <img alt="PyPI Version" src="https://img.shields.io/pypi/v/brazilcep.svg">
   </a>
 
   <a href="https://pypi.org/project/brazilcep/">
-    <img alt="Python Versions" src="https://img.shields.io/pypi/pyversions/brazilcep.svg?color=fcd800">
+    <img alt="Python Versions" src="https://img.shields.io/pypi/pyversions/brazilcep.svg">
   </a>
 
 </p>
