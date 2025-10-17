@@ -1,8 +1,4 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+"""Sphinx configuration file for BrazilCEP documentation."""
 
 import logging
 import os
@@ -16,7 +12,7 @@ from datetime import datetime
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 
-sys.path.insert(0, os.path.abspath("../../"))
+sys.path.insert(0, os.path.abspath("../.."))
 
 import brazilcep
 
@@ -25,8 +21,8 @@ import brazilcep
 project = "BrazilCEP"
 copyright = f"{datetime.today().year}, Michell Stuttgart"
 author = "Michell Stuttgart"
-version = brazilcep.__version__
 release = brazilcep.__version__
+version = release
 
 
 # -- General configuration ---------------------------------------------------
@@ -36,12 +32,13 @@ release = brazilcep.__version__
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
-    "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
-    "sphinx.ext.doctest",
-    "sphinx_copybutton",
+    "sphinx.ext.intersphinx",
     "sphinx_autodoc_typehints",
+    "sphinx_copybutton",
+    "myst_parser",
 ]
 
 # Tell myst-parser to assign header anchors for h1-h3.
@@ -93,13 +90,15 @@ html_static_path = ["_static"]
 html_favicon = "_static/favicon.ico"
 
 html_theme_options = {
-    "logo": "logo.png",
-    "show_powered_by": False,
-    "github_user": "mstuttgart",
-    "github_repo": "brazilcep",
-    "github_banner": True,
-    "show_related": False,
-    "note_bg": "#FFF59C",
+    "logo_only": False,
+    "display_version": True,
+    "prev_next_buttons_location": "bottom",
+    "style_external_links": True,
+    "collapse_navigation": False,
+    "sticky_navigation": True,
+    "navigation_depth": 4,
+    "includehidden": True,
+    "titles_only": False,
 }
 
 # Custom sidebar templates, maps document names to template names.
@@ -112,6 +111,62 @@ html_sidebars = {
         'searchbox.html',
     ],
 }
+
+# -- Extension configuration -------------------------------------------------
+
+# Napoleon settings
+napoleon_google_docstring = False
+napoleon_numpy_docstring = True
+napoleon_include_init_with_doc = True
+napoleon_include_private_with_doc = False
+napoleon_include_special_with_doc = True
+napoleon_use_admonition_for_examples = True
+napoleon_use_admonition_for_notes = True
+napoleon_use_admonition_for_references = True
+napoleon_use_ivar = False
+napoleon_use_param = True
+napoleon_use_rtype = True
+napoleon_type_aliases = None
+
+# Autodoc settings
+autodoc_default_options = {
+    "members": True,
+    "member-order": "bysource",
+    "special-members": "__init__",
+    "undoc-members": True,
+    "exclude-members": "__weakref__",
+}
+autodoc_typehints = "description"
+autodoc_typehints_description_target = "documented"
+
+# Autosummary settings
+autosummary_generate = True
+
+# Intersphinx settings
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3", None),
+    "requests": ("https://requests.readthedocs.io/en/latest/", None),
+    "aiohttp": ("https://docs.aiohttp.org/en/stable/", None),
+}
+
+# MyST Parser settings
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "fieldlist",
+    "html_admonition",
+    "html_image",
+    "replacements",
+    "smartquotes",
+    "strikethrough",
+    "substitution",
+    "tasklist",
+]
+
+# Copybutton settings
+copybutton_prompt_text = r">>> |\.\.\. |\$ "
+copybutton_prompt_is_regexp = True
 
 # -- Hack to get rid of stupid warnings from sphinx_autodoc_typehints --------
 
