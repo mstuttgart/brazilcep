@@ -44,6 +44,7 @@ nosetests.xml
 coverage.xml
 *,cover
 testreport.junit.xml
+junit.xml
 
 # Translations
 *.mo
