@@ -4,7 +4,7 @@ exclude: "docs/"
 repos:
   # Pre-commit hooks for general code quality checks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-yaml  # Validate YAML files
       - id: debug-statements  # Detect debug statements (e.g., print, pdb)
@@ -17,31 +17,31 @@ repos:
 
   # Sort imports automatically
   - repo: https://github.com/PyCQA/isort
-    rev: 6.0.1
+    rev: 5.12.0
     hooks:
       - id: isort
 
   # Format Python code with Black
   - repo: https://github.com/psf/black
-    rev: 25.1.0
+    rev: 23.12.1
     hooks:
       - id: black
 
   # Lint Python code with Ruff
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.2
+    rev: v0.15.0
     hooks:
       - id: ruff
 
   # Format tox.ini files
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: "1.5.0"
+    rev: "1.7.1"
     hooks:
       - id: tox-ini-fmt
 
   # Upgrade Python syntax to modern versions
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.1
+    rev: v3.21.2
     hooks:
       - id: pyupgrade
         args: [--py39-plus]  # Target Python 3.9+ syntax

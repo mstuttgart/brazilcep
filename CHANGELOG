@@ -1,7 +1,13 @@
 Changelog
 =========
 
+7.2.0 (2026-02-08)
+
+- Add support to Python 3.14
+- Improce README and docs text
+
 7.0.1 (2025-03-16)
+------------------
 
 - Fixes #104
 - Fixes #103

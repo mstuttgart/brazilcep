@@ -56,19 +56,18 @@
 
 ## Features
 
-✨ **Simple and Intuitive API** - Easy-to-use interface for CEP queries
+- Easy-to-use interface for CEP queries
+- Full support for asynchronous operations
+- Support for **ViaCEP**, **ApiCEP**, and **OpenCEP**
+- Minimal dependencies and optimized performance
+- Full type annotation support for better IDE experience
+- Configure timeout, proxies, and preferred web service
+- Comprehensive test coverage
 
-🚀 **Async/Await Support** - Full support for asynchronous operations
+## About CEP
 
-🔄 **Multiple Web Services** - Support for ViaCEP, ApiCEP, and OpenCEP
+**CEP** (Código de Endereçamento Postal) or **Postal Address Code** is the Brazilian postal code system created, maintained, and organized by Correios do Brasil (Brazilian Post Office). It consists of eight digits and helps streamline address organization and delivery of mail and packages across Brazil.
 
-⚡ **Fast and Lightweight** - Minimal dependencies and optimized performance
-
-🛡️ **Type Hints** - Full type annotation support for better IDE experience
-
-🔧 **Customizable** - Configure timeout, proxies, and preferred web service
-
-📦 **Well Tested** - Comprehensive test coverage
 
 ## Installation
 
@@ -78,12 +77,6 @@ Install using [pip](https://pip.pypa.io/):
 
 ```bash
 pip install brazilcep
-```
-
-Or using [poetry](https://python-poetry.org/):
-
-```bash
-poetry add brazilcep
 ```
 
 ## Quick Start
@@ -140,85 +133,6 @@ address = get_address_from_cep('37503-130', webservice=WebService.APICEP)
 address = get_address_from_cep('37503-130', webservice=WebService.OPENCEP)
 ```
 
-### Configuring Timeout
-
-Set a custom timeout for requests (default is 5 seconds):
-
-```python
-# Set timeout to 10 seconds
-address = get_address_from_cep('37503-130', timeout=10)
-```
-
-### Using Proxies
-
-Configure proxy settings for requests:
-
-```python
-proxies = {
-    'http': 'http://10.10.1.10:3128',
-    'https': 'http://10.10.1.10:1080',
-}
-
-address = get_address_from_cep('37503-130', proxies=proxies)
-```
-
-### Handling Exceptions
-
-```python
-from brazilcep import get_address_from_cep, exceptions
-
-try:
-    address = get_address_from_cep('00000-000')
-except exceptions.CEPNotFound:
-    print('CEP not found!')
-except exceptions.InvalidCEP:
-    print('Invalid CEP format!')
-except exceptions.ConnectionError:
-    print('Connection error!')
-except exceptions.Timeout:
-    print('Request timeout!')
-except exceptions.BrazilCEPException as e:
-    print(f'An error occurred: {e}')
-```
-
-### Complete Async Example
-
-```python
-import asyncio
-from brazilcep import async_get_address_from_cep, WebService, exceptions
-
-async def fetch_multiple_ceps():
-    """Fetch multiple CEPs concurrently."""
-    ceps = ['37503-130', '01310-100', '20040-020']
-
-    tasks = [
-        async_get_address_from_cep(cep, webservice=WebService.OPENCEP)
-        for cep in ceps
-    ]
-
-    try:
-        addresses = await asyncio.gather(*tasks)
-        for cep, address in zip(ceps, addresses):
-            print(f"\nCEP {cep}:")
-            print(f"  Street: {address['street']}")
-            print(f"  City: {address['city']}/{address['uf']}")
-    except exceptions.BrazilCEPException as e:
-        print(f"Error fetching addresses: {e}")
-
-asyncio.run(fetch_multiple_ceps())
-```
-
-## Supported Web Services
-
-| Service | Website | Status | Rate Limit |
-|---------|---------|--------|------------|
-| [OpenCEP](https://opencep.com) | https://opencep.com | ✅ Active | Yes |
-| [ViaCEP](https://viacep.com.br) | https://viacep.com.br | ✅ Active | Yes |
-| [ApiCEP](https://apicep.com) | https://apicep.com | ✅ Active | Yes |
-
-> [!IMPORTANT]
-> BrazilCEP does not guarantee the availability or support of any third-party query APIs. This library serves as a convenient interface for accessing these services. Please check each service's terms of use and rate limits.
-
 ## Response Format
 
 All queries return a dictionary with the following structure:
@@ -232,7 +146,18 @@ All queries return a dictionary with the following structure:
     'uf': str,         # State abbreviation (e.g., 'MG')
     'complement': str  # Additional information (may be empty)
 }
+
 ```
+## Supported Web Services
+
+| Service                         | Website               | Status   | Rate Limit |
+| ------------------------------- | --------------------- | -------- | ---------- |
+| [OpenCEP](https://opencep.com)  | https://opencep.com   | ✅ Active | Yes        |
+| [ViaCEP](https://viacep.com.br) | https://viacep.com.br | ✅ Active | Yes        |
+| [ApiCEP](https://apicep.com)    | https://apicep.com    | ✅ Active | Yes        |
+
+> [!IMPORTANT]
+> BrazilCEP does not guarantee the availability or support of any third-party query APIs. This library serves as a convenient interface for accessing these services. Please check each service's terms of use and rate limits.
 
 ## Documentation
 
@@ -258,62 +183,8 @@ Contributions are welcome! Here's how you can help:
 
 Please read our [Contributing Guide](https://brazilcep.readthedocs.io/contributing.html) before submitting a pull request.
 
-### Development Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/mstuttgart/brazilcep.git
-cd brazilcep
-
-# Install dependencies
-make setup
-
-# Run tests
-make test
-
-# Run linting
-make lint
-
-# Run all checks
-make check
-```
-
-## About CEP
-
-**CEP** (Código de Endereçamento Postal) or **Postal Address Code** is the Brazilian postal code system created, maintained, and organized by Correios do Brasil (Brazilian Post Office). It consists of eight digits and helps streamline address organization and delivery of mail and packages across Brazil.
-
-## Migration from PyCEPCorreios
-
-BrazilCEP is the successor to PyCEPCorreios. To migrate your code:
-
-**Old (PyCEPCorreios):**
-```python
-from pycepcorreios import get_address_from_cep
-```
-
-**New (BrazilCEP):**
-```python
-from brazilcep import get_address_from_cep
-```
-
-For detailed migration instructions, see the [migration guide](https://brazilcep.readthedocs.io/api.html#migrate-from-pycepcorreios).
-
 ## License
 
 BrazilCEP is released under the [MIT License](https://github.com/mstuttgart/brazilcep/blob/main/LICENSE).
 
-## Credits
-
 Created and maintained by [Michell Stuttgart](https://github.com/mstuttgart).
-
-## Support
-
-- 📧 Issues: [GitHub Issues](https://github.com/mstuttgart/brazilcep/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/mstuttgart/brazilcep/discussions)
-- 📖 Documentation: [ReadTheDocs](https://brazilcep.readthedocs.io/)
-
----
-
-<p align="center">
-  Made with ❤️ in Brazil
-</p>
