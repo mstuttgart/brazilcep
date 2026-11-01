@@ -1,3 +1,4 @@
+import asyncio
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import aiohttp
@@ -113,7 +114,22 @@ async def test_aiohttp_get_timeout():
     """
 
     with patch(
-        "brazilcep.utils.aiohttp.ClientSession.get", side_effect=aiohttp.ConnectionTimeoutError
+        "brazilcep.utils.aiohttp.ClientSession.get", side_effect=aiohttp.ServerTimeoutError
+    ):
+        with pytest.raises(exceptions.Timeout):
+            await utils.aiohttp_get(URL, timeout=1)
+
+
+@pytest.mark.asyncio
+async def test_aiohttp_get_asyncio_timeout():
+    """
+    Testa aiohttp_get com um asyncio.TimeoutError puro, que e o que o aiohttp
+    levanta em timeout de conexao antes da 3.12 (ex.: 3.8.x, a versao minima
+    suportada pelo brazilcep).
+    """
+
+    with patch(
+        "brazilcep.utils.aiohttp.ClientSession.get", side_effect=asyncio.TimeoutError
     ):
         with pytest.raises(exceptions.Timeout):
             await utils.aiohttp_get(URL, timeout=1)

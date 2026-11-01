@@ -1,3 +1,4 @@
+import asyncio
 from typing import Optional
 
 import aiohttp
@@ -36,7 +37,7 @@ async def aiohttp_get(
                 response_text = await response.text()
                 return response.status, response_text
 
-    except aiohttp.ConnectionTimeoutError as exc:
+    except (aiohttp.ServerTimeoutError, asyncio.TimeoutError) as exc:
         raise exceptions.Timeout(exc)
 
     except aiohttp.ClientConnectionError as exc:
